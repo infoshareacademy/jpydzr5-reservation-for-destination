@@ -27,9 +27,11 @@ for _ in range(30):
 sciezka_pliku = "data_base.csv"
 
 # Zapis do pliku CSV
-with open(sciezka_pliku, mode='w', newline='') as plik_csv:
-    writer = csv.writer(plik_csv)
-    for wiersz in dane_seansow:
-        writer.writerow(wiersz)
-
-print("Plik CSV został utworzony pomyślnie!")
+try:
+    with open(sciezka_pliku, mode='w', newline='') as plik_csv:
+        writer = csv.writer(plik_csv)
+        for wiersz in dane_seansow:
+            writer.writerow(wiersz)
+    print("Plik CSV został utworzony pomyślnie!")
+except IOError as e:
+    print(f"Podczas tworzenia pliku CSV wystąpił błąd: {e}")
