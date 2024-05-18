@@ -1,6 +1,6 @@
 class Menu:
     def __init__(self):
-        self._option = None
+        self.__option = None
 
     def __str__(self):
         return """ 
@@ -11,23 +11,36 @@ class Menu:
         5. Zakończ program"""
 
     def choose_option(self):
-        option = input('Wybierz opcję: ')
-        self._option = option
-        match option:
+        self._option = input('Wybierz opcję: ')
+        match self._option:
             case '1':
                 print('Wybrano "Zarezerwuj bilet"')
-                return option
+                return self._option
             case '2':
                 print('Wybrano "Wyświetl koszyk"')
-                return option
+                return self._option
             case '3':
                 print('Wybrano "Usuń pozycję z koszyka"')
-                return option
+                return self._option
             case '4':
                 print('Wybrano "Zakup bilet"')
-                return option
+                return self._option
             case '5':
                 print('Wybrano "Zakończ program"')
-                return option
-            case _:
-                print('Nie wybrano żadnej z dostępnej opcji')
+                return self._option
+
+    @property
+    def _option(self):
+        return self.__option
+
+    @_option.setter
+    def _option(self, value):
+        try:
+            if int(value) < 1 or int(value) > 5:
+                print('Proszę wprowdzić wartość z przedziału <1,5>: ')
+                self.__option = '0'
+            else:
+                self.__option = value
+        except ValueError:
+            print('Wprowadzono niepoprawną wartość!')
+            self.__option = '0'
