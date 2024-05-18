@@ -6,4 +6,5 @@ if __name__ == '__main__':
     option = None
     while option != '5':
         option = menu.choose_option()
-        print(menu)
+        if option != '5':
+            print(menu)
