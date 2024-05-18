@@ -32,6 +32,3 @@ class Ticket:
             print(f"Rabat zastosowany: {procent_rabatu}%, Nowa Cena: {self.cena_biletu:.2f} zł")
         else:
             print("Nieprawidłowy procent rabatu. Powinien być między 0 a 100.")
-
-    def wyswietl_bilet(self):
-        print(self)
