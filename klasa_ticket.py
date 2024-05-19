@@ -18,13 +18,13 @@ class Ticket:
                 f"Rząd: {self.rzad}\n"
                 f"Miejsce: {self.miejsce}\n")
 
-    def zmien_miejsce(self, nowy_rzad, nowe_miejsce):
+    def change_seat(self, nowy_rzad, nowe_miejsce):
         # Zmiana rzędu i miejsca oraz wyświetlenie komunikatu o zmianie
         self.rzad = nowy_rzad
         self.miejsce = nowe_miejsce
         print(f"Miejsce zmienione na Rząd: {self.rzad}, Miejsce: {self.miejsce}")
 
-    def zastosuj_rabat(self, procent_rabatu):
+    def apply_discount(self, procent_rabatu):
         # Zastosowanie rabatu do ceny biletu i wyświetlenie nowej ceny
         if 0 < procent_rabatu < 100:
             kwota_rabatu = (self.cena_biletu * procent_rabatu) / 100
