@@ -3,12 +3,11 @@ class Menu:
         self.__option = None
 
     def __str__(self):
-        return """ 
-        1. Zarezerwuj bilet
-        2. Wyświetl koszyk
-        3. Usuń pozycję z koszyka
-        4. Zakup bilet
-        5. Zakończ program"""
+        return ('1. Zarezerwuj bilet\n'
+                '2. Wyświetl koszyk\n'
+                '3. Usuń pozycję z koszyka\n'
+                '4. Zakup bilet\n'
+                '5. Zakończ program')
 
     def choose_option(self):
         self._option = input('Wybierz opcję: ')
