@@ -39,7 +39,7 @@ cinema_shows = [cinema_shows[0]] + sorted(cinema_shows[1:], key=lambda x: (x[1],
 
 
 # Ścieżka do pliku CSV
-file_path = "System rezerwacji biletów/data_base.csv"
+file_path = "data_base.csv"
 
 # Zapis do pliku CSV
 try:
