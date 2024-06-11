@@ -1,10 +1,11 @@
-from Menu import Menu
+from menu import Menu
 
 if __name__ == '__main__':
     menu = Menu()
-    print(menu)
-    option = None
-    while option != '5':
-        option = menu.choose_option()
-        if option != '5':
-            print(menu)
+    while menu.option != '4':
+        print(menu)
+        menu.option = input('Wybierz opcję: ')
+        print(menu)
+        if menu.option == '4':
+            break
+        menu.option = '0'
