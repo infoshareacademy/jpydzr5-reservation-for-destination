@@ -27,12 +27,4 @@ class Menu:
 
     @option.setter
     def option(self, value) -> None:
-        try:
-            if value.isdigit() and 0 > int(value) < 4:
-                print('Proszę wprowdzić wartość z przedziału <1,4>: ')
-                self.__option = '0'
-            else:
-                self.__option = value
-        except ValueError:
-            print('Wprowadzono niepoprawną wartość!')
-            self.__option = '0'
+        self.__option = value
