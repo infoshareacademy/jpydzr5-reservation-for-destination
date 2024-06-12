@@ -3,11 +3,11 @@ import random
 from datetime import datetime, timedelta
 
 # Przykładowe dane filmów, dni i godzin seansów
-film_titles = ["Avengers: Endgame", "The Godfather", "Inception", "The Shawshank Redemption", "The Dark Knight",
+movie_titles = ["Avengers: Endgame", "The Godfather", "Inception", "The Shawshank Redemption", "The Dark Knight",
                "Pulp Fiction", "Forrest Gump", "The Matrix", "Schindler's List", "Titanic"]
 show_hours = ["10:00", "13:30", "16:45", "19:30", "22:15"]
 hall_numbers = ["1", "2", "3", "4", "5"]
-ticket_prices = ["15.00", "18.00", "20.00", "22.00", "25.00"]
+prices = [15.00, 18.00, 20.00, 22.00, 25.00]
 rows = ["A", "B", "C", "D", "E"]
 seats = [str(i) for i in range(1, 11)]
 
@@ -22,16 +22,16 @@ def generate_show_dates(days_number=7):
 generated_show_dates = generate_show_dates()
 
 # Generowanie 30 przykładowych danych seansów
-cinema_shows = [["Film_title", "Show_date", "Show_hour", "Hall_number", "Ticket_price", "Row", "Seat"]]
+cinema_shows = [["Movie_title", "Show_date", "Show_hour", "Hall_number", "Price", "Row", "Seat"]]
 for _ in range(30):
-    film_title = random.choice(film_titles)
+    movie_title = random.choice(movie_titles)
     show_date = random.choice(generated_show_dates)
     show_hour = random.choice(show_hours)
     hall_number = random.choice(hall_numbers)
-    ticket_price = random.choice(ticket_prices)
+    price = random.choice(prices)
     row = random.choice(rows)
     seat = random.choice(seats)
-    cinema_shows.append([film_title, show_date, show_hour, hall_number, ticket_price, row, seat])
+    cinema_shows.append([movie_title, show_date, show_hour, hall_number, price, row, seat])
 
 
 #Sortowanie danych według daty seansu i godziny seansu
