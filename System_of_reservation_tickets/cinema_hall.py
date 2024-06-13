@@ -16,14 +16,14 @@ class CinemaHall:
             self.__seats.append(row)
             sign_of_row = chr(ord(sign_of_row) + 1)
 
-    def reserve_seat(self, row: str, place_seat: int):
+    def reserve_seat(self, row: str, place_seat: int) -> None:
         is_all_seats_reserved = self.__check_all_seats_are_reserved()
         if not is_all_seats_reserved:
             self.__serve_seat(row, place_seat, 'r')
         else:
             print('Wszystkie miejsca w sali są zajęte!')
 
-    def cancel_seat(self, row: str, place_seat: int):
+    def cancel_seat(self, row: str, place_seat: int) -> None:
         is_all_seats_reserved = self.__check_all_seats_are_reserved()
         if is_all_seats_reserved:
             self.__serve_seat(row, place_seat, 'c')
@@ -55,10 +55,11 @@ class CinemaHall:
             print(f'Nie ma takiego rzedzu o symbolu {row}!')
 
     def __check_all_seats_are_reserved(self) -> bool:
+        count_all_seats_reserved_in_row = 0
         for i in range(self._len_rows):
             if all(seat == 'X' for seat in self.__seats[i][1]):
-                return True
-        return False
+                count_all_seats_reserved_in_row += 1
+        return True if count_all_seats_reserved_in_row == self._len_rows else False
 
     @property
     def rows(self):
