@@ -1,0 +1,78 @@
+class CinemaHall:
+    # Na początek taki rozmiar sali, w przyszłości pewnie zmienimy
+    MAX_NUMBER_OF_SEATS = 10
+    MAX_NUMBER_OF_ROWS = 5
+
+    def __init__(self, rows: int, seats: int):
+        if rows > self.MAX_NUMBER_OF_ROWS or seats > self.MAX_NUMBER_OF_SEATS:
+            raise ValueError(f'Maksymalna liczba rzędów wynosi {self.MAX_NUMBER_OF_ROWS}'
+                             f' a miejsc siędzących {self.MAX_NUMBER_OF_SEATS}')
+        self.__rows = rows
+        self.__seats = []
+        sign_of_row = 'A'
+        # Na razie założyłem ze sala jest "kwadratowa" to znaczy każdy rząd ma tyle samo miejsc
+        for i in range(rows):
+            row = [sign_of_row, ['*' for _ in range(seats)]]
+            self.__seats.append(row)
+            sign_of_row = chr(ord(sign_of_row) + 1)
+
+    def reserve_seat(self, row: str, place_seat: int):
+        is_all_seats_reserved = self.__check_all_seats_are_reserved()
+        if not is_all_seats_reserved:
+            self.__serve_seat(row, place_seat, 'r')
+        else:
+            print('Wszystkie miejsca w sali są zajęte!')
+
+    def cancel_seat(self, row: str, place_seat: int):
+        is_all_seats_reserved = self.__check_all_seats_are_reserved()
+        if is_all_seats_reserved:
+            self.__serve_seat(row, place_seat, 'c')
+        else:
+            print('Wszystkie miejsca w sali są wolne!')
+
+    # Wewnęczne "API" do obsługi reserwacji/odwołąnia miejsca
+    def __serve_seat(self, row: str, place_seat: int, type_operation: str) -> None:
+        if row in self.rows:
+            for i in range(self._len_rows):
+                if row == self.rows[i]:
+                    if 0 < place_seat < len(self.__seats[i][1]) + 1:
+                        if type_operation == 'r':
+                            if self.__seats[i][1][place_seat - 1] == '*':
+                                self.__seats[i][1][place_seat - 1] = 'X'
+                            else:
+                                print(f'Miejsce z rzędzie {row} o mumerze {place_seat} jest zajęte!')
+                        elif type_operation == 'c':
+                            if self.__seats[i][1][place_seat - 1] == 'X':
+                                self.__seats[i][1][place_seat - 1] = '*'
+                            else:
+                                print(f'Miejsce w rzędzie {row} o mumerze {place_seat} jest wolne!')
+                        else:
+                            raise ValueError('Podano błędy parametr w obsłudze miejsca!')
+                    else:
+                        print(f'Podano numer miejsca {place_seat} w rzędzie {self.rows[i]}, którego nie ma!')
+                        break
+        else:
+            print(f'Nie ma takiego rzedzu o symbolu {row}!')
+
+    def __check_all_seats_are_reserved(self) -> bool:
+        for i in range(self._len_rows):
+            if all(seat == 'X' for seat in self.__seats[i][1]):
+                return True
+        return False
+
+    @property
+    def rows(self):
+        return self.__rows
+
+    @property
+    def _len_rows(self):
+        return len(self.rows)
+
+    @rows.getter
+    def rows(self) -> list[str]:
+        return [chr(ord('A') + i) for i in range(self.__rows)]
+
+    def __str__(self) -> str:
+        result = ''
+        result += '\n'.join([str(i) for i in self.__seats])
+        return result
