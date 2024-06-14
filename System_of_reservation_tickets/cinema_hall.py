@@ -55,6 +55,8 @@ class CinemaHall:
             print(f'Nie ma takiego rzedzu o symbolu {row}!')
 
     def __check_all_seats_are_reserved_or_empty(self, mode: str) -> bool:
+        # Dla mode = 'r' sprawdzam czy wszystkie miejsca są zajęte.
+        # Dla mode = 'e' sprawdzam czy wszsytkie miejsca są wolne.
         check_seat = 'X' if mode == 'r' else '*'
         count_all_seats_reserved_in_row = 0
         for i in range(self._len_rows):
