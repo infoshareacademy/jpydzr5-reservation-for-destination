@@ -17,18 +17,18 @@ class CinemaHall:
             sign_of_row = chr(ord(sign_of_row) + 1)
 
     def reserve_seat(self, row: str, place_seat: int) -> None:
-        is_all_seats_reserved = self.__check_all_seats_are_reserved()
-        if not is_all_seats_reserved:
-            self.__serve_seat(row, place_seat, 'r')
-        else:
+        is_all_seats_reserved = self.__check_all_seats_are_reserved_or_empty('r')
+        if is_all_seats_reserved:
             print('Wszystkie miejsca w sali są zajęte!')
+        else:
+            self.__serve_seat(row, place_seat, 'r')
 
     def cancel_seat(self, row: str, place_seat: int) -> None:
-        is_all_seats_reserved = self.__check_all_seats_are_reserved()
-        if is_all_seats_reserved:
-            self.__serve_seat(row, place_seat, 'c')
-        else:
+        is_all_seats_free = self.__check_all_seats_are_reserved_or_empty('e')
+        if is_all_seats_free:
             print('Wszystkie miejsca w sali są wolne!')
+        else:
+            self.__serve_seat(row, place_seat, 'c')
 
     # Wewnęczne "API" do obsługi reserwacji/odwołąnia miejsca
     def __serve_seat(self, row: str, place_seat: int, type_operation: str) -> None:
@@ -54,10 +54,11 @@ class CinemaHall:
         else:
             print(f'Nie ma takiego rzedzu o symbolu {row}!')
 
-    def __check_all_seats_are_reserved(self) -> bool:
+    def __check_all_seats_are_reserved_or_empty(self, mode: str) -> bool:
+        check_seat = 'X' if mode == 'r' else '*'
         count_all_seats_reserved_in_row = 0
         for i in range(self._len_rows):
-            if all(seat == 'X' for seat in self.__seats[i][1]):
+            if all(seat == check_seat for seat in self.__seats[i][1]):
                 count_all_seats_reserved_in_row += 1
         return True if count_all_seats_reserved_in_row == self._len_rows else False
 
