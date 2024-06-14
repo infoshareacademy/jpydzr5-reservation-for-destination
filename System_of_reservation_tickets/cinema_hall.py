@@ -39,11 +39,13 @@ class CinemaHall:
                         if type_operation == 'r':
                             if self.__seats[i][1][place_seat - 1] == '*':
                                 self.__seats[i][1][place_seat - 1] = 'X'
+                                print(f'Miejsce {place_seat} w rzędzie {self.__seats[i][0]} zostało zarezertowane')
                             else:
                                 print(f'Miejsce z rzędzie {row} o mumerze {place_seat} jest zajęte!')
                         elif type_operation == 'c':
                             if self.__seats[i][1][place_seat - 1] == 'X':
                                 self.__seats[i][1][place_seat - 1] = '*'
+                                print(f'Miejsce {place_seat} w rzędzie {self.__seats[i][0]} zostało anulowane')
                             else:
                                 print(f'Miejsce w rzędzie {row} o mumerze {place_seat} jest wolne!')
                         else:
