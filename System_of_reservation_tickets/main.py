@@ -1,6 +1,9 @@
+from csvGenerator import CSVGenerator
 from menu import Menu
 
 if __name__ == '__main__':
+    generator = CSVGenerator()
+    generator.check_database_date()
     menu = Menu()
     print(menu)
     while menu.option != '4':
