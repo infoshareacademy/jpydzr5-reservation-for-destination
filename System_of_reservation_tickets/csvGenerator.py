@@ -15,12 +15,22 @@ class CSVGenerator:
     FILE_PATH = "data_base.csv"
     DAYS_NUMBERS = 7
 
-    def generate_show_dates(self):
+    def __generate_show_dates(self):
         today = datetime.today()
         show_dates = [(today + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(self.DAYS_NUMBERS)]
         return show_dates
 
-    def generate_csv_database(self):
+    def __write_to_file(self, cinema_shows):
+        try:
+            with open(self.FILE_PATH, mode='w', newline='') as csv_file:
+                writer = csv.writer(csv_file)
+                for cinema_row in cinema_shows:
+                    writer.writerow(cinema_row)
+            print("Plik CSV został utworzony pomyślnie!")
+        except IOError as e:
+            print(f"Podczas tworzenia pliku CSV wystąpił błąd: {e}")
+
+    def __generate_csv_database(self):
         generated_show_dates = self.generate_show_dates()
 
         # Generowanie 30 przykładowych danych seansów
@@ -38,18 +48,8 @@ class CSVGenerator:
         # Sortowanie danych według daty seansu i godziny seansu
         cinema_shows = [cinema_shows[0]] + sorted(cinema_shows[1:], key=lambda x: (x[1], x[2]))
 
-        # Ścieżka do pliku CSV
-        file_path = self.FILE_PATH
-
         # Zapis do pliku CSV
-        try:
-            with open(file_path, mode='w', newline='') as csv_file:
-                writer = csv.writer(csv_file)
-                for cinema_row in cinema_shows:
-                    writer.writerow(cinema_row)
-            print("Plik CSV został utworzony pomyślnie!")
-        except IOError as e:
-            print(f"Podczas tworzenia pliku CSV wystąpił błąd: {e}")
+        self.write_to_file(cinema_shows)
 
     def check_database_date(self):
         try:
