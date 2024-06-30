@@ -31,7 +31,7 @@ class CSVGenerator:
             print(f"Podczas tworzenia pliku CSV wystąpił błąd: {e}")
 
     def __generate_csv_database(self):
-        generated_show_dates = self.generate_show_dates()
+        generated_show_dates = self.__generate_show_dates()
 
         # Generowanie 30 przykładowych danych seansów
         cinema_shows = [["Movie_title", "Show_date", "Show_hour", "Hall_number", "Price", "Row", "Seat"]]
@@ -49,37 +49,25 @@ class CSVGenerator:
         cinema_shows = [cinema_shows[0]] + sorted(cinema_shows[1:], key=lambda x: (x[1], x[2]))
 
         # Zapis do pliku CSV
-        self.write_to_file(cinema_shows)
+        self.__write_to_file(cinema_shows)
 
     def check_database_date(self):
-        try:
-            with open(self.FILE_PATH, mode='r') as csv_file:
-                reader = csv.reader(csv_file)
-                next(reader)
-                last_date = None
+        first_date = self.__get_first_date()
+        today = datetime.today()
+        if first_date and datetime.strptime(first_date, "%Y-%m-%d").date() >= today.date():
+            print("Repertuar jest aktualny")
+        else:
+            print("Aktualizuję repertuar.")
+            self.__generate_csv_database()
 
-                for row in reader:
-                    show_date = row[1]
-                    if last_date is None or show_date > last_date:
-                        last_date = show_date
-
-                if last_date is None:
-                    print("Repertuar jest pusty, generuję nowy.")
-                    self.generate_csv_database()
-
-                last_date = datetime.strptime(last_date, "%Y-%m-%d")
-                today = datetime.today()
-
-                if last_date.date() < today.date():
-                    print("Ostatnia data seansu jest starsza niż aktualny dzień. Generuję nowy repertuar.")
-                    self.generate_csv_database()
-                else:
-                    print("Ostatnia data seansu nie jest starsza niż aktualny dzień.")
-        except FileNotFoundError:
-            print("Plik CSV nie został znaleziony. Generuję nowy.")
-            self.generate_csv_database()
-        except IOError as e:
-            print(f"Wystąpił błąd podczas odczytywania pliku CSV: {e}")
+    def __get_first_date(self):
+        data = self.read_csv_database()
+        if data and len(data) > 0:
+            # Odczytujemy pierwszą wartość z kolumny show_dates, jest to druga kolumna, indeks 1
+            first_date = data[0][1]
+            return first_date
+        else:
+            return None
 
     def read_csv_database(self):
         try:
