@@ -9,6 +9,9 @@ class CinemaHall:
                              f' a miejsc siędzących {self.MAX_NUMBER_OF_SEATS}')
         self.__rows = rows
         self.__seats = []
+        self.__mode = ''
+        self.__date = ''  # do wykorzystania w przyszłości
+        self.__hour = ''  # do wykorzystanie w przyszłości
         sign_of_row = 'A'
         # Na razie założyłem ze sala jest "kwadratowa" to znaczy każdy rząd ma tyle samo miejsc
         for i in range(rows):
@@ -16,12 +19,15 @@ class CinemaHall:
             self.__seats.append(row)
             sign_of_row = chr(ord(sign_of_row) + 1)
 
-    def reserve_seat(self, row: str, place_seat: int) -> None:
+    def reserve_seat(self, row: str, place_seat: str) -> None:
+        if row in ['z', 'Z'] or place_seat in ['z', 'Z']:
+            self.mode = -1
+            return
         is_all_seats_reserved = self.__check_all_seats_are_reserved_or_empty('r')
         if is_all_seats_reserved:
             print('Wszystkie miejsca w sali są zajęte!')
         else:
-            self.__serve_seat(row, place_seat, 'r')
+            self.__serve_seat(row, int(place_seat), 'r')
 
     def cancel_seat(self, row: str, place_seat: int) -> None:
         is_all_seats_free = self.__check_all_seats_are_reserved_or_empty('e')
@@ -81,6 +87,14 @@ class CinemaHall:
     @rows.getter
     def rows(self) -> list[str]:
         return [chr(ord('A') + i) for i in range(self.__rows)]
+
+    @property
+    def mode(self):
+        return self.__mode
+
+    @mode.setter
+    def mode(self, value):
+        self.__mode = value
 
     def __str__(self) -> str:
         result = ''
