@@ -8,7 +8,7 @@ class CSVGenerator:
     MOVIE_TITLES = ["Avengers: Endgame", "The Godfather", "Inception", "The Shawshank Redemption", "The Dark Knight",
                     "Pulp Fiction", "Forrest Gump", "The Matrix", "Schindler's List", "Titanic"]
     SHOW_HOURS = ["10:00", "13:30", "16:45", "19:30", "22:15"]
-    HALL_NUMBERS = ["1", "2", "3", "4", "5"]
+    HALL_NUMBERS = ["1"]
     PRICES = [15.00, 18.00, 20.00, 22.00, 25.00]
     ROWS = ["A", "B", "C", "D", "E"]
     SEATS = [str(i) for i in range(1, 11)]
