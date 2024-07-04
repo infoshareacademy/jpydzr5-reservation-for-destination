@@ -1,18 +1,19 @@
-import csv
-from datetime import datetime
-
-from dateutil.parser import parse
+from copy import deepcopy
+from csv import reader
+from cinema_hall import CinemaHall
 
 
 class Repertoire:
-    def __init__(self):
+    def __init__(self, cinema_hall: CinemaHall):
         self.__mode = '0'
         self.__selected_movie = ''
         self.__selected_date = ''
         self.__selected_hour = ''
-        self.movies_dict = dict()
+        self.__temp_row = ''
+        self.__temp_seat = ''
+        self.__movies_dict = dict()
         with open('data_base.csv', 'r') as csvfile:
-            csv_reader = csv.reader(csvfile)
+            csv_reader = reader(csvfile)
             next(csv_reader)
             for row in csv_reader:
                 movie_title = row[0]
@@ -21,32 +22,53 @@ class Repertoire:
                 row_of_seat = row[3]
                 place_of_seat = row[4]
 
-                if movie_title not in self.movies_dict:
-                    self.movies_dict[movie_title] = {}
+                if movie_title not in self.__movies_dict:
+                    self.__movies_dict[movie_title] = {}
 
-                if show_date not in self.movies_dict[movie_title]:
-                    self.movies_dict[movie_title][show_date] = {}
+                if show_date not in self.__movies_dict[movie_title]:
+                    self.__movies_dict[movie_title][show_date] = {}
 
-                if hour_of_movie not in self.movies_dict[movie_title][show_date]:
-                    self.movies_dict[movie_title][show_date][hour_of_movie] = {}
+                if hour_of_movie not in self.__movies_dict[movie_title][show_date]:
+                    self.__movies_dict[movie_title][show_date][hour_of_movie] = {}
 
-                self.movies_dict[movie_title][show_date][hour_of_movie][row_of_seat] = [place_of_seat]
+                self.__movies_dict[movie_title][show_date][hour_of_movie] = deepcopy(cinema_hall)
+
+            # print(self.__movies_dict)
+
+    def choose_row(self, row: str) -> str | ValueError | None:
+        if row in ['z', 'Z']:
+            self.mode = -1
+            return
+        elif row in self.cinema_hall_by_movie_date_hour.rows:
+            return row
+        else:
+            raise ValueError('Wskazano nieprawidłowy rząd!')
+
+    def choose_seat(self, seat: str) -> str | None:
+        if seat in ['z', 'Z']:
+            self.mode = -1
+            return
+        return seat
+
+    def get_cinema_hall_by_movie_date_hour(self, title: str, date: str, hour: str) -> CinemaHall:
+        self.mode = 0
+        return self.__movies_dict[title][date][hour]
 
     @property
     def dates_selected_movie(self):
         if self.selected_movie:
-            return [date for date in self.movies_dict[self.selected_movie].keys()]
+            return [date for date in self.__movies_dict[self.selected_movie].keys()]
         else:
             raise ValueError('Nie wybrano filmu! Pierw należy wybrać tytuł filmu!')
 
     @property
     def hours_selected_movie(self):
         if self.__selected_date:
-            return [hour for hour in self.movies_dict[self.selected_movie][self.__selected_date].keys()]
+            return [hour for hour in self.__movies_dict[self.selected_movie][self.__selected_date].keys()]
 
     @property
     def titles(self):
-        return [title for title in self.movies_dict.keys()]
+        return [title for title in self.__movies_dict.keys()]
 
     @property
     def selected_movie(self):
@@ -57,12 +79,20 @@ class Repertoire:
         return self.__selected_date
 
     @property
-    def __len_dates(self) -> len:
-        return len(self.dates_selected_movie)
+    def __len_hours(self) -> len:
+        return len([self.__movies_dict[self.selected_movie][self.__selected_date]])
 
     @property
-    def __len_hours(self) -> len:
-        return len([self.movies_dict[self.selected_movie][self.__selected_date]])
+    def cinema_hall_by_movie_date_hour(self):
+        return self.__movies_dict[self.selected_movie][self.selected_date][self.__selected_hour]
+
+    @property
+    def selected_hour(self):
+        return self.__selected_hour
+
+    @property
+    def __len_dates(self) -> len:
+        return len(self.dates_selected_movie)
 
     @property
     def mode(self):
@@ -75,31 +105,35 @@ class Repertoire:
     def get_movie_by_index(self, index: str) -> str | None:
         if index in ['Z', 'z']:
             self.__mode = -1
-            return index
         index = int(index)
         if 0 < index <= len(self.titles):
+            self.mode = 1
             self.__selected_movie = self.titles[index - 1]
+            return self.titles[index - 1]
         else:
             print('Index wykracza poza zakres danych!')
+            self.__mode = 1
 
     def get_date_by_index(self, index: str) -> str | None:
-        if index in['Z', 'z']:
+        if index in ['Z', 'z']:
             self.__mode = -1
             return index
         index = int(index)
         if 0 < index <= self.__len_dates:
+            self.mode = 2
             self.__selected_date = self.dates_selected_movie[index - 1]
             return self.dates_selected_movie[index - 1]
         else:
             print('Index wykracza poza zakres danych!')
 
     def get_hour_by_index(self, index: str) -> str | None:
-        if index in['Z', 'z']:
+        if index in ['Z', 'z']:
             self.__mode = -1
             return index
         index = int(index)
         if 0 < index <= self.__len_hours:
+            self.mode = 3
             self.__selected_hour = self.hours_selected_movie[index - 1]
-            return self.dates_selected_movie[index - 1]
+            return self.hours_selected_movie[index - 1]
         else:
             print('Index wykracza poza zakres danych!')

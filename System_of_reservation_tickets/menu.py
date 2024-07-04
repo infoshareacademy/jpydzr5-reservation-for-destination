@@ -31,13 +31,12 @@ class Menu:
                                     f'{datetime.today().strftime("%Y-%m-%d")} - {end_date_week.strftime("%Y-%m-%d")}:\n')
                         for title in self.__present_obj.titles:
                             message += f'{self.__present_obj.titles.index(title) + 1}: {title}\n'
-                        message += 'Wybierz film lub (z)rezygnuj: '
+                        # message += 'Wybierz film lub (z)rezygnuj: '
                     case '1' | 1:
                         if isinstance(self.__present_obj, Repertoire):
                             message += f'Seans filmu "{self.__present_obj.selected_movie}" odbywa się w dniach: \n'
                             for date in self.__present_obj.dates_selected_movie:
                                 message += f'{self.__present_obj.dates_selected_movie.index(date) + 1}: {date}\n'
-                            message += 'Wybierz datę lub (z)rezygnuj'
                         else:
                             raise ValueError('Obiekt self.__present_obj dla case in [0, 1, 2] nie jest typu Repertoire')
                     case '2' | 2:
@@ -47,16 +46,16 @@ class Menu:
                                         f'grany jest w następujących godzinach: \n')
                             for hour in self.__present_obj.hours_selected_movie:
                                 message += f'{self.__present_obj.hours_selected_movie.index(hour) + 1}: {hour}\n'
-                            message += 'Wybierz godzinę lub (z)rezygnuj'
+                            # message += 'Wybierz godzinę lub (z)rezygnuj'
                         else:
                             raise ValueError("Obiekt self.__present_obj dla case in ['0', '1', '2'] "
                                              "nie jest typu Repertoire")
                     case '3' | 3:
-                        if isinstance(self.__present_obj, CinemaHall):
-                            print(self.__present_obj)
-                            message += '* - wolne miejsce\nX - zajęte miejsce'
-                        else:
-                            raise ValueError("Obiekt self.__present_obj dla case in ['3'] nie jest typu CinemaHall")
+                        message += (f'Legenda sali na film {self.__present_obj.selected_movie} grany dnia '
+                                    f'{self.__present_obj.selected_date} o godznie {self.__present_obj.selected_hour}:\n'
+                                    f'{self.__present_obj.cinema_hall_by_movie_date_hour}\n'
+                                    f'* - wolne miejsce\n'
+                                    f'X - zajęte miejsce')
             case '3':
                 message += 'Wybrano wyświetl koszyk'
             case _:
@@ -66,11 +65,11 @@ class Menu:
     def get_object_to_present(self, value):
         if isinstance(value, Repertoire):
             self.__present_obj = value
-        elif isinstance(value, CinemaHall):
-            self.__present_obj = value
-            self.__present_obj.mode = 3
+        # elif isinstance(value, CinemaHall):
+        #     self.__present_obj = value
+        #     self.__present_obj.mode = 3
         else:
-            raise ValueError('Przekazywany obiekt nie jest ani Repertoire ani CinemaHall')
+            raise ValueError('Przekazywany obiekt nie jest ani Repertoire!')
 
     def __checking_instance_present_obj(self) -> ValueError | None:
         pass

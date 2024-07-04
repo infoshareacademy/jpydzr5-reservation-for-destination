@@ -19,7 +19,7 @@ class CinemaHall:
             self.__seats.append(row)
             sign_of_row = chr(ord(sign_of_row) + 1)
 
-    def reserve_seat(self, row: str, place_seat: str) -> None:
+    def book_seat(self, row: str, place_seat: str):
         if row in ['z', 'Z'] or place_seat in ['z', 'Z']:
             self.mode = -1
             return
