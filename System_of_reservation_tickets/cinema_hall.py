@@ -60,7 +60,7 @@ class CinemaHall:
                         print(f'Podano numer miejsca {place_seat} w rzędzie {self.rows[i]}, którego nie ma!')
                         break
         else:
-            print(f'Nie ma takiego rzedzu o symbolu {row}!')
+            raise ValueError(f'Nie ma takiego rzedzu o symbolu {row.upper()}!')
 
     def __check_all_seats_are_reserved_or_empty(self, mode: str) -> bool:
         # Dla mode = 'r' sprawdzam czy wszystkie miejsca są zajęte.
@@ -74,7 +74,7 @@ class CinemaHall:
         for i in range(self._len_rows):
             if all(seat == check_seat for seat in self.__seats[i][1]):
                 count_all_seats_reserved_in_row += 1
-        return True if count_all_seats_reserved_in_row == self._len_rows else False
+        return count_all_seats_reserved_in_row == self._len_rows
 
     @property
     def rows(self):

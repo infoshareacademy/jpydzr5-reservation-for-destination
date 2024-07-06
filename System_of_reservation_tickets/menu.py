@@ -65,11 +65,8 @@ class Menu:
     def get_object_to_present(self, value):
         if isinstance(value, Repertoire):
             self.__present_obj = value
-        # elif isinstance(value, CinemaHall):
-        #     self.__present_obj = value
-        #     self.__present_obj.mode = 3
         else:
-            raise ValueError('Przekazywany obiekt nie jest ani Repertoire!')
+            raise ValueError('Przekazywany obiekt nie jest Repertoire!')
 
     def __checking_instance_present_obj(self) -> ValueError | None:
         pass
