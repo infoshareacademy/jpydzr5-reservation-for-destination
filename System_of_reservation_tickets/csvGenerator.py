@@ -85,3 +85,5 @@ class CSVGenerator:
         except IOError as e:
             print(f"Wystąpił błąd podczas odczytywania pliku CSV: {e}")
             return None
+
+

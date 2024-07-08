@@ -1,7 +1,7 @@
 from copy import deepcopy
-from csv import reader
 from cinema_hall import CinemaHall
 from csvGenerator import CSVGenerator
+from SQLLite import SQLLite
 
 
 class Repertoire:
@@ -14,7 +14,7 @@ class Repertoire:
 
         generator = CSVGenerator()
         generator.check_database_date()
-        csvfile = generator.read_csv_database()
+        csvfile = SQLLite.get_list_table_from_database()
         for row in csvfile:
             movie_title = row[0]
             show_date = row[1]
