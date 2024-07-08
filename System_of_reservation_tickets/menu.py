@@ -1,7 +1,5 @@
 from repertoire import Repertoire
-from cinema_hall import CinemaHall
 from datetime import datetime, timedelta
-
 
 class Menu:
     def __init__(self):

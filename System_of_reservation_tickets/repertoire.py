@@ -1,6 +1,7 @@
 from copy import deepcopy
 from csv import reader
 from cinema_hall import CinemaHall
+from csvGenerator import CSVGenerator
 
 
 class Repertoire:
@@ -10,24 +11,25 @@ class Repertoire:
         self.__selected_date = ''
         self.__selected_hour = ''
         self.__movies_dict = dict()
-        with open('data_base.csv', 'r') as csvfile:
-            csv_reader = reader(csvfile)
-            next(csv_reader)
-            for row in csv_reader:
-                movie_title = row[0]
-                show_date = row[1]
-                hour_of_movie = row[2]
 
-                if movie_title not in self.__movies_dict:
-                    self.__movies_dict[movie_title] = {}
+        generator = CSVGenerator()
+        generator.check_database_date()
+        csvfile = generator.read_csv_database()
+        for row in csvfile:
+            movie_title = row[0]
+            show_date = row[1]
+            hour_of_movie = row[2]
 
-                if show_date not in self.__movies_dict[movie_title]:
-                    self.__movies_dict[movie_title][show_date] = {}
+            if movie_title not in self.__movies_dict:
+                self.__movies_dict[movie_title] = {}
 
-                if hour_of_movie not in self.__movies_dict[movie_title][show_date]:
-                    self.__movies_dict[movie_title][show_date][hour_of_movie] = {}
+            if show_date not in self.__movies_dict[movie_title]:
+                self.__movies_dict[movie_title][show_date] = {}
 
-                self.__movies_dict[movie_title][show_date][hour_of_movie] = deepcopy(cinema_hall)
+            if hour_of_movie not in self.__movies_dict[movie_title][show_date]:
+                self.__movies_dict[movie_title][show_date][hour_of_movie] = {}
+
+            self.__movies_dict[movie_title][show_date][hour_of_movie] = deepcopy(cinema_hall)
 
     def choose_row(self, row: str) -> str | ValueError | None:
         if row in ['z', 'Z']:

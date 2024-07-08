@@ -1,4 +1,3 @@
-from csvGenerator import CSVGenerator
 from menu import Menu
 from repertoire import Repertoire
 from cinema_hall import CinemaHall
@@ -13,8 +12,6 @@ def is_user_opt_out(checked_obj, checked_menu: Menu) -> bool:
 
 
 if __name__ == '__main__':
-    generator = CSVGenerator()
-    generator.check_database_date()
     cinema_hall = CinemaHall(5, 10)
     repertoire = Repertoire(cinema_hall)
     menu = Menu()
