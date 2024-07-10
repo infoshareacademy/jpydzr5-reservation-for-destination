@@ -1,3 +1,4 @@
+from System_of_reservation_tickets.price_list import PriceList
 from menu import Menu
 from repertoire import Repertoire
 from cinema_hall import CinemaHall
@@ -20,6 +21,9 @@ if __name__ == '__main__':
         menu.option = input('Wybierz opcję: ')
         if menu.option not in ['0', '4']:
             match menu.option:
+                case '1':
+                    price_list = PriceList()
+                    user_input = repertoire.choose_seat(input('(z)rezygnuj: '))
                 case '2':
                     menu.get_object_to_present(repertoire)
                     print(menu)
