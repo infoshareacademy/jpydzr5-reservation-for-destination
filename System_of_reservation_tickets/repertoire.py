@@ -3,7 +3,6 @@ from cinema_hall import CinemaHall
 from csvGenerator import CSVGenerator
 from SQLLite import SQLLite
 
-
 class Repertoire:
     def __init__(self, cinema_hall: CinemaHall):
         self.__mode = '0'
@@ -14,22 +13,23 @@ class Repertoire:
 
         generator = CSVGenerator()
         generator.check_database_date()
-        csvfile = SQLLite.get_list_table_from_database()
-        for row in csvfile:
-            movie_title = row[0]
-            show_date = row[1]
-            hour_of_movie = row[2]
+        SQLLite.create_date_base()
+        database_data = SQLLite.get_list_table_from_database()
+        for row in database_data:
+            title = row[0]
+            date = row[1]
+            movie = row[2]
 
-            if movie_title not in self.__movies_dict:
-                self.__movies_dict[movie_title] = {}
+            if title not in self.__movies_dict:
+                self.__movies_dict[title] = {}
 
-            if show_date not in self.__movies_dict[movie_title]:
-                self.__movies_dict[movie_title][show_date] = {}
+            if date not in self.__movies_dict[title]:
+                self.__movies_dict[title][date] = {}
 
-            if hour_of_movie not in self.__movies_dict[movie_title][show_date]:
-                self.__movies_dict[movie_title][show_date][hour_of_movie] = {}
+            if movie not in self.__movies_dict[title][date]:
+                self.__movies_dict[title][date][movie] = {}
 
-            self.__movies_dict[movie_title][show_date][hour_of_movie] = deepcopy(cinema_hall)
+            self.__movies_dict[title][date][movie] = deepcopy(cinema_hall)
 
     def choose_row(self, row: str) -> str | ValueError | None:
         if row in ['z', 'Z']:
@@ -75,7 +75,7 @@ class Repertoire:
         return self.__selected_date
 
     @property
-    def __len_hours(self) -> len:
+    def __len_hours(self) -> int:
         return len([self.__movies_dict[self.selected_movie][self.__selected_date]])
 
     @property
@@ -87,7 +87,7 @@ class Repertoire:
         return self.__selected_hour
 
     @property
-    def __len_dates(self) -> len:
+    def __len_dates(self) -> int:
         return len(self.dates_selected_movie)
 
     @property
