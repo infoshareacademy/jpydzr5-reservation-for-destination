@@ -1,6 +1,7 @@
 import csv
 import random
 from datetime import datetime, timedelta
+from SQLLite import SQLLite
 
 
 class CSVGenerator:
@@ -27,6 +28,7 @@ class CSVGenerator:
                 for cinema_row in cinema_shows:
                     writer.writerow(cinema_row)
             print("Plik CSV został utworzony pomyślnie!")
+            SQLLite.delete_all_from_movies()
         except IOError as e:
             print(f"Podczas tworzenia pliku CSV wystąpił błąd: {e}")
 
@@ -85,3 +87,4 @@ class CSVGenerator:
         except IOError as e:
             print(f"Wystąpił błąd podczas odczytywania pliku CSV: {e}")
             return None
+        
