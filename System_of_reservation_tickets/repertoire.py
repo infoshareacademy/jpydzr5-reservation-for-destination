@@ -1,7 +1,8 @@
 from copy import deepcopy
+from repertoire_generator import RepertoireGenerator
 from cinema_hall import CinemaHall
-from csvGenerator import CSVGenerator
-from SQLLite import SQLLite
+from database_manager import DatabaseManager
+
 
 class Repertoire:
     def __init__(self, cinema_hall: CinemaHall):
@@ -11,10 +12,9 @@ class Repertoire:
         self.__selected_hour = ''
         self.__movies_dict = dict()
 
-        generator = CSVGenerator()
-        generator.check_database_date()
-        SQLLite.create_date_base()
-        database_data = SQLLite.get_list_table_from_database()
+        repertoire_generator = RepertoireGenerator()
+        repertoire_generator.check_repertoire_date()
+        database_data = DatabaseManager.get_list_table_from_database()
         for row in database_data:
             title = row[0]
             date = row[1]

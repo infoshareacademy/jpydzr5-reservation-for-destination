@@ -2,16 +2,15 @@ import sqlite3
 from os import path
 
 
-class SQLLite:
+class DatabaseManager:
     @staticmethod
-    def __import_from_csv_to_database():
+    def save_to_database(data: list):
         connection = sqlite3.connect('Movies.sqlite')
         cursor = connection.cursor()
-        with open('data_base.csv', mode='r') as csv_file:
-            for row in csv_file:
-                cursor.execute("INSERT INTO movies VALUES (?,?,?,?,?,?,?)", row.split(','))
-                connection.commit()
-            connection.close()
+        for item in data:
+            cursor.execute("INSERT INTO movies VALUES (?,?,?,?,?,?,?)", item)
+        connection.commit()
+        connection.close()
 
     @staticmethod
     def delete_all_from_movies(database_name='Movies.sqlite'):
@@ -19,16 +18,30 @@ class SQLLite:
             connection = sqlite3.connect(database_name)
             cursor = connection.cursor()
             cursor.execute("DELETE FROM movies")
+            connection.commit()
+            connection.close()
 
     @staticmethod
     def get_list_table_from_database() -> list:
-        SQLLite.__import_from_csv_to_database()
         connection = sqlite3.connect('Movies.sqlite')
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM movies")
         list_data = list(cursor.fetchall())
         connection.close()
         return list_data
+
+    @staticmethod
+    def get_first_showdate_from_database(database_name='Movies.sqlite') -> str or None:
+        if path.exists(database_name):
+            connection = sqlite3.connect('Movies.sqlite')
+            cursor = connection.cursor()
+            cursor.execute("SELECT Show_date FROM Movies ORDER BY Show_date LIMIT 1")
+            first_show_date = cursor.fetchall()[0][0]
+            cursor.close()
+            connection.close()
+            return first_show_date
+        else:
+            return None
 
     @staticmethod
     def create_date_base(database_name='Movies.sqlite'):

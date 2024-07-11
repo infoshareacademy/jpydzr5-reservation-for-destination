@@ -37,6 +37,9 @@ class PriceList:
     def get_prices(self):
         return self.prices
 
+    def get_price_by_name(self, name):
+        return self.prices[name]
+
     def __str__(self):
         header = "Cennik biletów:"
         body = "\n".join([f"{key}: {value:.2f} PLN" for key, value in self.prices.items()])
