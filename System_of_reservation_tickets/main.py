@@ -2,7 +2,7 @@ from System_of_reservation_tickets.price_list import PriceList
 from menu import Menu
 from repertoire import Repertoire
 from cinema_hall import CinemaHall
-
+from SQLLite import  SQLLite
 
 def is_user_opt_out(checked_obj, checked_menu: Menu) -> bool:
     if checked_obj.mode == -1:
