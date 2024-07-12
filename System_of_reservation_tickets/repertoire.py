@@ -1,6 +1,7 @@
 from copy import deepcopy
 from cinema_hall import CinemaHall
 from repertoire_generator import RepertoireGenerator
+from database_manager import DatabaseManager
 
 
 class Repertoire:
@@ -15,7 +16,8 @@ class Repertoire:
         self.__movies_dict = dict()
 
         repertoire_generator = RepertoireGenerator()
-        database_data = repertoire_generator.prepare_data()
+        repertoire_generator.check_repertoire_date()
+        database_data = DatabaseManager.get_list_table_from_database()
 
         for row in database_data:
             title = row[0]

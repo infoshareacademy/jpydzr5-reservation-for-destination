@@ -76,6 +76,6 @@ if __name__ == '__main__':
                         case 'P' | 'p':
                             print(menu)
                     basket.mode = input('(U)suń pozycję z koszyka; (Z)rezygnuj; (P)rzejdź do płatności: ')
-        # if menu.option == '4':
-        #     break
-        # menu.option = '0'
+        if menu.option == '4':
+            break
+        menu.option = '0'
