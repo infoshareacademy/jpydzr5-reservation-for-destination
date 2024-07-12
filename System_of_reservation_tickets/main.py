@@ -24,7 +24,7 @@ if __name__ == '__main__':
                 case '1':
                     price_list = PriceList()
                     print(price_list)
-                    user_input = repertoire.choose_seat(input('(z)rezygnuj: '))
+                    user_input = input('(z)rezygnuj: ')
                     if is_user_opt_out(repertoire, menu):
                         continue
                 case '2':
