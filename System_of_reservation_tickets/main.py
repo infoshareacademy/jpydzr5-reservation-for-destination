@@ -2,7 +2,7 @@ from System_of_reservation_tickets.price_list import PriceList
 from menu import Menu
 from repertoire import Repertoire
 from cinema_hall import CinemaHall
-from SQLLite import  SQLLite
+
 
 def is_user_opt_out(checked_obj, checked_menu: Menu) -> bool:
     if checked_obj.mode == -1:
@@ -23,7 +23,10 @@ if __name__ == '__main__':
             match menu.option:
                 case '1':
                     price_list = PriceList()
-                    user_input = repertoire.choose_seat(input('(z)rezygnuj: '))
+                    print(price_list)
+                    user_input = input('(z)rezygnuj: ')
+                    if is_user_opt_out(repertoire, menu):
+                        continue
                 case '2':
                     menu.get_object_to_present(repertoire)
                     print(menu)

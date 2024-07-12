@@ -3,7 +3,7 @@ class PriceList:
         "Normalny": 20.00,
         "Student": 16.00,
         "Emeryt": 14.00,
-        "Dziecko do 10 lat": 10.00
+        "Dziecko do 10 lat": 10.00,
     }
     prices_limit = 8
 
@@ -29,7 +29,9 @@ class PriceList:
 
     def calculate_discount_percentage(self, discount_name: str):
         if discount_name in self.prices:
-            new_price_percentage = 100 * self.prices[discount_name] / self.prices["Normalny"]
+            new_price_percentage = (
+                100 * self.prices[discount_name] / self.prices["Normalny"]
+            )
             return str(100 - int(new_price_percentage)) + "%"
         else:
             print(f"Zniżka {discount_name} nie istnieje.")
@@ -37,7 +39,12 @@ class PriceList:
     def get_prices(self):
         return self.prices
 
+    def get_price_by_name(self, name):
+        return self.prices[name]
+
     def __str__(self):
         header = "Cennik biletów:"
-        body = "\n".join([f"{key}: {value:.2f} PLN" for key, value in self.prices.items()])
+        body = "\n".join(
+            [f"{key}: {value:.2f} PLN" for key, value in self.prices.items()]
+        )
         return f"{header}\n{body}"
