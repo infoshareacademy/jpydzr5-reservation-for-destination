@@ -109,7 +109,7 @@ class Repertoire:
     def mode(self, value):
         self.__mode = value
 
-    def get_movie_by_index(self, index: str) -> str | None:
+    def get_movie(self, index: str) -> str | None:
         if index in ['Z', 'z']:
             self.__mode = -1
             return
@@ -121,7 +121,7 @@ class Repertoire:
         else:
             raise ValueError('Index wykracza poza zakres danych!')
 
-    def get_date_by_index(self, index: str) -> str | None:
+    def get_date(self, index: str) -> str | None:
         if index in ['Z', 'z']:
             self.__mode = -1
             return index
@@ -133,7 +133,7 @@ class Repertoire:
         else:
             raise ValueError('Index wykracza poza zakres danych!')
 
-    def get_hour_by_index(self, index: str) -> str | None:
+    def get_hour(self, index: str) -> str | None:
         if index in ['Z', 'z']:
             self.__mode = -1
             return index
