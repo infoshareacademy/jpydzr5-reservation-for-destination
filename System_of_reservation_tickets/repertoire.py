@@ -1,10 +1,12 @@
 from copy import deepcopy
-from repertoire_generator import RepertoireGenerator
 from cinema_hall import CinemaHall
-from database_manager import DatabaseManager
+from repertoire_generator import RepertoireGenerator
 
 
 class Repertoire:
+    KEY_CINEMA_HALL = 'cinema hall'
+    KEY_PRICE = 'price'
+
     def __init__(self, cinema_hall: CinemaHall):
         self.__mode = '0'
         self.__selected_movie = ''
@@ -13,12 +15,13 @@ class Repertoire:
         self.__movies_dict = dict()
 
         repertoire_generator = RepertoireGenerator()
-        repertoire_generator.check_repertoire_date()
-        database_data = DatabaseManager.get_list_table_from_database()
+        database_data = repertoire_generator.prepare_data()
+
         for row in database_data:
             title = row[0]
             date = row[1]
-            movie = row[2]
+            hour = row[2]
+            price = row[4]
 
             if title not in self.__movies_dict:
                 self.__movies_dict[title] = {}
@@ -26,16 +29,20 @@ class Repertoire:
             if date not in self.__movies_dict[title]:
                 self.__movies_dict[title][date] = {}
 
-            if movie not in self.__movies_dict[title][date]:
-                self.__movies_dict[title][date][movie] = {}
+            if hour not in self.__movies_dict[title][date]:
+                self.__movies_dict[title][date][hour] = {}
 
-            self.__movies_dict[title][date][movie] = deepcopy(cinema_hall)
+            if price not in self.__movies_dict[title][date][hour]:
+                self.__movies_dict[title][date][hour][price] = {}
+
+            self.__movies_dict[title][date][hour][self.KEY_PRICE] = price
+            self.__movies_dict[title][date][hour][self.KEY_CINEMA_HALL] = deepcopy(cinema_hall)
 
     def choose_row(self, row: str) -> str | ValueError | None:
         if row in ['z', 'Z']:
             self.mode = -1
             return
-        elif row.upper() in self.cinema_hall_by_movie_date_hour.rows:
+        elif row.lower() in self.cinema_hall_by_movie_date_hour.rows:
             return row
         else:
             raise ValueError('Wskazano nieprawidłowy rząd!')
@@ -48,7 +55,7 @@ class Repertoire:
 
     def get_cinema_hall_by_movie_date_hour(self, title: str, date: str, hour: str) -> CinemaHall:
         self.mode = 0
-        return self.__movies_dict[title][date][hour]
+        return self.__movies_dict[title][date][hour][self.KEY_CINEMA_HALL]
 
     @property
     def dates_selected_movie(self):
@@ -80,7 +87,11 @@ class Repertoire:
 
     @property
     def cinema_hall_by_movie_date_hour(self):
-        return self.__movies_dict[self.selected_movie][self.selected_date][self.__selected_hour]
+        return self.__movies_dict[self.selected_movie][self.selected_date][self.__selected_hour][self.KEY_CINEMA_HALL]
+
+    @property
+    def price_by_movie_date_hour(self):
+        return self.__movies_dict[self.selected_movie][self.selected_date][self.__selected_hour][self.KEY_PRICE]
 
     @property
     def selected_hour(self):

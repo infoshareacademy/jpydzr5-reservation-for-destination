@@ -1,5 +1,6 @@
 from repertoire import Repertoire
 from datetime import datetime, timedelta
+from basket import Basket
 
 class Menu:
     def __init__(self):
@@ -44,30 +45,33 @@ class Menu:
                                         f'grany jest w następujących godzinach: \n')
                             for hour in self.__present_obj.hours_selected_movie:
                                 message += f'{self.__present_obj.hours_selected_movie.index(hour) + 1}: {hour}\n'
-                            # message += 'Wybierz godzinę lub (z)rezygnuj'
                         else:
                             raise ValueError("Obiekt self.__present_obj dla case in ['0', '1', '2'] "
                                              "nie jest typu Repertoire")
                     case '3' | 3:
                         message += (f'Legenda sali na film {self.__present_obj.selected_movie} grany dnia '
-                                    f'{self.__present_obj.selected_date} o godznie {self.__present_obj.selected_hour}:\n'
+                                    f'{self.__present_obj.selected_date} o godznie '
+                                    f'{self.__present_obj.selected_hour}:\n'
                                     f'{self.__present_obj.cinema_hall_by_movie_date_hour}\n'
                                     f'* - wolne miejsce\n'
                                     f'X - zajęte miejsce')
             case '3':
-                message += 'Wybrano wyświetl koszyk'
+                if self.__present_obj.mode in ['p', 'P']:
+                    self.__present_obj.go_to_payment()
+                else:
+                    message += 'Zawartość koszyka:\n'
+                    message += f'{str(self.__present_obj)}'
             case _:
                 message += 'Nie wybrano żadnej z dostępnych opcji!'
         return message
 
     def get_object_to_present(self, value):
-        if isinstance(value, Repertoire):
+        if isinstance(value, Repertoire) and self.option == '2':
+            self.__present_obj = value
+        elif isinstance(value, Basket) and self.option == '3':
             self.__present_obj = value
         else:
-            raise ValueError('Przekazywany obiekt nie jest Repertoire!')
-
-    def __checking_instance_present_obj(self) -> ValueError | None:
-        pass
+            raise TypeError('Przekazywany obiekt nie jest Repertoire lub Basket!')
 
     @property
     def option(self) -> str:

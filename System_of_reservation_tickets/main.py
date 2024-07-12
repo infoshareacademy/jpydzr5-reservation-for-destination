@@ -1,7 +1,13 @@
-from System_of_reservation_tickets.price_list import PriceList
+import os
+
+from distlib.compat import raw_input
+
+from price_list import PriceList
 from menu import Menu
 from repertoire import Repertoire
 from cinema_hall import CinemaHall
+from ticket import Ticket
+from basket import Basket
 
 
 def is_user_opt_out(checked_obj, checked_menu: Menu) -> bool:
@@ -15,6 +21,7 @@ def is_user_opt_out(checked_obj, checked_menu: Menu) -> bool:
 if __name__ == '__main__':
     cinema_hall = CinemaHall(5, 10)
     repertoire = Repertoire(cinema_hall)
+    basket = Basket()
     menu = Menu()
     while menu.option != '4':
         print(menu)
@@ -24,9 +31,7 @@ if __name__ == '__main__':
                 case '1':
                     price_list = PriceList()
                     print(price_list)
-                    user_input = input('(z)rezygnuj: ')
-                    if is_user_opt_out(repertoire, menu):
-                        continue
+                    input('Naciśnij klawisz enter aby kontynułować . . .')
                 case '2':
                     menu.get_object_to_present(repertoire)
                     print(menu)
@@ -54,6 +59,28 @@ if __name__ == '__main__':
                         movie_date,
                         movie_hour
                     ).book_seat(temp_row, temp_seat)
+                    ticket = Ticket(repertoire.selected_movie,
+                                    repertoire.selected_date,
+                                    repertoire.selected_hour,
+                                    1,  # na razie mamy jedną salę
+                                    float(repertoire.price_by_movie_date_hour),
+                                    temp_row,
+                                    int(temp_seat))
+                    basket.add_ticket(ticket)
+                case '3':
+                    menu.get_object_to_present(basket)
+                    print(menu)
+                    basket.mode = input('(U)suń pozycję z koszyka; (Z)rezygnuj; (P)rzejdź do płatności: ')
+                    while basket.mode not in ['z', 'Z']:
+                        match basket.mode:
+                            case 'u' | 'U':
+                                print(menu)
+                                temp_index = int(input('Którą pozycję z koszyka chcesz usunąć: '))
+                                basket.remove_ticket(temp_index)
+                                print(menu)
+                            case 'P' | 'p':
+                                print(menu)
+                        basket.mode = input('(U)suń pozycję z koszyka; (Z)rezygnuj; (P)rzejdź do płatności: ')
         if menu.option == '4':
             break
         menu.option = '0'

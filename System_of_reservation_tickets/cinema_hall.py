@@ -38,7 +38,7 @@ class CinemaHall:
 
     # Wewnęczne "API" do obsługi reserwacji/odwołąnia miejsca
     def __serve_seat(self, row: str, place_seat: int, type_operation: str) -> None:
-        if row in self.rows:
+        if row.lower() in self.rows:
             for i in range(self._len_rows):
                 if row == self.rows[i]:
                     if 0 < place_seat < len(self.__seats[i][1]) + 1:
@@ -86,7 +86,7 @@ class CinemaHall:
 
     @rows.getter
     def rows(self) -> list[str]:
-        return [chr(ord('A') + i) for i in range(self.__rows)]
+        return [chr(ord('A'.lower()) + i) for i in range(self.__rows)]
 
     @property
     def mode(self):
