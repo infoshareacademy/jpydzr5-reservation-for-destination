@@ -5,7 +5,7 @@ from os import path
 class DatabaseManager:
     @staticmethod
     def save_to_database(data: list):
-        connection = sqlite3.connect('Movies.sqlite')
+        connection = sqlite3.connect("Movies.sqlite")
         cursor = connection.cursor()
         for item in data:
             cursor.execute("INSERT INTO movies VALUES (?,?,?,?,?,?,?)", item)
@@ -13,7 +13,7 @@ class DatabaseManager:
         connection.close()
 
     @staticmethod
-    def delete_all_from_movies(database_name='Movies.sqlite'):
+    def delete_all_from_movies(database_name="Movies.sqlite"):
         if path.exists(database_name):
             connection = sqlite3.connect(database_name)
             cursor = connection.cursor()
@@ -23,7 +23,7 @@ class DatabaseManager:
 
     @staticmethod
     def get_list_table_from_database() -> list:
-        connection = sqlite3.connect('Movies.sqlite')
+        connection = sqlite3.connect("Movies.sqlite")
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM movies")
         list_data = list(cursor.fetchall())
@@ -31,9 +31,9 @@ class DatabaseManager:
         return list_data
 
     @staticmethod
-    def get_first_showdate_from_database(database_name='Movies.sqlite') -> str or None:
+    def get_first_showdate_from_database(database_name="Movies.sqlite") -> str or None:
         if path.exists(database_name):
-            connection = sqlite3.connect('Movies.sqlite')
+            connection = sqlite3.connect("Movies.sqlite")
             cursor = connection.cursor()
             cursor.execute("SELECT Show_date FROM Movies ORDER BY Show_date LIMIT 1")
             first_show_date = cursor.fetchall()[0][0]
@@ -44,18 +44,19 @@ class DatabaseManager:
             return None
 
     @staticmethod
-    def create_date_base(database_name='Movies.sqlite'):
+    def create_date_base(database_name="Movies.sqlite"):
         if not path.exists(database_name):
             connection = sqlite3.connect(database_name)
             cursor = connection.cursor()
-            cursor.execute("CREATE TABLE Movies ("
-                           "Movie_title varchar(100),"
-                           "Show_date varchar(10),"
-                           "Show_hour varchar(5),"
-                           "Hall_number integer,"
-                           "Price float,"
-                           "Row varchar(1),"
-                           "Seat integer)"
-                           )
+            cursor.execute(
+                "CREATE TABLE Movies ("
+                "Movie_title varchar(100),"
+                "Show_date varchar(10),"
+                "Show_hour varchar(5),"
+                "Hall_number integer,"
+                "Price float,"
+                "Row varchar(1),"
+                "Seat integer)"
+            )
             connection.commit()
             connection.close()
