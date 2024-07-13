@@ -49,3 +49,12 @@ class Ticket:
     @property
     def price(self) -> float:
         return self.__price
+
+    def __eq__(self, other):
+        return (
+            self.__movie_title == other.__movie_title
+            and self.__show_date == other.__show_date
+            and self.__show_hour == other.__show_hour
+            and self.__hall_number == other.__hall_number
+            and self.__price == other.__price
+        )

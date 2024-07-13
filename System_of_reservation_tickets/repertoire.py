@@ -47,7 +47,7 @@ class Repertoire:
         if row in ["z", "Z"]:
             self.mode = -1
             return
-        elif row.lower() in self.cinema_hall_by_movie_date_hour.rows:
+        elif row.upper() in self.cinema_hall_by_movie_date_hour.rows:
             return row
         else:
             raise ValueError("Wskazano nieprawidłowy rząd!")

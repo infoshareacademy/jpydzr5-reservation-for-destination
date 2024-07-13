@@ -8,7 +8,10 @@ class Basket:
 
     def add_ticket(self, ticket: Ticket):
         if Basket.__checking_type(ticket):
-            self.__tickets.append(ticket)
+            if ticket not in self.__tickets:
+                self.__tickets.append(ticket)
+            else:
+                print("Pozycja którą próbujesz dodać znajduję się już w koszyku!")
 
     def remove_ticket(self, index: int):
         if self.len_tickets:
