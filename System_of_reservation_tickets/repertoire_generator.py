@@ -70,14 +70,13 @@ class RepertoireGenerator:
         # Sortowanie danych według daty seansu i godziny seansu
         cinema_shows = sorted(cinema_shows[1:], key=lambda x: (x[1], x[2]))
         RepertoireGenerator.__write_to_database(cinema_shows)
-        return DatabaseManager.get_list_table_from_database()
 
     def check_repertoire_date(self):
         today = datetime.today()
         first_showdate = DatabaseManager.get_first_showdate_from_database()
         if (
-                first_showdate
-                and datetime.strptime(first_showdate, "%Y-%m-%d").date() >= today.date()
+            first_showdate
+            and datetime.strptime(first_showdate, "%Y-%m-%d").date() >= today.date()
         ):
             print("Repertuar jest aktualny")
         else:
