@@ -32,12 +32,13 @@ class RepertoireGenerator:
         ]
         return show_dates
 
-    def __write_to_database(self, data: list):
+    @staticmethod
+    def __write_to_database(data: list):
         DatabaseManager.create_date_base()
         DatabaseManager.delete_all_from_movies()
         DatabaseManager.save_to_database(data)
 
-    def prepare_data(self):
+    def prepare_data(self) -> list:
         generated_show_dates = self.__generate_show_dates()
 
         # Generowanie 30 przykładowych danych seansów
@@ -68,7 +69,7 @@ class RepertoireGenerator:
 
         # Sortowanie danych według daty seansu i godziny seansu
         cinema_shows = sorted(cinema_shows[1:], key=lambda x: (x[1], x[2]))
-        self.__write_to_database(cinema_shows)
+        RepertoireGenerator.__write_to_database(cinema_shows)
 
     def check_repertoire_date(self):
         today = datetime.today()
