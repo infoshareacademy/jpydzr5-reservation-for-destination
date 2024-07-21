@@ -6,5 +6,15 @@
 </head>
 <body>
 <h1 style="text-align: center">Witaj na stronie naszego kina!</h1>
+<h3>Wybierz jedną z opcji</h3>
+<ol>
+    {% for option in menu_positions%}
+    <li>{{ option }}</li>
+    {% endfor %}
+</ol>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}<input type="submit" value="Wybierz">
+</form>
 </body>
 </html>
