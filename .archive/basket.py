@@ -11,7 +11,7 @@ class Basket:
             if ticket not in self.__tickets:
                 self.__tickets.append(ticket)
             else:
-                print("Pozycja którą próbujesz dodać znajduję się już w koszyku!")
+                print("Pozycja którą próbujesz dodać znajduje się już w koszyku!")
 
     def remove_ticket(self, index: int):
         if self.len_tickets:

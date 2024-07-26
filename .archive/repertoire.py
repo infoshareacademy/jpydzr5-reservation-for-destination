@@ -18,13 +18,13 @@ class Repertoire:
 
         repertoire_generator = RepertoireGenerator()
         repertoire_generator.check_repertoire_date()
-        database_data = DatabaseManager.get_list_table_from_database()
+        database_data = DatabaseManager.get_list_table_from_repertoire()
 
         for row in database_data:
-            title = row[0]
-            date = row[1]
-            hour = row[2]
-            price = row[4]
+            title = row[1]
+            date = row[2]
+            hour = row[3]
+            price = row[5]
 
             if title not in self.__movies_dict:
                 self.__movies_dict[title] = {}
