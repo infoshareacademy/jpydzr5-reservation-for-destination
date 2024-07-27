@@ -20,8 +20,6 @@ class RepertoireGenerator:
     ]
     SHOW_HOURS = ["10:00", "13:30", "16:45", "19:30", "22:15"]
     HALL_NUMBERS = ["1"]
-    ROWS = ["A", "B", "C", "D", "E"]
-    SEATS = [str(i) for i in range(1, 11)]
     DAYS_NUMBERS = 7
 
     def __generate_show_dates(self):
@@ -34,24 +32,19 @@ class RepertoireGenerator:
 
     @staticmethod
     def __write_to_database(data: list):
-        DatabaseManager.create_date_base()
-        DatabaseManager.delete_all_from_movies()
-        DatabaseManager.save_to_database(data)
+        DatabaseManager.create_databases()
+        # W przyszlości usuniemy czyszczenie bazy i będziemy przechowywac stare rekordy repertuaru,
+        # bo bedą powiązane z rezerwacjami i uzytkownikami. Bedziemy pobierac aktualny repertuar podajac odpowiedni
+        # zakres dat na aktualny tydzien. W obecnym zakesie będzie to 30 nowych rekordow co tydzien.
+        DatabaseManager.delete_all_from_repertoire()
+        DatabaseManager.save_to_repertoire(data)
 
-    def prepare_data(self) -> list:
+    def prepare_data(self) -> None:
         generated_show_dates = self.__generate_show_dates()
 
         # Generowanie 30 przykładowych danych seansów
         cinema_shows = [
-            [
-                "Movie_title",
-                "Show_date",
-                "Show_hour",
-                "Hall_number",
-                "Price",
-                "Row",
-                "Seat",
-            ]
+            ["Movie_title", "Show_date", "Show_hour", "Hall_number", "Price"]
         ]
         price_list = PriceList()
         normal_price = price_list.get_price_by_name("Normalny")
@@ -61,11 +54,7 @@ class RepertoireGenerator:
             show_hour = random.choice(self.SHOW_HOURS)
             hall_number = random.choice(self.HALL_NUMBERS)
             price = normal_price
-            row = random.choice(self.ROWS)
-            seat = random.choice(self.SEATS)
-            cinema_shows.append(
-                [movie_title, show_date, show_hour, hall_number, price, row, seat]
-            )
+            cinema_shows.append([movie_title, show_date, show_hour, hall_number, price])
 
         # Sortowanie danych według daty seansu i godziny seansu
         cinema_shows = sorted(cinema_shows[1:], key=lambda x: (x[1], x[2]))
@@ -73,7 +62,7 @@ class RepertoireGenerator:
 
     def check_repertoire_date(self):
         today = datetime.today()
-        first_showdate = DatabaseManager.get_first_showdate_from_database()
+        first_showdate = DatabaseManager.get_first_showdate_from_repertoire()
         if (
             first_showdate
             and datetime.strptime(first_showdate, "%Y-%m-%d").date() >= today.date()

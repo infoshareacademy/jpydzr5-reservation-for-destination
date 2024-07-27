@@ -52,7 +52,7 @@ class CinemaHall:
                                 )
                             else:
                                 print(
-                                    f"Miejsce z rzędzie {row} o mumerze {place_seat} jest zajęte!"
+                                    f"Miejsce w rzędzie {row} o numerze {place_seat} jest zajęte!"
                                 )
                         elif type_operation == "c":
                             if self.__seats[i][1][place_seat - 1] == "X":
@@ -62,7 +62,7 @@ class CinemaHall:
                                 )
                             else:
                                 print(
-                                    f"Miejsce w rzędzie {row} o mumerze {place_seat} jest wolne!"
+                                    f"Miejsce w rzędzie {row} o numerze {place_seat} jest wolne!"
                                 )
                         else:
                             raise ValueError(
@@ -74,7 +74,7 @@ class CinemaHall:
                         )
                         break
         else:
-            raise ValueError(f"Nie ma takiego rzedzu o symbolu {row.upper()}!")
+            raise ValueError(f"Nie ma takiego rzędu o symbolu {row.upper()}!")
 
     def __check_all_seats_are_reserved_or_empty(self, mode: str) -> bool:
         # Dla mode = 'r' sprawdzam czy wszystkie miejsca są zajęte.

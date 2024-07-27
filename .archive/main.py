@@ -26,7 +26,7 @@ if __name__ == "__main__":
             case "1":
                 price_list = PriceList()
                 print(price_list)
-                input("Naciśnij klawisz enter aby kontynułować . . .")
+                input("Naciśnij klawisz enter aby kontynuować . . .")
             case "2":
                 menu.get_object_to_present(repertoire)
                 print(menu)
