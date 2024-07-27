@@ -9,15 +9,13 @@ class RepertoireDB:
             connection = sqlite3.connect(database_name)
             cursor = connection.cursor()
             cursor.execute(
-                """
-                CREATE TABLE repertoire (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                movie_title VARCHAR(100),
-                show_date VARCHAR(10),
-                show_hour VARCHAR(5),
-                hall_number INTEGER,
-                price FLOAT)
-            """
+                "CREATE TABLE repertoire ("
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                "movie_title VARCHAR(100),"
+                "show_date VARCHAR(10),"
+                "show_hour VARCHAR(5),"
+                "hall_number INTEGER,"
+                "price FLOAT)"
             )
             connection.commit()
             connection.close()

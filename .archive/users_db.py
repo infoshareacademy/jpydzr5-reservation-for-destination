@@ -9,12 +9,10 @@ class UsersDB:
             connection = sqlite3.connect(database_name)
             cursor = connection.cursor()
             cursor.execute(
-                """
-                CREATE TABLE users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name VARCHAR(30) NOT NULL,
-                surname VARCHAR(50) NOT NULL)
-            """
+                "CREATE TABLE users ("
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                "name VARCHAR(30) NOT NULL,"
+                "surname VARCHAR(50) NOT NULL)"
             )
             connection.commit()
             connection.close()
