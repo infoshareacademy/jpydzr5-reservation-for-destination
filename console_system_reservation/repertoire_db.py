@@ -21,21 +21,21 @@ class RepertoireDB:
             connection.close()
 
     @staticmethod
-    def get_first_showdate_from_repertoire(
+    def get_last_showdate_from_repertoire(
         database_name="cinema_reservation_db.sqlite",
     ) -> str or None:
         if path.exists(database_name):
             connection = sqlite3.connect(database_name)
             cursor = connection.cursor()
             cursor.execute(
-                "SELECT show_date FROM repertoire ORDER BY show_date LIMIT 1"
+                "SELECT show_date FROM repertoire ORDER BY show_date DESC LIMIT 1"
             )
             results = cursor.fetchall()
             cursor.close()
             connection.close()
             if results:
-                first_show_date = results[0][0]
-                return first_show_date
+                last_show_date = results[0][0]
+                return last_show_date
             else:
                 return None
         else:
