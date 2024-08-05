@@ -1,35 +1,45 @@
-from repertoire_db import RepertoireDB
-from reservations_db import ReservationsDB
-from users_db import UsersDB
+import sqlite3
+from os import path
+
+from repertoire_table import RepertoireTable
+from reservations_table import ReservationsTable
+from users_table import UsersTable
 
 
 class DatabaseManager:
+    database_name = "cinema_db.sqlite"
     @staticmethod
-    def save_to_repertoire(data: list):
-        RepertoireDB.save_to_database(data)
+    def add_repertoire(data: list):
+        RepertoireTable.add_repertoire(data)
 
     @staticmethod
     def delete_all_from_repertoire():
-        RepertoireDB.delete_all()
+        RepertoireTable.delete_all()
 
     @staticmethod
     def get_list_table_from_repertoire() -> list:
-        return RepertoireDB.get_all()
+        return RepertoireTable.get_all()
 
     @staticmethod
     def get_first_showdate_from_repertoire() -> str or None:
-        return RepertoireDB.get_first_showdate_from_repertoire()
+        return RepertoireTable.get_first_showdate_from_repertoire()
 
     @staticmethod
     def add_user(name: str, surname: str):
-        UsersDB.add_user(name, surname)
+        UsersTable.add_user(name, surname)
 
     @staticmethod
     def add_reservation(repertoire_id: int, user_id: int, row: str, seat: int):
-        ReservationsDB.add_reservation(repertoire_id, user_id, row, seat)
+        ReservationsTable.add_reservation(repertoire_id, user_id, row, seat)
 
     @staticmethod
     def create_databases():
-        RepertoireDB.create_table()
-        UsersDB.create_table()
-        ReservationsDB.create_table()
+        if not path.exists(DatabaseManager.database_name):
+            connection = sqlite3.connect(DatabaseManager.database_name)
+            cursor = connection.cursor()
+            RepertoireTable.create_table(cursor)
+            UsersTable.create_table(cursor)
+            ReservationsTable.create_table(cursor)
+            connection.commit()
+            connection.close()
+

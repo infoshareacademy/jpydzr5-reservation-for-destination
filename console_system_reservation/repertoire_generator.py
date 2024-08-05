@@ -37,7 +37,7 @@ class RepertoireGenerator:
         # bo bedą powiązane z rezerwacjami i uzytkownikami. Bedziemy pobierac aktualny repertuar podajac odpowiedni
         # zakres dat na aktualny tydzien. W obecnym zakesie będzie to 30 nowych rekordow co tydzien.
         DatabaseManager.delete_all_from_repertoire()
-        DatabaseManager.save_to_repertoire(data)
+        DatabaseManager.add_repertoire(data)
 
     def prepare_data(self) -> None:
         generated_show_dates = self.__generate_show_dates()
