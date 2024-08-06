@@ -7,7 +7,7 @@ from users_table import UsersTable
 
 
 class DatabaseManager:
-    database_name = "cinema_db.sqlite"
+    DATABASE_NAME = "cinema_db.sqlite"
     @staticmethod
     def add_repertoire(data: list):
         RepertoireTable.add_repertoire(data)
@@ -34,8 +34,8 @@ class DatabaseManager:
 
     @staticmethod
     def create_databases():
-        if not path.exists(DatabaseManager.database_name):
-            connection = sqlite3.connect(DatabaseManager.database_name)
+        if not path.exists(DatabaseManager.DATABASE_NAME):
+            connection = sqlite3.connect(DatabaseManager.DATABASE_NAME)
             cursor = connection.cursor()
             RepertoireTable.create_table(cursor)
             UsersTable.create_table(cursor)

@@ -3,7 +3,7 @@ from os import path
 
 
 class ReservationsTable:
-    database_name = "cinema_db.sqlite"
+    DATABASE_NAME = "cinema_db.sqlite"
 
     @staticmethod
     def create_table(cursor: sqlite3.Cursor):
@@ -25,8 +25,8 @@ class ReservationsTable:
             row: str,
             seat: int,
     ):
-        if path.exists(ReservationsTable.database_name):
-            connection = sqlite3.connect(ReservationsTable.database_name)
+        if path.exists(ReservationsTable.DATABASE_NAME):
+            connection = sqlite3.connect(ReservationsTable.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute(
                 "SELECT * FROM reservations"

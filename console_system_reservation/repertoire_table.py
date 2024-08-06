@@ -3,7 +3,7 @@ from os import path
 
 
 class RepertoireTable:
-    database_name = "cinema_db.sqlite"
+    DATABASE_NAME = "cinema_db.sqlite"
 
     @staticmethod
     def create_table(cursor: sqlite3.Cursor):
@@ -19,8 +19,8 @@ class RepertoireTable:
 
     @staticmethod
     def get_first_showdate_from_repertoire() -> str or None:
-        if path.exists(RepertoireTable.database_name):
-            connection = sqlite3.connect(RepertoireTable.database_name)
+        if path.exists(RepertoireTable.DATABASE_NAME):
+            connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute(
                 "SELECT show_date FROM repertoire ORDER BY show_date LIMIT 1"
@@ -38,7 +38,7 @@ class RepertoireTable:
 
     @staticmethod
     def get_all() -> list:
-        connection = sqlite3.connect(RepertoireTable.database_name)
+        connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM repertoire")
         list_data = list(cursor.fetchall())
@@ -47,8 +47,8 @@ class RepertoireTable:
 
     @staticmethod
     def delete_all():
-        if path.exists(RepertoireTable.database_name):
-            connection = sqlite3.connect(RepertoireTable.database_name)
+        if path.exists(RepertoireTable.DATABASE_NAME):
+            connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute("DELETE FROM repertoire")
             connection.commit()
@@ -56,7 +56,7 @@ class RepertoireTable:
 
     @staticmethod
     def add_repertoire(data: list):
-        connection = sqlite3.connect(RepertoireTable.database_name)
+        connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
         cursor = connection.cursor()
         for item in data:
             cursor.execute(
