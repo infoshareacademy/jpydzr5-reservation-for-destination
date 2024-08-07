@@ -3,10 +3,12 @@ from os import path
 
 
 class RepertoireDB:
+    DATABASE_NAME = "cinema_reservation_db.sqlite"
+
     @staticmethod
-    def create_table(database_name="cinema_reservation_db.sqlite"):
-        if not path.exists(database_name):
-            connection = sqlite3.connect(database_name)
+    def create_table():
+        if not path.exists(RepertoireDB.DATABASE_NAME):
+            connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute(
                 "CREATE TABLE repertoire ("
@@ -21,21 +23,18 @@ class RepertoireDB:
             connection.close()
 
     @staticmethod
-    def get_first_showdate_from_repertoire(
-        database_name="cinema_reservation_db.sqlite",
-    ) -> str or None:
-        if path.exists(database_name):
-            connection = sqlite3.connect(database_name)
+    def get_last_showdate_from_repertoire() -> str or None:
+        if path.exists(RepertoireDB.DATABASE_NAME):
+            connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute(
-                "SELECT show_date FROM repertoire ORDER BY show_date LIMIT 1"
+                "SELECT show_date FROM repertoire ORDER BY show_date DESC LIMIT 1"
             )
             results = cursor.fetchall()
             cursor.close()
             connection.close()
             if results:
-                first_show_date = results[0][0]
-                return first_show_date
+                return results[0][0]
             else:
                 return None
         else:
@@ -43,7 +42,7 @@ class RepertoireDB:
 
     @staticmethod
     def get_all() -> list:
-        connection = sqlite3.connect("cinema_reservation_db.sqlite")
+        connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM repertoire")
         list_data = list(cursor.fetchall())
@@ -51,9 +50,9 @@ class RepertoireDB:
         return list_data
 
     @staticmethod
-    def delete_all(database_name="cinema_reservation_db.sqlite"):
-        if path.exists(database_name):
-            connection = sqlite3.connect(database_name)
+    def delete_all():
+        if path.exists(RepertoireDB.DATABASE_NAME):
+            connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute("DELETE FROM repertoire")
             connection.commit()
@@ -61,7 +60,7 @@ class RepertoireDB:
 
     @staticmethod
     def save_to_database(data: list):
-        connection = sqlite3.connect("cinema_reservation_db.sqlite")
+        connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
         cursor = connection.cursor()
         for item in data:
             cursor.execute(
