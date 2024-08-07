@@ -2,30 +2,25 @@ import sqlite3
 from os import path
 
 
-class RepertoireDB:
-    DATABASE_NAME = "cinema_reservation_db.sqlite"
+class RepertoireTable:
+    DATABASE_NAME = "cinema_db.sqlite"
 
     @staticmethod
-    def create_table():
-        if not path.exists(RepertoireDB.DATABASE_NAME):
-            connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
-            cursor = connection.cursor()
-            cursor.execute(
-                "CREATE TABLE repertoire ("
-                "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                "movie_title VARCHAR(100),"
-                "show_date VARCHAR(10),"
-                "show_hour VARCHAR(5),"
-                "hall_number INTEGER,"
-                "price FLOAT)"
-            )
-            connection.commit()
-            connection.close()
+    def create_table(cursor: sqlite3.Cursor):
+        cursor.execute(
+            "CREATE TABLE repertoire ("
+            "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            "movie_title VARCHAR(100),"
+            "show_date VARCHAR(10),"
+            "show_hour VARCHAR(5),"
+            "hall_number INTEGER,"
+            "price FLOAT)"
+        )
 
     @staticmethod
     def get_last_showdate_from_repertoire() -> str or None:
-        if path.exists(RepertoireDB.DATABASE_NAME):
-            connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
+        if path.exists(RepertoireTable.DATABASE_NAME):
+            connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute(
                 "SELECT show_date FROM repertoire ORDER BY show_date DESC LIMIT 1"
@@ -42,7 +37,7 @@ class RepertoireDB:
 
     @staticmethod
     def get_all() -> list:
-        connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
+        connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM repertoire")
         list_data = list(cursor.fetchall())
@@ -51,16 +46,16 @@ class RepertoireDB:
 
     @staticmethod
     def delete_all():
-        if path.exists(RepertoireDB.DATABASE_NAME):
-            connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
+        if path.exists(RepertoireTable.DATABASE_NAME):
+            connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute("DELETE FROM repertoire")
             connection.commit()
             connection.close()
 
     @staticmethod
-    def save_to_database(data: list):
-        connection = sqlite3.connect(RepertoireDB.DATABASE_NAME)
+    def add_repertoire(data: list):
+        connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
         cursor = connection.cursor()
         for item in data:
             cursor.execute(

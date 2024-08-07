@@ -7,7 +7,7 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault(
-        "DJANGO_SETTINGS_MODULE", "Cinema_reservation_system.settings"
+        "DJANGO_SETTINGS_MODULE", "cinema_reservation_system.settings"
     )
     try:
         from django.core.management import execute_from_command_line

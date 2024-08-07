@@ -1,5 +1,5 @@
 """
-URL configuration for Cinema_reservation_system project.
+URL configuration for cinema_reservation_system project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/

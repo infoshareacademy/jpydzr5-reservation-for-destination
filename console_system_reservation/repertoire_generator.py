@@ -33,7 +33,7 @@ class RepertoireGenerator:
     @staticmethod
     def __write_to_database(data: list):
         DatabaseManager.create_databases()
-        DatabaseManager.save_to_repertoire(data)
+        DatabaseManager.add_repertoire(data)
 
     def prepare_data(self, last_showdate) -> None:
         # przygotowujemy daty na przyszły, aktualny tydzień
