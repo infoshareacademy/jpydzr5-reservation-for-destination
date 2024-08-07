@@ -8,6 +8,7 @@ from users_table import UsersTable
 
 class DatabaseManager:
     DATABASE_NAME = "cinema_db.sqlite"
+
     @staticmethod
     def add_repertoire(data: list):
         RepertoireTable.add_repertoire(data)
@@ -22,7 +23,7 @@ class DatabaseManager:
 
     @staticmethod
     def get_last_showdate_from_repertoire() -> str or None:
-        return RepertoireDB.get_last_showdate_from_repertoire()
+        return RepertoireTable.get_last_showdate_from_repertoire()
 
     @staticmethod
     def add_user(name: str, surname: str):
@@ -42,4 +43,3 @@ class DatabaseManager:
             ReservationsTable.create_table(cursor)
             connection.commit()
             connection.close()
-
