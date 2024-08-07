@@ -18,19 +18,18 @@ class RepertoireTable:
         )
 
     @staticmethod
-    def get_first_showdate_from_repertoire() -> str or None:
+    def get_last_showdate_from_repertoire() -> str or None:
         if path.exists(RepertoireTable.DATABASE_NAME):
             connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute(
-                "SELECT show_date FROM repertoire ORDER BY show_date LIMIT 1"
+                "SELECT show_date FROM repertoire ORDER BY show_date DESC LIMIT 1"
             )
             results = cursor.fetchall()
             cursor.close()
             connection.close()
             if results:
-                first_show_date = results[0][0]
-                return first_show_date
+                return results[0][0]
             else:
                 return None
         else:

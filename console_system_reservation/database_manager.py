@@ -21,8 +21,8 @@ class DatabaseManager:
         return RepertoireTable.get_all()
 
     @staticmethod
-    def get_first_showdate_from_repertoire() -> str or None:
-        return RepertoireTable.get_first_showdate_from_repertoire()
+    def get_last_showdate_from_repertoire() -> str or None:
+        return RepertoireDB.get_last_showdate_from_repertoire()
 
     @staticmethod
     def add_user(name: str, surname: str):

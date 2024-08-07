@@ -33,14 +33,18 @@ class RepertoireGenerator:
     @staticmethod
     def __write_to_database(data: list):
         DatabaseManager.create_databases()
-        # W przyszlości usuniemy czyszczenie bazy i będziemy przechowywac stare rekordy repertuaru,
-        # bo bedą powiązane z rezerwacjami i uzytkownikami. Bedziemy pobierac aktualny repertuar podajac odpowiedni
-        # zakres dat na aktualny tydzien. W obecnym zakesie będzie to 30 nowych rekordow co tydzien.
-        DatabaseManager.delete_all_from_repertoire()
-        DatabaseManager.add_repertoire(data)
+        DatabaseManager.save_to_repertoire(data)
 
-    def prepare_data(self) -> None:
-        generated_show_dates = self.__generate_show_dates()
+    def prepare_data(self, last_showdate) -> None:
+        # przygotowujemy daty na przyszły, aktualny tydzień
+        today = datetime.today().date()
+        start_date = last_showdate + timedelta(days=1)
+        end_date = today + timedelta(days=self.DAYS_NUMBERS)
+
+        next_week_show_dates = [
+            (start_date + timedelta(days=i)).strftime("%Y-%m-%d")
+            for i in range((end_date - start_date).days + 1)
+        ]
 
         # Generowanie 30 przykładowych danych seansów
         cinema_shows = [
@@ -50,7 +54,7 @@ class RepertoireGenerator:
         normal_price = price_list.get_price_by_name("Normalny")
         for _ in range(30):
             movie_title = random.choice(self.MOVIE_TITLES)
-            show_date = random.choice(generated_show_dates)
+            show_date = random.choice(next_week_show_dates)
             show_hour = random.choice(self.SHOW_HOURS)
             hall_number = random.choice(self.HALL_NUMBERS)
             price = normal_price
@@ -61,13 +65,16 @@ class RepertoireGenerator:
         RepertoireGenerator.__write_to_database(cinema_shows)
 
     def check_repertoire_date(self):
-        today = datetime.today()
-        first_showdate = DatabaseManager.get_first_showdate_from_repertoire()
+        today = datetime.today().date()
+        last_showdate_str = DatabaseManager.get_last_showdate_from_repertoire()
+        last_showdate = datetime.strptime(last_showdate_str, "%Y-%m-%d").date()
+
+        # Pobieramy z bazy ostatnią date repertuaru i sprawdzamy, czy najpóźniejszy seans jest przynajmniej 7 dni
+        # do przodu od dzisiejszej daty. Jeśli nie, wygenerujemy nowe seanse do 7 dni do przodu
         if (
-            first_showdate
-            and datetime.strptime(first_showdate, "%Y-%m-%d").date() >= today.date()
+            last_showdate >= today + timedelta(days=self.DAYS_NUMBERS)
         ):
             print("Repertuar jest aktualny")
         else:
             print("Aktualizuję repertuar.")
-            self.prepare_data()
+            self.prepare_data(last_showdate)
