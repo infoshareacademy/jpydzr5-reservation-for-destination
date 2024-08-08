@@ -24,7 +24,7 @@ class Repertoire:
             title = row[1]
             date = row[2]
             hour = row[3]
-            price = row[5]
+            price = row[6]
 
             if title not in self.__movies_dict:
                 self.__movies_dict[title] = {}
