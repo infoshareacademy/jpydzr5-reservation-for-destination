@@ -37,11 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "cinema_reservation_system",
-    "hello",
-    "price_list",
-    "repertoire",
-    "basket"
+
+    'cinema',
 ]
 
 MIDDLEWARE = [
