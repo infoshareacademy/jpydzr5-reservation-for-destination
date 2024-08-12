@@ -24,9 +24,7 @@ def main_page_view(request):
 
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("cennik/", include("price_list.urls")),
-    path("repertuar/", include("repertoire.urls")),
-    path("koszyk/", include("basket.urls")),
-    path("admin/", admin.site.urls)
+    path("", main_page_view),
+    path("admin/", admin.site.urls),
+    path("cinema/", include("cinema.urls"))
 ]
