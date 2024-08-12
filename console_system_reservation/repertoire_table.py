@@ -14,6 +14,7 @@ class RepertoireTable:
             "show_date VARCHAR(10),"
             "show_hour VARCHAR(5),"
             "hall_number INTEGER,"
+            "movie_description VARCHAR(300),"
             "price FLOAT)"
         )
 
@@ -59,7 +60,7 @@ class RepertoireTable:
         cursor = connection.cursor()
         for item in data:
             cursor.execute(
-                "INSERT INTO repertoire (movie_title, show_date, show_hour, hall_number, price) VALUES (?,?,?,?,?)",
+                "INSERT INTO repertoire (movie_title, show_date, show_hour, hall_number,movie_description, price) VALUES (?,?,?,?,?,?)",
                 item,
             )
         connection.commit()

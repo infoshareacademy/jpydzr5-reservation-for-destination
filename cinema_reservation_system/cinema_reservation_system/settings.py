@@ -37,10 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "main_page",
-    "price_list",
-    "repertoire",
-    "basket"
+
+    'cinema',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +51,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "main_page.urls"
+ROOT_URLCONF = "cinema_reservation_system.urls"
 
 TEMPLATES = [
     {
@@ -71,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "main_page.wsgi.application"
+WSGI_APPLICATION = "cinema_reservation_system.wsgi.application"
 
 
 # Database
