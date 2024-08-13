@@ -1,0 +1,21 @@
+table
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto
+}
+th, table
+{
+    border: 2px solid black;
+    font-size: 35px;
+    background-color: #808080;
+}
+th:hover
+{
+    background-color: #008000;
+}
+a
+{
+    color: inherit;
+    text-decoration: none;
+}
