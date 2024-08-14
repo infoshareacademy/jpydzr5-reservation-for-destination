@@ -1,4 +1,5 @@
 from django.template.response import TemplateResponse
+import pendulum
 
 
 def index(request):
@@ -20,8 +21,14 @@ def basket(request):
 
 def repertoire(request):
     template = "cinema/repertoire.html"
-    message = {"message": "OK!"}
-    return TemplateResponse(request, template, message)
+    start_day = pendulum.now("Europe/Warsaw")
+    seven_days_forward = {}
+    for day in range(1, 8):
+        start_day = start_day.add(days=1)
+        seven_days_forward[start_day.format("YYYY-MM-DD")] = start_day.format("dddd", locale="pl")
+    context = {"days": seven_days_forward}
+    day = request.GET.get("date")
+    return TemplateResponse(request, template, context)
 
 
 # Create your views here.

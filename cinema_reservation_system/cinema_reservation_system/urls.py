@@ -24,8 +24,7 @@ def main_page_view(request):
 
 
 urlpatterns = [
-    path('', main_page_view),
+    path("", main_page_view),
     path("admin/", admin.site.urls),
-    path("cinema/", include("cinema.urls")),
-
+    path("cinema/", include("cinema.urls"))
 ]
