@@ -1,0 +1,21 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'cinema/index.css' %}">
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kino studyjne</title>
+</head>
+<body>
+<h1 style="text-align: center">Witaj na stronie naszego kina!</h1>
+<br>
+<table>
+    <thead>
+    {% for item in menu_positions %}
+    <th><a href="{% url item.url %}">{{ item.name }}</a></th>
+    {% endfor %}
+    </thead>
+</table>
+</body>
+</html>

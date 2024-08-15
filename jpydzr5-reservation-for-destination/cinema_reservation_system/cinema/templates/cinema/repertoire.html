@@ -1,0 +1,21 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'cinema/repertoire.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repertuar</title>
+</head>
+<body>
+<h2 style="text-align: center">Repertuar na najbliższy tydzień</h2>
+<br>
+<table>
+    <thead>
+        {% for date, day_of_week in days.items %}
+        <th><a href="?date={{ date }}">{{ date }} - {{ day_of_week }}</a></th>
+        {% endfor %}
+    </thead>
+</table>
+</body>
+</html>
