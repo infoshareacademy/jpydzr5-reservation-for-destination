@@ -1,5 +1,6 @@
 import os
 import django
+from django.conf import settings  # Importowanie settings
 from django.test import TestCase
 from pathlib import Path
 
@@ -7,6 +8,7 @@ from pathlib import Path
 # Ustawienie zmiennej DJANGO_SETTINGS_MODULE, aby wskazywała na Twój plik settings.py
 os.environ['DJANGO_SETTINGS_MODULE'] = 'cinema_reservation_system.settings'
 django.setup()
+
 
 class SettingsTestCase(TestCase):
     def test_secret_key(self):
