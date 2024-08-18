@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import resolve, reverse
-from cinema import views
+from .. import views
 
 class UrlsTestCase(SimpleTestCase):
 

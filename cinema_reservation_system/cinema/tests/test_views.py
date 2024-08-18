@@ -1,7 +1,14 @@
+import os
 from django.test import TestCase
 from django.urls import reverse
+from django.conf import settings
 
 class CinemaViewsTest(TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        os.environ['DJANGO_SETTINGS_MODULE'] = 'cinema_reservation_system.settings'
+        super().setUpClass()
 
     def test_index_view(self):
         response = self.client.get(reverse("index"))
