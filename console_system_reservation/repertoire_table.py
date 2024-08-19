@@ -46,15 +46,6 @@ class RepertoireTable:
         return list_data
 
     @staticmethod
-    def delete_all():
-        if path.exists(RepertoireTable.DATABASE_NAME):
-            connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
-            cursor = connection.cursor()
-            cursor.execute("DELETE FROM cinema_repertoire")
-            connection.commit()
-            connection.close()
-
-    @staticmethod
     def add_repertoire(data: list):
         connection = sqlite3.connect(RepertoireTable.DATABASE_NAME)
         cursor = connection.cursor()
