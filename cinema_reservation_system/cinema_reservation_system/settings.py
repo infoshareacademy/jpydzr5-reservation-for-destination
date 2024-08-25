@@ -76,13 +76,30 @@ WSGI_APPLICATION = "cinema_reservation_system.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+if 'test' in sys.argv:
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql',
+    #         'NAME': 'test_db_name',
+    #         'USER': 'test_user',
+    #         'PASSWORD': 'test_password',
+    #         'HOST': 'localhost',
+    #         'PORT': '5432',
+    #     }
+    # }
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "test.db.sqlite3",
+        }
     }
-}
-
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -125,15 +142,3 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
-
-if 'test' in sys.argv:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'test_db_name',
-            'USER': 'test_user',
-            'PASSWORD': 'test_password',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
