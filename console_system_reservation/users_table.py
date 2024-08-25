@@ -8,7 +8,7 @@ class UsersTable:
     @staticmethod
     def create_table(cursor: sqlite3.Cursor) -> None:
         cursor.execute(
-            "CREATE TABLE cinema_user ("
+            "CREATE TABLE users ("
             "id INTEGER PRIMARY KEY AUTOINCREMENT,"
             "name VARCHAR(30) NOT NULL,"
             "surname VARCHAR(50) NOT NULL)"
@@ -20,7 +20,7 @@ class UsersTable:
             connection = sqlite3.connect(UsersTable.DATABASE_NAME)
             cursor = connection.cursor()
             cursor.execute(
-                "INSERT INTO cinema_user (name, surname) VALUES (?, ?)", (name, surname)
+                "INSERT INTO users (name, surname) VALUES (?, ?)", (name, surname)
             )
             connection.commit()
             connection.close()
