@@ -11,7 +11,7 @@ from django.urls import resolve
 class UrlsTestCase(TestCase):
     def test_main_page_redirect(self):
         response = self.client.get(reverse('main_page'))
-        self.assertRedirects(response, 'cinema/', status_code=302)
+        self.assertRedirects(response, '/cinema/', status_code=302)
 
     def test_cinema_url_resolves(self):
         resolver = resolve('/cinema/')
