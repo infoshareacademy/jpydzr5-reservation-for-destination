@@ -8,7 +8,7 @@ class User(models.Model):
 
 class Price(models.Model):
     name = models.CharField(max_length=50)
-    price = models.FloatField()
+    price = models.DecimalField()
 
 
 class Movie(models.Model):
@@ -16,14 +16,14 @@ class Movie(models.Model):
     description = models.CharField(max_length=300)
 
 
-class Repertoire(models.Model):
+class Seance(models.Model):
     show_start = models.DateTimeField()
     hall_number = models.IntegerField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
 
 class Reservation(models.Model):
-    repertoire = models.ForeignKey(Repertoire, on_delete=models.CASCADE)
+    seance = models.ForeignKey(Seance, on_delete=models.CASCADE)
     price = models.ForeignKey(Price, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     row = models.CharField(max_length=1)
