@@ -1,0 +1,90 @@
+﻿[
+{
+  "model": "cinema.movie",
+  "pk": 1,
+  "fields": {
+    "title": "Avengers: Endgame",
+    "description": "Ostateczne starcie superbohaterˇw Marvela z Thanossem, ktˇry zniszczy│ po│owŕ wszechťwiata. Bohaterowie, pe│ni odwagi i poťwiŕcenia, prˇbuj╣ naprawiŠ zniszczenia i przywrˇciŠ harmoniŕ. Widowiskowe efekty specjalne i emocjonalne po┐egnania."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 2,
+  "fields": {
+    "title": "Seksmisja",
+    "description": "W roku 2044 zostaj╣ odhibernowani dwaj ostatni przedstawiciele p│ci mŕskiej, wprowadzaj╣c chaos do idealnego ťwiata rz╣dzonego przez Ligŕ Kobiet."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 3,
+  "fields": {
+    "title": "The Godfather",
+    "description": "Epicka saga rodziny mafijnej Corleone, ktˇrej g│ow╣ jest Vito Corleone, buduj╣cy swoje imperium w brutalnym ťwiecie przestŕpczym. Film o w│adzy, lojalnoťci, zemťcie i rodzinie, uznawany za jedno z najwiekszych dzie│ kinematografii."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 4,
+  "fields": {
+    "title": "Inception",
+    "description": "Trzymaj╣cy w napieciu thriller sci-fi o Domie Cobb, specjalizuj╣cym sie w kradzie┐y tajemnic z umys│ˇw ludzi poprzez sny. Film │╣czy wartk╣ akcje z filozoficznymi pytaniami o rzeczywistoťŠ, pamiec i podswiadomoťŠ, zaskakuj╣c widza na kazdym kroku."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 5,
+  "fields": {
+    "title": "The Shawshank Redemption",
+    "description": "Historia Andy'ego Dufresne'a, nies│usznie skazanego na do┐ywocie, ktˇry dzieki inteligencji, przyjačni z Redem i niez│omnej nadziei, odnajduje w wiezieniu swoj╣ droge do wolnosci. Film o triumfie ducha ludzkiego w najciŕ┐szych warunkach."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 6,
+  "fields": {
+    "title": "The Dark Knight",
+    "description": "Batman walczy z Jokerem, szalonym geniuszem zbrodni, ktˇry zagraza bezpieczenstwu Gotham. Film ukazuje moralne dylematy bohatera i napiecie miedzy dobrem a z│em, z niezapomnian╣ rol╣ Heatha Ledgera jako Jokera. Mroczna, g│ŕboka opowieťŠ"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 7,
+  "fields": {
+    "title": "Pulp Fiction",
+    "description": "Arcydzie│o Quentina Tarantino, splataj╣ce losy p│atnych zabˇjcˇw, boksera i gangstera w pe│nym ironii i przemocy swiecie. Kultowe dialogi, niechronologiczna narracja i wyj╣tkowy styl uczyni│y z tego filmu klasyke, ktˇra na sta│e wpisa│a sie w historie kina."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 8,
+  "fields": {
+    "title": "Forrest Gump",
+    "description": "Opowiesc o niezwyk│ym ┐yciu Forresta Gumpa, prostego cz│owieka, ktˇry przypadkowo staje sie swiadkiem i uczestnikiem kluczowych wydarzen w historii USA. To historia o mi│osci, niewinnosci i sile przypadku, pe│na humoru i wzruszen."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 9,
+  "fields": {
+    "title": "The Matrix",
+    "description": "Neo odkrywa, ze swiat, w ktˇrym ┐yje, to tylko symulacja stworzona przez maszyny, kontroluj╣ce ludzkosc. Wraz z grup╣ rebeliantˇw podejmuje walke o wolnosc. Prze│omowe efekty specjalne, filozoficzne refleksje i kultowy styl uczyni│y ten film ikon╣ popkultury."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 10,
+  "fields": {
+    "title": "Schindler's List",
+    "description": "Wstrz╣saj╣cy dramat o Oskarze Schindlerze, ktˇry ratuje ponad tysi╣c ┐ydˇw przed zag│ad╣ w czasie II wojny swiatowej. To przejmuj╣ca opowiesc o ludzkiej godnosci, bohaterstwie i koszmarze Holokaustu, pozostawiaj╣ca widza w g│ebokiej refleksji."
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 11,
+  "fields": {
+    "title": "Titanic",
+    "description": "Epicka historia mi│osci Jacka i Rose, rozgrywaj╣ca siŕ na tle jednej z najwiekszych katastrof morskich w historii. Film ukazuje nie tylko tragiczny rejs Titanica, ale tak┐e spo│eczne nierˇwnosci i sile uczucia, ktˇre przetrwa nawet najgorsze przeciwnoťci losu."
+  }
+}
+]
