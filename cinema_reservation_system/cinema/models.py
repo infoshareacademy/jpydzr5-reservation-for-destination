@@ -8,7 +8,7 @@ class User(models.Model):
 
 class Price(models.Model):
     name = models.CharField(max_length=50)
-    price = models.DecimalField()
+    price = models.DecimalField(max_digits=5, decimal_places=2)
 
 
 class Movie(models.Model):
