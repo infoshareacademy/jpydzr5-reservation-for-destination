@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Repertoire, User, Reservation, Price, Movie
+from .models import Seance, User, Reservation, Price, Movie
 
 
-@admin.register(Repertoire)
+@admin.register(Seance)
 class RepertoireAdmin(admin.ModelAdmin):
     pass
 
