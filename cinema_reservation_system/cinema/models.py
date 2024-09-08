@@ -1,9 +1,6 @@
 from django.db import models
 import pendulum
-
-class User(models.Model):
-    name = models.CharField(max_length=30)
-    surname = models.CharField(max_length=50)
+from django.contrib.auth.models import User
 
 
 class Price(models.Model):
