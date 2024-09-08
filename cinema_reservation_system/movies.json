@@ -1,10 +1,10 @@
-﻿[
+[
 {
   "model": "cinema.movie",
   "pk": 1,
   "fields": {
     "title": "Avengers: Endgame",
-    "description": "Ostateczne starcie superbohaterˇw Marvela z Thanossem, ktˇry zniszczy│ po│owŕ wszechťwiata. Bohaterowie, pe│ni odwagi i poťwiŕcenia, prˇbuj╣ naprawiŠ zniszczenia i przywrˇciŠ harmoniŕ. Widowiskowe efekty specjalne i emocjonalne po┐egnania."
+    "description": "Ostateczne starcie superbohaterów Marvela z Thanossem, który zniszczył połowę wszechświata. Bohaterowie, pełni odwagi i poświęcenia, próbują naprawić zniszczenia i przywrócić harmonię. Widowiskowe efekty specjalne i emocjonalne pożegnania."
   }
 },
 {
@@ -12,7 +12,7 @@
   "pk": 2,
   "fields": {
     "title": "Seksmisja",
-    "description": "W roku 2044 zostaj╣ odhibernowani dwaj ostatni przedstawiciele p│ci mŕskiej, wprowadzaj╣c chaos do idealnego ťwiata rz╣dzonego przez Ligŕ Kobiet."
+    "description": "W roku 2044 zostają odhibernowani dwaj ostatni przedstawiciele płci męskiej, wprowadzając chaos do idealnego świata rządzonego przez Ligę Kobiet."
   }
 },
 {
@@ -20,7 +20,7 @@
   "pk": 3,
   "fields": {
     "title": "The Godfather",
-    "description": "Epicka saga rodziny mafijnej Corleone, ktˇrej g│ow╣ jest Vito Corleone, buduj╣cy swoje imperium w brutalnym ťwiecie przestŕpczym. Film o w│adzy, lojalnoťci, zemťcie i rodzinie, uznawany za jedno z najwiekszych dzie│ kinematografii."
+    "description": "Epicka saga rodziny mafijnej Corleone, której głową jest Vito Corleone, budujący swoje imperium w brutalnym świecie przestępczym. Film o władzy, lojalności, zemście i rodzinie, uznawany za jedno z najwiekszych dzieł kinematografii."
   }
 },
 {
@@ -28,7 +28,7 @@
   "pk": 4,
   "fields": {
     "title": "Inception",
-    "description": "Trzymaj╣cy w napieciu thriller sci-fi o Domie Cobb, specjalizuj╣cym sie w kradzie┐y tajemnic z umys│ˇw ludzi poprzez sny. Film │╣czy wartk╣ akcje z filozoficznymi pytaniami o rzeczywistoťŠ, pamiec i podswiadomoťŠ, zaskakuj╣c widza na kazdym kroku."
+    "description": "Trzymający w napieciu thriller sci-fi o Domie Cobb, specjalizującym sie w kradzieży tajemnic z umysłów ludzi poprzez sny. Film łączy wartką akcje z filozoficznymi pytaniami o rzeczywistość, pamiec i podswiadomość, zaskakując widza na kazdym kroku."
   }
 },
 {
@@ -36,7 +36,7 @@
   "pk": 5,
   "fields": {
     "title": "The Shawshank Redemption",
-    "description": "Historia Andy'ego Dufresne'a, nies│usznie skazanego na do┐ywocie, ktˇry dzieki inteligencji, przyjačni z Redem i niez│omnej nadziei, odnajduje w wiezieniu swoj╣ droge do wolnosci. Film o triumfie ducha ludzkiego w najciŕ┐szych warunkach."
+    "description": "Historia Andy'ego Dufresne'a, niesłusznie skazanego na dożywocie, który dzieki inteligencji, przyjačni z Redem i niezłomnej nadziei, odnajduje w wiezieniu swoją droge do wolnosci. Film o triumfie ducha ludzkiego w najcięższych warunkach."
   }
 },
 {
@@ -44,7 +44,7 @@
   "pk": 6,
   "fields": {
     "title": "The Dark Knight",
-    "description": "Batman walczy z Jokerem, szalonym geniuszem zbrodni, ktˇry zagraza bezpieczenstwu Gotham. Film ukazuje moralne dylematy bohatera i napiecie miedzy dobrem a z│em, z niezapomnian╣ rol╣ Heatha Ledgera jako Jokera. Mroczna, g│ŕboka opowieťŠ"
+    "description": "Batman walczy z Jokerem, szalonym geniuszem zbrodni, który zagraza bezpieczeństwu Gotham. Film ukazuje moralne dylematy bohatera i napiecie miedzy dobrem a złem, z niezapomnianą rolą Heatha Ledgera jako Jokera. Mroczna, głęboka opowieść"
   }
 },
 {
@@ -52,7 +52,7 @@
   "pk": 7,
   "fields": {
     "title": "Pulp Fiction",
-    "description": "Arcydzie│o Quentina Tarantino, splataj╣ce losy p│atnych zabˇjcˇw, boksera i gangstera w pe│nym ironii i przemocy swiecie. Kultowe dialogi, niechronologiczna narracja i wyj╣tkowy styl uczyni│y z tego filmu klasyke, ktˇra na sta│e wpisa│a sie w historie kina."
+    "description": "Arcydzieło Quentina Tarantino, splatające losy płatnych zabójców, boksera i gangstera w pełnym ironii i przemocy swiecie. Kultowe dialogi, niechronologiczna narracja i wyjątkowy styl uczyniły z tego filmu klasyke, która na stałe wpisała sie w historie kina."
   }
 },
 {
@@ -60,7 +60,7 @@
   "pk": 8,
   "fields": {
     "title": "Forrest Gump",
-    "description": "Opowiesc o niezwyk│ym ┐yciu Forresta Gumpa, prostego cz│owieka, ktˇry przypadkowo staje sie swiadkiem i uczestnikiem kluczowych wydarzen w historii USA. To historia o mi│osci, niewinnosci i sile przypadku, pe│na humoru i wzruszen."
+    "description": "Opowiesc o niezwykłym życiu Forresta Gumpa, prostego człowieka, który przypadkowo staje sie swiadkiem i uczestnikiem kluczowych wydarzen w historii USA. To historia o miłosci, niewinnosci i sile przypadku, pełna humoru i wzruszen."
   }
 },
 {
@@ -68,7 +68,7 @@
   "pk": 9,
   "fields": {
     "title": "The Matrix",
-    "description": "Neo odkrywa, ze swiat, w ktˇrym ┐yje, to tylko symulacja stworzona przez maszyny, kontroluj╣ce ludzkosc. Wraz z grup╣ rebeliantˇw podejmuje walke o wolnosc. Prze│omowe efekty specjalne, filozoficzne refleksje i kultowy styl uczyni│y ten film ikon╣ popkultury."
+    "description": "Neo odkrywa, ze swiat, w którym żyje, to tylko symulacja stworzona przez maszyny, kontrolujące ludzkosc. Wraz z grupą rebeliantów podejmuje walke o wolnosc. Przełomowe efekty specjalne, filozoficzne refleksje i kultowy styl uczyniły ten film ikoną popkultury."
   }
 },
 {
@@ -76,7 +76,7 @@
   "pk": 10,
   "fields": {
     "title": "Schindler's List",
-    "description": "Wstrz╣saj╣cy dramat o Oskarze Schindlerze, ktˇry ratuje ponad tysi╣c ┐ydˇw przed zag│ad╣ w czasie II wojny swiatowej. To przejmuj╣ca opowiesc o ludzkiej godnosci, bohaterstwie i koszmarze Holokaustu, pozostawiaj╣ca widza w g│ebokiej refleksji."
+    "description": "Wstrząsający dramat o Oskarze Schindlerze, który ratuje ponad tysiąc żydów przed zagładą w czasie II wojny swiatowej. To przejmująca opowiesc o ludzkiej godnosci, bohaterstwie i koszmarze Holokaustu, pozostawiająca widza w głebokiej refleksji."
   }
 },
 {
@@ -84,7 +84,7 @@
   "pk": 11,
   "fields": {
     "title": "Titanic",
-    "description": "Epicka historia mi│osci Jacka i Rose, rozgrywaj╣ca siŕ na tle jednej z najwiekszych katastrof morskich w historii. Film ukazuje nie tylko tragiczny rejs Titanica, ale tak┐e spo│eczne nierˇwnosci i sile uczucia, ktˇre przetrwa nawet najgorsze przeciwnoťci losu."
+    "description": "Epicka historia miłosci Jacka i Rose, rozgrywająca się na tle jednej z najwiekszych katastrof morskich w historii. Film ukazuje nie tylko tragiczny rejs Titanica, ale także społeczne nierównosci i sile uczucia, które przetrwa nawet najgorsze przeciwności losu."
   }
 }
 ]
