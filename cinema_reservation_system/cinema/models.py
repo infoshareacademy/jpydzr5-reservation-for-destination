@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class User(models.Model):
@@ -17,7 +18,7 @@ class Movie(models.Model):
 
 
 class Seance(models.Model):
-    show_start = models.DateTimeField()
+    show_start = models.DateTimeField(default=timezone.now)
     hall_number = models.IntegerField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
@@ -29,7 +30,6 @@ class Reservation(models.Model):
     row = models.CharField(max_length=1)
     seat = models.IntegerField()
 
-from django.db import models
 
 class Cinema(models.Model):
     """Model reprezentujący kino."""
