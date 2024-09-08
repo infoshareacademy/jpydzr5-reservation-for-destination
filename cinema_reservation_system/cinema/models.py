@@ -1,6 +1,6 @@
-from django.db import models
-import pendulum
+from django.utils import timezone
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Price(models.Model):
@@ -14,7 +14,7 @@ class Movie(models.Model):
 
 
 class Seance(models.Model):
-    show_start = models.DateTimeField(default=pendulum.now("Europe/Warsaw"))
+    show_start = models.DateTimeField(default=timezone.now)
     hall_number = models.IntegerField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
 
@@ -26,7 +26,6 @@ class Reservation(models.Model):
     row = models.CharField(max_length=1)
     seat = models.IntegerField()
 
-from django.db import models
 
 class Cinema(models.Model):
     """Model reprezentujący kino."""
