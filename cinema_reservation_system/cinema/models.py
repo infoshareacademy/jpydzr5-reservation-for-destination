@@ -1,5 +1,5 @@
 from django.db import models
-
+import pendulum
 
 class User(models.Model):
     name = models.CharField(max_length=30)
@@ -17,9 +17,9 @@ class Movie(models.Model):
 
 
 class Seance(models.Model):
-    show_start = models.DateTimeField()
+    show_start = models.DateTimeField(default=pendulum.now("Europe/Warsaw"))
     hall_number = models.IntegerField()
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
 
 
 class Reservation(models.Model):
