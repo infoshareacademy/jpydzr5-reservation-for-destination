@@ -7,11 +7,6 @@ class RepertoireAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    pass
-
-
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
     pass
