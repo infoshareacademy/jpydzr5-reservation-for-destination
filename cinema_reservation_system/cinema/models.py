@@ -17,8 +17,7 @@ class Movie(models.Model):
 
 
 class Repertoire(models.Model):
-    show_date = models.CharField(max_length=10)
-    show_hour = models.CharField(max_length=5)
+    show_start = models.DateTimeField()
     hall_number = models.IntegerField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
