@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{{ message }}
-</body>
-</html>
+<h1>Twój koszyk</h1>
+
+{% if selected_seance and selected_ticket %}
+    <p><strong>Seans:</strong> {{ selected_seance }}</p>
+    <p><strong>Typ biletu:</strong> {{ selected_ticket }}</p>
+    <a href="{% url 'select_seance' %}">Zmień seans</a>
+    <a href="{% url 'select_ticket' %}">Zmień typ biletu</a>
+    <br>
+    <button type="button">Przejdź do płatności</button>
+{% else %}
+    <p>Koszyk jest pusty.</p>
+    <a href="{% url 'select_seance' %}">Wybierz seans</a>
+{% endif %}

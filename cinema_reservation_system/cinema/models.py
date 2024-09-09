@@ -61,3 +61,25 @@ class Seat(models.Model):
 
     def __str__(self):
         return f"Miejsce {self.row}-{self.column} w sali {self.room.room_number} ({self.get_status_display()})"
+
+
+from django.db import models
+
+class Screening(models.Model):
+    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    show_start = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.cinema} - {self.room} ({self.show_start})"
+
+
+class TicketType(models.Model):
+    name = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.name
+
+
+
