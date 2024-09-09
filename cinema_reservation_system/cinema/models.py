@@ -1,6 +1,7 @@
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
+from datetime import timedelta
 
 
 class Price(models.Model):
@@ -11,7 +12,7 @@ class Price(models.Model):
 class Movie(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
-
+    duration = models.DurationField(default=timedelta(minutes=120))
 
 class Seance(models.Model):
     show_start = models.DateTimeField(default=timezone.now)
