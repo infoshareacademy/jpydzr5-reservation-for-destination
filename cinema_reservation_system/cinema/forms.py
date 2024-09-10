@@ -1,5 +1,5 @@
 from django import forms
-from .models import Seance, Price
+from .models import Seance, TicketType
 
 # Formularz wyboru seansu
 class SeanceForm(forms.ModelForm):
@@ -15,7 +15,7 @@ class SeanceForm(forms.ModelForm):
 # Formularz wyboru typu biletu
 class TicketTypeForm(forms.Form):
     ticket_type = forms.ModelChoiceField(
-        queryset=Price.objects.all(),
+        queryset=TicketType.objects.all(),
         label='Typ biletu',
         empty_label="Wybierz typ biletu"
     )

@@ -3,9 +3,12 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-class Price(models.Model):
+class TicketType(models.Model):
     name = models.CharField(max_length=50)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.name
 
 
 class Movie(models.Model):
@@ -16,12 +19,15 @@ class Movie(models.Model):
 class Seance(models.Model):
     show_start = models.DateTimeField(default=timezone.now)
     hall_number = models.IntegerField()
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
+    movie = models.ForeignKey('Movie', on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f'{self.movie.title} - Sala: {self.hall_number} - {self.show_start}'
 
 
 class Reservation(models.Model):
     seance = models.ForeignKey(Seance, on_delete=models.CASCADE)
-    price = models.ForeignKey(Price, on_delete=models.CASCADE)
+    price = models.ForeignKey(TicketType, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     row = models.CharField(max_length=1)
     seat = models.IntegerField()
@@ -63,8 +69,6 @@ class Seat(models.Model):
         return f"Miejsce {self.row}-{self.column} w sali {self.room.room_number} ({self.get_status_display()})"
 
 
-from django.db import models
-
 class Screening(models.Model):
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
@@ -74,12 +78,7 @@ class Screening(models.Model):
         return f"{self.cinema} - {self.room} ({self.show_start})"
 
 
-class TicketType(models.Model):
-    name = models.CharField(max_length=50)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
 
-    def __str__(self):
-        return self.name
 
 
 

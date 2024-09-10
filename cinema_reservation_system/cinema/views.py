@@ -1,5 +1,7 @@
 from django.template.response import TemplateResponse
 import pendulum
+from django.shortcuts import render, redirect
+from .forms import SeanceForm, TicketTypeForm
 
 
 def index(request):
@@ -55,9 +57,6 @@ def price_list(request):
     message = {"message": "OK!"}
     return TemplateResponse(request, template, message)
 
-
-from django.shortcuts import render, redirect
-from .forms import SeanceForm, TicketTypeForm
 
 def select_seance(request):
     if request.method == 'POST':
