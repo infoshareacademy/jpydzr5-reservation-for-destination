@@ -69,13 +69,6 @@ class Seat(models.Model):
         return f"Miejsce {self.row}-{self.column} w sali {self.room.room_number} ({self.get_status_display()})"
 
 
-class Screening(models.Model):
-    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    show_start = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return f"{self.cinema} - {self.room} ({self.show_start})"
 
 
 

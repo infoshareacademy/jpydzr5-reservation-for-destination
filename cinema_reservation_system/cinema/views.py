@@ -14,10 +14,6 @@ def index(request):
     return TemplateResponse(request, template, {"menu_positions": menu_positions})
 
 
-# Create your views here.
-from django.template.response import TemplateResponse
-from django.shortcuts import redirect
-
 # Widok koszyka
 def basket(request):
     # Ścieżka do szablonu
