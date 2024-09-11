@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Seance, User, Reservation, Price, Movie
+from .models import Seance, Reservation, Price, Movie, Cinema, Room, Seat
 
 
 @admin.register(Seance)
@@ -22,17 +22,15 @@ class MovieAdmin(admin.ModelAdmin):
     pass
 
 
-
-from django.contrib import admin
-from .models import Cinema, Room, Seat
-
 @admin.register(Cinema)
 class CinemaAdmin(admin.ModelAdmin):
     list_display = ('name', 'city')  # Możesz dostosować pola, które będą wyświetlane w panelu admina
 
+
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
     list_display = ('cinema', 'room_number', 'cleaning_time')  # Pola do wyświetlania
+
 
 @admin.register(Seat)
 class SeatAdmin(admin.ModelAdmin):

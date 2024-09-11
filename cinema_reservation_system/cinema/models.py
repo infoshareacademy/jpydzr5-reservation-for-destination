@@ -8,11 +8,18 @@ class Price(models.Model):
     name = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=8, decimal_places=2)
 
+    def __str__(self):
+        return self.name
+
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
     duration = models.DurationField(default=timedelta(minutes=120))
+
+    def __str__(self):
+        return self.title
+
 
 class Seance(models.Model):
     show_start = models.DateTimeField(default=timezone.now)
