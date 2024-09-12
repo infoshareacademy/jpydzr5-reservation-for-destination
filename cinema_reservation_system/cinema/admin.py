@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Seance, Reservation, Price, Movie, Cinema, Room, Seat
+from .models import Seance, Reservation, TicketType, Movie, Cinema, Room, Seat
 
 
 @admin.register(Seance)
@@ -12,8 +12,8 @@ class ReservationAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Price)
-class PriceAdmin(admin.ModelAdmin):
+@admin.register(TicketType)
+class TicketTypeAdmin(admin.ModelAdmin):
     pass
 
 
