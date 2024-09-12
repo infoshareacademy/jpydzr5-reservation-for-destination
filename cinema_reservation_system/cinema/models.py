@@ -4,9 +4,12 @@ from django.db import models
 from datetime import timedelta
 
 
-class Price(models.Model):
+class TicketType(models.Model):
     name = models.CharField(max_length=50)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return self.name
 
 
 class Movie(models.Model):
@@ -17,12 +20,15 @@ class Movie(models.Model):
 class Seance(models.Model):
     show_start = models.DateTimeField(default=timezone.now)
     hall_number = models.IntegerField()
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
+    movie = models.ForeignKey('Movie', on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f'{self.movie.title} - Sala: {self.hall_number} - {self.show_start}'
 
 
 class Reservation(models.Model):
     seance = models.ForeignKey(Seance, on_delete=models.CASCADE)
-    price = models.ForeignKey(Price, on_delete=models.CASCADE)
+    price = models.ForeignKey(TicketType, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     row = models.CharField(max_length=1)
     seat = models.IntegerField()
@@ -62,3 +68,11 @@ class Seat(models.Model):
 
     def __str__(self):
         return f"Miejsce {self.row}-{self.column} w sali {self.room.room_number} ({self.get_status_display()})"
+
+
+
+
+
+
+
+
