@@ -17,10 +17,14 @@ class Movie(models.Model):
     description = models.CharField(max_length=300)
     duration = models.DurationField(default=timedelta(minutes=120))
 
+    def __str__(self):
+        return self.title
+
+
 class Seance(models.Model):
     show_start = models.DateTimeField(default=timezone.now)
     hall_number = models.IntegerField()
-    movie = models.ForeignKey('Movie', on_delete=models.CASCADE, null=True)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f'{self.movie.title} - Sala: {self.hall_number} - {self.show_start}'
@@ -68,11 +72,3 @@ class Seat(models.Model):
 
     def __str__(self):
         return f"Miejsce {self.row}-{self.column} w sali {self.room.room_number} ({self.get_status_display()})"
-
-
-
-
-
-
-
-

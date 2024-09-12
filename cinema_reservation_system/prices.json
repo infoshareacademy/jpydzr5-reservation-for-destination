@@ -1,0 +1,34 @@
+[
+{
+  "model": "cinema.price",
+  "pk": 1,
+  "fields": {
+    "name": "Normalny",
+    "price": "20.00"
+  }
+},
+{
+  "model": "cinema.price",
+  "pk": 2,
+  "fields": {
+    "name": "Student",
+    "price": "16.00"
+  }
+},
+{
+  "model": "cinema.price",
+  "pk": 3,
+  "fields": {
+    "name": "Emeryt",
+    "price": "14.00"
+  }
+},
+{
+  "model": "cinema.price",
+  "pk": 4,
+  "fields": {
+    "name": "Dziecko do 10 lat",
+    "price": "10.00"
+  }
+}
+]
