@@ -1,6 +1,6 @@
 [
 {
-  "model": "cinema.price",
+  "model": "cinema.tickettype",
   "pk": 1,
   "fields": {
     "name": "Normalny",
@@ -8,7 +8,7 @@
   }
 },
 {
-  "model": "cinema.price",
+  "model": "cinema.tickettype",
   "pk": 2,
   "fields": {
     "name": "Student",
@@ -16,7 +16,7 @@
   }
 },
 {
-  "model": "cinema.price",
+  "model": "cinema.tickettype",
   "pk": 3,
   "fields": {
     "name": "Emeryt",
@@ -24,7 +24,7 @@
   }
 },
 {
-  "model": "cinema.price",
+  "model": "cinema.tickettype",
   "pk": 4,
   "fields": {
     "name": "Dziecko do 10 lat",
