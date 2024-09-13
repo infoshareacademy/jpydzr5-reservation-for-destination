@@ -2,6 +2,7 @@ from django.template.response import TemplateResponse
 import pendulum
 from django.shortcuts import render, redirect
 from .forms import SeanceForm, TicketTypeForm
+from .models import TicketType
 
 
 def index(request):
@@ -50,8 +51,11 @@ def repertoire(request):
 # Create your views here.
 def price_list(request):
     template = "cinema/price_list.html"
-    message = {"message": "OK!"}
-    return TemplateResponse(request, template, message)
+    tickets = TicketType.objects.all()
+    context = {
+        "tickets": tickets,
+    }
+    return TemplateResponse(request, template, context)
 
 
 def select_seance(request):
