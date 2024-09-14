@@ -1,6 +1,5 @@
 <form method="post">
     {% csrf_token %}
-    wybrałeś film: <span style="font-weight: bolder">{{ movie.title }}</span>
     {{ form.as_p }}
     <button type="submit">Dalej</button>
     <a href="{% url 'basket' %}">Anuluj</a>

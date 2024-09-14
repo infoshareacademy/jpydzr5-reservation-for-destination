@@ -1,8 +1,8 @@
 from django.template.response import TemplateResponse
 import pendulum
 from django.shortcuts import render, redirect
-from .forms import SeanceForm, TicketTypeForm
-from .models import TicketType
+from .forms import SeanceForm, TicketTypeForm, MovieForm
+from .models import TicketType, Movie, Seance, Seat
 
 
 def index(request):
@@ -26,7 +26,7 @@ def basket(request):
 
     # Jeśli użytkownik nie wybrał jeszcze seansu ani biletu, wyślij go do wyboru seansu
     if not selected_seance or not selected_ticket:
-        return redirect('select_seance')
+        return redirect('select_movie')
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
     context = {
@@ -58,17 +58,46 @@ def price_list(request):
     return TemplateResponse(request, template, context)
 
 
-def select_seance(request):
+def select_movie(request):
     if request.method == 'POST':
-        form = SeanceForm(request.POST)
+        form = MovieForm(request.POST)
         if form.is_valid():
-            # Zapisz dane seansu w sesji
-            request.session['selected_seance'] = form.cleaned_data['movie'].title
-            return redirect('select_ticket')
+            selected_movie = form.cleaned_data['movie']
+            # Przekieruj do widoku seansów po wybraniu filmu
+            return redirect('select_seance', movie_id=selected_movie.id)
     else:
-        form = SeanceForm()
-    template = "cinema/select_seance.html"
+        form = MovieForm()
+
+    template = "cinema/select_movie.html"
     return render(request, template, {'form': form})
+
+
+def select_seance(request, movie_id):
+    movie = Movie.objects.get(id=movie_id)
+    if request.method == 'POST':
+        form = SeanceForm(request.POST, movie=movie)
+        if form.is_valid():
+            selected_seance = form.cleaned_data['show_start']
+            return redirect('select_seat', seance_id = selected_seance.id)
+    else:
+        form = SeanceForm(movie=movie)
+
+    template = "cinema/select_seance.html"
+    return render(request, template, {'form': form, 'movie': movie})
+
+
+def select_seat(request, seance_id):
+    seance = Seance.objects.get(id=seance_id)
+    if request.method == 'POST':
+        form = SeanceForm(request.POST, seance=seance)
+        if form.is_valid():
+            selected_seats = form.cleaned_data['show_start']
+            return redirect('select_ticket_type')
+    else:
+        form = SeatForm(seance=seance)
+
+    template = "cinema/select_seance.html"
+    return render(request, template, {'form': form, 'movie': movie})
 
 # Widok wyboru typu biletu
 def select_ticket(request):
