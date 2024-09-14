@@ -1,6 +1,7 @@
-#!/bin/bash
-pip install -r requirements.txt
+#!/bin/sh -x
 cd ../cinema_reservation_system
+pip install -r requirements.txt
+python manage.py migrate
 python manage.py loaddata cinema/fixtures/users.json
 python manage.py loaddata cinema/fixtures/cinemas.json
 python manage.py loaddata cinema/fixtures/halls.json
