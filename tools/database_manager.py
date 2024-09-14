@@ -47,7 +47,7 @@ class DatabaseManager:
         cursor = connection.cursor()
         for element in data:
             cursor.execute(
-                "INSERT INTO cinema_seance (show_start, hall_number, movie_id) VALUES (?, ?, ?)",
+                "INSERT INTO cinema_seance (show_start, hall_id, movie_id) VALUES (?, ?, ?)",
                 element
             )
         connection.commit()

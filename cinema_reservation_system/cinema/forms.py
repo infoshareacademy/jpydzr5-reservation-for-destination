@@ -12,7 +12,7 @@ class SeatForm(forms.Form):
 
 class MovieForm(forms.Form):
     """Formularz wyboru filmu"""
-    movie = forms.ModelChoiceField(queryset=Movie.objects.all(), label="Wybierz film")
+    movie = forms.ModelChoiceField(queryset=Movie.objects.filter(seance__show_start__gte=pendulum.now().subtract(minutes=30)).distinct(), label="Wybierz film")
 
 
 class SeanceForm(forms.Form):

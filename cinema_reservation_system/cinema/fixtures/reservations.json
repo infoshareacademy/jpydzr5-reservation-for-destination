@@ -1,0 +1,38 @@
+[
+{
+  "model": "cinema.reservation",
+  "pk": 1,
+  "fields": {
+    "created": null,
+    "user": -1,
+    "seance": 4
+  }
+},
+{
+  "model": "cinema.reservation",
+  "pk": 2,
+  "fields": {
+    "created": "2024-09-14T22:17:17.712Z",
+    "user": 1,
+    "seance": 4
+  }
+},
+{
+  "model": "cinema.reservation",
+  "pk": 3,
+  "fields": {
+    "created": "2024-09-14T22:18:36.782Z",
+    "user": 1,
+    "seance": 4
+  }
+},
+{
+  "model": "cinema.reservation",
+  "pk": 4,
+  "fields": {
+    "created": "2024-09-14T22:32:54.622Z",
+    "user": 1,
+    "seance": 4
+  }
+}
+]

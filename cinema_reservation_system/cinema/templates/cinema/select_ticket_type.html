@@ -1,0 +1,16 @@
+Zarezerwowałeś bilety:<br>
+
+{% for seat_reservation in reservation.seatreservation_set.all %}
+    ================================<br>
+    tytuł filmu: {{  seat_reservation.seance.movie.title }}<br>
+    początek filmu: {{  seat_reservation.seance.show_start }}<br>
+    rząd {{ seat_reservation.seat.row }}<br>
+    miejsce {{ seat_reservation.seat.column }}<br>
+    ================================<br>
+{% endfor %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dalej</button>
+    <a href="{% url 'index' %}">Anuluj</a>
+</form>

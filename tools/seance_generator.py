@@ -39,12 +39,12 @@ class SeanceGenerator:
             random_movie = random.choice(movies)
             show_date = random.choice(next_week_show_dates)
             show_hour = random.choice(self.SHOW_HOURS)
-            hall_number = random.choice(self.HALL_NUMBERS)
+            hall = random.choice(self.HALL_NUMBERS)
             show_datetime_string = f"{show_date} {show_hour}"
             cinema_shows.append(
                 [
                     pendulum.from_format(show_datetime_string, "YYYY-MM-DD HH:mm").to_datetime_string(),
-                    hall_number,
+                    hall,
                     random_movie
                 ]
             )

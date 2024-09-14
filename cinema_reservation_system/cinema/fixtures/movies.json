@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "title": "Avengers: Endgame",
-    "description": "Ostateczne starcie superbohaterÃ³w Marvela z Thanossem, ktÃ³ry zniszczyÅ‚ poÅ‚owÄ™ wszechÅ›wiata. Bohaterowie, peÅ‚ni odwagi i poÅ›wiÄ™cenia, prÃ³bujÄ… naprawiÄ‡ zniszczenia i przywrÃ³ciÄ‡ harmoniÄ™. Widowiskowe efekty specjalne i emocjonalne poÅ¼egnania.",
+    "description": "Ostateczne starcie superbohaterów Marvela z Thanossem, który zniszczy³ po³owê wszechœwiata. Bohaterowie, pe³ni odwagi i poœwiêcenia, próbuj¹ naprawiæ zniszczenia i przywróciæ harmoniê. Widowiskowe efekty specjalne i emocjonalne po¿egnania.",
     "duration": "02:00:00"
   }
 },
@@ -13,7 +13,7 @@
   "pk": 2,
   "fields": {
     "title": "Seksmisja",
-    "description": "W roku 2044 zostajÄ… odhibernowani dwaj ostatni przedstawiciele pÅ‚ci mÄ™skiej, wprowadzajÄ…c chaos do idealnego Å›wiata rzÄ…dzonego przez LigÄ™ Kobiet.",
+    "description": "W roku 2044 zostaj¹ odhibernowani dwaj ostatni przedstawiciele p³ci mêskiej, wprowadzaj¹c chaos do idealnego œwiata rz¹dzonego przez Ligê Kobiet.",
     "duration": "02:00:00"
   }
 },
@@ -22,7 +22,7 @@
   "pk": 3,
   "fields": {
     "title": "The Godfather",
-    "description": "Epicka saga rodziny mafijnej Corleone, ktÃ³rej gÅ‚owÄ… jest Vito Corleone, budujÄ…cy swoje imperium w brutalnym Å›wiecie przestÄ™pczym. Film o wÅ‚adzy, lojalnoÅ›ci, zemÅ›cie i rodzinie, uznawany za jedno z najwiekszych dzieÅ‚ kinematografii.",
+    "description": "Epicka saga rodziny mafijnej Corleone, której g³ow¹ jest Vito Corleone, buduj¹cy swoje imperium w brutalnym œwiecie przestêpczym. Film o w³adzy, lojalnoœci, zemœcie i rodzinie, uznawany za jedno z najwiekszych dzie³ kinematografii.",
     "duration": "02:00:00"
   }
 },
@@ -31,7 +31,7 @@
   "pk": 4,
   "fields": {
     "title": "Inception",
-    "description": "TrzymajÄ…cy w napieciu thriller sci-fi o Domie Cobb, specjalizujÄ…cym sie w kradzieÅ¼y tajemnic z umysÅ‚Ã³w ludzi poprzez sny. Film Å‚Ä…czy wartkÄ… akcje z filozoficznymi pytaniami o rzeczywistoÅ›Ä‡, pamiec i podswiadomoÅ›Ä‡, zaskakujÄ…c widza na kazdym kroku.",
+    "description": "Trzymaj¹cy w napieciu thriller sci-fi o Domie Cobb, specjalizuj¹cym sie w kradzie¿y tajemnic z umys³ów ludzi poprzez sny. Film ³¹czy wartk¹ akcje z filozoficznymi pytaniami o rzeczywistoœæ, pamiec i podswiadomoœæ, zaskakuj¹c widza na kazdym kroku.",
     "duration": "02:00:00"
   }
 },
@@ -40,7 +40,7 @@
   "pk": 5,
   "fields": {
     "title": "The Shawshank Redemption",
-    "description": "Historia Andy'ego Dufresne'a, niesÅ‚usznie skazanego na doÅ¼ywocie, ktÃ³ry dzieki inteligencji, przyjaÄni z Redem i niezÅ‚omnej nadziei, odnajduje w wiezieniu swojÄ… droge do wolnosci. Film o triumfie ducha ludzkiego w najciÄ™Å¼szych warunkach.",
+    "description": "Historia Andy'ego Dufresne'a, nies³usznie skazanego na do¿ywocie, który dzieki inteligencji, przyjaèni z Redem i niez³omnej nadziei, odnajduje w wiezieniu swoj¹ droge do wolnosci. Film o triumfie ducha ludzkiego w najciê¿szych warunkach.",
     "duration": "02:00:00"
   }
 },
@@ -49,7 +49,7 @@
   "pk": 6,
   "fields": {
     "title": "The Dark Knight",
-    "description": "Batman walczy z Jokerem, szalonym geniuszem zbrodni, ktÃ³ry zagraza bezpieczeÅ„stwu Gotham. Film ukazuje moralne dylematy bohatera i napiecie miedzy dobrem a zÅ‚em, z niezapomnianÄ… rolÄ… Heatha Ledgera jako Jokera. Mroczna, gÅ‚Ä™boka opowieÅ›Ä‡",
+    "description": "Batman walczy z Jokerem, szalonym geniuszem zbrodni, który zagraza bezpieczeñstwu Gotham. Film ukazuje moralne dylematy bohatera i napiecie miedzy dobrem a z³em, z niezapomnian¹ rol¹ Heatha Ledgera jako Jokera. Mroczna, g³êboka opowieœæ",
     "duration": "02:00:00"
   }
 },
@@ -58,7 +58,7 @@
   "pk": 7,
   "fields": {
     "title": "Pulp Fiction",
-    "description": "ArcydzieÅ‚o Quentina Tarantino, splatajÄ…ce losy pÅ‚atnych zabÃ³jcÃ³w, boksera i gangstera w peÅ‚nym ironii i przemocy swiecie. Kultowe dialogi, niechronologiczna narracja i wyjÄ…tkowy styl uczyniÅ‚y z tego filmu klasyke, ktÃ³ra na staÅ‚e wpisaÅ‚a sie w historie kina.",
+    "description": "Arcydzie³o Quentina Tarantino, splataj¹ce losy p³atnych zabójców, boksera i gangstera w pe³nym ironii i przemocy swiecie. Kultowe dialogi, niechronologiczna narracja i wyj¹tkowy styl uczyni³y z tego filmu klasyke, która na sta³e wpisa³a sie w historie kina.",
     "duration": "02:00:00"
   }
 },
@@ -67,7 +67,7 @@
   "pk": 8,
   "fields": {
     "title": "Forrest Gump",
-    "description": "Opowiesc o niezwykÅ‚ym Å¼yciu Forresta Gumpa, prostego czÅ‚owieka, ktÃ³ry przypadkowo staje sie swiadkiem i uczestnikiem kluczowych wydarzen w historii USA. To historia o miÅ‚osci, niewinnosci i sile przypadku, peÅ‚na humoru i wzruszen.",
+    "description": "Opowiesc o niezwyk³ym ¿yciu Forresta Gumpa, prostego cz³owieka, który przypadkowo staje sie swiadkiem i uczestnikiem kluczowych wydarzen w historii USA. To historia o mi³osci, niewinnosci i sile przypadku, pe³na humoru i wzruszen.",
     "duration": "02:00:00"
   }
 },
@@ -76,7 +76,7 @@
   "pk": 9,
   "fields": {
     "title": "The Matrix",
-    "description": "Neo odkrywa, ze swiat, w ktÃ³rym Å¼yje, to tylko symulacja stworzona przez maszyny, kontrolujÄ…ce ludzkosc. Wraz z grupÄ… rebeliantÃ³w podejmuje walke o wolnosc. PrzeÅ‚omowe efekty specjalne, filozoficzne refleksje i kultowy styl uczyniÅ‚y ten film ikonÄ… popkultury.",
+    "description": "Neo odkrywa, ze swiat, w którym ¿yje, to tylko symulacja stworzona przez maszyny, kontroluj¹ce ludzkosc. Wraz z grup¹ rebeliantów podejmuje walke o wolnosc. Prze³omowe efekty specjalne, filozoficzne refleksje i kultowy styl uczyni³y ten film ikon¹ popkultury.",
     "duration": "02:00:00"
   }
 },
@@ -85,7 +85,7 @@
   "pk": 10,
   "fields": {
     "title": "Schindler's List",
-    "description": "WstrzÄ…sajÄ…cy dramat o Oskarze Schindlerze, ktÃ³ry ratuje ponad tysiÄ…c Å¼ydÃ³w przed zagÅ‚adÄ… w czasie II wojny swiatowej. To przejmujÄ…ca opowiesc o ludzkiej godnosci, bohaterstwie i koszmarze Holokaustu, pozostawiajÄ…ca widza w gÅ‚ebokiej refleksji.",
+    "description": "Wstrz¹saj¹cy dramat o Oskarze Schindlerze, który ratuje ponad tysi¹c ¿ydów przed zag³ad¹ w czasie II wojny swiatowej. To przejmuj¹ca opowiesc o ludzkiej godnosci, bohaterstwie i koszmarze Holokaustu, pozostawiaj¹ca widza w g³ebokiej refleksji.",
     "duration": "02:00:00"
   }
 },
@@ -94,7 +94,7 @@
   "pk": 11,
   "fields": {
     "title": "Titanic",
-    "description": "Epicka historia miÅ‚oÅ›ci Jacka i Rose, rozgrywajÄ…ca siÄ™ na tle jednej z najwiekszych katastrof morskich w historii. Film ukazuje nie tylko tragiczny rejs Titanica, ale takÅ¼e spoÅ‚eczne nierÃ³wnosci i sile uczucia, ktÃ³re przetrwa nawet najgorsze przeciwnoÅ›ci losu.",
+    "description": "Epicka historia mi³oœci Jacka i Rose, rozgrywaj¹ca siê na tle jednej z najwiekszych katastrof morskich w historii. Film ukazuje nie tylko tragiczny rejs Titanica, ale tak¿e spo³eczne nierównosci i sile uczucia, które przetrwa nawet najgorsze przeciwnoœci losu.",
     "duration": "02:00:00"
   }
 }

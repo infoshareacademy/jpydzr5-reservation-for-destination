@@ -1,0 +1,26 @@
+[
+{
+  "model": "cinema.seattype",
+  "pk": 1,
+  "fields": {
+    "name": "Normal",
+    "icon": "icons/normal-free.png"
+  }
+},
+{
+  "model": "cinema.seattype",
+  "pk": 2,
+  "fields": {
+    "name": "VIP",
+    "icon": "icons/vip-free.png"
+  }
+},
+{
+  "model": "cinema.seattype",
+  "pk": 3,
+  "fields": {
+    "name": "for_disabled",
+    "icon": "icons/disabled-free.png"
+  }
+}
+]
