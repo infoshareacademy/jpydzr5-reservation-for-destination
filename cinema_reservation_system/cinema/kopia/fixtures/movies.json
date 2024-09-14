@@ -1,0 +1,101 @@
+[
+{
+  "model": "cinema.movie",
+  "pk": 1,
+  "fields": {
+    "title": "Avengers: Endgame",
+    "description": "Ostateczne starcie superbohaterów Marvela z Thanossem, który zniszczy³ po³owê wszechwiata. Bohaterowie, pe³ni odwagi i powiêcenia, próbuj¹ naprawiæ zniszczenia i przywróciæ harmoniê. Widowiskowe efekty specjalne i emocjonalne po¿egnania.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 2,
+  "fields": {
+    "title": "Seksmisja",
+    "description": "W roku 2044 zostaj¹ odhibernowani dwaj ostatni przedstawiciele p³ci mêskiej, wprowadzaj¹c chaos do idealnego wiata rz¹dzonego przez Ligê Kobiet.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 3,
+  "fields": {
+    "title": "The Godfather",
+    "description": "Epicka saga rodziny mafijnej Corleone, której g³ow¹ jest Vito Corleone, buduj¹cy swoje imperium w brutalnym wiecie przestêpczym. Film o w³adzy, lojalnoci, zemcie i rodzinie, uznawany za jedno z najwiekszych dzie³ kinematografii.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 4,
+  "fields": {
+    "title": "Inception",
+    "description": "Trzymaj¹cy w napieciu thriller sci-fi o Domie Cobb, specjalizuj¹cym sie w kradzie¿y tajemnic z umys³ów ludzi poprzez sny. Film ³¹czy wartk¹ akcje z filozoficznymi pytaniami o rzeczywistoæ, pamiec i podswiadomoæ, zaskakuj¹c widza na kazdym kroku.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 5,
+  "fields": {
+    "title": "The Shawshank Redemption",
+    "description": "Historia Andy'ego Dufresne'a, nies³usznie skazanego na do¿ywocie, który dzieki inteligencji, przyjaèni z Redem i niez³omnej nadziei, odnajduje w wiezieniu swoj¹ droge do wolnosci. Film o triumfie ducha ludzkiego w najciê¿szych warunkach.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 6,
+  "fields": {
+    "title": "The Dark Knight",
+    "description": "Batman walczy z Jokerem, szalonym geniuszem zbrodni, który zagraza bezpieczeñstwu Gotham. Film ukazuje moralne dylematy bohatera i napiecie miedzy dobrem a z³em, z niezapomnian¹ rol¹ Heatha Ledgera jako Jokera. Mroczna, g³êboka opowieæ",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 7,
+  "fields": {
+    "title": "Pulp Fiction",
+    "description": "Arcydzie³o Quentina Tarantino, splataj¹ce losy p³atnych zabójców, boksera i gangstera w pe³nym ironii i przemocy swiecie. Kultowe dialogi, niechronologiczna narracja i wyj¹tkowy styl uczyni³y z tego filmu klasyke, która na sta³e wpisa³a sie w historie kina.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 8,
+  "fields": {
+    "title": "Forrest Gump",
+    "description": "Opowiesc o niezwyk³ym ¿yciu Forresta Gumpa, prostego cz³owieka, który przypadkowo staje sie swiadkiem i uczestnikiem kluczowych wydarzen w historii USA. To historia o mi³osci, niewinnosci i sile przypadku, pe³na humoru i wzruszen.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 9,
+  "fields": {
+    "title": "The Matrix",
+    "description": "Neo odkrywa, ze swiat, w którym ¿yje, to tylko symulacja stworzona przez maszyny, kontroluj¹ce ludzkosc. Wraz z grup¹ rebeliantów podejmuje walke o wolnosc. Prze³omowe efekty specjalne, filozoficzne refleksje i kultowy styl uczyni³y ten film ikon¹ popkultury.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 10,
+  "fields": {
+    "title": "Schindler's List",
+    "description": "Wstrz¹saj¹cy dramat o Oskarze Schindlerze, który ratuje ponad tysi¹c ¿ydów przed zag³ad¹ w czasie II wojny swiatowej. To przejmuj¹ca opowiesc o ludzkiej godnosci, bohaterstwie i koszmarze Holokaustu, pozostawiaj¹ca widza w g³ebokiej refleksji.",
+    "duration": "02:00:00"
+  }
+},
+{
+  "model": "cinema.movie",
+  "pk": 11,
+  "fields": {
+    "title": "Titanic",
+    "description": "Epicka historia mi³oci Jacka i Rose, rozgrywaj¹ca siê na tle jednej z najwiekszych katastrof morskich w historii. Film ukazuje nie tylko tragiczny rejs Titanica, ale tak¿e spo³eczne nierównosci i sile uczucia, które przetrwa nawet najgorsze przeciwnoci losu.",
+    "duration": "02:00:00"
+  }
+}
+]

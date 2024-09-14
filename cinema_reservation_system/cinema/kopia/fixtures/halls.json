@@ -1,0 +1,11 @@
+[
+{
+  "model": "cinema.hall",
+  "pk": 1,
+  "fields": {
+    "cinema": 1,
+    "hall_number": "1",
+    "cleaning_time": "00:10:00"
+  }
+}
+]

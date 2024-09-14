@@ -1,0 +1,10 @@
+[
+{
+  "model": "cinema.cinema",
+  "pk": 1,
+  "fields": {
+    "name": "Kino SYRENA",
+    "city": "Warszawa"
+  }
+}
+]
