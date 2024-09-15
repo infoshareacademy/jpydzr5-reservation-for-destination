@@ -1,0 +1,263 @@
+[
+{
+  "model": "cinema.seance",
+  "pk": 1,
+  "fields": {
+    "show_start": "2024-09-20T13:30:00Z",
+    "hall": 1,
+    "movie": 1
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 2,
+  "fields": {
+    "show_start": "2024-09-17T19:30:00Z",
+    "hall": 1,
+    "movie": 1
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 3,
+  "fields": {
+    "show_start": "2024-09-20T22:15:00Z",
+    "hall": 1,
+    "movie": 2
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 4,
+  "fields": {
+    "show_start": "2024-09-16T22:15:00Z",
+    "hall": 1,
+    "movie": 3
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 5,
+  "fields": {
+    "show_start": "2024-09-19T13:30:00Z",
+    "hall": 1,
+    "movie": 3
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 6,
+  "fields": {
+    "show_start": "2024-09-19T16:45:00Z",
+    "hall": 1,
+    "movie": 3
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 7,
+  "fields": {
+    "show_start": "2024-09-17T16:45:00Z",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 8,
+  "fields": {
+    "show_start": "2024-09-20T13:30:00Z",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 9,
+  "fields": {
+    "show_start": "2024-09-15T10:00:00Z",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 10,
+  "fields": {
+    "show_start": "2024-09-17T16:45:00Z",
+    "hall": 1,
+    "movie": 6
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 11,
+  "fields": {
+    "show_start": "2024-09-15T10:00:00Z",
+    "hall": 1,
+    "movie": 6
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 12,
+  "fields": {
+    "show_start": "2024-09-18T16:45:00Z",
+    "hall": 1,
+    "movie": 7
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 13,
+  "fields": {
+    "show_start": "2024-09-17T22:15:00Z",
+    "hall": 1,
+    "movie": 7
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 14,
+  "fields": {
+    "show_start": "2024-09-21T19:30:00Z",
+    "hall": 1,
+    "movie": 7
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 15,
+  "fields": {
+    "show_start": "2024-09-18T10:00:00Z",
+    "hall": 1,
+    "movie": 7
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 16,
+  "fields": {
+    "show_start": "2024-09-19T13:30:00Z",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 17,
+  "fields": {
+    "show_start": "2024-09-15T13:30:00Z",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 18,
+  "fields": {
+    "show_start": "2024-09-21T16:45:00Z",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 19,
+  "fields": {
+    "show_start": "2024-09-15T10:00:00Z",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 20,
+  "fields": {
+    "show_start": "2024-09-15T22:15:00Z",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 21,
+  "fields": {
+    "show_start": "2024-09-18T13:30:00Z",
+    "hall": 1,
+    "movie": 9
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 22,
+  "fields": {
+    "show_start": "2024-09-15T19:30:00Z",
+    "hall": 1,
+    "movie": 9
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 23,
+  "fields": {
+    "show_start": "2024-09-17T16:45:00Z",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 24,
+  "fields": {
+    "show_start": "2024-09-18T13:30:00Z",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 25,
+  "fields": {
+    "show_start": "2024-09-19T22:15:00Z",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 26,
+  "fields": {
+    "show_start": "2024-09-17T16:45:00Z",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 27,
+  "fields": {
+    "show_start": "2024-09-18T13:30:00Z",
+    "hall": 1,
+    "movie": 11
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 28,
+  "fields": {
+    "show_start": "2024-09-16T10:00:00Z",
+    "hall": 1,
+    "movie": 11
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 29,
+  "fields": {
+    "show_start": "2024-09-21T22:15:00Z",
+    "hall": 1,
+    "movie": 11
+  }
+}
+]
