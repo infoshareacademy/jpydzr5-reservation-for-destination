@@ -22,7 +22,7 @@
   "pk": 3,
   "fields": {
     "created": "2024-09-14T22:18:36.782Z",
-    "user": 1,
+    "user": -1,
     "seance": 4
   }
 },
@@ -31,7 +31,7 @@
   "pk": 4,
   "fields": {
     "created": "2024-09-14T22:32:54.622Z",
-    "user": 1,
+    "user": -1,
     "seance": 4
   }
 }
