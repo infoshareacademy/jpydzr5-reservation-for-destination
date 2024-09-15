@@ -7,8 +7,13 @@ class RepertoireAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(models.SeatReservation)
+@admin.register(models.Reservation)
 class ReservationAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(models.SeatReservation)
+class ReservationSeatAdmin(admin.ModelAdmin):
     pass
 
 
