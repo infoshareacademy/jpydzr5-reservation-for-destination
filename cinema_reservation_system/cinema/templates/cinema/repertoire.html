@@ -17,5 +17,18 @@
         {% endfor %}
     </thead>
 </table>
+    {% for m in movies %}
+    <div>
+    {{ m.title }}
+    <p>{{ m.description }}</p>
+        <table>
+            <tbody>
+                {% for t in time_movies %}
+                    <td>{{ t }}</td>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
 </body>
 </html>

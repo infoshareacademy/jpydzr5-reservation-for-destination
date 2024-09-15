@@ -1,7 +1,7 @@
+from datetime import timedelta
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
-from datetime import timedelta
 
 
 class Price(models.Model):
@@ -14,10 +14,16 @@ class Movie(models.Model):
     description = models.CharField(max_length=300)
     duration = models.DurationField(default=timedelta(minutes=120))
 
+    def __str__(self):
+        return self.title
+
 class Seance(models.Model):
     show_start = models.DateTimeField(default=timezone.now)
     hall_number = models.IntegerField()
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.movie.title
 
 
 class Reservation(models.Model):
