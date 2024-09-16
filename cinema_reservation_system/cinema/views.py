@@ -43,22 +43,26 @@ def basket(request):
 def repertoire(request):
     template = "cinema/repertoire.html"
     start_day = pendulum.now("Europe/Warsaw")
-    seven_days_forward = {}
-    for day in range(1, 8):
-        start_day = start_day.add(days=1)
-        seven_days_forward[start_day.format("YYYY-MM-DD")] = start_day.format("dddd", locale="pl")
-    day = request.GET.get("date")
-    if day is not None:
-        ids_movies = Seance.objects.filter(show_start__date=day).values_list("movie__id", flat=True).distinct()
+    if 'date' in request.GET:
+        datetime_start = pendulum.parse(request.GET.get('date'))
+        datetime_end = pendulum.parse(request.GET.get('date')).add(days=1).start_of('day')
     else:
-        ids_movies = (Seance.objects.filter(show_start=pendulum.now("Europe/Warsaw").format("YYYY-MM-DD"))
-                      .values_list("movie__id", flat=True)).distinct()
-    movies = Movie.objects.filter(id__in=ids_movies)
-    time_movies = Seance.objects.filter(movie__in=ids_movies, show_start__date=day).values_list("show_start", flat=True)
+        datetime_start = pendulum.now("Europe/Warsaw").subtract(minutes=30)
+        datetime_end = pendulum.tomorrow("Europe/Warsaw").start_of('day')
+
+    repertoire = {}
+
+    seances = models.Seance.objects.filter(show_start__gte=datetime_start,
+                                           show_start__lt=datetime_end)
+
+    for seance in seances:
+        if seance.movie not in repertoire:
+            repertoire[seance.movie] = []
+
+        repertoire[seance.movie].append(seance)
+
     context = {
-        "days": seven_days_forward,
-        "movies": movies,
-        "time_movies": time_movies
+        "repertoire": repertoire,
     }
     return TemplateResponse(request, template, context)
 

@@ -17,14 +17,14 @@
         {% endfor %}
     </thead>
 </table>
-    {% for m in movies %}
+    {% for movie, seances in repertoire.items %}
     <div>
-    {{ m.title }}
-    <p>{{ m.description }}</p>
+    {{ movie.title }}
+    <p>{{ movie.description }}</p>
         <table>
             <tbody>
-                {% for t in time_movies %}
-                    <td>{{ t }}</td>
+                {% for seance in seances %}
+                    <td>{{ seance.show_start }}</td>
                 {% endfor %}
             </tbody>
         </table>
