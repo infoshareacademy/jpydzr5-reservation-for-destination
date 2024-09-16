@@ -1,6 +1,7 @@
 from django.db.models import Exists, OuterRef
 from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
+from .models import Seance, Movie
 from . import forms, models
 import json
 import pendulum
@@ -46,7 +47,19 @@ def repertoire(request):
     for day in range(1, 8):
         start_day = start_day.add(days=1)
         seven_days_forward[start_day.format("YYYY-MM-DD")] = start_day.format("dddd", locale="pl")
-    context = {"days": seven_days_forward}
+    day = request.GET.get("date")
+    if day is not None:
+        ids_movies = Seance.objects.filter(show_start__date=day).values_list("movie__id", flat=True).distinct()
+    else:
+        ids_movies = (Seance.objects.filter(show_start=pendulum.now("Europe/Warsaw").format("YYYY-MM-DD"))
+                      .values_list("movie__id", flat=True)).distinct()
+    movies = Movie.objects.filter(id__in=ids_movies)
+    time_movies = Seance.objects.filter(movie__in=ids_movies, show_start__date=day).values_list("show_start", flat=True)
+    context = {
+        "days": seven_days_forward,
+        "movies": movies,
+        "time_movies": time_movies
+    }
     return TemplateResponse(request, template, context)
 
 
