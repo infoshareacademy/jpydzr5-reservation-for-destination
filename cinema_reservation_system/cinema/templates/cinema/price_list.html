@@ -2,9 +2,40 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cennik biletów</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 40px auto;
+            font-size: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
-{{ message }}
+    <h1 style="text-align: center;">Cennik biletów</h1>
+
+    {% if tickets %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Rodzaj biletu</th>
+                    <th>Cena biletu</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.name }}</td>
+                        <td>{{ ticket.price }} zł</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 </body>
 </html>

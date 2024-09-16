@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Seats</title>
+        <style>
+            .seat-icon {
+                position: absolute;
+                transform-origin: center;
+                width: 40px; /* Szerokość ikony */
+                height: 40px; /* Wysokość ikony */
+                object-fit: contain; /* Zachowuje proporcje obrazu w ramach kontenera */
+            }
+        </style>
+    </head>
+    <body>
+        <div>wybrałeś film: <span style="font-weight: bolder">{{ seance.movie.title }}</span></div>
+        <div>seans rozpoczyna się o godzinie: <span style="font-weight: bolder">{{ seance.show_start }}</span></div>
+
+        <div id="seats-container" style="position: relative; width: 100%; height: 60vh;"></div>
+        <div id="ekran" ><img style="width:550px" src="/media/ekran.png"></div>
+
+        <form method="post" id="seats-form">
+            {% csrf_token %}
+            <input type="hidden" id="selected-seats" name="selected-seats" value="">
+            <button type="submit">Dalej</button>
+            <a href="{% url 'basket' %}">Anuluj</a>
+        </form>
+
+        <script>
+            const selectedIcons = []; // Będziemy powiązywać id miejsca z oryginalnym URL ikony
+            document.addEventListener('DOMContentLoaded', function() {
+
+
+                const seats = {{ seats_json|safe }};
+
+                const container = document.getElementById('seats-container');
+
+                seats.forEach(seat => {
+                    const img = document.createElement('img');
+                    img.id = 'seat-' + seat.id;
+
+                    if (seat.is_reserved) {
+                        img.src = seat.seat_type_icon.replace('free','occupied')
+                        img.className = 'seat-icon seats-occupied';
+                    } else {
+                        img.src = seat.seat_type_icon; // Ścieżka do ikony
+                        img.className = 'seat-icon seats-free';
+                    }
+                    img.style.left = seat.pos_x + 'px';
+                    img.style.top = seat.pos_y + 'px';
+                    img.style.transform = `rotate(${seat.rotation}deg)`;
+                    container.appendChild(img);
+                });
+                // Listener dla kliknięć na elementach z klasą 'seats'
+                document.querySelectorAll('.seats-free').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const seatId = item.id.replace('seat-', ''); // Pobieramy id siedzenia (bez 'seat-')
+
+                        // Sprawdzenie czy siedzenie jest już wybrane
+
+                        if (!selectedIcons.includes(seatId)) {
+                            // Jeśli nie, dodajemy id do listy wybranych miejsc
+                            selectedIcons.push(seatId);
+
+                            // Zmieniamy ikonę na "selected"
+                            item.src = item.src.replace('free','selected'); // Ścieżka do ikony "selected"
+
+                        } else {
+                            // Jeśli miejsce już jest wybrane, usuwamy je z listy
+                            const index = selectedIcons.indexOf(seatId);
+                            selectedIcons.splice(index, 1);
+
+                            // Przywracamy oryginalną ikonę
+                            item.src = item.src.replace('selected','free'); // Ścieżka do ikony "selected"
+
+                        }
+                    });
+
+                });
+            });
+            document.getElementById('seats-form').addEventListener('submit', function(event) {
+                // Przekształcamy listę wybranych miejsc na JSON
+                const selectedSeatsInput = document.getElementById('selected-seats');
+                selectedSeatsInput.value = JSON.stringify(selectedIcons); // Przechowujemy wybrane miejsca jako JSON
+
+            });
+
+        </script>
+    </body>
+</html>

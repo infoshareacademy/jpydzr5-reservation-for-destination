@@ -1,48 +1,47 @@
-from .models import Seance, User, Reservation, Price, Movie
 from django.contrib import admin
-from .models import Cinema, Room, Seat
+from . import models
 
 
-@admin.register(Seance)
-class SeanceAdmin(admin.ModelAdmin):
-    list_display = [
-        'formated_show_start',
-        'hall_number',
-        'movie',
-    ]
+@admin.register(models.Seance)
+class RepertoireAdmin(admin.ModelAdmin):
+    pass
 
 
-    def formated_show_start(self, obj):
-        return obj.show_start.strftime('%Y-%m-%d %H:%M')
-
-
-@admin.register(Reservation)
+@admin.register(models.Reservation)
 class ReservationAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Price)
-class PriceAdmin(admin.ModelAdmin):
+@admin.register(models.SeatReservation)
+class ReservationSeatAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Movie)
-class MovieAdmin(admin.ModelAdmin):
-    list_display = [
-        'title',
-        'description',
-        'duration',
-    ]
+@admin.register(models.TicketType)
+class TicketTypeAdmin(admin.ModelAdmin):
+    pass
 
-@admin.register(Cinema)
+
+@admin.register(models.Movie)
+class MovieAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(models.Cinema)
 class CinemaAdmin(admin.ModelAdmin):
     list_display = ('name', 'city')  # Możesz dostosować pola, które będą wyświetlane w panelu admina
 
 
-@admin.register(Room)
-class RoomAdmin(admin.ModelAdmin):
-    list_display = ('cinema', 'room_number', 'cleaning_time')  # Pola do wyświetlania
+@admin.register(models.Hall)
+class HallAdmin(admin.ModelAdmin):
+    list_display = ('cinema', 'hall_number', 'cleaning_time')  # Pola do wyświetlania
 
-@admin.register(Seat)
+
+@admin.register(models.Seat)
 class SeatAdmin(admin.ModelAdmin):
-    list_display = ('room', 'row', 'column', 'status')  # Pola do wyświetlania
+    pass
+
+
+@admin.register(models.SeatType)
+class SeatTypeAdmin(admin.ModelAdmin):
+    pass
