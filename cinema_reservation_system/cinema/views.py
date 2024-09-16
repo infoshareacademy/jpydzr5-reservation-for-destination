@@ -1,7 +1,10 @@
 from django.db.models import Exists, OuterRef
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.response import TemplateResponse
 from . import forms, models
+from django.forms import formset_factory
+from .models import Reservation, SeatReservation
+from .forms import TicketTypeForm
 import json
 import pendulum
 
@@ -89,14 +92,33 @@ def select_seance(request, movie_id):
 
 
 def select_ticket_type(request, reservation_id):
-    reservation = models.Reservation.objects.get(id=reservation_id)
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    seat_reservations = reservation.seatreservation_set.all()
+
+    # Utwórz formset dla typów biletów, jeden formularz dla każdego zarezerwowanego miejsca
+    TicketFormSet = formset_factory(TicketTypeForm, extra=len(seat_reservations))
+
+    if request.method == 'POST':
+        formset = TicketFormSet(request.POST)
+        if formset.is_valid():
+            # Zapisz każdy typ biletu dla odpowiadającego mu miejsca
+            for form, seat_reservation in zip(formset, seat_reservations):
+                ticket_type = form.cleaned_data['ticket_type']
+                seat_reservation.ticket_type = ticket_type
+                seat_reservation.save()
+
+            return redirect('next_step')  # Przekierowanie do następnego kroku po udanym przesłaniu formularza
+    else:
+        # Inicjalizuj formset z pustymi formularzami
+        formset = TicketFormSet()
 
     template = "cinema/select_ticket_type.html"
     context = {
+        'formset': formset,
         'reservation': reservation,
+        'seat_reservations': seat_reservations
     }
     return render(request, template, context)
-
 
 def select_seats(request, seance_id):
     seance = models.Seance.objects.get(id=seance_id)

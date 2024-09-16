@@ -1,16 +1,36 @@
-Zarezerwowałeś bilety:<br>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wybór typu biletu</title>
+</head>
+<body>
+    <h1>Wybór typu biletu</h1>
 
-{% for seat_reservation in reservation.seatreservation_set.all %}
-    ================================<br>
-    tytuł filmu: {{  seat_reservation.reservation.seance.movie.title }}<br>
-    początek filmu: {{  seat_reservation.reservation.seance.show_start }}<br>
-    rząd {{ seat_reservation.seat.row }}<br>
-    miejsce {{ seat_reservation.seat.column }}<br>
-    ================================<br>
-{% endfor %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Dalej</button>
-    <a href="{% url 'index' %}">Anuluj</a>
-</form>
+    <p>Zarezerwowałeś bilety:</p>
+    <ul>
+        {% for seat_reservation in seat_reservations %}
+            <li>
+                Film: {{ seat_reservation.reservation.seance.movie.title }}<br>
+                Początek filmu: {{ seat_reservation.reservation.seance.show_start }}<br>
+                Rząd: {{ seat_reservation.seat.row }}<br>
+                Miejsce: {{ seat_reservation.seat.column }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        {% for form in formset %}
+            <fieldset>
+                <legend>Miejsce {{ forloop.counter }}</legend>
+                {{ form.as_p }}
+            </fieldset>
+        {% endfor %}
+        <button type="submit">Dalej</button>
+        <a href="{% url 'basket' %}">Anuluj</a>
+    </form>
+</body>
+</html>
