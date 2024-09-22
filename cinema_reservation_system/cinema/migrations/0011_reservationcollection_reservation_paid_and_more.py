@@ -12,20 +12,20 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ReservationCollection',
+            name='Reservation',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', models.DateTimeField(auto_now_add=True)),
             ],
         ),
         migrations.AddField(
-            model_name='reservation',
+            model_name='seatreservation',
             name='paid',
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='reservation',
+            model_name='seatreservation',
             name='collection',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.RESTRICT, to='cinema.reservationcollection'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.RESTRICT, to='cinema.reservation'),
         ),
     ]

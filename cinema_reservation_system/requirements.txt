@@ -9,3 +9,4 @@ time-machine==2.15.0
 typing_extensions==4.12.2
 tzdata==2024.1
 pillow==10.4.0
+django-environ==0.11.2

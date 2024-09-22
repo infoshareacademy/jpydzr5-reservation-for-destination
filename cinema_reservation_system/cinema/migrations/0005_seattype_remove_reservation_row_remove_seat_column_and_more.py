@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.RemoveField(
-            model_name='reservation',
+            model_name='seatreservation',
             name='row',
         ),
         migrations.RemoveField(
