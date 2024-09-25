@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RenameField(
-            model_name='reservation',
+            model_name='seatreservation',
             old_name='price',
             new_name='ticket_type',
         ),

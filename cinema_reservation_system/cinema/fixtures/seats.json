@@ -674,5 +674,6401 @@
     "row": "B",
     "column": "10"
   }
+},
+{
+  "model": "cinema.seat",
+  "pk": 53,
+  "fields": {
+    "hall": 2,
+    "pos_x": 0,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 54,
+  "fields": {
+    "hall": 2,
+    "pos_x": 50,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 55,
+  "fields": {
+    "hall": 2,
+    "pos_x": 100,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 56,
+  "fields": {
+    "hall": 2,
+    "pos_x": 150,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 57,
+  "fields": {
+    "hall": 2,
+    "pos_x": 200,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 58,
+  "fields": {
+    "hall": 2,
+    "pos_x": 250,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 59,
+  "fields": {
+    "hall": 2,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 60,
+  "fields": {
+    "hall": 2,
+    "pos_x": 350,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 61,
+  "fields": {
+    "hall": 2,
+    "pos_x": 400,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 62,
+  "fields": {
+    "hall": 2,
+    "pos_x": 450,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 63,
+  "fields": {
+    "hall": 2,
+    "pos_x": 50,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 64,
+  "fields": {
+    "hall": 2,
+    "pos_x": 100,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 65,
+  "fields": {
+    "hall": 2,
+    "pos_x": 150,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 66,
+  "fields": {
+    "hall": 2,
+    "pos_x": 200,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 67,
+  "fields": {
+    "hall": 2,
+    "pos_x": 250,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 68,
+  "fields": {
+    "hall": 2,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 69,
+  "fields": {
+    "hall": 2,
+    "pos_x": 350,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 70,
+  "fields": {
+    "hall": 2,
+    "pos_x": 400,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 71,
+  "fields": {
+    "hall": 2,
+    "pos_x": 450,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 72,
+  "fields": {
+    "hall": 2,
+    "pos_x": 350,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 73,
+  "fields": {
+    "hall": 2,
+    "pos_x": 400,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 74,
+  "fields": {
+    "hall": 2,
+    "pos_x": 0,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 75,
+  "fields": {
+    "hall": 2,
+    "pos_x": 0,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 76,
+  "fields": {
+    "hall": 2,
+    "pos_x": 50,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 77,
+  "fields": {
+    "hall": 2,
+    "pos_x": 100,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 78,
+  "fields": {
+    "hall": 2,
+    "pos_x": 150,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 79,
+  "fields": {
+    "hall": 2,
+    "pos_x": 200,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 80,
+  "fields": {
+    "hall": 2,
+    "pos_x": 250,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 81,
+  "fields": {
+    "hall": 2,
+    "pos_x": 500,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 82,
+  "fields": {
+    "hall": 2,
+    "pos_x": 350,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 83,
+  "fields": {
+    "hall": 2,
+    "pos_x": 400,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 84,
+  "fields": {
+    "hall": 2,
+    "pos_x": 450,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 85,
+  "fields": {
+    "hall": 2,
+    "pos_x": 0,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 86,
+  "fields": {
+    "hall": 2,
+    "pos_x": 50,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 87,
+  "fields": {
+    "hall": 2,
+    "pos_x": 100,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 88,
+  "fields": {
+    "hall": 2,
+    "pos_x": 150,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 89,
+  "fields": {
+    "hall": 2,
+    "pos_x": 200,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 90,
+  "fields": {
+    "hall": 2,
+    "pos_x": 250,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 91,
+  "fields": {
+    "hall": 2,
+    "pos_x": 500,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 92,
+  "fields": {
+    "hall": 2,
+    "pos_x": 350,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 93,
+  "fields": {
+    "hall": 2,
+    "pos_x": 400,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 94,
+  "fields": {
+    "hall": 2,
+    "pos_x": 450,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 95,
+  "fields": {
+    "hall": 2,
+    "pos_x": 0,
+    "pos_y": 250,
+    "rotation": -20.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 96,
+  "fields": {
+    "hall": 2,
+    "pos_x": 50,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 97,
+  "fields": {
+    "hall": 2,
+    "pos_x": 100,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 98,
+  "fields": {
+    "hall": 2,
+    "pos_x": 150,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 99,
+  "fields": {
+    "hall": 2,
+    "pos_x": 200,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 100,
+  "fields": {
+    "hall": 2,
+    "pos_x": 250,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 101,
+  "fields": {
+    "hall": 2,
+    "pos_x": 500,
+    "pos_y": 250,
+    "rotation": 20.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 102,
+  "fields": {
+    "hall": 2,
+    "pos_x": 350,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 103,
+  "fields": {
+    "hall": 2,
+    "pos_x": 400,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 104,
+  "fields": {
+    "hall": 2,
+    "pos_x": 450,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 105,
+  "fields": {
+    "hall": 3,
+    "pos_x": 0,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 106,
+  "fields": {
+    "hall": 3,
+    "pos_x": 50,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 107,
+  "fields": {
+    "hall": 3,
+    "pos_x": 100,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 108,
+  "fields": {
+    "hall": 3,
+    "pos_x": 150,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 109,
+  "fields": {
+    "hall": 3,
+    "pos_x": 200,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 110,
+  "fields": {
+    "hall": 3,
+    "pos_x": 250,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 111,
+  "fields": {
+    "hall": 3,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 112,
+  "fields": {
+    "hall": 3,
+    "pos_x": 350,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 113,
+  "fields": {
+    "hall": 3,
+    "pos_x": 400,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 114,
+  "fields": {
+    "hall": 3,
+    "pos_x": 450,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 115,
+  "fields": {
+    "hall": 3,
+    "pos_x": 50,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 116,
+  "fields": {
+    "hall": 3,
+    "pos_x": 100,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 117,
+  "fields": {
+    "hall": 3,
+    "pos_x": 150,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 118,
+  "fields": {
+    "hall": 3,
+    "pos_x": 200,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 119,
+  "fields": {
+    "hall": 3,
+    "pos_x": 250,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 120,
+  "fields": {
+    "hall": 3,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 121,
+  "fields": {
+    "hall": 3,
+    "pos_x": 350,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 122,
+  "fields": {
+    "hall": 3,
+    "pos_x": 400,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 123,
+  "fields": {
+    "hall": 3,
+    "pos_x": 450,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 124,
+  "fields": {
+    "hall": 3,
+    "pos_x": 50,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 125,
+  "fields": {
+    "hall": 3,
+    "pos_x": 100,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 126,
+  "fields": {
+    "hall": 3,
+    "pos_x": 0,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 127,
+  "fields": {
+    "hall": 3,
+    "pos_x": 0,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 128,
+  "fields": {
+    "hall": 3,
+    "pos_x": 50,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 129,
+  "fields": {
+    "hall": 3,
+    "pos_x": 100,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 130,
+  "fields": {
+    "hall": 3,
+    "pos_x": 150,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 131,
+  "fields": {
+    "hall": 3,
+    "pos_x": 200,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 132,
+  "fields": {
+    "hall": 3,
+    "pos_x": 300,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 133,
+  "fields": {
+    "hall": 3,
+    "pos_x": 500,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 134,
+  "fields": {
+    "hall": 3,
+    "pos_x": 350,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 135,
+  "fields": {
+    "hall": 3,
+    "pos_x": 400,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 136,
+  "fields": {
+    "hall": 3,
+    "pos_x": 450,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 137,
+  "fields": {
+    "hall": 3,
+    "pos_x": 0,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 138,
+  "fields": {
+    "hall": 3,
+    "pos_x": 50,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 139,
+  "fields": {
+    "hall": 3,
+    "pos_x": 100,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 140,
+  "fields": {
+    "hall": 3,
+    "pos_x": 150,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 141,
+  "fields": {
+    "hall": 3,
+    "pos_x": 200,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 142,
+  "fields": {
+    "hall": 3,
+    "pos_x": 300,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 143,
+  "fields": {
+    "hall": 3,
+    "pos_x": 500,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 144,
+  "fields": {
+    "hall": 3,
+    "pos_x": 350,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 145,
+  "fields": {
+    "hall": 3,
+    "pos_x": 400,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 146,
+  "fields": {
+    "hall": 3,
+    "pos_x": 450,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 147,
+  "fields": {
+    "hall": 3,
+    "pos_x": 0,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 148,
+  "fields": {
+    "hall": 3,
+    "pos_x": 50,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 149,
+  "fields": {
+    "hall": 3,
+    "pos_x": 100,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 150,
+  "fields": {
+    "hall": 3,
+    "pos_x": 150,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 151,
+  "fields": {
+    "hall": 3,
+    "pos_x": 200,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 152,
+  "fields": {
+    "hall": 3,
+    "pos_x": 300,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 153,
+  "fields": {
+    "hall": 3,
+    "pos_x": 500,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 154,
+  "fields": {
+    "hall": 3,
+    "pos_x": 350,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 155,
+  "fields": {
+    "hall": 3,
+    "pos_x": 400,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 156,
+  "fields": {
+    "hall": 3,
+    "pos_x": 450,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 209,
+  "fields": {
+    "hall": 4,
+    "pos_x": 0,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 210,
+  "fields": {
+    "hall": 4,
+    "pos_x": 50,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 211,
+  "fields": {
+    "hall": 4,
+    "pos_x": 100,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 212,
+  "fields": {
+    "hall": 4,
+    "pos_x": 150,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 213,
+  "fields": {
+    "hall": 4,
+    "pos_x": 200,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 214,
+  "fields": {
+    "hall": 4,
+    "pos_x": 250,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 215,
+  "fields": {
+    "hall": 4,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 216,
+  "fields": {
+    "hall": 4,
+    "pos_x": 350,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 217,
+  "fields": {
+    "hall": 4,
+    "pos_x": 400,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 218,
+  "fields": {
+    "hall": 4,
+    "pos_x": 450,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 219,
+  "fields": {
+    "hall": 4,
+    "pos_x": 50,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 220,
+  "fields": {
+    "hall": 4,
+    "pos_x": 100,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 221,
+  "fields": {
+    "hall": 4,
+    "pos_x": 150,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 222,
+  "fields": {
+    "hall": 4,
+    "pos_x": 200,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 223,
+  "fields": {
+    "hall": 4,
+    "pos_x": 250,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 224,
+  "fields": {
+    "hall": 4,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 225,
+  "fields": {
+    "hall": 4,
+    "pos_x": 350,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 226,
+  "fields": {
+    "hall": 4,
+    "pos_x": 400,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 227,
+  "fields": {
+    "hall": 4,
+    "pos_x": 450,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 228,
+  "fields": {
+    "hall": 4,
+    "pos_x": 50,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 229,
+  "fields": {
+    "hall": 4,
+    "pos_x": 100,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 230,
+  "fields": {
+    "hall": 4,
+    "pos_x": 0,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 231,
+  "fields": {
+    "hall": 4,
+    "pos_x": 0,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 232,
+  "fields": {
+    "hall": 4,
+    "pos_x": 50,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 233,
+  "fields": {
+    "hall": 4,
+    "pos_x": 100,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 234,
+  "fields": {
+    "hall": 4,
+    "pos_x": 300,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 235,
+  "fields": {
+    "hall": 4,
+    "pos_x": 200,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 236,
+  "fields": {
+    "hall": 4,
+    "pos_x": 250,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 237,
+  "fields": {
+    "hall": 4,
+    "pos_x": 500,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 238,
+  "fields": {
+    "hall": 4,
+    "pos_x": 350,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 239,
+  "fields": {
+    "hall": 4,
+    "pos_x": 400,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 240,
+  "fields": {
+    "hall": 4,
+    "pos_x": 450,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 241,
+  "fields": {
+    "hall": 4,
+    "pos_x": 0,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 242,
+  "fields": {
+    "hall": 4,
+    "pos_x": 50,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 243,
+  "fields": {
+    "hall": 4,
+    "pos_x": 100,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 244,
+  "fields": {
+    "hall": 4,
+    "pos_x": 300,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 245,
+  "fields": {
+    "hall": 4,
+    "pos_x": 200,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 246,
+  "fields": {
+    "hall": 4,
+    "pos_x": 250,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 247,
+  "fields": {
+    "hall": 4,
+    "pos_x": 500,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 248,
+  "fields": {
+    "hall": 4,
+    "pos_x": 350,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 249,
+  "fields": {
+    "hall": 4,
+    "pos_x": 400,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 250,
+  "fields": {
+    "hall": 4,
+    "pos_x": 450,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 251,
+  "fields": {
+    "hall": 4,
+    "pos_x": 0,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 252,
+  "fields": {
+    "hall": 4,
+    "pos_x": 50,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 253,
+  "fields": {
+    "hall": 4,
+    "pos_x": 100,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 254,
+  "fields": {
+    "hall": 4,
+    "pos_x": 300,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 255,
+  "fields": {
+    "hall": 4,
+    "pos_x": 200,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 256,
+  "fields": {
+    "hall": 4,
+    "pos_x": 250,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 257,
+  "fields": {
+    "hall": 4,
+    "pos_x": 500,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 258,
+  "fields": {
+    "hall": 4,
+    "pos_x": 350,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 259,
+  "fields": {
+    "hall": 4,
+    "pos_x": 400,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 260,
+  "fields": {
+    "hall": 4,
+    "pos_x": 450,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 988,
+  "fields": {
+    "hall": 5,
+    "pos_x": 50,
+    "pos_y": 59,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 989,
+  "fields": {
+    "hall": 5,
+    "pos_x": 100,
+    "pos_y": 41,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 990,
+  "fields": {
+    "hall": 5,
+    "pos_x": 150,
+    "pos_y": 25,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 991,
+  "fields": {
+    "hall": 5,
+    "pos_x": 200,
+    "pos_y": 12,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 992,
+  "fields": {
+    "hall": 5,
+    "pos_x": 250,
+    "pos_y": 3,
+    "rotation": -6.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 993,
+  "fields": {
+    "hall": 5,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 994,
+  "fields": {
+    "hall": 5,
+    "pos_x": 350,
+    "pos_y": 3,
+    "rotation": 6.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 995,
+  "fields": {
+    "hall": 5,
+    "pos_x": 400,
+    "pos_y": 12,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 996,
+  "fields": {
+    "hall": 5,
+    "pos_x": 450,
+    "pos_y": 25,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 997,
+  "fields": {
+    "hall": 5,
+    "pos_x": 500,
+    "pos_y": 41,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 998,
+  "fields": {
+    "hall": 5,
+    "pos_x": 550,
+    "pos_y": 59,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1001,
+  "fields": {
+    "hall": 5,
+    "pos_x": 50,
+    "pos_y": 109,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1002,
+  "fields": {
+    "hall": 5,
+    "pos_x": 100,
+    "pos_y": 91,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1003,
+  "fields": {
+    "hall": 5,
+    "pos_x": 150,
+    "pos_y": 75,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1004,
+  "fields": {
+    "hall": 5,
+    "pos_x": 200,
+    "pos_y": 62,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1005,
+  "fields": {
+    "hall": 5,
+    "pos_x": 250,
+    "pos_y": 53,
+    "rotation": -6.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1006,
+  "fields": {
+    "hall": 5,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1007,
+  "fields": {
+    "hall": 5,
+    "pos_x": 350,
+    "pos_y": 53,
+    "rotation": 6.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1008,
+  "fields": {
+    "hall": 5,
+    "pos_x": 400,
+    "pos_y": 62,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1009,
+  "fields": {
+    "hall": 5,
+    "pos_x": 450,
+    "pos_y": 75,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1010,
+  "fields": {
+    "hall": 5,
+    "pos_x": 500,
+    "pos_y": 91,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1011,
+  "fields": {
+    "hall": 5,
+    "pos_x": 550,
+    "pos_y": 109,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1014,
+  "fields": {
+    "hall": 5,
+    "pos_x": 50,
+    "pos_y": 159,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1015,
+  "fields": {
+    "hall": 5,
+    "pos_x": 100,
+    "pos_y": 141,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1016,
+  "fields": {
+    "hall": 5,
+    "pos_x": 150,
+    "pos_y": 125,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1017,
+  "fields": {
+    "hall": 5,
+    "pos_x": 200,
+    "pos_y": 112,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1018,
+  "fields": {
+    "hall": 5,
+    "pos_x": 250,
+    "pos_y": 103,
+    "rotation": -6.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1019,
+  "fields": {
+    "hall": 5,
+    "pos_x": 300,
+    "pos_y": 100,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1020,
+  "fields": {
+    "hall": 5,
+    "pos_x": 350,
+    "pos_y": 103,
+    "rotation": 6.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1021,
+  "fields": {
+    "hall": 5,
+    "pos_x": 400,
+    "pos_y": 112,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1022,
+  "fields": {
+    "hall": 5,
+    "pos_x": 450,
+    "pos_y": 125,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1023,
+  "fields": {
+    "hall": 5,
+    "pos_x": 500,
+    "pos_y": 141,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1024,
+  "fields": {
+    "hall": 5,
+    "pos_x": 550,
+    "pos_y": 159,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1027,
+  "fields": {
+    "hall": 5,
+    "pos_x": 50,
+    "pos_y": 209,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1028,
+  "fields": {
+    "hall": 5,
+    "pos_x": 100,
+    "pos_y": 191,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1029,
+  "fields": {
+    "hall": 5,
+    "pos_x": 150,
+    "pos_y": 175,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1030,
+  "fields": {
+    "hall": 5,
+    "pos_x": 200,
+    "pos_y": 162,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1031,
+  "fields": {
+    "hall": 5,
+    "pos_x": 250,
+    "pos_y": 153,
+    "rotation": -6.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1032,
+  "fields": {
+    "hall": 5,
+    "pos_x": 300,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1033,
+  "fields": {
+    "hall": 5,
+    "pos_x": 350,
+    "pos_y": 153,
+    "rotation": 6.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1034,
+  "fields": {
+    "hall": 5,
+    "pos_x": 400,
+    "pos_y": 162,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1035,
+  "fields": {
+    "hall": 5,
+    "pos_x": 450,
+    "pos_y": 175,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1036,
+  "fields": {
+    "hall": 5,
+    "pos_x": 500,
+    "pos_y": 191,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1037,
+  "fields": {
+    "hall": 5,
+    "pos_x": 550,
+    "pos_y": 209,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1040,
+  "fields": {
+    "hall": 5,
+    "pos_x": 50,
+    "pos_y": 259,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1041,
+  "fields": {
+    "hall": 5,
+    "pos_x": 100,
+    "pos_y": 241,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1042,
+  "fields": {
+    "hall": 5,
+    "pos_x": 150,
+    "pos_y": 225,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1043,
+  "fields": {
+    "hall": 5,
+    "pos_x": 200,
+    "pos_y": 212,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1044,
+  "fields": {
+    "hall": 5,
+    "pos_x": 250,
+    "pos_y": 203,
+    "rotation": -6.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1045,
+  "fields": {
+    "hall": 5,
+    "pos_x": 300,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1046,
+  "fields": {
+    "hall": 5,
+    "pos_x": 350,
+    "pos_y": 203,
+    "rotation": 6.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1047,
+  "fields": {
+    "hall": 5,
+    "pos_x": 400,
+    "pos_y": 212,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1048,
+  "fields": {
+    "hall": 5,
+    "pos_x": 450,
+    "pos_y": 225,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1049,
+  "fields": {
+    "hall": 5,
+    "pos_x": 500,
+    "pos_y": 241,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1050,
+  "fields": {
+    "hall": 5,
+    "pos_x": 550,
+    "pos_y": 259,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1055,
+  "fields": {
+    "hall": 5,
+    "pos_x": 150,
+    "pos_y": 275,
+    "rotation": -18.0,
+    "seat_type": 3,
+    "row": "H",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1056,
+  "fields": {
+    "hall": 5,
+    "pos_x": 200,
+    "pos_y": 262,
+    "rotation": -12.0,
+    "seat_type": 3,
+    "row": "H",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1057,
+  "fields": {
+    "hall": 5,
+    "pos_x": 250,
+    "pos_y": 253,
+    "rotation": -6.0,
+    "seat_type": 3,
+    "row": "H",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1058,
+  "fields": {
+    "hall": 5,
+    "pos_x": 300,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1059,
+  "fields": {
+    "hall": 5,
+    "pos_x": 350,
+    "pos_y": 253,
+    "rotation": 6.0,
+    "seat_type": 3,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1060,
+  "fields": {
+    "hall": 5,
+    "pos_x": 400,
+    "pos_y": 262,
+    "rotation": 12.0,
+    "seat_type": 3,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1061,
+  "fields": {
+    "hall": 5,
+    "pos_x": 450,
+    "pos_y": 275,
+    "rotation": 18.0,
+    "seat_type": 3,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1065,
+  "fields": {
+    "hall": 4,
+    "pos_x": 500,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1066,
+  "fields": {
+    "hall": 4,
+    "pos_x": 500,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1067,
+  "fields": {
+    "hall": 6,
+    "pos_x": 0,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1068,
+  "fields": {
+    "hall": 6,
+    "pos_x": 50,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1069,
+  "fields": {
+    "hall": 6,
+    "pos_x": 100,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1070,
+  "fields": {
+    "hall": 6,
+    "pos_x": 150,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1071,
+  "fields": {
+    "hall": 6,
+    "pos_x": 200,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1072,
+  "fields": {
+    "hall": 6,
+    "pos_x": 250,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1073,
+  "fields": {
+    "hall": 6,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1074,
+  "fields": {
+    "hall": 6,
+    "pos_x": 350,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1075,
+  "fields": {
+    "hall": 6,
+    "pos_x": 400,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1076,
+  "fields": {
+    "hall": 6,
+    "pos_x": 450,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1077,
+  "fields": {
+    "hall": 6,
+    "pos_x": 50,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1078,
+  "fields": {
+    "hall": 6,
+    "pos_x": 100,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1079,
+  "fields": {
+    "hall": 6,
+    "pos_x": 150,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1080,
+  "fields": {
+    "hall": 6,
+    "pos_x": 200,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1081,
+  "fields": {
+    "hall": 6,
+    "pos_x": 250,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1082,
+  "fields": {
+    "hall": 6,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1083,
+  "fields": {
+    "hall": 6,
+    "pos_x": 350,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1084,
+  "fields": {
+    "hall": 6,
+    "pos_x": 400,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1085,
+  "fields": {
+    "hall": 6,
+    "pos_x": 450,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1086,
+  "fields": {
+    "hall": 6,
+    "pos_x": 50,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1087,
+  "fields": {
+    "hall": 6,
+    "pos_x": 100,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1088,
+  "fields": {
+    "hall": 6,
+    "pos_x": 0,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1089,
+  "fields": {
+    "hall": 6,
+    "pos_x": 0,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1090,
+  "fields": {
+    "hall": 6,
+    "pos_x": 50,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1091,
+  "fields": {
+    "hall": 6,
+    "pos_x": 100,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1092,
+  "fields": {
+    "hall": 6,
+    "pos_x": 150,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1093,
+  "fields": {
+    "hall": 6,
+    "pos_x": 200,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1094,
+  "fields": {
+    "hall": 6,
+    "pos_x": 250,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1095,
+  "fields": {
+    "hall": 6,
+    "pos_x": 500,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1096,
+  "fields": {
+    "hall": 6,
+    "pos_x": 350,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1097,
+  "fields": {
+    "hall": 6,
+    "pos_x": 400,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1098,
+  "fields": {
+    "hall": 6,
+    "pos_x": 450,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1099,
+  "fields": {
+    "hall": 6,
+    "pos_x": 0,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1100,
+  "fields": {
+    "hall": 6,
+    "pos_x": 50,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1101,
+  "fields": {
+    "hall": 6,
+    "pos_x": 100,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1102,
+  "fields": {
+    "hall": 6,
+    "pos_x": 150,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1103,
+  "fields": {
+    "hall": 6,
+    "pos_x": 200,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1104,
+  "fields": {
+    "hall": 6,
+    "pos_x": 250,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1105,
+  "fields": {
+    "hall": 6,
+    "pos_x": 500,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1106,
+  "fields": {
+    "hall": 6,
+    "pos_x": 350,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1107,
+  "fields": {
+    "hall": 6,
+    "pos_x": 400,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1108,
+  "fields": {
+    "hall": 6,
+    "pos_x": 450,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1109,
+  "fields": {
+    "hall": 6,
+    "pos_x": 0,
+    "pos_y": 250,
+    "rotation": -20.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1110,
+  "fields": {
+    "hall": 6,
+    "pos_x": 50,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1111,
+  "fields": {
+    "hall": 6,
+    "pos_x": 100,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1112,
+  "fields": {
+    "hall": 6,
+    "pos_x": 150,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1113,
+  "fields": {
+    "hall": 6,
+    "pos_x": 200,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1114,
+  "fields": {
+    "hall": 6,
+    "pos_x": 250,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1115,
+  "fields": {
+    "hall": 6,
+    "pos_x": 500,
+    "pos_y": 250,
+    "rotation": 20.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1116,
+  "fields": {
+    "hall": 6,
+    "pos_x": 350,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1117,
+  "fields": {
+    "hall": 6,
+    "pos_x": 400,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1118,
+  "fields": {
+    "hall": 6,
+    "pos_x": 450,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1119,
+  "fields": {
+    "hall": 9,
+    "pos_x": 500,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1120,
+  "fields": {
+    "hall": 7,
+    "pos_x": 0,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1121,
+  "fields": {
+    "hall": 7,
+    "pos_x": 50,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1122,
+  "fields": {
+    "hall": 7,
+    "pos_x": 100,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1123,
+  "fields": {
+    "hall": 7,
+    "pos_x": 150,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1124,
+  "fields": {
+    "hall": 7,
+    "pos_x": 200,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1125,
+  "fields": {
+    "hall": 7,
+    "pos_x": 250,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1126,
+  "fields": {
+    "hall": 7,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1127,
+  "fields": {
+    "hall": 7,
+    "pos_x": 350,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1128,
+  "fields": {
+    "hall": 7,
+    "pos_x": 400,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1129,
+  "fields": {
+    "hall": 7,
+    "pos_x": 450,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1130,
+  "fields": {
+    "hall": 7,
+    "pos_x": 50,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1131,
+  "fields": {
+    "hall": 7,
+    "pos_x": 100,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1132,
+  "fields": {
+    "hall": 7,
+    "pos_x": 150,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1133,
+  "fields": {
+    "hall": 7,
+    "pos_x": 200,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1134,
+  "fields": {
+    "hall": 7,
+    "pos_x": 250,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1135,
+  "fields": {
+    "hall": 7,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1136,
+  "fields": {
+    "hall": 7,
+    "pos_x": 350,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1137,
+  "fields": {
+    "hall": 7,
+    "pos_x": 400,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1138,
+  "fields": {
+    "hall": 7,
+    "pos_x": 450,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1139,
+  "fields": {
+    "hall": 7,
+    "pos_x": 0,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1140,
+  "fields": {
+    "hall": 7,
+    "pos_x": 0,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1141,
+  "fields": {
+    "hall": 7,
+    "pos_x": 50,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1142,
+  "fields": {
+    "hall": 7,
+    "pos_x": 100,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1143,
+  "fields": {
+    "hall": 7,
+    "pos_x": 150,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1144,
+  "fields": {
+    "hall": 7,
+    "pos_x": 200,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1145,
+  "fields": {
+    "hall": 7,
+    "pos_x": 250,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1146,
+  "fields": {
+    "hall": 7,
+    "pos_x": 500,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1147,
+  "fields": {
+    "hall": 7,
+    "pos_x": 350,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1148,
+  "fields": {
+    "hall": 7,
+    "pos_x": 400,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1149,
+  "fields": {
+    "hall": 7,
+    "pos_x": 450,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1150,
+  "fields": {
+    "hall": 7,
+    "pos_x": 0,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1151,
+  "fields": {
+    "hall": 7,
+    "pos_x": 50,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1152,
+  "fields": {
+    "hall": 7,
+    "pos_x": 100,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1153,
+  "fields": {
+    "hall": 7,
+    "pos_x": 150,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1154,
+  "fields": {
+    "hall": 7,
+    "pos_x": 200,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1155,
+  "fields": {
+    "hall": 7,
+    "pos_x": 250,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1156,
+  "fields": {
+    "hall": 7,
+    "pos_x": 500,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1157,
+  "fields": {
+    "hall": 7,
+    "pos_x": 350,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1158,
+  "fields": {
+    "hall": 7,
+    "pos_x": 400,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1159,
+  "fields": {
+    "hall": 7,
+    "pos_x": 450,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1160,
+  "fields": {
+    "hall": 7,
+    "pos_x": 0,
+    "pos_y": 250,
+    "rotation": -20.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1161,
+  "fields": {
+    "hall": 7,
+    "pos_x": 50,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1162,
+  "fields": {
+    "hall": 7,
+    "pos_x": 400,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1163,
+  "fields": {
+    "hall": 7,
+    "pos_x": 100,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1164,
+  "fields": {
+    "hall": 7,
+    "pos_x": 150,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1165,
+  "fields": {
+    "hall": 7,
+    "pos_x": 200,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1166,
+  "fields": {
+    "hall": 7,
+    "pos_x": 250,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1167,
+  "fields": {
+    "hall": 7,
+    "pos_x": 500,
+    "pos_y": 250,
+    "rotation": 20.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1168,
+  "fields": {
+    "hall": 7,
+    "pos_x": 350,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1169,
+  "fields": {
+    "hall": 7,
+    "pos_x": 400,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1170,
+  "fields": {
+    "hall": 7,
+    "pos_x": 450,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1171,
+  "fields": {
+    "hall": 8,
+    "pos_x": 0,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1172,
+  "fields": {
+    "hall": 8,
+    "pos_x": 50,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1173,
+  "fields": {
+    "hall": 8,
+    "pos_x": 100,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1174,
+  "fields": {
+    "hall": 8,
+    "pos_x": 150,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1175,
+  "fields": {
+    "hall": 8,
+    "pos_x": 200,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1176,
+  "fields": {
+    "hall": 8,
+    "pos_x": 250,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1177,
+  "fields": {
+    "hall": 8,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1178,
+  "fields": {
+    "hall": 8,
+    "pos_x": 350,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1179,
+  "fields": {
+    "hall": 8,
+    "pos_x": 400,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1180,
+  "fields": {
+    "hall": 8,
+    "pos_x": 450,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1181,
+  "fields": {
+    "hall": 8,
+    "pos_x": 50,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1182,
+  "fields": {
+    "hall": 8,
+    "pos_x": 100,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1183,
+  "fields": {
+    "hall": 8,
+    "pos_x": 150,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1184,
+  "fields": {
+    "hall": 8,
+    "pos_x": 200,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1185,
+  "fields": {
+    "hall": 8,
+    "pos_x": 250,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1186,
+  "fields": {
+    "hall": 8,
+    "pos_x": 350,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1187,
+  "fields": {
+    "hall": 8,
+    "pos_x": 400,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1188,
+  "fields": {
+    "hall": 8,
+    "pos_x": 450,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1189,
+  "fields": {
+    "hall": 8,
+    "pos_x": 50,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1190,
+  "fields": {
+    "hall": 8,
+    "pos_x": 100,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1191,
+  "fields": {
+    "hall": 8,
+    "pos_x": 0,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1192,
+  "fields": {
+    "hall": 8,
+    "pos_x": 0,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1193,
+  "fields": {
+    "hall": 8,
+    "pos_x": 50,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1194,
+  "fields": {
+    "hall": 8,
+    "pos_x": 100,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1195,
+  "fields": {
+    "hall": 8,
+    "pos_x": 150,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1196,
+  "fields": {
+    "hall": 8,
+    "pos_x": 200,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1197,
+  "fields": {
+    "hall": 8,
+    "pos_x": 500,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1198,
+  "fields": {
+    "hall": 8,
+    "pos_x": 350,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1199,
+  "fields": {
+    "hall": 8,
+    "pos_x": 400,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1200,
+  "fields": {
+    "hall": 8,
+    "pos_x": 450,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1201,
+  "fields": {
+    "hall": 8,
+    "pos_x": 0,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1202,
+  "fields": {
+    "hall": 8,
+    "pos_x": 50,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1203,
+  "fields": {
+    "hall": 8,
+    "pos_x": 100,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1204,
+  "fields": {
+    "hall": 8,
+    "pos_x": 150,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1205,
+  "fields": {
+    "hall": 8,
+    "pos_x": 200,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1206,
+  "fields": {
+    "hall": 8,
+    "pos_x": 500,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1207,
+  "fields": {
+    "hall": 8,
+    "pos_x": 350,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1208,
+  "fields": {
+    "hall": 8,
+    "pos_x": 400,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1209,
+  "fields": {
+    "hall": 8,
+    "pos_x": 450,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1210,
+  "fields": {
+    "hall": 8,
+    "pos_x": 50,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1211,
+  "fields": {
+    "hall": 8,
+    "pos_x": 100,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1212,
+  "fields": {
+    "hall": 8,
+    "pos_x": 150,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1213,
+  "fields": {
+    "hall": 8,
+    "pos_x": 200,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1214,
+  "fields": {
+    "hall": 8,
+    "pos_x": 350,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1215,
+  "fields": {
+    "hall": 8,
+    "pos_x": 400,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1216,
+  "fields": {
+    "hall": 8,
+    "pos_x": 450,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1217,
+  "fields": {
+    "hall": 9,
+    "pos_x": 500,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1218,
+  "fields": {
+    "hall": 8,
+    "pos_x": 0,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1219,
+  "fields": {
+    "hall": 8,
+    "pos_x": 500,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1220,
+  "fields": {
+    "hall": 8,
+    "pos_x": 300,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1221,
+  "fields": {
+    "hall": 8,
+    "pos_x": 300,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1222,
+  "fields": {
+    "hall": 8,
+    "pos_x": 300,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1223,
+  "fields": {
+    "hall": 8,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1224,
+  "fields": {
+    "hall": 9,
+    "pos_x": 500,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1225,
+  "fields": {
+    "hall": 9,
+    "pos_x": 0,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1226,
+  "fields": {
+    "hall": 9,
+    "pos_x": 300,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1227,
+  "fields": {
+    "hall": 9,
+    "pos_x": 300,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1228,
+  "fields": {
+    "hall": 9,
+    "pos_x": 300,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1229,
+  "fields": {
+    "hall": 9,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1230,
+  "fields": {
+    "hall": 7,
+    "pos_x": 350,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1231,
+  "fields": {
+    "hall": 9,
+    "pos_x": 0,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1232,
+  "fields": {
+    "hall": 9,
+    "pos_x": 50,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1233,
+  "fields": {
+    "hall": 9,
+    "pos_x": 100,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1234,
+  "fields": {
+    "hall": 9,
+    "pos_x": 150,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1235,
+  "fields": {
+    "hall": 9,
+    "pos_x": 200,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1236,
+  "fields": {
+    "hall": 9,
+    "pos_x": 250,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1237,
+  "fields": {
+    "hall": 9,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1238,
+  "fields": {
+    "hall": 9,
+    "pos_x": 350,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1239,
+  "fields": {
+    "hall": 9,
+    "pos_x": 400,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1240,
+  "fields": {
+    "hall": 9,
+    "pos_x": 450,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1241,
+  "fields": {
+    "hall": 9,
+    "pos_x": 50,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1242,
+  "fields": {
+    "hall": 9,
+    "pos_x": 100,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1243,
+  "fields": {
+    "hall": 9,
+    "pos_x": 150,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1244,
+  "fields": {
+    "hall": 9,
+    "pos_x": 200,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1245,
+  "fields": {
+    "hall": 9,
+    "pos_x": 250,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1246,
+  "fields": {
+    "hall": 9,
+    "pos_x": 350,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1247,
+  "fields": {
+    "hall": 9,
+    "pos_x": 400,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1248,
+  "fields": {
+    "hall": 9,
+    "pos_x": 450,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1249,
+  "fields": {
+    "hall": 9,
+    "pos_x": 50,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1250,
+  "fields": {
+    "hall": 9,
+    "pos_x": 100,
+    "pos_y": 300,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "A",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1251,
+  "fields": {
+    "hall": 9,
+    "pos_x": 0,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1252,
+  "fields": {
+    "hall": 9,
+    "pos_x": 0,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1253,
+  "fields": {
+    "hall": 9,
+    "pos_x": 50,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1254,
+  "fields": {
+    "hall": 9,
+    "pos_x": 100,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1255,
+  "fields": {
+    "hall": 9,
+    "pos_x": 200,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1256,
+  "fields": {
+    "hall": 9,
+    "pos_x": 250,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1257,
+  "fields": {
+    "hall": 9,
+    "pos_x": 500,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1258,
+  "fields": {
+    "hall": 9,
+    "pos_x": 350,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1259,
+  "fields": {
+    "hall": 9,
+    "pos_x": 400,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1260,
+  "fields": {
+    "hall": 9,
+    "pos_x": 450,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1261,
+  "fields": {
+    "hall": 9,
+    "pos_x": 0,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "1"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1262,
+  "fields": {
+    "hall": 9,
+    "pos_x": 50,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1263,
+  "fields": {
+    "hall": 9,
+    "pos_x": 100,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1264,
+  "fields": {
+    "hall": 9,
+    "pos_x": 200,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1265,
+  "fields": {
+    "hall": 9,
+    "pos_x": 250,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1266,
+  "fields": {
+    "hall": 9,
+    "pos_x": 500,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1267,
+  "fields": {
+    "hall": 9,
+    "pos_x": 350,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1268,
+  "fields": {
+    "hall": 9,
+    "pos_x": 400,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1269,
+  "fields": {
+    "hall": 9,
+    "pos_x": 450,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1270,
+  "fields": {
+    "hall": 9,
+    "pos_x": 50,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "2"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1271,
+  "fields": {
+    "hall": 9,
+    "pos_x": 100,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1272,
+  "fields": {
+    "hall": 9,
+    "pos_x": 200,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1273,
+  "fields": {
+    "hall": 9,
+    "pos_x": 250,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1274,
+  "fields": {
+    "hall": 9,
+    "pos_x": 350,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1275,
+  "fields": {
+    "hall": 9,
+    "pos_x": 400,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1276,
+  "fields": {
+    "hall": 9,
+    "pos_x": 450,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1277,
+  "fields": {
+    "hall": 10,
+    "pos_x": 100,
+    "pos_y": 41,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1278,
+  "fields": {
+    "hall": 10,
+    "pos_x": 150,
+    "pos_y": 25,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1279,
+  "fields": {
+    "hall": 10,
+    "pos_x": 200,
+    "pos_y": 12,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1280,
+  "fields": {
+    "hall": 10,
+    "pos_x": 250,
+    "pos_y": 3,
+    "rotation": -6.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1281,
+  "fields": {
+    "hall": 10,
+    "pos_x": 300,
+    "pos_y": 0,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1282,
+  "fields": {
+    "hall": 10,
+    "pos_x": 350,
+    "pos_y": 3,
+    "rotation": 6.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1283,
+  "fields": {
+    "hall": 10,
+    "pos_x": 400,
+    "pos_y": 12,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1284,
+  "fields": {
+    "hall": 10,
+    "pos_x": 450,
+    "pos_y": 25,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1285,
+  "fields": {
+    "hall": 10,
+    "pos_x": 500,
+    "pos_y": 41,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1286,
+  "fields": {
+    "hall": 10,
+    "pos_x": 550,
+    "pos_y": 59,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1287,
+  "fields": {
+    "hall": 10,
+    "pos_x": 50,
+    "pos_y": 59,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "F",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1288,
+  "fields": {
+    "hall": 10,
+    "pos_x": 50,
+    "pos_y": 159,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1289,
+  "fields": {
+    "hall": 10,
+    "pos_x": 100,
+    "pos_y": 141,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1290,
+  "fields": {
+    "hall": 10,
+    "pos_x": 150,
+    "pos_y": 125,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1291,
+  "fields": {
+    "hall": 10,
+    "pos_x": 200,
+    "pos_y": 112,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1292,
+  "fields": {
+    "hall": 10,
+    "pos_x": 400,
+    "pos_y": 112,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1293,
+  "fields": {
+    "hall": 10,
+    "pos_x": 450,
+    "pos_y": 125,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1294,
+  "fields": {
+    "hall": 10,
+    "pos_x": 500,
+    "pos_y": 141,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1295,
+  "fields": {
+    "hall": 10,
+    "pos_x": 550,
+    "pos_y": 159,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1296,
+  "fields": {
+    "hall": 10,
+    "pos_x": 50,
+    "pos_y": 259,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1297,
+  "fields": {
+    "hall": 10,
+    "pos_x": 100,
+    "pos_y": 241,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1298,
+  "fields": {
+    "hall": 10,
+    "pos_x": 150,
+    "pos_y": 225,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1299,
+  "fields": {
+    "hall": 10,
+    "pos_x": 200,
+    "pos_y": 212,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1300,
+  "fields": {
+    "hall": 10,
+    "pos_x": 250,
+    "pos_y": 203,
+    "rotation": -6.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1301,
+  "fields": {
+    "hall": 10,
+    "pos_x": 300,
+    "pos_y": 200,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1302,
+  "fields": {
+    "hall": 10,
+    "pos_x": 350,
+    "pos_y": 203,
+    "rotation": 6.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1303,
+  "fields": {
+    "hall": 10,
+    "pos_x": 400,
+    "pos_y": 212,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1304,
+  "fields": {
+    "hall": 10,
+    "pos_x": 450,
+    "pos_y": 225,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1305,
+  "fields": {
+    "hall": 10,
+    "pos_x": 500,
+    "pos_y": 241,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1306,
+  "fields": {
+    "hall": 10,
+    "pos_x": 550,
+    "pos_y": 259,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "C",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1307,
+  "fields": {
+    "hall": 10,
+    "pos_x": 250,
+    "pos_y": 103,
+    "rotation": -6.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1308,
+  "fields": {
+    "hall": 10,
+    "pos_x": 300,
+    "pos_y": 100,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1309,
+  "fields": {
+    "hall": 10,
+    "pos_x": 350,
+    "pos_y": 103,
+    "rotation": 6.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1310,
+  "fields": {
+    "hall": 10,
+    "pos_x": 150,
+    "pos_y": 275,
+    "rotation": -18.0,
+    "seat_type": 3,
+    "row": "H",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1311,
+  "fields": {
+    "hall": 10,
+    "pos_x": 200,
+    "pos_y": 262,
+    "rotation": -12.0,
+    "seat_type": 3,
+    "row": "H",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1312,
+  "fields": {
+    "hall": 10,
+    "pos_x": 250,
+    "pos_y": 253,
+    "rotation": -6.0,
+    "seat_type": 3,
+    "row": "H",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1313,
+  "fields": {
+    "hall": 10,
+    "pos_x": 50,
+    "pos_y": 109,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1314,
+  "fields": {
+    "hall": 10,
+    "pos_x": 100,
+    "pos_y": 91,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1315,
+  "fields": {
+    "hall": 10,
+    "pos_x": 150,
+    "pos_y": 75,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1316,
+  "fields": {
+    "hall": 10,
+    "pos_x": 200,
+    "pos_y": 62,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1317,
+  "fields": {
+    "hall": 10,
+    "pos_x": 400,
+    "pos_y": 62,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1318,
+  "fields": {
+    "hall": 10,
+    "pos_x": 450,
+    "pos_y": 75,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1319,
+  "fields": {
+    "hall": 10,
+    "pos_x": 500,
+    "pos_y": 91,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1320,
+  "fields": {
+    "hall": 10,
+    "pos_x": 550,
+    "pos_y": 109,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "E",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1321,
+  "fields": {
+    "hall": 10,
+    "pos_x": 50,
+    "pos_y": 209,
+    "rotation": -30.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "3"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1322,
+  "fields": {
+    "hall": 10,
+    "pos_x": 100,
+    "pos_y": 191,
+    "rotation": -24.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "4"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1323,
+  "fields": {
+    "hall": 10,
+    "pos_x": 150,
+    "pos_y": 175,
+    "rotation": -18.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "5"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1324,
+  "fields": {
+    "hall": 10,
+    "pos_x": 200,
+    "pos_y": 162,
+    "rotation": -12.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "6"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1325,
+  "fields": {
+    "hall": 10,
+    "pos_x": 250,
+    "pos_y": 153,
+    "rotation": -6.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1326,
+  "fields": {
+    "hall": 10,
+    "pos_x": 300,
+    "pos_y": 150,
+    "rotation": 0.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1327,
+  "fields": {
+    "hall": 10,
+    "pos_x": 350,
+    "pos_y": 153,
+    "rotation": 6.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1328,
+  "fields": {
+    "hall": 10,
+    "pos_x": 400,
+    "pos_y": 162,
+    "rotation": 12.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1329,
+  "fields": {
+    "hall": 10,
+    "pos_x": 450,
+    "pos_y": 175,
+    "rotation": 18.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1330,
+  "fields": {
+    "hall": 10,
+    "pos_x": 500,
+    "pos_y": 191,
+    "rotation": 24.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "12"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1331,
+  "fields": {
+    "hall": 10,
+    "pos_x": 550,
+    "pos_y": 209,
+    "rotation": 30.0,
+    "seat_type": 1,
+    "row": "D",
+    "column": "13"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1332,
+  "fields": {
+    "hall": 10,
+    "pos_x": 300,
+    "pos_y": 250,
+    "rotation": 0.0,
+    "seat_type": 3,
+    "row": "B",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1333,
+  "fields": {
+    "hall": 10,
+    "pos_x": 350,
+    "pos_y": 253,
+    "rotation": 6.0,
+    "seat_type": 3,
+    "row": "B",
+    "column": "9"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1334,
+  "fields": {
+    "hall": 10,
+    "pos_x": 400,
+    "pos_y": 262,
+    "rotation": 12.0,
+    "seat_type": 3,
+    "row": "B",
+    "column": "10"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1335,
+  "fields": {
+    "hall": 10,
+    "pos_x": 450,
+    "pos_y": 275,
+    "rotation": 18.0,
+    "seat_type": 3,
+    "row": "B",
+    "column": "11"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1336,
+  "fields": {
+    "hall": 10,
+    "pos_x": 250,
+    "pos_y": 53,
+    "rotation": -6.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "7"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1337,
+  "fields": {
+    "hall": 10,
+    "pos_x": 300,
+    "pos_y": 50,
+    "rotation": 0.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "8"
+  }
+},
+{
+  "model": "cinema.seat",
+  "pk": 1338,
+  "fields": {
+    "hall": 10,
+    "pos_x": 350,
+    "pos_y": 53,
+    "rotation": 6.0,
+    "seat_type": 2,
+    "row": "E",
+    "column": "9"
+  }
 }
 ]

@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.AlterField(
-            model_name="reservation",
+            model_name="seatreservation",
             name="price",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE, to="cinema.tickettype"
