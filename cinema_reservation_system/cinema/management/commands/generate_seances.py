@@ -39,7 +39,7 @@ class Command(BaseCommand):
 
         while current_time <= last_show_time:
             available_times.append(current_time)
-            current_time = current_time.add(minutes=30)
+            current_time = current_time.add(minutes=15)
 
         # Generujemy max_seances liczby losowych seansów
         for _ in tqdm(range(max_seances), file=sys.stdout, desc = 'Generating seances'):
