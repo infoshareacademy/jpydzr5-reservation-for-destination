@@ -34,7 +34,7 @@
         <thead>
             <tr>
                 <th>Godzina</th>
-                <th>Liczba Seansów</th>
+                <th>Liczba Miejsc</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +46,48 @@
             {% empty %}
                 <tr>
                     <td colspan="2">Brak danych o seansach.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ <h1>Najczęściej Wybierane Dni Tygodnia</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Dzień Tygodnia</th>
+                <th>Liczba Miejsc</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for showtime in popular_weekdays %}
+                <tr>
+                    <td>{{ showtime.day_name }}</td>
+                    <td>{{ showtime.count }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">Brak danych o seansach.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<h1>Najczęściej Wybierane Typy Biletów</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Typ biletów</th>
+                <th>Liczba Miejsc</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for popular_ticket_type in popular_ticket_types %}
+                <tr>
+                    <td>{{ popular_ticket_type.ticket_type__name }}</td>
+                    <td>{{ popular_ticket_type.count }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">Brak danych o biletach.</td>
                 </tr>
             {% endfor %}
         </tbody>
