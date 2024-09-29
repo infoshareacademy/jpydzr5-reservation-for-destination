@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
@@ -41,12 +42,35 @@ class Hall(models.Model):
 
 
 class Seance(models.Model):
+    """Klasa reprezentująca seans,
+    czyli pojedyncze wyświetlenie konkretnego filmu w konkretnej sali o konkretnej godzinie"""
     show_start = models.DateTimeField(default=timezone.now)
     hall = models.ForeignKey(Hall, on_delete=models.RESTRICT, null=True)
     movie = models.ForeignKey(Movie, on_delete=models.RESTRICT, null=True)
 
     def __str__(self):
         return f'{self.movie.title} - {self.show_start} - Sala: {self.hall}'
+
+    def clean(self):
+        # Oblicz czas zakończenia tego seansu wraz z czasem sprzątania
+        show_end_with_cleaning = self.show_start + self.movie.duration + self.hall.cleaning_time
+
+        # Sprawdź inne seanse w tej samej sali
+        overlapping_seances = Seance.objects.filter(
+            hall=self.hall,
+            show_start__lt=show_end_with_cleaning,
+            show_start__gte=self.show_start
+        ).exclude(pk=self.pk)
+
+        if overlapping_seances.exists():
+            raise ValidationError(
+                f"Seans nachodzi na inny seans w tej samej sali. "
+                f"Należy uwzględnić czas trwania filmu i sprzątania."
+            )
+
+    def save(self, *args, **kwargs):
+        self.clean()  # Wywołaj walidację przed zapisem
+        super().save(*args, **kwargs)
 
 
 class SeatType(models.Model):
@@ -69,7 +93,8 @@ class Seat(models.Model):
     column = models.CharField(max_length=3, null=True)
 
     def __str__(self):
-        return f"Miejsce o id {self.id} w sali {self.hall.hall_number} [{self.seat_type.name if self.seat_type else ''}])"
+        return (f"Miejsce o id {self.id} w sali {self.hall.hall_number} "
+                f"[{self.seat_type.name if self.seat_type else ''}])")
 
 
 class Reservation(models.Model):
@@ -83,4 +108,3 @@ class SeatReservation(models.Model):
     ticket_type = models.ForeignKey(TicketType, on_delete=models.RESTRICT)
     seat = models.ForeignKey(Seat, on_delete=models.RESTRICT)
     paid = models.BooleanField(default=False)
-
