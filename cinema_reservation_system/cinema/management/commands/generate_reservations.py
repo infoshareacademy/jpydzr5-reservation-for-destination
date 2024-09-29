@@ -1,11 +1,13 @@
 import pendulum
 import random
+import sys
 
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.management.base import BaseCommand
 
 from cinema import models
+from tqdm import tqdm
 
 
 class Command(BaseCommand):
@@ -14,12 +16,12 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
 
         today = pendulum.today()
-        seances = models.Seance.objects.filter(show_start__gt=today)
+        seances = models.Seance.objects.filter(show_start__gt=today.subtract(days=7))
 
         user = User.objects.get(pk=2)  # Użytkownik testowy
         ticket_type = models.TicketType.objects.get(pk=1)  # Normalny bilet
 
-        for seance in seances:
+        for seance in tqdm(seances, file=sys.stdout, desc="Seance Processing"):
             reservation = models.Reservation.objects.create(
                 user=user,
                 seance=seance,

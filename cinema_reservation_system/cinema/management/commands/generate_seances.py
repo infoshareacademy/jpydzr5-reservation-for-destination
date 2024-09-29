@@ -1,10 +1,12 @@
 import pendulum
 import random
+import sys
 
 from django.core.exceptions import ValidationError
 from django.core.management.base import BaseCommand
 
 from cinema import models
+from tqdm import tqdm
 
 
 class Command(BaseCommand):
@@ -40,7 +42,7 @@ class Command(BaseCommand):
             current_time = current_time.add(minutes=30)
 
         # Generujemy max_seances liczby losowych seansów
-        for _ in range(max_seances):
+        for _ in tqdm(range(max_seances), file=sys.stdout, desc = 'Generating seances'):
             hall = random.choice(halls)
             movie = random.choice(movies)
 
