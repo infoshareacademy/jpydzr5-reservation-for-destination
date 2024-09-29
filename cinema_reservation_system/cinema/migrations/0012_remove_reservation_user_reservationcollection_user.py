@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RemoveField(
-            model_name='reservation',
+            model_name='seatreservation',
             name='user',
         ),
         migrations.AddField(
-            model_name='reservationcollection',
+            model_name='reservation',
             name='user',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.RESTRICT, to=settings.AUTH_USER_MODEL),
         ),

@@ -255,8 +255,8 @@
   "model": "cinema.seance",
   "pk": 29,
   "fields": {
-    "show_start": "2024-09-21T22:15:00Z",
-    "hall": 1,
+    "show_start": "2024-09-22T22:15:00Z",
+    "hall": 2,
     "movie": 11
   }
 }

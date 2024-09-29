@@ -19,22 +19,22 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='cinema.cinema'),
         ),
         migrations.AlterField(
-            model_name='reservation',
+            model_name='seatreservation',
             name='price',
             field=models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='cinema.tickettype'),
         ),
         migrations.AlterField(
-            model_name='reservation',
+            model_name='seatreservation',
             name='seance',
             field=models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='cinema.seance'),
         ),
         migrations.AlterField(
-            model_name='reservation',
+            model_name='seatreservation',
             name='seat',
             field=models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='cinema.seat'),
         ),
         migrations.AlterField(
-            model_name='reservation',
+            model_name='seatreservation',
             name='user',
             field=models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to=settings.AUTH_USER_MODEL),
         ),
