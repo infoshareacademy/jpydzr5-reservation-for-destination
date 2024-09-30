@@ -12,7 +12,7 @@ Class-based views
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls')
 """
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,7 +28,8 @@ def main_page_view(request):
 urlpatterns = [
     path("", main_page_view, name='main_page'),
     path("admin/", admin.site.urls),
-    path("cinema/", include("cinema.urls"))
+    path("cinema/", include("cinema.urls")),
+    path("backoffice/", include("backoffice.urls")),
 ]
 
 if settings.DEBUG:
