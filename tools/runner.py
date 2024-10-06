@@ -1,4 +1,5 @@
 from seance_generator import SeanceGenerator
 
-seance_generator = SeanceGenerator()
-seance_generator.generate_seance()
+if __name__ == '__main__':
+    seance_generator = SeanceGenerator()
+    seance_generator.generate_seance()

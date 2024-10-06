@@ -108,3 +108,13 @@ class SeatReservation(models.Model):
     ticket_type = models.ForeignKey(TicketType, on_delete=models.RESTRICT)
     seat = models.ForeignKey(Seat, on_delete=models.RESTRICT)
     paid = models.BooleanField(default=False)
+
+    def clean(self):
+        # Sprawdzenie, czy seat jest już zarezerwowane na dany seans
+        if SeatReservation.objects.filter(seat=self.seat, reservation__seance=self.reservation.seance).exists():
+            raise ValidationError(f"Miejsce {self.seat} jest już zarezerwowane na ten seans.")
+
+    def save(self, *args, **kwargs):
+        # Wywołanie metody clean przed zapisem
+        self.clean()
+        super().save(*args, **kwargs)

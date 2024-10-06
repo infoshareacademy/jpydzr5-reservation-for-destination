@@ -67,3 +67,7 @@ class SeanceGenerator:
             print("Aktualizuję repertuar.")
             last_showdate = datetime.strptime(last_showdate_str, "%Y-%m-%d %H:%M:%S").date() if last_showdate_str else today
             self.prepare_data(last_showdate)
+
+
+if __name__ == '__main__':
+    pass
