@@ -14,6 +14,8 @@ import os
 import sys
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, True)
