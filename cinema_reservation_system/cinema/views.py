@@ -1,6 +1,8 @@
 from django.db.models import Exists, OuterRef
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.response import TemplateResponse
+from django.urls import reverse
+
 from . import forms, models
 from django.forms import formset_factory
 from .models import Reservation, SeatReservation
@@ -44,6 +46,7 @@ def index(request):
     menu_positions = [
         {"name": "Cennik", "url": "price_list"},
         {"name": "Repertuar", "url": "repertoire"},
+        {"name": "Rezerwacja", "url": "reservation"},
         {"name": "Koszyk", "url": "basket"}
     ]
 
@@ -60,6 +63,10 @@ def index(request):
 
 # Widok koszyka
 def basket(request):
+    return redirect('/cinema/')
+
+
+def reservation(request):
     # Ścieżka do szablonu
     template = "cinema/basket.html"
 
@@ -108,6 +115,7 @@ def price_list(request):
     menu_positions = [
         {"name": "Cennik", "url": "price_list"},
         {"name": "Repertuar", "url": "repertoire"},
+        {"name": "Rezerwacja", "url": "reservation"},
         {"name": "Koszyk", "url": "basket"}
     ]
 
@@ -203,13 +211,20 @@ def select_seats(request, seance_id):
         }
         seats_data.append(seat_data)
 
+    selected_seats = request.session.get('selected_seats', [])
+
     if request.method == 'POST':
-        form = forms.SeatForm(request.POST, seance=seance)
+
+        form = forms.SeatForm(request.POST, seance=seance, initial={'selected_seats': selected_seats})
 
         # tu trzeba by walidację zrobić, ale na to już nie mam czasu
         # if form.is_valid():
 
-        selected_seats = json.loads(request.POST.get('selected-seats', '[]'))
+        if not request.user.is_authenticated:
+            request.session['selected_seats'] = selected_seats
+            # Przekierowanie na stronę logowania z parametrem `next`
+            return redirect(f'{reverse("login")}?next={request.path}')
+
         print(selected_seats)
 
         if selected_seats:
@@ -221,9 +236,12 @@ def select_seats(request, seance_id):
                     ticket_type_id=DEFAULT_TICKET_TYPE_ID,
                 )
 
+            if 'selected_seats' in request.session:
+                del request.session['selected_seats']
+
             return redirect('select_ticket_type', reservation_id=reservation.id)
     else:
-        form = forms.SeatForm(seance=seance)
+        form = forms.SeatForm(seance=seance, initial={'selected_seats': selected_seats})
 
     template = "cinema/select_seats.html"
     context = {
