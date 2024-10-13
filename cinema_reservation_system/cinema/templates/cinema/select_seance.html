@@ -5,6 +5,6 @@
     wybrałeś film: <span style="font-weight: bolder">{{ movie.title }}</span>
     {{ form.as_p }}
     <button type="submit">Dalej</button>
-    <a href="{% url 'basket' %}">Anuluj</a>
+    <a href="{% url 'cinema:index' %}">Anuluj</a>
 </form>
 {% endblock %}
