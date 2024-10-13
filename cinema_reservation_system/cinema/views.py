@@ -11,14 +11,51 @@ import pendulum
 DEFAULT_TICKET_TYPE_ID = 1
 
 
+def set_cinema(request):
+    if request.method == 'POST':
+        cinema_id = request.POST.get('cinema')
+        if 'cinema' in request.session:
+            request.session['cinema'] = cinema_id
+        return redirect('index')
+    return redirect('index')
+
+
 def index(request):
+    cinema_id = request.session.get('cinema', None)
+    if cinema_id is not None:
+        cinema_id = int(cinema_id)
+    cinemas = [
+        {'id': 1, 'name': 'Kino A'},
+        {'id': 2, 'name': 'Kino B'},
+        {'id': 3, 'name': 'Kino C'},
+    ]
+
+    now_playing = {
+        'title': 'Film Tygodnia',
+        'description': 'Niezwykła opowieść o przygodzie w nieznane.'
+    }
+
+    upcoming_screenings = [
+        {'movie': {'title': 'Film 1', 'image_url': ''}, 'hall': 'Sala 1', 'time': '14:00'},
+        {'movie': {'title': 'Film 2', 'image_url': ''}, 'hall': 'Sala 2', 'time': '16:30'},
+        {'movie': {'title': 'Film 3', 'image_url': ''}, 'hall': 'Sala 3', 'time': '19:00'}
+    ]
+
     menu_positions = [
         {"name": "Cennik", "url": "price_list"},
         {"name": "Repertuar", "url": "repertoire"},
         {"name": "Koszyk", "url": "basket"}
     ]
+
+    context = {
+        'cinemas': cinemas,
+        'now_playing': now_playing,
+        'upcoming_screenings': upcoming_screenings,
+        'menu_positions': menu_positions,
+        'selected_cinema': cinema_id,
+    }
     template = "cinema/index.html"
-    return TemplateResponse(request, template, {"menu_positions": menu_positions})
+    return TemplateResponse(request, template, context)
 
 
 # Widok koszyka
@@ -57,8 +94,28 @@ def repertoire(request):
 def price_list(request):
     template = "cinema/price_list.html"
     tickets = models.TicketType.objects.all()
+
+    cinema_id = request.session.get('cinema', None)
+    if cinema_id is not None:
+        cinema_id = int(cinema_id)
+
+    cinemas = [
+        {'id': 1, 'name': 'Kino A'},
+        {'id': 2, 'name': 'Kino B'},
+        {'id': 3, 'name': 'Kino C'},
+    ]
+
+    menu_positions = [
+        {"name": "Cennik", "url": "price_list"},
+        {"name": "Repertuar", "url": "repertoire"},
+        {"name": "Koszyk", "url": "basket"}
+    ]
+
     context = {
         "tickets": tickets,
+        'selected_cinema': cinema_id,
+        'menu_positions': menu_positions,
+        "cinemas": cinemas,
     }
     return TemplateResponse(request, template, context)
 
@@ -120,6 +177,7 @@ def select_ticket_type(request, reservation_id):
     }
     return render(request, template, context)
 
+
 def select_seats(request, seance_id):
     seance = models.Seance.objects.get(id=seance_id)
 
@@ -175,4 +233,3 @@ def select_seats(request, seance_id):
 
     }
     return render(request, template, context)
-
