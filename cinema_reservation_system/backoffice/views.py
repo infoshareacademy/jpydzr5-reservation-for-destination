@@ -45,20 +45,27 @@ def html_report(request):
         ).order_by('-total_reserved_seats')
     )
     popular_showtimes = (
-        models.SeatReservation.objects.annotate(
+        models.SeatReservation.objects.filter(
+            reservation__seance__show_start__gte=range_begin,
+            reservation__seance__show_start__lte=range_end,
+        ).annotate(
             hour=ExtractHour('reservation__seance__show_start'),
             minute=ExtractMinute('reservation__seance__show_start')
-        ).exclude(hour__isnull=True)
-        .values('hour','minute')  # Grupuje po godzinie
-        .annotate(count=Count('id'))  # Zlicza wystąpienia seansów dla każdej godziny
-        .order_by('-count')  # Sortuje według liczby wystąpień malejąco
+        ).exclude(hour__isnull=True
+        ).values('hour','minute'  # Grupuje po godzinie
+        ).annotate(count=Count('id')  # Zlicza wystąpienia seansów dla każdej godziny
+        ).order_by('-count')  # Sortuje według liczby wystąpień malejąco
     )
     popular_weekdays = (
-        models.SeatReservation.objects.annotate(weekday=ExtractWeekDay('reservation__seance__show_start'))  # Ekstrahuje godzinę
-        .exclude(weekday__isnull=True)
-        .values('weekday')
-        .annotate(count=Count('id'))  # Zlicza wystąpienia seansów dla każdej godziny
-        .order_by('-count')  # Sortuje według liczby wystąpień malejąco
+        models.SeatReservation.objects.filter(
+            reservation__seance__show_start__gte=range_begin,
+            reservation__seance__show_start__lte=range_end,
+        ).annotate(
+            weekday=ExtractWeekDay('reservation__seance__show_start')  # Ekstrahuje godzinę
+        ).exclude(weekday__isnull=True
+        ).values('weekday'
+        ).annotate(count=Count('id')  # Zlicza wystąpienia seansów dla każdej godziny
+        ).order_by('-count')  # Sortuje według liczby wystąpień malejąco
     )
     popular_weekdays = [
         {
@@ -70,10 +77,14 @@ def html_report(request):
     ]
 
     popular_ticket_types = (
-        models.SeatReservation.objects
-        .values('ticket_type', 'ticket_type__name')
-        .annotate(count=Count('id'))  # Zlicza wystąpienia seansów dla każdej godziny
-        .order_by('-count')  # Sortuje według liczby wystąpień malejąco
+        models.SeatReservation.objects.filter(
+            reservation__seance__show_start__gte=range_begin,
+            reservation__seance__show_start__lte=range_end,
+        ).values(
+            'ticket_type',
+            'ticket_type__name'
+        ).annotate(count=Count('id')  # Zlicza wystąpienia seansów dla każdej godziny
+        ).order_by('-count')  # Sortuje według liczby wystąpień malejąco
     )
 
     context = {
