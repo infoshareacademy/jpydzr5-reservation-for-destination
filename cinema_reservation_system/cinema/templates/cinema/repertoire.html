@@ -1,13 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'cinema/repertoire.css' %}">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Repertuar</title>
-</head>
-<body>
+{% block content %}
 <h2 style="text-align: center">Repertuar na najbliższy tydzień</h2>
 <br>
 <table>
@@ -17,5 +11,4 @@
         {% endfor %}
     </thead>
 </table>
-</body>
-</html>
+{% endblock %}
