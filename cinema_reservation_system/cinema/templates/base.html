@@ -13,7 +13,7 @@
 <body>
     <header class="bg-dark text-white text-center py-5" style="background-size: cover; background-position: center;">
         <div class="container">
-            <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+            <a href="{% url 'cinema:index' %}" style="text-decoration: none; color: inherit;">
                 <h1>Kino Studyjne</h1>
             </a>
             <p class="lead">Zapraszamy na wyjątkowe seanse filmowe!</p>
@@ -29,7 +29,7 @@
                 </div>
             </nav>
             <div class="d-flex justify-content-center mt-4">
-                <form method="post" action="{% url 'set_cinema' %}" class="form-inline form-spacing">
+                <form method="post" action="{% url 'cinema:set_cinema' %}" class="form-inline form-spacing">
                     {% csrf_token %}
                     <div class="form-group mr-2">
                         <label for="cinema" class="text-light mr-2">Wybierz kino:</label>
@@ -42,6 +42,23 @@
                     <button type="submit" class="btn btn-light">Zatwierdź</button>
                 </form>
             </div>
+        </div>
+        <div style="float:right" id="login_container">
+            {%  if request.user.is_authenticated %}
+                <form method="post" action="{% url 'cinema:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Wyloguj się</button>
+                </form>
+            {% else %}
+                <form method="post" action="{% url 'cinema:login' %}">
+                    {% csrf_token %}
+                    <button type="submit">Zaloguj się</button>
+                </form>
+                <form method="post" action="{% url 'cinema:register' %}">
+                    {% csrf_token %}
+                    <button type="submit">Zarejestruj się</button>
+                </form>
+            {% endif %}
         </div>
     </header>
 

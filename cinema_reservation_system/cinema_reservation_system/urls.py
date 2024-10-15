@@ -28,8 +28,8 @@ def main_page_view(request):
 urlpatterns = [
     path("", main_page_view, name='main_page'),
     path("admin/", admin.site.urls),
-    path("cinema/", include("cinema.urls")),
-    path("backoffice/", include("backoffice.urls")),
+    path("cinema/", include("cinema.urls",  namespace='cinema')),
+    path("backoffice/", include("backoffice.urls", namespace='backoffice')),
 ]
 
 if settings.DEBUG:
