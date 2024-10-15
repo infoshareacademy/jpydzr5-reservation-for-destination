@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 style="text-align: center">Repertuar na najbliższy tydzień</h2>
+<br>
+<table>
+    <thead>
+        {% for date, day_of_week in days.items %}
+        <th><a href="?date={{ date }}">{{ date }} - {{ day_of_week }}</a></th>
+        {% endfor %}
+    </thead>
+</table>
+{% endblock %}
