@@ -10,14 +10,13 @@
     {% block header %}
     {% endblock %}
 </head>
-<body>
-    <header class="bg-dark text-white text-center py-5" style="background-size: cover; background-position: center;">
-        <div class="container">
+<body style="height: 100%; margin: 0; display: flex; flex-direction: column; min-height: 100vh;">
+    <header class="bg-dark text-white text-center py-4" style="background-size: cover; background-position: center;">
+        <div class="container d-flex justify-content-between align-items-center">
             <a href="{% url 'cinema:index' %}" style="text-decoration: none; color: inherit;">
-                <h1>Kino Studyjne</h1>
+                <h1 class="mb-0">Kino Studyjne</h1>
             </a>
-            <p class="lead">Zapraszamy na wyjątkowe seanse filmowe!</p>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         {% for item in menu_positions %}
@@ -28,20 +27,17 @@
                     </ul>
                 </div>
             </nav>
-            <div class="d-flex justify-content-center mt-4">
-                <form method="post" action="{% url 'cinema:set_cinema' %}" class="form-inline form-spacing">
+                <form method="post" action="{% url 'cinema:set_cinema' %}" class="form-inline form-spacing" id="cinema-selection-form">
                     {% csrf_token %}
                     <div class="form-group mr-2">
                         <label for="cinema" class="text-light mr-2">Wybierz kino:</label>
-                        <select id="cinema" name="cinema" class="form-control">
+                        <select id="cinema" name="cinema" class="form-control" onchange="document.getElementById('cinema-selection-form').submit();">
                             {% for cinema in cinemas %}
                             <option value="{{ cinema.id }}" {% if cinema.id == selected_cinema %}selected{% endif %}>{{cinema.name}}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-light">Zatwierdź</button>
                 </form>
-            </div>
         </div>
         <div style="float:right" id="login_container">
             {%  if request.user.is_authenticated %}
@@ -62,12 +58,12 @@
         </div>
     </header>
 
-    <main class="container my-5">
+    <main class="container my-5" style="flex: 1;">
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-dark text-white text-center pt-2">
         <p>&copy; 2024 Kino Studyjne | Wszystkie prawa zastrzeżone</p>
     </footer>
 

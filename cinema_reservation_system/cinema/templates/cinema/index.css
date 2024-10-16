@@ -1,26 +1,15 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
 }
 
 header {
-    background-position: center;
-    background-size: cover;
-    color: white;
     padding: 80px 0;
-    text-align: center;
 }
 
 header h1 {
     font-size: 3.5rem;
     font-weight: bold;
-}
-
-header p.lead {
-    font-size: 1.25rem;
-    margin-bottom: 30px;
 }
 
 .navbar {
@@ -44,10 +33,6 @@ form select {
     font-size: 1rem;
     border-radius: 4px;
     padding: 10px;
-}
-
-form button {
-    margin-top: 10px;
 }
 
 /* Cards styling */
@@ -101,13 +86,6 @@ footer p {
     text-align: center;
 }
 
-.footer {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -135,16 +113,4 @@ footer p {
     .card-img-top {
         height: 200px;
     }
-}
-
-.form-inline .form-control {
-    width: auto;
-}
-
-.form-inline .btn {
-    margin-left: 10px;
-}
-
-.form-spacing {
-    margin-top: 20px;
 }
