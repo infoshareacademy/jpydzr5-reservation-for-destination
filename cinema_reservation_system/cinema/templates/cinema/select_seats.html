@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Seats</title>
+{% extends 'base.html' %}
+{%  block header %}
         <style>
             .seat-icon {
                 position: absolute;
@@ -13,8 +9,8 @@
                 object-fit: contain; /* Zachowuje proporcje obrazu w ramach kontenera */
             }
         </style>
-    </head>
-    <body>
+{% endblock %}
+{% block content %}
         <div>wybrałeś film: <span style="font-weight: bolder">{{ seance.movie.title }}</span></div>
         <div>seans rozpoczyna się o godzinie: <span style="font-weight: bolder">{{ seance.show_start }}</span></div>
         <div id="cinema-container" style="width:100%; height:60vh;">
@@ -25,7 +21,7 @@
             {% csrf_token %}
             <input type="hidden" id="selected-seats" name="selected-seats" value="">
             <button type="submit">Dalej</button>
-            <a href="{% url 'basket' %}">Anuluj</a>
+            <a href="{% url 'cinema:index' %}">Anuluj</a>
         </form>
 
         <script>
@@ -88,5 +84,4 @@
             });
 
         </script>
-    </body>
-</html>
+{% endblock %}

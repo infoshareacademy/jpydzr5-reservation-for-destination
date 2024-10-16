@@ -1,13 +1,18 @@
-<h1>Twój koszyk</h1>
-
-{% if selected_seance and selected_ticket %}
-    <p><strong>Seans:</strong> {{ selected_seance }}</p>
-    <p><strong>Typ biletu:</strong> {{ selected_ticket }}</p>
-    <a href="{% url 'select_seance' %}">Zmień seans</a>
-    <a href="{% url 'select_ticket' %}">Zmień typ biletu</a>
-    <br>
-    <button type="button">Przejdź do płatności</button>
-{% else %}
-    <p>Koszyk jest pusty.</p>
-    <a href="{% url 'select_seance' %}">Wybierz seans</a>
-{% endif %}
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Twój koszyk</h1>
+    {% for reservation in reservations %}
+        <div style="border:solid 1px black;padding:10px;">
+        <p><strong>Zamówienie nr :</strong> {{ reservation.id }}</p>
+        <p><strong>Seans:</strong> {{ reservation.seance }}</p>
+        {% for seat_reservation in reservation.seatreservation_set.all %}
+        <strong>Typ biletu:</strong> {{ seat_reservation.ticket_type }}
+        <br>
+        {% endfor %}
+        <p></p><button type="button">Przejdź do płatności</button></p>
+        </div>
+    {% empty %}
+        <p>Koszyk jest pusty.</p>
+        <a href="{% url 'select_seance' %}">Wybierz seans</a>
+    {% endfor %}
+{% endblock %}

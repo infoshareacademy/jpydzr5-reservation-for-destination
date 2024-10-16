@@ -7,11 +7,13 @@
     <title>Kino Studyjne</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'cinema/index.css' %}">
+    {% block header %}
+    {% endblock %}
 </head>
 <body style="height: 100%; margin: 0; display: flex; flex-direction: column; min-height: 100vh;">
     <header class="bg-dark text-white text-center py-4" style="background-size: cover; background-position: center;">
         <div class="container d-flex justify-content-between align-items-center">
-            <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+            <a href="{% url 'cinema:index' %}" style="text-decoration: none; color: inherit;">
                 <h1 class="mb-0">Kino Studyjne</h1>
             </a>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto">
@@ -25,7 +27,7 @@
                     </ul>
                 </div>
             </nav>
-                <form method="post" action="{% url 'set_cinema' %}" class="form-inline form-spacing" id="cinema-selection-form">
+                <form method="post" action="{% url 'cinema:set_cinema' %}" class="form-inline form-spacing" id="cinema-selection-form">
                     {% csrf_token %}
                     <div class="form-group mr-2">
                         <label for="cinema" class="text-light mr-2">Wybierz kino:</label>
@@ -36,6 +38,23 @@
                         </select>
                     </div>
                 </form>
+        </div>
+        <div style="float:right" id="login_container">
+            {%  if request.user.is_authenticated %}
+                <form method="post" action="{% url 'cinema:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Wyloguj się</button>
+                </form>
+            {% else %}
+                <form method="post" action="{% url 'cinema:login' %}">
+                    {% csrf_token %}
+                    <button type="submit">Zaloguj się</button>
+                </form>
+                <form method="post" action="{% url 'cinema:register' %}">
+                    {% csrf_token %}
+                    <button type="submit">Zarejestruj się</button>
+                </form>
+            {% endif %}
         </div>
     </header>
 

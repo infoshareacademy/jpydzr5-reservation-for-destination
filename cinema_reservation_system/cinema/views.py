@@ -44,10 +44,10 @@ def index(request):
     ]
 
     menu_positions = [
-        {"name": "Cennik", "url": "price_list"},
-        {"name": "Repertuar", "url": "repertoire"},
-        {"name": "Rezerwacja", "url": "reservation"},
-        {"name": "Koszyk", "url": "basket"}
+        {"name": "Cennik", "url": "cinema:price_list"},
+        {"name": "Repertuar", "url": "cinema:repertoire"},
+        {"name": "Rezerwacja", "url": "cinema:select_movie"},
+        {"name": "Koszyk", "url": "cinema:basket"}
     ]
 
     context = {
@@ -61,45 +61,49 @@ def index(request):
     return TemplateResponse(request, template, context)
 
 
-# Widok koszyka
 def basket(request):
-    return redirect('/cinema/')
-
-
-def reservation(request):
-    # Ścieżka do szablonu
-    template = "cinema/basket.html"
-
-    # Sprawdź, czy w sesji są jakieś dane koszyka (wybrany seans, bilet, etc.)
-    selected_seance = request.session.get('selected_seance')
-    selected_ticket = request.session.get('selected_ticket')
+    if request.user.is_authenticated:
+        # TODO: po zmianie modelu
+        # seanse, które trwają już ponad 30 minut nie ma sensu utrzymywać rezerwacji
+        # Reservation.objects.filter(
+        #    seance__show_start__lte=pendulum.now().subtract(minutes=30)
+        # ).update(status=EXPIRED)
+        # seanse, które będą za mniej niż 30 minut i nie są zapłacone - kasujemy
+        # Reservation.objects.filter(
+        #    paid=False,
+        #    seance__show_start__lte=pendulum.now().add(minutes=30)
+        # ).update(status=CANCELLED)
+        reservations = Reservation.objects.filter(user=request.user)
+        # reservations = Reservation.objects.filter(user=request.user).exclude(status__in=[CANCELLED, EXPIRED))
+    else:
+        return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
     # Jeśli użytkownik nie wybrał jeszcze seansu ani biletu, wyślij go do wyboru seansu
-    if not selected_seance or not selected_ticket:
-        return redirect('select_movie')
+    if not reservations:
+        return redirect('cinema:reservation')
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
     context = {
-        'selected_seance': selected_seance,
-        'selected_ticket': selected_ticket,
+        'reservations': reservations,
     }
+    template = "cinema/basket.html"
     return TemplateResponse(request, template, context)
 
 
 def repertoire(request):
-    template = "cinema/repertoire.html"
     start_day = pendulum.now("Europe/Warsaw")
     seven_days_forward = {}
     for day in range(1, 8):
         start_day = start_day.add(days=1)
         seven_days_forward[start_day.format("YYYY-MM-DD")] = start_day.format("dddd", locale="pl")
     context = {"days": seven_days_forward}
+    template = "cinema/repertoire.html"
     return TemplateResponse(request, template, context)
 
 
 # Create your views here.
 def price_list(request):
-    template = "cinema/price_list.html"
+
     tickets = models.TicketType.objects.all()
 
     cinema_id = request.session.get('cinema', None)
@@ -113,10 +117,10 @@ def price_list(request):
     ]
 
     menu_positions = [
-        {"name": "Cennik", "url": "price_list"},
-        {"name": "Repertuar", "url": "repertoire"},
-        {"name": "Rezerwacja", "url": "reservation"},
-        {"name": "Koszyk", "url": "basket"}
+        {"name": "Cennik", "url": "cinema:price_list"},
+        {"name": "Repertuar", "url": "cinema:repertoire"},
+        {"name": "Rezerwacja", "url": "cinema:select_movie"},
+        {"name": "Koszyk", "url": "cinema:basket"}
     ]
 
     context = {
@@ -125,6 +129,7 @@ def price_list(request):
         'menu_positions': menu_positions,
         "cinemas": cinemas,
     }
+    template = "cinema/price_list.html"
     return TemplateResponse(request, template, context)
 
 
@@ -134,12 +139,15 @@ def select_movie(request):
         if form.is_valid():
             selected_movie = form.cleaned_data['movie']
             # Przekieruj do widoku seansów po wybraniu filmu
-            return redirect('select_seance', movie_id=selected_movie.id)
+            return redirect('cinema:select_seance', movie_id=selected_movie.id)
     else:
         form = forms.MovieForm()
 
     template = "cinema/select_movie.html"
-    return render(request, template, {'form': form})
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
 
 
 def select_seance(request, movie_id):
@@ -148,12 +156,16 @@ def select_seance(request, movie_id):
         form = forms.SeanceForm(request.POST, movie=movie)
         if form.is_valid():
             selected_seance = form.cleaned_data['show_start']
-            return redirect('select_seats', seance_id=selected_seance.id)
+            return redirect('cinema:select_seats', seance_id=selected_seance.id)
     else:
         form = forms.SeanceForm(movie=movie)
 
+    context = {
+        'form': form,
+        'movie': movie,
+    }
     template = "cinema/select_seance.html"
-    return render(request, template, {'form': form, 'movie': movie})
+    return render(request, "cinema/select_seance.html", context)
 
 
 def select_ticket_type(request, reservation_id):
@@ -169,10 +181,11 @@ def select_ticket_type(request, reservation_id):
             # Zapisz każdy typ biletu dla odpowiadającego mu miejsca
             for form, seat_reservation in zip(formset, seat_reservations):
                 ticket_type = form.cleaned_data['ticket_type']
+
                 seat_reservation.ticket_type = ticket_type
                 seat_reservation.save()
 
-            return redirect('next_step')  # Przekierowanie do następnego kroku po udanym przesłaniu formularza
+            return redirect('cinema:basket')  # Przekierowanie do następnego kroku po udanym przesłaniu formularza
     else:
         # Inicjalizuj formset z pustymi formularzami
         formset = TicketFormSet()
@@ -215,7 +228,7 @@ def select_seats(request, seance_id):
 
     if request.method == 'POST':
 
-        form = forms.SeatForm(request.POST, seance=seance, initial={'selected_seats': selected_seats})
+        form = forms.SeatForm(request.POST, seance=seance)
 
         # tu trzeba by walidację zrobić, ale na to już nie mam czasu
         # if form.is_valid():
@@ -223,13 +236,14 @@ def select_seats(request, seance_id):
         if not request.user.is_authenticated:
             request.session['selected_seats'] = selected_seats
             # Przekierowanie na stronę logowania z parametrem `next`
-            return redirect(f'{reverse("login")}?next={request.path}')
-
-        print(selected_seats)
+            return redirect(f'{reverse("cinema:login")}?next={request.path}')
+        else:
+            selected_seats = json.loads(request.POST.get('selected-seats', '[]'))
 
         if selected_seats:
             reservation = models.Reservation.objects.create(user=request.user, seance=seance)
             for selected_seat in selected_seats:
+
                 models.SeatReservation.objects.create(
                     reservation=reservation,
                     seat_id=selected_seat,
@@ -239,15 +253,15 @@ def select_seats(request, seance_id):
             if 'selected_seats' in request.session:
                 del request.session['selected_seats']
 
-            return redirect('select_ticket_type', reservation_id=reservation.id)
+            return redirect('cinema:select_ticket_type', reservation_id=reservation.id)
     else:
         form = forms.SeatForm(seance=seance, initial={'selected_seats': selected_seats})
 
-    template = "cinema/select_seats.html"
     context = {
         'form': form,
         'seats_json': seats_data,
         'seance': seance,
 
     }
+    template = "cinema/select_seats.html"
     return render(request, template, context)

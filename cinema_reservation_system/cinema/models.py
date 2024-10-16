@@ -49,7 +49,7 @@ class Seance(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.RESTRICT, null=True)
 
     def __str__(self):
-        return f'{self.movie.title} - {self.show_start} - Sala: {self.hall}'
+        return f'{self.movie.title} - {self.show_start} - {self.hall}'
 
     def clean(self):
         # Oblicz czas zakończenia tego seansu wraz z czasem sprzątania
@@ -111,7 +111,7 @@ class SeatReservation(models.Model):
 
     def clean(self):
         # Sprawdzenie, czy seat jest już zarezerwowane na dany seans
-        if SeatReservation.objects.filter(seat=self.seat, reservation__seance=self.reservation.seance).exists():
+        if SeatReservation.objects.filter(seat=self.seat, reservation__seance=self.reservation.seance).exclude(id=self.id).exists():
             raise ValidationError(f"Miejsce {self.seat} jest już zarezerwowane na ten seans.")
 
     def save(self, *args, **kwargs):

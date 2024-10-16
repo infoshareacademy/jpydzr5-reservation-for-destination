@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wybór typu biletu</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <h1>Wybór typu biletu</h1>
 
     <p>Zarezerwowałeś bilety:</p>
@@ -30,7 +24,6 @@
             </fieldset>
         {% endfor %}
         <button type="submit">Dalej</button>
-        <a href="{% url 'basket' %}">Anuluj</a>
+        <a href="{% url 'cinema:basket' %}">Anuluj</a>
     </form>
-</body>
-</html>
+{% endblock %}
