@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.urls import reverse_lazy
 from django.utils.http import url_has_allowed_host_and_scheme
 
@@ -32,5 +32,13 @@ def logout_view(request):
 
 
 def register_view(request):
-    # TODO
-    return redirect(reverse_lazy('cinema:index'))  # Przekierowanie na wybraną stronę
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Logowanie użytkownika po rejestracji
+            return redirect(reverse_lazy('cinema:index'))  # Przekierowanie po rejestracji
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'registration/register.html', {'form': form})

@@ -265,3 +265,32 @@ def select_seats(request, seance_id):
     }
     template = "cinema/select_seats.html"
     return render(request, template, context)
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+@login_required
+def user_panel_view(request):
+    user = request.user  # Pobiera zalogowanego użytkownika
+    # Możesz pobierać dodatkowe dane, np. historię rezerwacji
+    context = {
+        'user': user,
+        # Możesz dodać tutaj inne dane związane z użytkownikiem
+    }
+    return render(request, 'cinema/user_panel.html', context)
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm
+
+@login_required
+def edit_user_panel_view(request):
+    if request.method == 'POST':
+        form = UserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('cinema:user_panel')  # Po zapisaniu przekierowanie do panelu użytkownika
+    else:
+        form = UserChangeForm(instance=request.user)
+
+    return render(request, 'cinema/edit_user_panel.html', {'form': form})

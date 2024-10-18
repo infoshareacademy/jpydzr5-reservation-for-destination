@@ -36,3 +36,4 @@ class TicketTypeForm(forms.Form):
         label='Typ biletu',
         empty_label="Wybierz typ biletu"
     )
+
