@@ -16,17 +16,23 @@
             <a href="{% url 'cinema:index' %}" style="text-decoration: none; color: inherit;">
                 <h1 class="mb-0">Kino Studyjne</h1>
             </a>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        {% for item in menu_positions %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url item.url %}">{{ item.name }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </nav>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            {% for item in menu_positions %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url item.url %}">{{ item.name }}</a>
+                            </li>
+                            {% endfor %}
+                            <!-- Link do panelu użytkownika -->
+                            {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'cinema:user_panel' %}">Twoje konto</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
                 <form method="post" action="{% url 'cinema:set_cinema' %}" class="form-inline form-spacing" id="cinema-selection-form">
                     {% csrf_token %}
                     <div class="form-group mr-2">

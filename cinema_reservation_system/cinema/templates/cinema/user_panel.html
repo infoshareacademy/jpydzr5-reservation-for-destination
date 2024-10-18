@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Panel użytkownika</h2>
+    <p>Witaj, {{ user.username }}!</p>
+    <p>Twoje dane:</p>
+    <ul>
+        <li>Email: {{ user.email }}</li>
+        <li>Data dołączenia: {{ user.date_joined }}</li>
+        <!-- Możesz dodać tutaj więcej informacji o użytkowniku -->
+    </ul>
+
+    <!-- Przycisk do edycji danych -->
+    <a href="{% url 'cinema:edit_user_panel' %}" class="btn btn-primary mt-3">Edytuj dane</a>
+
+    <!-- Możesz dodać sekcję z historią zakupów lub rezerwacji -->
+    <h3 class="mt-5">Twoje rezerwacje</h3>
+    <!-- Przykładowa lista rezerwacji, jeśli masz model związany z rezerwacjami -->
+    {% if reservations %}
+        <ul>
+            {% for reservation in reservations %}
+            <li>{{ reservation.movie_title }} - {{ reservation.date }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nie masz żadnych rezerwacji.</p>
+    {% endif %}
+</div>
+{% endblock %}

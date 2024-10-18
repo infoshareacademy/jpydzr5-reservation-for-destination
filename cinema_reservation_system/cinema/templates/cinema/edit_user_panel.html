@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Edytuj swoje dane</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>
+
+<a href="{% url 'cinema:user_panel' %}" class="btn btn-secondary mt-3">Powrót do panelu</a>
+{% endblock %}
