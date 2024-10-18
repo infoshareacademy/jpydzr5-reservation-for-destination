@@ -1,0 +1,96 @@
+<!-- templates/movies_with_reservations.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmy z Zarezerwowanymi Miejscami</title>
+</head>
+<body>
+    <h1>Filmy z Zarezerwowanymi Miejscami</h1>
+    <h2>W okresie od {{ range_begin }} do {{ range_end }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tytuł Filmu</th>
+                <th>Liczba Zarezerwowanych Miejsc</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies_with_reservations %}
+                <tr>
+                    <td>{{ movie.title }}</td>
+                    <td>{{ movie.total_reserved_seats }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">Brak filmów z zarezerwowanymi miejscami.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ <h1>Najczęściej Wybierane Godziny Seansów</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Godzina</th>
+                <th>Liczba Miejsc</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for showtime in popular_showtimes %}
+                <tr>
+                    <td>{{ showtime.hour }}:{{ showtime.minute|stringformat:"02d" }}</td>
+                    <td>{{ showtime.count }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">Brak danych o seansach.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ <h1>Najczęściej Wybierane Dni Tygodnia</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Dzień Tygodnia</th>
+                <th>Liczba Miejsc</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for showtime in popular_weekdays %}
+                <tr>
+                    <td>{{ showtime.day_name }}</td>
+                    <td>{{ showtime.count }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">Brak danych o seansach.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<h1>Najczęściej Wybierane Typy Biletów</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Typ biletów</th>
+                <th>Liczba Miejsc</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for popular_ticket_type in popular_ticket_types %}
+                <tr>
+                    <td>{{ popular_ticket_type.ticket_type__name }}</td>
+                    <td>{{ popular_ticket_type.count }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">Brak danych o biletach.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
