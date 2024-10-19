@@ -144,6 +144,7 @@ def repertoire(request, context):
 
     context = {
         **context,
+        'current_date': current_date,
         "date_options": date_options,
         'movies': movies_with_seances,
     }
