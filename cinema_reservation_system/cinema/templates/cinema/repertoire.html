@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load pluralize_pl %}
 
 {% block content %}
 <h2 style="text-align: center">Repertuar na najbliższy tydzień</h2>
@@ -25,14 +26,14 @@
             {% for movie, seances in movies.items %}
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                    <img src="{{ movie.poster_url }}" class="card-img-top" alt="Plakat filmu {{ movie.title }}">
+                    <img src="{{ movie.poster.url }}" class="card-img-top img-fluid" style="height: 450px; object-fit: cover; object-position: center;" alt="plakat filmu {{ movie.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ movie.title }}</h5>
                         <p class="card-text">{{ movie.description }}</p>
                         <h6 class="mt-3">Godziny seansów:</h6>
                         <ul class="list-unstyled">
                             {% for seance_data in seances %}
-                                <li><i class="bi bi-clock"></i><a href="{% url 'cinema:select_seats' seance_data.seance.id %}">{{ seance_data.seance.show_start|date:"H:i" }}</a> {% if seance_data.free_seats_count == 0 %}brak wolnych miejsc{% else %}{% if seance_data.free_seats_count < 11 %}ostatnie {{ seance_data.free_seats_count }} miejsc{% else %}są dostępne miejsca{% endif %}{% endif %}{% if seance_data.disabled_seat_count > 0 %} + ♿x{{seance_data.disabled_seat_count }}{% endif %}</li>
+                                <li><i class="bi bi-clock"></i><a href="{% url 'cinema:select_seats' seance_data.seance.id %}"><b>{{ seance_data.seance.show_start|date:"H:i" }}</b></a> {% if seance_data.free_seats_count == 0 %}brak wolnych miejsc{% else %}{% if seance_data.free_seats_count < 11 %}ostatnie {{ seance_data.free_seats_count|pluralize:"miejsce,miejsca,miejsc" }}{% else %}są dostępne miejsca{% endif %}{% endif %}{% if seance_data.disabled_seat_count > 0 %} + ♿x{{seance_data.disabled_seat_count }}{% endif %}</li>
                             {% endfor %}
                         </ul>
                     </div>
