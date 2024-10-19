@@ -1,5 +1,5 @@
+import pendulum
 from django.core.exceptions import ValidationError
-from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
 from datetime import timedelta
@@ -44,9 +44,9 @@ class Hall(models.Model):
 class Seance(models.Model):
     """Klasa reprezentująca seans,
     czyli pojedyncze wyświetlenie konkretnego filmu w konkretnej sali o konkretnej godzinie"""
-    show_start = models.DateTimeField(default=timezone.now)
+    show_start = models.DateTimeField(default=pendulum.now)
     hall = models.ForeignKey(Hall, on_delete=models.RESTRICT, null=True)
-    movie = models.ForeignKey(Movie, on_delete=models.RESTRICT, null=True)
+    movie = models.ForeignKey(Movie, on_delete=models.RESTRICT, null=True, related_name='seances')
 
     def __str__(self):
         return f'{self.movie.title} - {self.show_start} - {self.hall}'
