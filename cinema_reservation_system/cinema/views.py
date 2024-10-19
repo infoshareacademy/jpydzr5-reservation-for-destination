@@ -54,7 +54,6 @@ def index(request, context):
     message = "Wybierz kino, aby zobaczyć najbliższe seanse."
     upcoming_screenings = []
     current_time = pendulum.now()
-    print(f"{context}")
     if 'selected_cinema' in context:
         now_playing_seance = models.Seance.objects.annotate(
             end_time=ExpressionWrapper(
@@ -70,13 +69,14 @@ def index(request, context):
             now_playing = {
                 'title': now_playing_seance.movie.title,
                 'description': now_playing_seance.movie.description,
+                'poster': now_playing_seance.movie.poster
             }
 
         message = None
 
         upcoming_screenings = models.Seance.objects.filter(
             hall__cinema=context['selected_cinema'],
-            show_start__lte=current_time,
+            show_start__gte=current_time,
         ).select_related('movie').order_by('show_start')[:3]
 
     context = {

@@ -17,6 +17,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
     duration = models.DurationField(default=timedelta(minutes=120))
+    poster = models.ImageField(upload_to='posters/', blank=True, null=True)
 
     def __str__(self):
         return self.title
