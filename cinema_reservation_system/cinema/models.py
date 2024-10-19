@@ -101,6 +101,8 @@ class Reservation(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.RESTRICT, null=True)
     seance = models.ForeignKey(Seance, on_delete=models.RESTRICT, null=True)
+    paid = models.BooleanField(default=False)
+    cancelled = models.BooleanField(default=False)
 
 
 class SeatReservation(models.Model):
