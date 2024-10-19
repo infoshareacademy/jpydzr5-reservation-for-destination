@@ -32,14 +32,14 @@
                     <div class="form-group mr-2">
                         <label for="cinema" class="text-light mr-2">Wybierz kino:</label>
                         <select id="cinema" name="cinema" class="form-control" onchange="document.getElementById('cinema-selection-form').submit();">
+                            <option value="" {% if selected_cinema is None %}selected{% endif %}>Brak</option>
                             {% for cinema in cinemas %}
                             <option value="{{ cinema.id }}" {% if cinema.id == selected_cinema %}selected{% endif %}>{{cinema.name}}</option>
                             {% endfor %}
                         </select>
                     </div>
                 </form>
-        </div>
-        <div style="float:right" id="login_container">
+            <div class="ml-4 d-flex"  style="float:right" id="login_container">
             {%  if request.user.is_authenticated %}
                 <form method="post" action="{% url 'cinema:logout' %}">
                     {% csrf_token %}
@@ -50,11 +50,12 @@
                     {% csrf_token %}
                     <button type="submit">Zaloguj się</button>
                 </form>
-                <form method="post" action="{% url 'cinema:register' %}">
+                <form class="ml-2" method="post" action="{% url 'cinema:register' %}">
                     {% csrf_token %}
                     <button type="submit">Zarejestruj się</button>
                 </form>
             {% endif %}
+            </div>
         </div>
     </header>
 

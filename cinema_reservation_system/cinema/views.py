@@ -1,4 +1,4 @@
-from django.db.models import Exists, OuterRef
+from django.db.models import Exists, OuterRef, F, ExpressionWrapper, DateTimeField
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.response import TemplateResponse
 from django.urls import reverse
@@ -16,32 +16,48 @@ DEFAULT_TICKET_TYPE_ID = 1
 def set_cinema(request):
     if request.method == 'POST':
         cinema_id = request.POST.get('cinema')
-        if 'cinema' in request.session:
+        if cinema_id:
             request.session['cinema'] = cinema_id
-        return redirect('index')
-    return redirect('index')
+        else:
+            request.session.pop('cinema', 'None')
+        return redirect('cinema:index')
+    return redirect('cinema:index')
 
 
 def index(request):
     cinema_id = request.session.get('cinema', None)
     if cinema_id is not None:
         cinema_id = int(cinema_id)
-    cinemas = [
-        {'id': 1, 'name': 'Kino A'},
-        {'id': 2, 'name': 'Kino B'},
-        {'id': 3, 'name': 'Kino C'},
-    ]
 
-    now_playing = {
-        'title': 'Film Tygodnia',
-        'description': 'Niezwykła opowieść o przygodzie w nieznane.'
-    }
+    cinemas = models.Cinema.objects.values('id', 'name')
+    now_playing = None
+    message = "Wybierz kino, aby zobaczyć najbliższe seanse."
+    upcoming_screenings = []
+    current_time = pendulum.now()
 
-    upcoming_screenings = [
-        {'movie': {'title': 'Film 1', 'image_url': ''}, 'hall': 'Sala 1', 'time': '14:00'},
-        {'movie': {'title': 'Film 2', 'image_url': ''}, 'hall': 'Sala 2', 'time': '16:30'},
-        {'movie': {'title': 'Film 3', 'image_url': ''}, 'hall': 'Sala 3', 'time': '19:00'}
-    ]
+    if cinema_id:
+        now_playing_seance = models.Seance.objects.annotate(
+            end_time=ExpressionWrapper(
+                F('show_start') + F('movie__duration'), output_field=DateTimeField()
+            )
+        ).filter(
+            hall__cinema_id=cinema_id,
+            show_start__lte=current_time,
+            end_time__gte=current_time
+        ).select_related('movie').first()
+
+        if now_playing_seance:
+            now_playing = {
+                'title': now_playing_seance.movie.title,
+                'description': now_playing_seance.movie.description,
+            }
+
+        message = None
+
+        upcoming_screenings = models.Seance.objects.filter(
+            hall__cinema_id=cinema_id,
+            show_start__lte=current_time,
+        ).select_related('movie').order_by('show_start')[:3]
 
     menu_positions = [
         {"name": "Cennik", "url": "cinema:price_list"},
@@ -56,6 +72,7 @@ def index(request):
         'upcoming_screenings': upcoming_screenings,
         'menu_positions': menu_positions,
         'selected_cinema': cinema_id,
+        'message': message
     }
     template = "cinema/index.html"
     return TemplateResponse(request, template, context)
@@ -103,7 +120,6 @@ def repertoire(request):
 
 # Create your views here.
 def price_list(request):
-
     tickets = models.TicketType.objects.all()
 
     cinema_id = request.session.get('cinema', None)
@@ -243,7 +259,6 @@ def select_seats(request, seance_id):
         if selected_seats:
             reservation = models.Reservation.objects.create(user=request.user, seance=seance)
             for selected_seat in selected_seats:
-
                 models.SeatReservation.objects.create(
                     reservation=reservation,
                     seat_id=selected_seat,
