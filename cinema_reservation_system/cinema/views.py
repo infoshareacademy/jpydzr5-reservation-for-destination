@@ -10,6 +10,30 @@ import json
 import pendulum
 
 DEFAULT_TICKET_TYPE_ID = 1
+DISABLED_SEAT_TYPE_ID = 3
+
+
+def free_seats_for_seance(seance):
+    # Pobierz wszystkie miejsca w sali, w której odbywa się seans
+    all_seats = seance.hall.seat_set.all()
+
+    # Pobierz wszystkie zarezerwowane miejsca dla tego seansu
+    reserved_seats =models.SeatReservation.objects.filter(
+        reservation__seance=seance,
+        reservation__cancelled=False
+    ).values_list('seat', flat=True)
+
+    # Oblicz liczbę wolnych miejsc
+    free_seats = all_seats.exclude(id__in=reserved_seats)
+
+    # Filtruj wolne miejsca dla osób niepełnosprawnych
+    free_disabled_seats = free_seats.filter(seat_type__id=3)
+    free_notdisabled_seats = free_seats.exclude(seat_type__id=3)
+    return {
+        'free_seats_count': free_notdisabled_seats.count(),
+        'free_disabled_seats_count': free_disabled_seats.count(),
+
+    }
 
 
 def set_cinema(request):
@@ -55,7 +79,8 @@ def index(request, context):
             show_start__lte=current_time,
         ).select_related('movie').order_by('show_start')[:3]
 
-    context = {**context,
+    context = {
+        **context,
         'now_playing': now_playing,
         'upcoming_screenings': upcoming_screenings,
         'message': message
@@ -84,7 +109,8 @@ def basket(request, context):
         return redirect('cinema:reservation')
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
-    context = {**context,
+    context = {
+        **context,
         'reservations': reservations,
     }
     template = "cinema/basket.html"
@@ -93,14 +119,35 @@ def basket(request, context):
 
 @decorators.set_vars
 def repertoire(request, context):
-    start_day = pendulum.now("Europe/Warsaw")
-    seven_days_forward = {}
-    for day in range(1, 8):
-        start_day = start_day.add(days=1)
-        seven_days_forward[start_day.format("YYYY-MM-DD")] = start_day.format("dddd", locale="pl")
-    context = {**context,
-               "days": seven_days_forward
+    if 'selected_date' in request.GET:
+        current_date = pendulum.parse(request.GET.get('selected_date'))
+    else:
+        current_date = pendulum.now()
+
+    seances = models.Seance.objects.filter(show_start__range=(current_date, current_date.add(days=1).start_of('day')))
+    date_options = [pendulum.now().add(days=i) for i in range(7)]
+
+    # Przypisujemy filmy i seanse do słownika
+    movies_with_seances = {}
+    for seance in seances:
+        movie = seance.movie
+        seat_info = free_seats_for_seance(seance)
+
+        if movie not in movies_with_seances:
+            movies_with_seances[movie] = []
+
+        movies_with_seances[movie].append({
+            'seance': seance,
+            'free_seats_count': seat_info['free_seats_count'],
+            'disabled_seat_count': seat_info['free_disabled_seats_count'],
+        })
+
+    context = {
+        **context,
+        "date_options": date_options,
+        'movies': movies_with_seances,
     }
+    print(movies_with_seances)
     template = "cinema/repertoire.html"
     return TemplateResponse(request, template, context)
 
@@ -113,7 +160,8 @@ def price_list(request, context):
     if cinema_id is not None:
         cinema_id = int(cinema_id)
 
-    context = {**context,
+    context = {
+        **context,
         "tickets": tickets,
     }
     template = "cinema/price_list.html"
@@ -149,7 +197,8 @@ def select_seance(request, context, movie_id):
     else:
         form = forms.SeanceForm(movie=movie)
 
-    context = {**context,
+    context = {
+        **context,
         'form': form,
         'movie': movie,
     }
@@ -181,7 +230,8 @@ def select_ticket_type(request, context, reservation_id):
         formset = TicketFormSet()
 
     template = "cinema/select_ticket_type.html"
-    context = {**context,
+    context = {
+        **context,
         'formset': formset,
         'reservation': reservation,
         'seat_reservations': seat_reservations
@@ -247,7 +297,8 @@ def select_seats(request, context, seance_id):
     else:
         form = forms.SeatForm(seance=seance, initial={'selected_seats': selected_seats})
 
-    context = {**context,
+    context = {
+        **context,
         'form': form,
         'seats_json': seats_data,
         'seance': seance,
@@ -262,7 +313,8 @@ def select_seats(request, context, seance_id):
 def user_panel_view(request, context):
     user = request.user  # Pobiera zalogowanego użytkownika
     # Możesz pobierać dodatkowe dane, np. historię rezerwacji
-    context = {**context,
+    context = {
+        **context,
         'user': user,
         # Możesz dodać tutaj inne dane związane z użytkownikiem
     }
@@ -281,7 +333,8 @@ def edit_user_panel_view(request, context):
     else:
         form = UserChangeForm(instance=request.user)
     template = 'cinema/edit_user_panel.html'
-    context = {**context,
-               'form': form,
+    context = {
+        **context,
+        'form': form,
     }
     return render(request, template, context)
