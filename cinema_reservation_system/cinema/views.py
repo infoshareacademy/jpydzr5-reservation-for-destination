@@ -33,7 +33,7 @@ def index(request):
     now_playing = None
     message = "Wybierz kino, aby zobaczyć najbliższe seanse."
     upcoming_screenings = []
-    current_time = pendulum.now()
+    current_time = pendulum.now('UTC')
 
     if cinema_id:
         now_playing_seance = models.Seance.objects.annotate(
@@ -50,13 +50,14 @@ def index(request):
             now_playing = {
                 'title': now_playing_seance.movie.title,
                 'description': now_playing_seance.movie.description,
+                'poster': now_playing_seance.movie.poster
             }
 
         message = None
 
         upcoming_screenings = models.Seance.objects.filter(
             hall__cinema_id=cinema_id,
-            show_start__lte=current_time,
+            show_start__gte=current_time,
         ).select_related('movie').order_by('show_start')[:3]
 
     menu_positions = [
