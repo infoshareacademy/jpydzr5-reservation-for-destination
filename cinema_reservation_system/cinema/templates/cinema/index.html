@@ -1,16 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if message %}
+<section class="text-center">
+    <h3 class="text-danger">{{ message }}</h3>
+</section>
+{% else %}
 <section class="text-center">
     <h2>Teraz gramy:</h2>
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="card mb-4 shadow-sm">
+                {% if now_playing %}
                 <img src="" class="card-img-top" alt="Film">
                 <div class="card-body">
                     <h5 class="card-title">{{ now_playing.title }}</h5>
                     <p class="card-text">{{ now_playing.description }}</p>
                 </div>
+                {% else %}
+                <div class="card-body">
+                    <h4>Nic aktualnie nie gramy teraz</h4>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -24,11 +36,16 @@
                 <img src="" class="card-img-top" alt="Film">
                 <div class="card-body">
                     <h5 class="card-title">{{ screening.movie.title }}</h5>
-                    <p class="card-text">Sala: {{ screening.hall }}<br>Godzina: {{ screening.time }}</p>
+                    <p class="card-text">Sala: {{ screening.hall.hall_number }}<br>Godzina: {{ screening.show_start|date:"H:i" }}</p>
                 </div>
             </div>
         </div>
+        {% empty %}
+            <div class="col-md-12">
+                <p class="text-center">Brak nadchodzących seansów.</p>
+            </div>
         {% endfor %}
     </div>
 </section>
+{% endif %}
 {% endblock %}
