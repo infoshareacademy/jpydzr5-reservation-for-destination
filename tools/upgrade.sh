@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 if [ -z "$VIRTUAL_ENV" ]; then
     echo "Brak aktywnego środowiska wirtualnego. Zakończono działanie."
     exit 1
