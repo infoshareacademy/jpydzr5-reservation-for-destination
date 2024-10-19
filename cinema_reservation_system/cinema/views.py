@@ -1,16 +1,39 @@
-from django.db.models import Exists, OuterRef, F, ExpressionWrapper, DateTimeField
-from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm
+from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField
+from django.forms import formset_factory
+from django.shortcuts import get_object_or_404, render, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse
-
-from . import forms, models
-from django.forms import formset_factory
-from .models import Reservation, SeatReservation
-from .forms import TicketTypeForm
+from . import forms, models, decorators
 import json
 import pendulum
 
 DEFAULT_TICKET_TYPE_ID = 1
+DISABLED_SEAT_TYPE_ID = 3
+
+
+def free_seats_for_seance(seance):
+    # Pobierz wszystkie miejsca w sali, w której odbywa się seans
+    all_seats = seance.hall.seat_set.all()
+
+    # Pobierz wszystkie zarezerwowane miejsca dla tego seansu
+    reserved_seats =models.SeatReservation.objects.filter(
+        reservation__seance=seance,
+        reservation__cancelled=False
+    ).values_list('seat', flat=True)
+
+    # Oblicz liczbę wolnych miejsc
+    free_seats = all_seats.exclude(id__in=reserved_seats)
+
+    # Filtruj wolne miejsca dla osób niepełnosprawnych
+    free_disabled_seats = free_seats.filter(seat_type__id=3)
+    free_notdisabled_seats = free_seats.exclude(seat_type__id=3)
+    return {
+        'free_seats_count': free_notdisabled_seats.count(),
+        'free_disabled_seats_count': free_disabled_seats.count(),
+
+    }
 
 
 def set_cinema(request):
@@ -24,24 +47,20 @@ def set_cinema(request):
     return redirect('cinema:index')
 
 
-def index(request):
-    cinema_id = request.session.get('cinema', None)
-    if cinema_id is not None:
-        cinema_id = int(cinema_id)
+@decorators.set_vars
+def index(request, context):
 
-    cinemas = models.Cinema.objects.values('id', 'name')
     now_playing = None
     message = "Wybierz kino, aby zobaczyć najbliższe seanse."
     upcoming_screenings = []
-    current_time = pendulum.now('UTC')
-
-    if cinema_id:
+    current_time = pendulum.now()
+    if 'selected_cinema' in context:
         now_playing_seance = models.Seance.objects.annotate(
             end_time=ExpressionWrapper(
                 F('show_start') + F('movie__duration'), output_field=DateTimeField()
             )
         ).filter(
-            hall__cinema_id=cinema_id,
+            hall__cinema=context['selected_cinema'],
             show_start__lte=current_time,
             end_time__gte=current_time
         ).select_related('movie').first()
@@ -56,43 +75,32 @@ def index(request):
         message = None
 
         upcoming_screenings = models.Seance.objects.filter(
-            hall__cinema_id=cinema_id,
+            hall__cinema=context['selected_cinema'],
             show_start__gte=current_time,
         ).select_related('movie').order_by('show_start')[:3]
 
-    menu_positions = [
-        {"name": "Cennik", "url": "cinema:price_list"},
-        {"name": "Repertuar", "url": "cinema:repertoire"},
-        {"name": "Rezerwacja", "url": "cinema:select_movie"},
-        {"name": "Koszyk", "url": "cinema:basket"}
-    ]
-
     context = {
-        'cinemas': cinemas,
+        **context,
         'now_playing': now_playing,
         'upcoming_screenings': upcoming_screenings,
-        'menu_positions': menu_positions,
-        'selected_cinema': cinema_id,
         'message': message
     }
     template = "cinema/index.html"
     return TemplateResponse(request, template, context)
 
 
-def basket(request):
+@decorators.set_vars
+def basket(request, context):
     if request.user.is_authenticated:
-        # TODO: po zmianie modelu
-        # seanse, które trwają już ponad 30 minut nie ma sensu utrzymywać rezerwacji
-        # Reservation.objects.filter(
-        #    seance__show_start__lte=pendulum.now().subtract(minutes=30)
-        # ).update(status=EXPIRED)
-        # seanse, które będą za mniej niż 30 minut i nie są zapłacone - kasujemy
-        # Reservation.objects.filter(
-        #    paid=False,
-        #    seance__show_start__lte=pendulum.now().add(minutes=30)
-        # ).update(status=CANCELLED)
-        reservations = Reservation.objects.filter(user=request.user)
-        # reservations = Reservation.objects.filter(user=request.user).exclude(status__in=[CANCELLED, EXPIRED))
+        reservations = models.Reservation.objects.filter(
+            Q(
+                paid=True
+            ) | Q(
+                paid=False,
+                seance__show_start__gte=pendulum.now().add(minutes=30),
+            ),
+            user=request.user,
+        )
     else:
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
@@ -102,55 +110,66 @@ def basket(request):
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
     context = {
+        **context,
         'reservations': reservations,
     }
     template = "cinema/basket.html"
     return TemplateResponse(request, template, context)
 
 
-def repertoire(request):
-    start_day = pendulum.now("Europe/Warsaw")
-    seven_days_forward = {}
-    for day in range(1, 8):
-        start_day = start_day.add(days=1)
-        seven_days_forward[start_day.format("YYYY-MM-DD")] = start_day.format("dddd", locale="pl")
-    context = {"days": seven_days_forward}
+@decorators.set_vars
+def repertoire(request, context):
+    if 'selected_date' in request.GET:
+        current_date = pendulum.parse(request.GET.get('selected_date'))
+    else:
+        current_date = pendulum.now()
+
+    seances = models.Seance.objects.filter(show_start__range=(current_date, current_date.add(days=1).start_of('day')))
+    date_options = [pendulum.now().add(days=i) for i in range(7)]
+
+    # Przypisujemy filmy i seanse do słownika
+    movies_with_seances = {}
+    for seance in seances:
+        movie = seance.movie
+        seat_info = free_seats_for_seance(seance)
+
+        if movie not in movies_with_seances:
+            movies_with_seances[movie] = []
+
+        movies_with_seances[movie].append({
+            'seance': seance,
+            'free_seats_count': seat_info['free_seats_count'],
+            'disabled_seat_count': seat_info['free_disabled_seats_count'],
+        })
+
+    context = {
+        **context,
+        "date_options": date_options,
+        'movies': movies_with_seances,
+    }
+    print(movies_with_seances)
     template = "cinema/repertoire.html"
     return TemplateResponse(request, template, context)
 
 
-# Create your views here.
-def price_list(request):
+@decorators.set_vars
+def price_list(request, context):
     tickets = models.TicketType.objects.all()
 
     cinema_id = request.session.get('cinema', None)
     if cinema_id is not None:
         cinema_id = int(cinema_id)
 
-    cinemas = [
-        {'id': 1, 'name': 'Kino A'},
-        {'id': 2, 'name': 'Kino B'},
-        {'id': 3, 'name': 'Kino C'},
-    ]
-
-    menu_positions = [
-        {"name": "Cennik", "url": "cinema:price_list"},
-        {"name": "Repertuar", "url": "cinema:repertoire"},
-        {"name": "Rezerwacja", "url": "cinema:select_movie"},
-        {"name": "Koszyk", "url": "cinema:basket"}
-    ]
-
     context = {
+        **context,
         "tickets": tickets,
-        'selected_cinema': cinema_id,
-        'menu_positions': menu_positions,
-        "cinemas": cinemas,
     }
     template = "cinema/price_list.html"
     return TemplateResponse(request, template, context)
 
 
-def select_movie(request):
+@decorators.set_vars
+def select_movie(request, context):
     if request.method == 'POST':
         form = forms.MovieForm(request.POST)
         if form.is_valid():
@@ -161,13 +180,14 @@ def select_movie(request):
         form = forms.MovieForm()
 
     template = "cinema/select_movie.html"
-    context = {
+    context = {**context,
         'form': form,
     }
     return render(request, template, context)
 
 
-def select_seance(request, movie_id):
+@decorators.set_vars
+def select_seance(request, context, movie_id):
     movie = models.Movie.objects.get(id=movie_id)
     if request.method == 'POST':
         form = forms.SeanceForm(request.POST, movie=movie)
@@ -178,19 +198,21 @@ def select_seance(request, movie_id):
         form = forms.SeanceForm(movie=movie)
 
     context = {
+        **context,
         'form': form,
         'movie': movie,
     }
     template = "cinema/select_seance.html"
-    return render(request, "cinema/select_seance.html", context)
+    return render(request, template, context)
 
 
-def select_ticket_type(request, reservation_id):
-    reservation = get_object_or_404(Reservation, id=reservation_id)
+@decorators.set_vars
+def select_ticket_type(request, context, reservation_id):
+    reservation = get_object_or_404(models.Reservation, id=reservation_id)
     seat_reservations = reservation.seatreservation_set.all()
 
     # Utwórz formset dla typów biletów, jeden formularz dla każdego zarezerwowanego miejsca
-    TicketFormSet = formset_factory(TicketTypeForm, extra=len(seat_reservations))
+    TicketFormSet = formset_factory(forms.TicketTypeForm, extra=len(seat_reservations))
 
     if request.method == 'POST':
         formset = TicketFormSet(request.POST)
@@ -209,6 +231,7 @@ def select_ticket_type(request, reservation_id):
 
     template = "cinema/select_ticket_type.html"
     context = {
+        **context,
         'formset': formset,
         'reservation': reservation,
         'seat_reservations': seat_reservations
@@ -216,7 +239,8 @@ def select_ticket_type(request, reservation_id):
     return render(request, template, context)
 
 
-def select_seats(request, seance_id):
+@decorators.set_vars
+def select_seats(request, context, seance_id):
     seance = models.Seance.objects.get(id=seance_id)
 
     seat_reservation_subquery = models.SeatReservation.objects.filter(
@@ -274,6 +298,7 @@ def select_seats(request, seance_id):
         form = forms.SeatForm(seance=seance, initial={'selected_seats': selected_seats})
 
     context = {
+        **context,
         'form': form,
         'seats_json': seats_data,
         'seance': seance,
@@ -282,25 +307,24 @@ def select_seats(request, seance_id):
     template = "cinema/select_seats.html"
     return render(request, template, context)
 
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 
 @login_required
-def user_panel_view(request):
+@decorators.set_vars
+def user_panel_view(request, context):
     user = request.user  # Pobiera zalogowanego użytkownika
     # Możesz pobierać dodatkowe dane, np. historię rezerwacji
     context = {
+        **context,
         'user': user,
         # Możesz dodać tutaj inne dane związane z użytkownikiem
     }
-    return render(request, 'cinema/user_panel.html', context)
+    template = 'cinema/user_panel.html'
+    return render(request, template, context)
 
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserChangeForm
 
 @login_required
-def edit_user_panel_view(request):
+@decorators.set_vars
+def edit_user_panel_view(request, context):
     if request.method == 'POST':
         form = UserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -308,5 +332,9 @@ def edit_user_panel_view(request):
             return redirect('cinema:user_panel')  # Po zapisaniu przekierowanie do panelu użytkownika
     else:
         form = UserChangeForm(instance=request.user)
-
-    return render(request, 'cinema/edit_user_panel.html', {'form': form})
+    template = 'cinema/edit_user_panel.html'
+    context = {
+        **context,
+        'form': form,
+    }
+    return render(request, template, context)

@@ -37,10 +37,13 @@
                     {% csrf_token %}
                     <div class="form-group mr-2">
                         <label for="cinema" class="text-light mr-2">Wybierz kino:</label>
+
                         <select id="cinema" name="cinema" class="form-control" onchange="document.getElementById('cinema-selection-form').submit();">
-                            <option value="" {% if selected_cinema is None %}selected{% endif %}>Brak</option>
+                        {% if not selected_cinema  %}
+                            <option value="" selected>Brak</option>
+                        {% endif %}
                             {% for cinema in cinemas %}
-                            <option value="{{ cinema.id }}" {% if cinema.id == selected_cinema %}selected{% endif %}>{{cinema.name}}</option>
+                                <option value="{{ cinema.id }}" {% if cinema == selected_cinema %}selected{% endif %}>{{cinema.name}}</option>
                             {% endfor %}
                         </select>
                     </div>
