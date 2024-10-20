@@ -1,11 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
+from django.core import serializers
+from django.http import JsonResponse
 from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField
 from django.forms import formset_factory
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse
 from . import forms, models, decorators
+from .functions import generate_qr_code, free_seats_for_seance, get_reservation_data
 import json
 import pendulum
 
@@ -13,28 +16,20 @@ DEFAULT_TICKET_TYPE_ID = 1
 DISABLED_SEAT_TYPE_ID = 3
 
 
-def free_seats_for_seance(seance):
-    # Pobierz wszystkie miejsca w sali, w której odbywa się seans
-    all_seats = seance.hall.seat_set.all()
+def qr_code_view(request, reservation_id):
+    reservation = get_object_or_404(models.Reservation, pk=reservation_id)
+    if not reservation.paid:
+        return
 
-    # Pobierz wszystkie zarezerwowane miejsca dla tego seansu
-    reserved_seats =models.SeatReservation.objects.filter(
-        reservation__seance=seance,
-        reservation__cancelled=False
-    ).values_list('seat', flat=True)
+    reservation_data = get_reservation_data(reservation_id)
 
-    # Oblicz liczbę wolnych miejsc
-    free_seats = all_seats.exclude(id__in=reserved_seats)
+    # Konwertuj dane na format JSON
+    reservation_json = json.dumps(reservation_data)
+    print(reservation_json)
+    # Generowanie kodu QR
+    response = generate_qr_code(reservation_json)
 
-    # Filtruj wolne miejsca dla osób niepełnosprawnych
-    free_disabled_seats = free_seats.filter(seat_type__id=3)
-    free_notdisabled_seats = free_seats.exclude(seat_type__id=3)
-    return {
-        'free_seats_count': free_notdisabled_seats.count(),
-        'free_disabled_seats_count': free_disabled_seats.count(),
-
-    }
-
+    return response
 
 def set_cinema(request):
     if request.method == 'POST':
@@ -147,7 +142,6 @@ def repertoire(request, context):
         'current_date': current_date,
         "date_options": date_options,
         'movies': movies_with_seances,
-    }
 
     template = "cinema/repertoire.html"
     return TemplateResponse(request, template, context)
