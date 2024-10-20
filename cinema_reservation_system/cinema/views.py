@@ -142,7 +142,7 @@ def repertoire(request, context):
         'current_date': current_date,
         "date_options": date_options,
         'movies': movies_with_seances,
-
+    }
     template = "cinema/repertoire.html"
     return TemplateResponse(request, template, context)
 
