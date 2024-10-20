@@ -20,5 +20,6 @@ urlpatterns = [
     path('select_ticket_type/<int:reservation_id>/', views.select_ticket_type, name='select_ticket_type'),
     path('konto/', views.user_panel_view, name='user_panel'),
     path('konto/edytuj/', views.edit_user_panel_view, name='edit_user_panel'),
+    path('qr_code/<int:reservation_id>/', views.qr_code_view, name='qr_code'),
 ]
 
