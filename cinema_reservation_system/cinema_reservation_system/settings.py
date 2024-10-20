@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "easyaudit",
+    "pluralize_pl",
 
     'cinema',
     'backoffice',

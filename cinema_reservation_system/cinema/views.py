@@ -31,7 +31,6 @@ def qr_code_view(request, reservation_id):
 
     return response
 
-
 def set_cinema(request):
     if request.method == 'POST':
         cinema_id = request.POST.get('cinema')
@@ -140,9 +139,10 @@ def repertoire(request, context):
 
     context = {
         **context,
+        'current_date': current_date,
         "date_options": date_options,
         'movies': movies_with_seances,
-    }
+
     template = "cinema/repertoire.html"
     return TemplateResponse(request, template, context)
 

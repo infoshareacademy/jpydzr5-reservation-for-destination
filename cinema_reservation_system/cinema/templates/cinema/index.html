@@ -13,7 +13,7 @@
         <div class="col-md-6 offset-md-3">
             <div class="card mb-4 shadow-sm">
                 {% if now_playing %}
-                <img src="" class="card-img-top" alt="Film">
+                <img src="{{ now_playing.poster.url }}" class="card-img-top img-fluid poster-img" style="object-fit: cover; object-position: center;" alt="{{ now_playing.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ now_playing.title }}</h5>
                     <p class="card-text">{{ now_playing.description }}</p>
@@ -33,7 +33,7 @@
         {% for screening in upcoming_screenings %}
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-                <img src="" class="card-img-top" alt="Film">
+                <img src="{{ screening.movie.poster.url }}" class="card-img-top img-fluid" style="height: 450px; object-fit: cover; object-position: center;" alt="{{ screening.movie.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ screening.movie.title }}</h5>
                     <p class="card-text">Sala: {{ screening.hall.hall_number }}<br>Godzina: {{ screening.show_start|date:"H:i" }}</p>
