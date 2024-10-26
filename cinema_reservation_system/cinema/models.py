@@ -77,6 +77,7 @@ class Seance(models.Model):
 class SeatType(models.Model):
     name = models.CharField(max_length=50)
     icon = models.ImageField(upload_to='media/icons/', null=True)
+    allowed_ticket_types = models.ManyToManyField(TicketType, blank=True)  # Powiązanie z TicketType
 
     def __str__(self):
         return self.name

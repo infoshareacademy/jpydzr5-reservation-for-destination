@@ -18,10 +18,12 @@
         {% csrf_token %}
         {{ formset.management_form }}
         {% for form in formset %}
-            <fieldset>
-                <legend>Miejsce {{ forloop.counter }}</legend>
-                {{ form.as_p }}
-            </fieldset>
+            <div class="ticket-selection">
+                <span>Miejsce {{ forloop.counter }}: Rząd {{ seat_reservations.forloop.counter0.seat.row }}, Miejsce {{ seat_reservations.forloop.counter0.seat.column }}</span>
+                <div class="ticket-type">
+                    {{ form.as_p }}
+                </div>
+            </div>
         {% endfor %}
         <button type="submit">Dalej</button>
         <a href="{% url 'cinema:basket' %}">Anuluj</a>

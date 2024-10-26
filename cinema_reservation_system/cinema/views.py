@@ -11,6 +11,7 @@ from . import forms, models, decorators
 from .functions import generate_qr_code, free_seats_for_seance, get_reservation_data
 import json
 import pendulum
+from django.contrib import messages
 
 DEFAULT_TICKET_TYPE_ID = 1
 DISABLED_SEAT_TYPE_ID = 3
@@ -142,6 +143,7 @@ def repertoire(request, context):
         'current_date': current_date,
         "date_options": date_options,
         'movies': movies_with_seances,
+    }
 
     template = "cinema/repertoire.html"
     return TemplateResponse(request, template, context)
@@ -235,9 +237,11 @@ def select_ticket_type(request, context, reservation_id):
 
 
 @decorators.set_vars
+@login_required
 def select_seats(request, context, seance_id):
-    seance = models.Seance.objects.get(id=seance_id)
+    seance = get_object_or_404(models.Seance, id=seance_id)
 
+    # Zapytanie do bazy danych o zarezerwowane miejsca
     seat_reservation_subquery = models.SeatReservation.objects.filter(
         reservation__seance=seance,
         seat_id=OuterRef('pk')
@@ -247,36 +251,27 @@ def select_seats(request, context, seance_id):
         is_reserved=Exists(seat_reservation_subquery)
     )
 
-    seats_data = []
-
-    for seat in seats:
-        seat_data = {
+    seats_data = [
+        {
             'id': seat.id,
             'pos_x': seat.pos_x,
             'pos_y': seat.pos_y,
             'rotation': seat.rotation,
             'seat_type_icon': seat.seat_type.icon.url if seat.seat_type and seat.seat_type.icon else None,
             'is_reserved': 1 if seat.is_reserved else 0,
-        }
-        seats_data.append(seat_data)
-
-    selected_seats = request.session.get('selected_seats', [])
+        } for seat in seats
+    ]
 
     if request.method == 'POST':
-
-        form = forms.SeatForm(request.POST, seance=seance)
-
-        # tu trzeba by walidację zrobić, ale na to już nie mam czasu
-        # if form.is_valid():
-
-        if not request.user.is_authenticated:
-            request.session['selected_seats'] = selected_seats
-            # Przekierowanie na stronę logowania z parametrem `next`
-            return redirect(f'{reverse("cinema:login")}?next={request.path}')
-        else:
-            selected_seats = json.loads(request.POST.get('selected-seats', '[]'))
-
+        selected_seats = json.loads(request.POST.get('selected-seats', '[]'))
         if selected_seats:
+            # Walidacja dostępnych miejsc
+            available_seats = {seat.id for seat in seats}
+            if not all(seat in available_seats for seat in selected_seats):
+                messages.error(request, "Niektóre miejsca nie są dostępne.")
+                return redirect('cinema:select_seats', seance_id=seance_id)
+
+            # Tworzenie rezerwacji
             reservation = models.Reservation.objects.create(user=request.user, seance=seance)
             for selected_seat in selected_seats:
                 models.SeatReservation.objects.create(
@@ -284,24 +279,13 @@ def select_seats(request, context, seance_id):
                     seat_id=selected_seat,
                     ticket_type_id=DEFAULT_TICKET_TYPE_ID,
                 )
-
-            if 'selected_seats' in request.session:
-                del request.session['selected_seats']
-
             return redirect('cinema:select_ticket_type', reservation_id=reservation.id)
-    else:
-        form = forms.SeatForm(seance=seance, initial={'selected_seats': selected_seats})
 
-    context = {
-        **context,
-        'form': form,
+    context.update({
         'seats_json': seats_data,
         'seance': seance,
-
-    }
-    template = "cinema/select_seats.html"
-    return render(request, template, context)
-
+    })
+    return render(request, "cinema/select_seats.html", context)
 
 @login_required
 @decorators.set_vars
