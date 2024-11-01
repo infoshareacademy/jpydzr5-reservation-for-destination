@@ -1,13 +1,18 @@
 from django import forms
-from .models import Seance, Movie, TicketType
+from .models import *
 import pendulum
 
 
 class SeatForm(forms.Form):
+    """Formularz wyboru miejsc"""
+    seat = forms.ModelChoiceField(queryset=Seat.objects.none(), label="Wybierz miejsce")
 
     def __init__(self, *args, **kwargs):
         seance = kwargs.pop('seance', None)
         super().__init__(*args, **kwargs)
+        if seance:
+            # Filtrowanie miejsc na podstawie seansu
+            self.fields['seat'].queryset = Seat.objects.filter(hall=seance.hall)
 
 
 class MovieForm(forms.Form):
