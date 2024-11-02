@@ -1,8 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
-from django.core import serializers
-from django.http import JsonResponse
-from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField
+from django.db import transaction
+from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField, Sum
 from django.forms import formset_factory
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.response import TemplateResponse
@@ -31,6 +30,7 @@ def qr_code_view(request, reservation_id):
     response = generate_qr_code(reservation_json)
 
     return response
+
 
 def set_cinema(request):
     if request.method == 'POST':
@@ -96,6 +96,7 @@ def basket(request, context):
                 seance__show_start__gte=pendulum.now().add(minutes=30),
             ),
             user=request.user,
+            seance__hall__cinema=context['selected_cinema'],
         )
     else:
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
@@ -285,6 +286,50 @@ def select_seats(request, context, seance_id):
         'seance': seance,
     })
     return render(request, "cinema/select_seats.html", context)
+
+
+@login_required
+@decorators.set_vars
+def payment(request, context, reservation_id=None):
+    if reservation_id:
+        total_price = models.SeatReservation.objects.filter(
+            reservation_id=reservation_id,
+            reservation__user=request.user,
+            reservation__seance__hall__cinema=context['selected_cinema']
+        ).aggregate(
+            total_price=Sum('ticket_type__price')
+        )['total_price']
+    else:
+        total_price = models.SeatReservation.objects.filter(
+            reservation__user=request.user,
+            reservation__seance__hall__cinema=context['selected_cinema']
+        ).aggregate(
+            total_price=Sum('ticket_type__price')
+        )['total_price']
+
+    if request.method == 'POST':
+        if 'confirm' in request.POST:  # Jeśli użytkownik kliknął "Tak"
+            if reservation_id:
+                models.Reservation.objects.filter(
+                    user=request.user,
+                    seance__hall__cinema=context['selected_cinema'],
+                    pk=reservation_id
+                ).update(paid=True)
+            else:
+                models.Reservation.objects.filter(
+                    user=request.user,
+                    seance__hall__cinema=context['selected_cinema'],
+                ).update(paid=True)
+
+
+
+        return redirect('cinema:basket')
+
+    template = 'cinema/payment.html'
+    context.update(
+        {"total_price": total_price}
+    )
+    return render(request, template, context)
 
 @login_required
 @decorators.set_vars
