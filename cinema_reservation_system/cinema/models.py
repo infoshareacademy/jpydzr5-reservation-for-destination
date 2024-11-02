@@ -1,3 +1,4 @@
+import uuid
 import pendulum
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -106,6 +107,7 @@ class Reservation(models.Model):
     paid = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=False)
     used = models.BooleanField(default=False)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 
 
 class SeatReservation(models.Model):

@@ -26,27 +26,18 @@ def validate_ticket(request, context, uuid):
 
     if request.method == 'POST':
         if 'confirm' in request.POST:  # Jeśli użytkownik kliknął "Tak"
-            if reservation_id:
-                models.Reservation.objects.filter(
-                    user=request.user,
-                    seance__hall__cinema=context['selected_cinema'],
-                    pk=reservation_id
-                ).update(paid=True)
-            else:
-                models.Reservation.objects.filter(
-                    user=request.user,
-                    seance__hall__cinema=context['selected_cinema'],
-                ).update(paid=True)
-
-
+            reservation.used = True
+            reservation.save()
 
         return redirect('cinema:basket')
 
-    template = 'cinema/payment.html'
-    context.update(
-        {"total_price": total_price}
-    )
+    context.update({
+        'already_used' : reservation.used
+    })
+
+    template = 'cinema/validate_ticket.html'
     return render(request, template, context)
+
 
 def qr_code_view(request, reservation_id):
     reservation = get_object_or_404(models.Reservation, pk=reservation_id)
@@ -59,7 +50,7 @@ def qr_code_view(request, reservation_id):
     reservation_json = json.dumps(reservation_data)
     print(reservation_json)
     # Generowanie kodu QR
-    response = generate_qr_code(reservation_json)
+    response = generate_qr_code(request)
 
     return response
 
