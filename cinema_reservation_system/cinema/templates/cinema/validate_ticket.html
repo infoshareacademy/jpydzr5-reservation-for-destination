@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Weryfikacja biletu</h1>
+    {{ reservation.seance.movie }}
+    {{ reservation.seance.show_start|date:'j, M d H:s' }}
+
+    {% if already_used %}
+    <h2 style="background-color:red">BILET JUŻ WYKORZYSTANY!</h2>
+    {% else %}
+    <form method="post">
+         {% csrf_token %}
+         <button type="submit" name="confirm">Tak</button>
+         <button type="submit" name="cancel">Nie</button>
+    </form>
+    {% endif %}
+
+{% endblock %}
+

@@ -58,7 +58,7 @@ def get_reservation_data(reservation_id):
     return reservation_data
 
 
-def generate_qr_code(request):
+def generate_qr_code(request,uuid):
     # Tworzenie kodu QR
     qr = qrcode.QRCode(
         version=1,
@@ -67,7 +67,7 @@ def generate_qr_code(request):
         border=4,
     )
     # qr.add_data(data)
-    qr.add_data(request.build_absolute_uri(reverse('cinema:validate_ticket', kwargs={'uuid':'asksbfmksdbfks'})))
+    qr.add_data(request.build_absolute_uri(reverse('cinema:validate_ticket', kwargs={'uuid':uuid})))
     qr.make(fit=True)
 
     # Konwersja kodu QR do formatu obrazu

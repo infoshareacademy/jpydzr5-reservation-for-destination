@@ -32,7 +32,8 @@ def validate_ticket(request, context, uuid):
         return redirect('cinema:basket')
 
     context.update({
-        'already_used' : reservation.used
+        'reservation': reservation,
+        'already_used': reservation.used
     })
 
     template = 'cinema/validate_ticket.html'
@@ -50,7 +51,7 @@ def qr_code_view(request, reservation_id):
     reservation_json = json.dumps(reservation_data)
     print(reservation_json)
     # Generowanie kodu QR
-    response = generate_qr_code(request)
+    response = generate_qr_code(request, reservation.uuid)
 
     return response
 
