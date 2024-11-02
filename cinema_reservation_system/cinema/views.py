@@ -17,6 +17,37 @@ DEFAULT_TICKET_TYPE_ID = 1
 DISABLED_SEAT_TYPE_ID = 3
 
 
+@login_required
+@decorators.set_vars
+def validate_ticket(request, context, uuid):
+    if not request.user.is_staff:
+        redirect('index')
+    reservation = get_object_or_404(models.Reservation, uuid=uuid)
+
+    if request.method == 'POST':
+        if 'confirm' in request.POST:  # Jeśli użytkownik kliknął "Tak"
+            if reservation_id:
+                models.Reservation.objects.filter(
+                    user=request.user,
+                    seance__hall__cinema=context['selected_cinema'],
+                    pk=reservation_id
+                ).update(paid=True)
+            else:
+                models.Reservation.objects.filter(
+                    user=request.user,
+                    seance__hall__cinema=context['selected_cinema'],
+                ).update(paid=True)
+
+
+
+        return redirect('cinema:basket')
+
+    template = 'cinema/payment.html'
+    context.update(
+        {"total_price": total_price}
+    )
+    return render(request, template, context)
+
 def qr_code_view(request, reservation_id):
     reservation = get_object_or_404(models.Reservation, pk=reservation_id)
     if not reservation.paid:
