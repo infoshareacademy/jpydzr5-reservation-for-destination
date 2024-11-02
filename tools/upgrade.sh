@@ -13,8 +13,8 @@ python manage.py generate_seances
 echo "please wait - generating reservations"
 python manage.py generate_reservations
 cd "$olddir"
-clear
 echo "end of upgrading. Thank you"
 echo "Press Enter, to continue ..."
 read
+
 
