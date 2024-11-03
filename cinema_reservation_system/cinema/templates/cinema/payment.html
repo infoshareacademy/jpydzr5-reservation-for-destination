@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Płatność</h1>
+    Masz do zapłaty: {{ total_price }} zł
+    <form method="post">
+         {% csrf_token %}
+         <button type="submit" name="confirm">Tak</button>
+         <button type="submit" name="cancel">Nie</button>
+    </form>
+
+{% endblock %}
+
