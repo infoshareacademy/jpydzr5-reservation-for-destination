@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
-from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField, Sum
+from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField, Sum, Count
 from django.forms import formset_factory
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.response import TemplateResponse
@@ -121,7 +121,9 @@ def index(request, context):
 @decorators.set_vars
 def basket(request, context):
     if request.user.is_authenticated:
-        reservations = models.Reservation.objects.filter(
+        reservations = models.Reservation.objects.annotate(
+            seat_count=Count('seatreservation')
+        ).filter(
             Q(
                 paid=True
             ) | Q(
@@ -130,6 +132,7 @@ def basket(request, context):
             ),
             user=request.user,
             seance__hall__cinema=context['selected_cinema'],
+            seat_count__gt=0,
         )
     else:
         return redirect(f'{reverse("cinema:login")}?next={request.path}')

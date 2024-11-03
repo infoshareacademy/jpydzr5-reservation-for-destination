@@ -12,8 +12,8 @@
         <div id="seat-container">
             {% for seat_reservation in reservation.seatreservation_set.all %}
                 <h3 class="seat"
-                    data-ticket-type="{{ seat_reservation.ticket_type.name }}"
-                    style="background-color: orange; cursor: pointer;">
+                    data-extra-validation="{{ seat_reservation.ticket_type.extra_validation }}"
+                    style="background-color: {% if seat_reservation.ticket_type.extra_validation%}orange{% else %}lightgreen{% endif %}; cursor: pointer;">
                     Miejsce {{ seat_reservation.seat.number }} - {{ seat_reservation.ticket_type.name }}
                 </h3>
             {% endfor %}
@@ -39,7 +39,7 @@
         let clickedSeats = 0;
 
         // Sprawdzenie, czy istnieje inny bilet niż "normalny"
-        const hasSpecialTicket = Array.from(seats).some(seat => seat.dataset.ticketType !== "normalny");
+        const hasSpecialTicket = Array.from(seats).some(seat => seat.dataset.extraValidation === "True");
 
         if (hasSpecialTicket) {
             // Ukrycie przycisków i wymuszenie kliknięcia na wszystkich nagłówkach <h3>
@@ -61,7 +61,7 @@
             });
         } else {
             // Jeśli wszystkie bilety są "normalne", pokaż przyciski od razu
-            buttons.style.display = "block";
+            button.style.display = "inline";
         }
     });
 </script>
