@@ -2,17 +2,84 @@
 {% block content %}
     <h1>Weryfikacja biletu</h1>
     {{ reservation.seance.movie }}
-    {{ reservation.seance.show_start|date:'j, M d H:s' }}
-
-    {% if already_used %}
-    <h2 style="background-color:red">BILET JUŻ WYKORZYSTANY!</h2>
+    {{ reservation.seance.show_start|date:'l, j M H:i' }}
+    <h3>{{ reservation.seance.hall }}</h3>
+    {% if message %}
+    <h2 style="background-color:red">{{ message }}</h2>
+    <a href="{% url "cinema:validate_ticket_home" %}" class="btn btn-primary">Powrót</a>
     {% else %}
-    <form method="post">
-         {% csrf_token %}
-         <button type="submit" name="confirm">Tak</button>
-         <button type="submit" name="cancel">Nie</button>
-    </form>
+      {% if reservation.seatreservation_set.all %}
+        <div id="seat-container">
+            {% for seat_reservation in reservation.seatreservation_set.all %}
+                <h3 class="seat"
+                    data-ticket-type="{{ seat_reservation.ticket_type.name }}"
+                    style="background-color: orange; cursor: pointer;">
+                    Miejsce {{ seat_reservation.seat.number }} - {{ seat_reservation.ticket_type.name }}
+                </h3>
+            {% endfor %}
+        </div>
+
+        <!-- Przyciski -->
+        <div >
+            <form method="post">
+                {% csrf_token %}
+                <button id="button" style="display: none;" class="btn btn-primary" type="submit" name="confirm">Skasuj bilet</button>
+                <button class="btn btn-secondary" type="submit" name="cancel">Nie kasuj</button>
+            </form>
+        </div>
+      {% else %}
+        <p>Brak miejsc przypisanych do tej rezerwacji.</p>
+      {% endif %}
     {% endif %}
 
-{% endblock %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const seats = document.querySelectorAll(".seat");
+        const button = document.getElementById("button");
+        let clickedSeats = 0;
 
+        // Sprawdzenie, czy istnieje inny bilet niż "normalny"
+        const hasSpecialTicket = Array.from(seats).some(seat => seat.dataset.ticketType !== "normalny");
+
+        if (hasSpecialTicket) {
+            // Ukrycie przycisków i wymuszenie kliknięcia na wszystkich nagłówkach <h3>
+            seats.forEach(seat => {
+                seat.addEventListener("click", function() {
+                    console.log("Clicked seat:", seat); // Dodano logowanie do konsoli
+                    // Zmiana koloru na jasnozielony po kliknięciu
+                    if (seat.style.backgroundColor === "orange") {
+                        seat.style.backgroundColor = "lightgreen";
+                        clickedSeats++;
+                        console.log("Seat clicked, color changed. Total clicked:", clickedSeats);
+                    }
+
+                    // Jeśli wszystkie <h3> zostały kliknięte, wyświetl przyciski
+                    if (clickedSeats === seats.length) {
+                        button.style.display = "inline";
+                    }
+                });
+            });
+        } else {
+            // Jeśli wszystkie bilety są "normalne", pokaż przyciski od razu
+            buttons.style.display = "block";
+        }
+    });
+</script>
+
+<style>
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    .button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+{% endblock %}

@@ -19,7 +19,7 @@ DISABLED_SEAT_TYPE_ID = 3
 @decorators.set_vars
 def validate_ticket(request, context, uuid=None):
     if not request.user.is_staff:
-        redirect('index')
+        redirect('cinema:basket')
     if uuid is None:
         template = 'cinema/validate_ticket_home.html'
         return render(request, template, context)
@@ -31,11 +31,23 @@ def validate_ticket(request, context, uuid=None):
             reservation.used = True
             reservation.save()
 
-        return redirect('cinema:basket')
+        return redirect('cinema:validate_ticket_home')
+
+    # Ustaw odpowiedni komunikat
+    if reservation.too_early:
+        message = "ZA WCZEŚNIE!"
+    elif reservation.too_late:
+        message = "ZA PÓŹNO!"
+    elif reservation.used:
+        message = "BILET JUŻ WYKORZYSTANY!"
+    elif reservation.seance.hall.cinema != context['selected_cinema']:
+        message = "NIE TO KINO"
+    else:
+        message = None
 
     context.update({
         'reservation': reservation,
-        'already_used': reservation.used
+        'message': message,
     })
 
     template = 'cinema/validate_ticket.html'
@@ -330,7 +342,10 @@ def payment(request, context, reservation_id=None):
     else:
         total_price = models.SeatReservation.objects.filter(
             reservation__user=request.user,
-            reservation__seance__hall__cinema=context['selected_cinema']
+            reservation__seance__hall__cinema=context['selected_cinema'],
+            reservation__paid=False,
+            reservation__seance__show_start__gte=pendulum.now().add(minutes=30)
+
         ).aggregate(
             total_price=Sum('ticket_type__price')
         )['total_price']
