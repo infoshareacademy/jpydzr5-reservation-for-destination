@@ -266,11 +266,11 @@ def select_seats(request, context, seance_id):
     ]
 
     if request.method == 'POST':
-        selected_seats = json.loads(request.POST.get('selected-seats', '[]'))
+        selected_seats = {int(x) for x in json.loads(request.POST.get('selected-seats', '[]'))}
         if selected_seats:
             # Walidacja dostępnych miejsc
             available_seats = {seat.id for seat in seats}
-            if not all(seat in available_seats for seat in selected_seats):
+            if not selected_seats.issubset(available_seats):  # zbiór pierwszy wykracza poza zbiór drugi
                 messages.error(request, "Niektóre miejsca nie są dostępne.")
                 return redirect('cinema:select_seats', seance_id=seance_id)
 
