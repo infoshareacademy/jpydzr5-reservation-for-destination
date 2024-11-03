@@ -16,7 +16,7 @@ def login_view(request):
                 login(request, user)
                 safe_home = reverse_lazy('cinema:index')
                 # Sprawdź, czy przekierowanie jest bezpieczne
-                redirect_to = request.POST.get('next', safe_home)
+                redirect_to = request.GET.get('next', safe_home)
                 if not url_has_allowed_host_and_scheme(url=redirect_to, allowed_hosts={request.get_host()}):
                     redirect_to = safe_home
                 return redirect(redirect_to)

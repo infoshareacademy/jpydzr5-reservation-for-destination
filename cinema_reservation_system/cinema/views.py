@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
-from django.db import transaction
 from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField, Sum
 from django.forms import formset_factory
 from django.shortcuts import get_object_or_404, render, redirect
@@ -46,41 +45,36 @@ def set_cinema(request):
 @decorators.set_vars
 def index(request, context):
 
-    now_playing = None
-    message = "Wybierz kino, aby zobaczyć najbliższe seanse."
+    message = ""
     upcoming_screenings = []
-    current_time = pendulum.now()
+    current_time = pendulum.now().subtract(minutes=30)
     if 'selected_cinema' in context:
-        now_playing_seance = models.Seance.objects.annotate(
-            end_time=ExpressionWrapper(
-                F('show_start') + F('movie__duration'), output_field=DateTimeField()
-            )
-        ).filter(
-            hall__cinema=context['selected_cinema'],
-            show_start__lte=current_time,
-            end_time__gte=current_time
-        ).select_related('movie').first()
-
-        if now_playing_seance:
-            now_playing = {
-                'title': now_playing_seance.movie.title,
-                'description': now_playing_seance.movie.description,
-                'poster': now_playing_seance.movie.poster
-            }
-
-        message = None
-
-        upcoming_screenings = models.Seance.objects.filter(
+        seances = models.Seance.objects.filter(
             hall__cinema=context['selected_cinema'],
             show_start__gte=current_time,
-        ).select_related('movie').order_by('show_start')[:3]
+        ).order_by('show_start')
+        # tu powinien być distinct, ale nie działa na sqlite
 
-    context = {
-        **context,
-        'now_playing': now_playing,
+        upcoming_screenings = {}
+        count = 3
+        for seance in seances:
+            movie = seance.movie
+            seat_info = free_seats_for_seance(seance)
+            if movie not in upcoming_screenings:
+                upcoming_screenings[movie] = {
+                    'seance': seance,
+                    'free_seats_count': seat_info['free_seats_count'],
+                    'disabled_seat_count': seat_info['free_disabled_seats_count'],
+                }
+                count -= 1
+            if count == 0:
+                break
+    else:
+        message = "Wybierz kino, aby zobaczyć najbliższe seanse."
+    context.update({
         'upcoming_screenings': upcoming_screenings,
         'message': message
-    }
+    })
     template = "cinema/index.html"
     return TemplateResponse(request, template, context)
 
@@ -103,7 +97,7 @@ def basket(request, context):
 
     # Jeśli użytkownik nie wybrał jeszcze seansu ani biletu, wyślij go do wyboru seansu
     if not reservations:
-        return redirect('cinema:reservation')
+        return redirect('cinema:repertoire')
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
     context = {
@@ -117,11 +111,18 @@ def basket(request, context):
 @decorators.set_vars
 def repertoire(request, context):
     if 'selected_date' in request.GET:
-        current_date = pendulum.parse(request.GET.get('selected_date'))
+        current_time = pendulum.parse(request.GET.get('selected_date'))
     else:
-        current_date = pendulum.now()
+        current_time = pendulum.now()
+    if current_time < pendulum.now():
+        current_time = pendulum.now().subtract(minutes=30)
 
-    seances = models.Seance.objects.filter(show_start__range=(current_date, current_date.add(days=1).start_of('day')))
+    seances = models.Seance.objects.filter(
+        hall__cinema=context['selected_cinema'],
+        show_start__range=(current_time, current_time.add(days=1).start_of('day'))
+    ).order_by('show_start')
+    print(seances)
+
     date_options = [pendulum.now().add(days=i) for i in range(7)]
 
     # Przypisujemy filmy i seanse do słownika
@@ -141,7 +142,7 @@ def repertoire(request, context):
 
     context = {
         **context,
-        'current_date': current_date,
+        'current_time': current_time,
         "date_options": date_options,
         'movies': movies_with_seances,
     }
@@ -263,11 +264,11 @@ def select_seats(request, context, seance_id):
     ]
 
     if request.method == 'POST':
-        selected_seats = json.loads(request.POST.get('selected-seats', '[]'))
+        selected_seats = {int(x) for x in json.loads(request.POST.get('selected-seats', '[]'))}
         if selected_seats:
             # Walidacja dostępnych miejsc
             available_seats = {seat.id for seat in seats}
-            if not all(seat in available_seats for seat in selected_seats):
+            if not selected_seats.issubset(available_seats):  # zbiór pierwszy wykracza poza zbiór drugi
                 messages.error(request, "Niektóre miejsca nie są dostępne.")
                 return redirect('cinema:select_seats', seance_id=seance_id)
 
