@@ -99,7 +99,7 @@ def basket(request, context):
 
     # Jeśli użytkownik nie wybrał jeszcze seansu ani biletu, wyślij go do wyboru seansu
     if not reservations:
-        return redirect('cinema:reservation')
+        return redirect('cinema:repertoire')
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
     context = {
