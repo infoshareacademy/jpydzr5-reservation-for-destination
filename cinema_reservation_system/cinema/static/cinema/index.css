@@ -7,7 +7,6 @@ table
 th, table
 {
     border: 2px solid black;
-    font-size: 35px;
     background-color: #808080;
 }
 th:hover

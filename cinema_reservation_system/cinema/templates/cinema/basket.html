@@ -18,14 +18,21 @@
                 {% if reservation.paid %}
                 <img src="{% url 'cinema:qr_code' reservation.id %}" alt="QR Code" style="max-width: 150px; border: 1px solid black; padding: 10px;">
                 {% else %}
-                <p><button type="button">Przejdź do płatności</button></p>
+                <p>
+                <a href="{% url 'cinema:pay_one' reservation.id %}" class="btn btn-primary">Przejdź do płatności</a>
+                </p>
                 {%  endif %}
             </div>
         </div>
+
         <br>
     {% empty %}
         <p>Koszyk jest pusty.</p>
         <a href="{% url 'cinema:repertoire' %}">Wybierz seans</a>
     {% endfor %}
+    <p>
+   <a href="{% url 'cinema:pay_all' %}" class="btn btn-primary">Zapłać za wszystkie rezerwacje</a>
+    </p>
+
 {% endblock %}
 

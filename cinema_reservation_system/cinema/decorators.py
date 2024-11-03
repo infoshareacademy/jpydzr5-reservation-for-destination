@@ -1,8 +1,9 @@
 from . import models
 
+
 def set_vars(view_func):
     """
-    funkcja napełnia context właściwymy danymi - dla wszystkich zalogowanych widoków
+    funkcja napełnia context właściwymi danymi - dla wszystkich zalogowanych widoków
     """
     def _decorated(request, *args, **kwargs):
         kwargs['context'] = {}
@@ -11,7 +12,6 @@ def set_vars(view_func):
         kwargs['context']['menu_positions'] = [
             {"name": "Cennik", "url": "cinema:price_list"},
             {"name": "Repertuar", "url": "cinema:repertoire"},
-            {"name": "Rezerwacja", "url": "cinema:select_movie"},
             {"name": "Koszyk", "url": "cinema:basket"}
         ]
 
