@@ -17,9 +17,13 @@ DISABLED_SEAT_TYPE_ID = 3
 
 @login_required
 @decorators.set_vars
-def validate_ticket(request, context, uuid):
+def validate_ticket(request, context, uuid=None):
     if not request.user.is_staff:
         redirect('index')
+    if uuid is None:
+        template = 'cinema/validate_ticket_home.html'
+        return render(request, template, context)
+
     reservation = get_object_or_404(models.Reservation, uuid=uuid)
 
     if request.method == 'POST':

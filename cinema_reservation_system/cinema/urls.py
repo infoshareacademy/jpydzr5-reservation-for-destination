@@ -22,6 +22,7 @@ urlpatterns = [
     path('konto/edytuj/', views.edit_user_panel_view, name='edit_user_panel'),
     path('qr_code/<int:reservation_id>/', views.qr_code_view, name='qr_code'),
     path('validate_ticket/<str:uuid>/', views.validate_ticket, name='validate_ticket'),
+    path('validate_ticket/', views.validate_ticket, name='validate_ticket_home'),
     path('payment/', views.payment, name='pay_all'),
     path('payment/reservation/<int:reservation_id>/', views.payment, name='pay_one'),
 
