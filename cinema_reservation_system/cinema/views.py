@@ -132,8 +132,8 @@ def tickets(request, context):
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
     # Jeśli użytkownik nie wybrał jeszcze seansu ani biletu, wyślij go do wyboru seansu
-    if not reservations:
-        return redirect('cinema:repertoire')
+    #if not reservations:
+    #    return redirect('cinema:repertoire')
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
     context.update({
@@ -159,8 +159,8 @@ def basket(request, context):
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
     # Jeśli użytkownik nie wybrał jeszcze seansu ani biletu, wyślij go do wyboru seansu
-    if not reservations:
-        return redirect('cinema:repertoire')
+    # if not reservations:
+    #    return redirect('cinema:repertoire')
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
     context.update({

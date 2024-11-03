@@ -34,3 +34,15 @@ a
     transform: translate(-50%, -50%);
     pointer-events: none; /* ensures the X doesn't interfere with clicks */
 }
+.qr_container.too_late::before {
+    content: "PO CZASIE";
+    color: darkgrey;
+    background-color:white;
+    font-size: 1em;
+    position: absolute;
+    text-align:center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* ensures the X doesn't interfere with clicks */
+}

@@ -56,7 +56,9 @@
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{% url 'cinema:user_panel' %}">Twoje konto</a>
+                            <a class="dropdown-item" href="{% url 'cinema:user_panel' %}">Ustawienia</a>
+                            <a class="dropdown-item" href="{% url 'cinema:basket' %}">Rezerwacje</a>
+                            <a class="dropdown-item" href="{% url 'cinema:tickets' %}">Bilety</a>
                             <form method="post" action="{% url 'cinema:logout' %}" style="display: inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="dropdown-item">Wyloguj się</button>
