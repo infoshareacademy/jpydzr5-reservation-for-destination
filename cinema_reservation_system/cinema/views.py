@@ -117,19 +117,13 @@ def index(request, context):
     template = "cinema/index.html"
     return TemplateResponse(request, template, context)
 
-
 @decorators.set_vars
-def basket(request, context):
+def tickets(request, context):
     if request.user.is_authenticated:
         reservations = models.Reservation.objects.annotate(
             seat_count=Count('seatreservation')
         ).filter(
-            Q(
-                paid=True
-            ) | Q(
-                paid=False,
-                seance__show_start__gte=pendulum.now().add(minutes=30),
-            ),
+            paid=True,
             user=request.user,
             seance__hall__cinema=context['selected_cinema'],
             seat_count__gt=0,
@@ -142,10 +136,36 @@ def basket(request, context):
         return redirect('cinema:repertoire')
 
     # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
-    context = {
-        **context,
+    context.update({
         'reservations': reservations,
-    }
+    })
+    template = "cinema/tickets.html"
+    return TemplateResponse(request, template, context)
+
+
+@decorators.set_vars
+def basket(request, context):
+    if request.user.is_authenticated:
+        reservations = models.Reservation.objects.annotate(
+            seat_count=Count('seatreservation')
+        ).filter(
+            paid=False,
+            seance__show_start__gte=pendulum.now().add(minutes=30),
+            user=request.user,
+            seance__hall__cinema=context['selected_cinema'],
+            seat_count__gt=0,
+        )
+    else:
+        return redirect(f'{reverse("cinema:login")}?next={request.path}')
+
+    # Jeśli użytkownik nie wybrał jeszcze seansu ani biletu, wyślij go do wyboru seansu
+    if not reservations:
+        return redirect('cinema:repertoire')
+
+    # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
+    context.update({
+        'reservations': reservations,
+    })
     template = "cinema/basket.html"
     return TemplateResponse(request, template, context)
 
@@ -182,12 +202,11 @@ def repertoire(request, context):
             'disabled_seat_count': seat_info['free_disabled_seats_count'],
         })
 
-    context = {
-        **context,
+    context.update({
         'current_time': current_time,
         "date_options": date_options,
         'movies': movies_with_seances,
-    }
+    })
     template = "cinema/repertoire.html"
     return TemplateResponse(request, template, context)
 
@@ -200,10 +219,9 @@ def price_list(request, context):
     if cinema_id is not None:
         cinema_id = int(cinema_id)
 
-    context = {
-        **context,
+    context.update({
         "tickets": tickets,
-    }
+    })
     template = "cinema/price_list.html"
     return TemplateResponse(request, template, context)
 
@@ -220,9 +238,9 @@ def select_movie(request, context):
         form = forms.MovieForm()
 
     template = "cinema/select_movie.html"
-    context = {**context,
+    context.update({
         'form': form,
-    }
+    })
     return render(request, template, context)
 
 
@@ -237,11 +255,10 @@ def select_seance(request, context, movie_id):
     else:
         form = forms.SeanceForm(movie=movie)
 
-    context = {
-        **context,
+    context.update({
         'form': form,
         'movie': movie,
-    }
+    })
     template = "cinema/select_seance.html"
     return render(request, template, context)
 
@@ -270,12 +287,11 @@ def select_ticket_type(request, context, reservation_id):
         formset = TicketFormSet()
 
     template = "cinema/select_ticket_type.html"
-    context = {
-        **context,
+    context.update({
         'formset': formset,
         'reservation': reservation,
         'seat_reservations': seat_reservations
-    }
+    })
     return render(request, template, context)
 
 
@@ -369,7 +385,7 @@ def payment(request, context, reservation_id=None):
 
 
 
-        return redirect('cinema:basket')
+        return redirect('cinema:tickets')
 
     template = 'cinema/payment.html'
     context.update(
@@ -382,11 +398,10 @@ def payment(request, context, reservation_id=None):
 def user_panel_view(request, context):
     user = request.user  # Pobiera zalogowanego użytkownika
     # Możesz pobierać dodatkowe dane, np. historię rezerwacji
-    context = {
-        **context,
+    context.update({
         'user': user,
         # Możesz dodać tutaj inne dane związane z użytkownikiem
-    }
+    })
     template = 'cinema/user_panel.html'
     return render(request, template, context)
 
@@ -402,8 +417,7 @@ def edit_user_panel_view(request, context):
     else:
         form = UserChangeForm(instance=request.user)
     template = 'cinema/edit_user_panel.html'
-    context = {
-        **context,
+    context.update({
         'form': form,
-    }
+    })
     return render(request, template, context)
