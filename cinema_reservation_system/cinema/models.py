@@ -1,3 +1,4 @@
+import uuid
 import pendulum
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -8,7 +9,7 @@ from datetime import timedelta
 class TicketType(models.Model):
     name = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-
+    extra_validation = models.BooleanField(default=True)
     def __str__(self):
         return self.name
 
@@ -105,13 +106,33 @@ class Reservation(models.Model):
     seance = models.ForeignKey(Seance, on_delete=models.RESTRICT, null=True)
     paid = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=False)
+    used = models.BooleanField(default=False)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+
+    @property
+    def too_early(self):
+        """Sprawdza, czy seans zaczyna się za mniej niż godzinę."""
+        if not self.seance:
+            return False
+
+        return pendulum.now().add(hours=1) < self.seance.show_start 
+
+    @property
+    def too_late(self):
+        """Sprawdza, czy seans już się nie skończył"""
+        if not self.seance:
+            return False
+
+        return self.seance.show_start + self.seance.movie.duration < pendulum.now().subtract(minutes=20)
 
 
 class SeatReservation(models.Model):
     reservation = models.ForeignKey(Reservation, on_delete=models.RESTRICT, null=True)
     ticket_type = models.ForeignKey(TicketType, on_delete=models.RESTRICT)
     seat = models.ForeignKey(Seat, on_delete=models.RESTRICT)
-    paid = models.BooleanField(default=False)
+    # TODO: do sprawdzenia, czy paid jest potrzebne
+    # - niby nie jest używane, ale przy wyborze miejsc może mieć znaczenie
+    paid = models.BooleanField(default=False) 
 
     def clean(self):
         # Sprawdzenie, czy seat jest już zarezerwowane na dany seans

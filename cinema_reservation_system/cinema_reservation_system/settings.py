@@ -109,6 +109,7 @@ else:
             'PASSWORD': env('DB_PASSWORD', default=''),
             'HOST': env('DB_HOST', default=''),
             'PORT': env('DB_PORT', default=''),
+            'TIME_ZONE': 'Europe/Warsaw',
         }
     }
 

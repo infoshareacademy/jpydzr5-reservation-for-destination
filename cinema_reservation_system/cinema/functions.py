@@ -1,6 +1,8 @@
 import qrcode
 from io import BytesIO
 from django.http import HttpResponse
+from django.urls import reverse
+
 from . import models
 
 
@@ -48,6 +50,7 @@ def get_reservation_data(reservation_id):
         "show_start": reservation.seance.show_start.isoformat() if reservation.seance and reservation.seance.movie else None,
         "hall_id": reservation.seance.hall.id if reservation.seance and reservation.seance.movie else None,
         "cinema_id": reservation.seance.hall.cinema.id if reservation.seance and reservation.seance.hall and reservation.seance.hall.cinema else None,
+        'uuid': str(reservation.uuid),
         "tickets": tickets,
     }
 
@@ -55,7 +58,7 @@ def get_reservation_data(reservation_id):
     return reservation_data
 
 
-def generate_qr_code(data):
+def generate_qr_code(request,uuid):
     # Tworzenie kodu QR
     qr = qrcode.QRCode(
         version=1,
@@ -63,7 +66,8 @@ def generate_qr_code(data):
         box_size=10,
         border=4,
     )
-    qr.add_data(data)
+    # qr.add_data(data)
+    qr.add_data(request.build_absolute_uri(reverse('cinema:validate_ticket', kwargs={'uuid':uuid})))
     qr.make(fit=True)
 
     # Konwersja kodu QR do formatu obrazu
