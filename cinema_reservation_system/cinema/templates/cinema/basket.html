@@ -14,15 +14,14 @@
             </div>
 
             <!-- Kod QR -->
-            <div class="qr_container{% if reservation.used %} used{% endif %}" style="flex-shrink: 0;">
-                  {% if reservation.paid %}
-                  <img src="{% url 'cinema:qr_code' reservation.id %}" alt="QR Code" style="max-width: 150px;">
-                  {% else %}
-                  <p>
-                  <a href="{% url 'cinema:pay_one' reservation.id %}" class="btn btn-primary">Przejdź do płatności</a>
-                  </p>
-                  {%  endif %}
-
+            <div style="flex-shrink: 0;">
+                {% if reservation.paid %}
+                <img src="{% url 'cinema:qr_code' reservation.id %}" alt="QR Code" style="max-width: 150px; border: 1px solid black; padding: 10px;">
+                {% else %}
+                <p>
+                <a href="{% url 'cinema:pay_one' reservation.id %}" class="btn btn-primary">Przejdź do płatności</a>
+                </p>
+                {%  endif %}
             </div>
         </div>
 
