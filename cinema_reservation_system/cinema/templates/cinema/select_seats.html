@@ -36,30 +36,33 @@
                 seats.forEach(seat => {
                     const img = document.createElement('img');
                     img.id = 'seat-' + seat.id;
+                    img.style.left = seat.pos_x + 'px';
+                    img.style.top = seat.pos_y + 'px';
+                    img.style.transform = `rotate(${seat.rotation}deg)`;
 
                     if (seat.is_reserved) {
-                        img.src = seat.seat_type_icon.replace('free','occupied')
                         img.className = 'seat-icon seats-occupied';
+                        img.src = seat.seat_type_icon.replace('free', 'occupied')
+                    } else if (seat.is_selected) {
+                        img.className = 'seat-icon seats-free';
+                        img.src = seat.seat_type_icon.replace('free','selected')
+                        selectedIcons.push(seat.id)
                     } else {
                         img.src = seat.seat_type_icon; // Ścieżka do ikony
                         img.className = 'seat-icon seats-free';
                     }
-                    img.style.left = seat.pos_x + 'px';
-                    img.style.top = seat.pos_y + 'px';
-                    img.style.transform = `rotate(${seat.rotation}deg)`;
                     container.appendChild(img);
                 });
+
                 // Listener dla kliknięć na elementach z klasą 'seats'
                 document.querySelectorAll('.seats-free').forEach(item => {
                     item.addEventListener('click', () => {
-                        const seatId = item.id.replace('seat-', ''); // Pobieramy id siedzenia (bez 'seat-')
+                        const seatId = parseInt(item.id.replace('seat-', '')); // Pobieramy id siedzenia (bez 'seat-')
 
                         // Sprawdzenie czy siedzenie jest już wybrane
-
                         if (!selectedIcons.includes(seatId)) {
                             // Jeśli nie, dodajemy id do listy wybranych miejsc
                             selectedIcons.push(seatId);
-
                             // Zmieniamy ikonę na "selected"
                             item.src = item.src.replace('free','selected'); // Ścieżka do ikony "selected"
 
