@@ -26,7 +26,7 @@ class CinemaViewsTest(TestCase):
     def test_price_list_view(self):
         response = self.client.get(reverse("price_list"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "cinema/price_list.html")
+        self.assertTemplateUsed(response, "cinema/pricing.html")
         self.assertEqual(response.context["message"], "OK!")
 
     def test_repertoire_view(self):

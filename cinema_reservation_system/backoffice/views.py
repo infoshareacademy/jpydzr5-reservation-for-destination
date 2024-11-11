@@ -16,6 +16,7 @@ DAYS_OF_WEEK = {
     7: "Sobota",
 }
 
+
 # Create your views here.
 def index(request):
     return HttpResponse("Hello, world. You're at the backoffice index.")

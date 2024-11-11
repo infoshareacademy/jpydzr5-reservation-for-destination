@@ -11,68 +11,71 @@
     {% endblock %}
 </head>
 <body style="height: 100%; margin: 0; display: flex; flex-direction: column; min-height: 100vh;">
-    <header class="bg-dark text-white text-center py-4" style="background-size: cover; background-position: center;">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="{% url 'cinema:index' %}" style="text-decoration: none; color: inherit;">
-                <h1 class="mb-0">Kino Studyjne</h1>
-            </a>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
-                            {% for item in menu_positions %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url item.url %}">{{ item.name }}</a>
-                            </li>
-                            {% endfor %}
-                            <!-- Link do panelu użytkownika -->
-                            {% if request.user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'cinema:user_panel' %}">Twoje konto</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </nav>
-                <form method="post" action="{% url 'cinema:set_cinema' %}" class="form-inline form-spacing" id="cinema-selection-form">
-                    {% csrf_token %}
-                    <div class="form-group mr-2">
-                        <label for="cinema" class="text-light mr-2">Wybierz kino:</label>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <!-- Logo i Selektor Kina, wyrównane do lewej -->
+    <div class="d-flex align-items-center">
+        <a class="navbar-brand" href="{% url 'cinema:index' %}">Kino Studyjne</a>
 
-                        <select id="cinema" name="cinema" class="form-control" onchange="document.getElementById('cinema-selection-form').submit();">
-                        {% if not selected_cinema  %}
-                            <option value="" selected>Brak</option>
-                        {% endif %}
-                            {% for cinema in cinemas %}
-                                <option value="{{ cinema.id }}" {% if cinema == selected_cinema %}selected{% endif %}>{{cinema.name}}</option>
-                            {% endfor %}
-                        </select>
+        <form method="post" action="{% url 'cinema:set_cinema' %}" class="form-inline ml-2">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <select id="selected_cinema_id" name="selected_cinema_id" class="form-control" onchange="this.form.submit();">
+                <option value="" {% if not selected_cinema %}selected{% endif %}>Wybierz kino</option>
+                {% for cinema in cinemas %}
+                    <option value="{{ cinema.id }}" {% if cinema == selected_cinema %}selected{% endif %}>{{ cinema.name }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+
+    <!-- Ikona hamburgera dla menu nawigacyjnego -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Zawartość menu rozwijanego, wyrównana do prawej -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- Dodatkowe linki "Repertuar" i "Cennik" -->
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'cinema:repertoire' %}">Repertuar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'cinema:pricing' %}">Cennik</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            {% if request.user.is_authenticated %}
+                <!-- Dropdown z nazwą użytkownika -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ request.user.username }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="{% url 'cinema:user_panel' %}">Ustawienia</a>
+                        <a class="dropdown-item" href="{% url 'cinema:basket' %}">Rezerwacje</a>
+                        <a class="dropdown-item" href="{% url 'cinema:tickets' %}">Bilety</a>
+                        <div class="dropdown-divider"></div>
+                        <form method="post" action="{% url 'cinema:logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item">Wyloguj się</button>
+                        </form>
                     </div>
-                </form>
-            <div class="ml-4 d-flex align-items-center" style="float:right" id="login_container">
-                {% if request.user.is_authenticated %}
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-secondary">{{ request.user.username }}</button>
-                        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{% url 'cinema:user_panel' %}">Ustawienia</a>
-                            <a class="dropdown-item" href="{% url 'cinema:basket' %}">Rezerwacje</a>
-                            <a class="dropdown-item" href="{% url 'cinema:tickets' %}">Bilety</a>
-                            <form method="post" action="{% url 'cinema:logout' %}" style="display: inline;">
-                                {% csrf_token %}
-                                <button type="submit" class="dropdown-item">Wyloguj się</button>
-                            </form>
-                        </div>
-                    </div>
-                {% else %}
-                    <span class="navbar-text mr-2">Gość</span>
-                    <a href="{% url 'cinema:login' %}" class="btn btn-outline-light btn-sm mr-2">Zaloguj się</a>
-                    <a href="{% url 'cinema:register' %}" class="btn btn-outline-light btn-sm">Zarejestruj się</a>
-                {% endif %}
-            </div>
-        </div>
-    </header>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cinema:login' %}">Zaloguj się</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cinema:register' %}">Zarejestruj się</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+
 
     <main class="container my-5" style="flex: 1;">
         {% if messages %}

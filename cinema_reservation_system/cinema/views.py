@@ -73,12 +73,14 @@ def qr_code_view(request, reservation_id):
 
 def set_cinema(request):
     if request.method == 'POST':
-        cinema_id = request.POST.get('cinema')
-        if cinema_id:
-            request.session['cinema_id'] = cinema_id
+        selected_cinema_id = request.POST.get('selected_cinema_id')
+        if selected_cinema_id:
+            request.session['selected_cinema_id'] = selected_cinema_id
         else:
-            request.session.pop('cinema_id', 'None')
-        return redirect('cinema:index')
+            request.session.pop('selected_cinema_id', 'None')
+
+        next_url = request.POST.get("next", reverse("cinema:index"))
+        return redirect(next_url)
     return redirect('cinema:index')
 
 
@@ -127,9 +129,12 @@ def tickets(request, context):
         ).filter(
             paid=True,
             user=request.user,
-            seance__hall__cinema=context['selected_cinema'],
             seat_count__gt=0,
         )
+        if 'selected_cinema' in context:
+            reservations = reservations.filter(
+                seance__hall__cinema=context['selected_cinema'],
+            )
     else:
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
@@ -154,9 +159,12 @@ def basket(request, context):
             paid=False,
             seance__show_start__gte=pendulum.now().add(minutes=30),
             user=request.user,
-            seance__hall__cinema=context['selected_cinema'],
             seat_count__gt=0,
         )
+        if 'selected_cinema' in context:
+            reservations = reservations.filter(
+                seance__hall__cinema=context['selected_cinema'],
+            )
     else:
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
@@ -174,6 +182,9 @@ def basket(request, context):
 
 @decorators.set_vars
 def repertoire(request, context):
+    if 'selected_cinema' not in context:
+        return redirect(f'{reverse("cinema:index")}')
+
     if 'selected_date' in request.GET:
         current_time = pendulum.parse(request.GET.get('selected_date'))
     else:
@@ -214,7 +225,7 @@ def repertoire(request, context):
 
 
 @decorators.set_vars
-def price_list(request, context):
+def pricing(request, context):
     tickets = models.TicketType.objects.all()
 
     cinema_id = request.session.get('cinema_id', None)
@@ -224,7 +235,7 @@ def price_list(request, context):
     context.update({
         "tickets": tickets,
     })
-    template = "cinema/price_list.html"
+    template = "cinema/pricing.html"
     return TemplateResponse(request, template, context)
 
 

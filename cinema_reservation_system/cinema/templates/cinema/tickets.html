@@ -6,8 +6,16 @@
             <div class="row d-flex align-items-center gap-3 flex-column flex-md-row">
                 <!-- Informacje o zamówieniu -->
                 <div class="col-12 col-md-6 p-2 order-2 order-md-1" style="border: solid 1px black;">
-                    <p><strong>Zamówienie nr :</strong> {{ reservation.id }}</p>
-                    <p><strong>Seans:</strong> {{ reservation.seance }}</p>
+                    <p>
+                        <strong>Kino:</strong> {{ reservation.seance.hall.cinema.name }}<br>
+                        <strong>Zamówienie nr:</strong> {{ reservation.id }}
+                    </p>
+                    <p>
+                        <strong>Film:</strong> {{ reservation.seance.movie.title }}<br>
+                        <strong>Data:</strong> {{ reservation.seance.show_start|date:"Y-m-d" }}<br>
+                        <strong>Godzina:</strong> {{ reservation.seance.show_start|date:"H:i" }}<br>
+                        <strong>Sala:</strong> {{ reservation.seance.hall.name }}
+                    </p>
                     {% for seat_reservation in reservation.seatreservation_set.all %}
                         <strong>Miejsce:</strong> rząd <strong>{{ seat_reservation.seat.row }}</strong> miejsce <strong>{{ seat_reservation.seat.column }}</strong><br>
                         <strong>Typ biletu:</strong> {{ seat_reservation.ticket_type }}<br>
