@@ -2,10 +2,9 @@ from collections import defaultdict
 
 import plotly.graph_objs as go
 import plotly.io as pio
-import base64
-from django.db.models import Count, Q, When, Case, IntegerField, F, TimeField, DateTimeField, ExpressionWrapper
+from django.db.models import Count, Q, When, Case, IntegerField, F, DateTimeField, ExpressionWrapper
 from cinema import models
-from django.db.models.functions import TruncMinute, Trunc, ExtractWeekDay
+from django.db.models.functions import Trunc, ExtractWeekDay
 from django.utils.safestring import mark_safe
 from datetime import timedelta
 
@@ -25,56 +24,6 @@ def round_to_nearest_half_hour(dt):
     """Pomocnicza funkcja do zaokrąglania daty do najbliższej pół godziny"""
     discard = timedelta(minutes=dt.minute % 30, seconds=dt.second, microseconds=dt.microsecond)
     return dt - discard + (timedelta(minutes=30) if discard >= timedelta(minutes=15) else timedelta())
-
-
-def best_ticket_types_chart(cinema, range_begin, range_end):
-    ticket_data = models.SeatReservation.objects.filter(
-        reservation__seance__hall__cinema=cinema,
-        reservation__seance__show_start__gte=range_begin,
-        reservation__seance__show_start__lte=range_end
-    ).values('ticket_type__name').annotate(
-        used=Count(Case(
-            When(Q(reservation__used=True), then=1),
-            output_field=IntegerField()
-        )),
-        unused_paid=Count(Case(
-            When(Q(reservation__used=False) & Q(reservation__paid=True), then=1),
-            output_field=IntegerField()
-        )),
-        unused_unpaid=Count(Case(
-            When(Q(reservation__used=False) & Q(reservation__paid=False), then=1),
-            output_field=IntegerField()
-        ))
-    )
-
-    labels = [ticket['ticket_type__name'] for ticket in ticket_data]
-    used_values = [ticket['used'] for ticket in ticket_data]
-    unused_paid_values = [ticket['unused_paid'] for ticket in ticket_data]
-    unused_unpaid_values = [ticket['unused_unpaid'] for ticket in ticket_data]
-
-    # Tworzenie subplotów dla wykresów kołowych
-    fig = make_subplots(
-        rows=1, cols=3,
-        specs=[[{'type': 'pie'}, {'type': 'pie'}, {'type': 'pie'}]],
-        subplot_titles=[
-            "Wykorzystane", "Zapłacone, ale niewykorzystane",
-            "Niezapłacone"
-        ]
-    )
-
-    # Dodawanie danych do poszczególnych wykresów kołowych
-    fig.add_trace(go.Pie(labels=labels, values=used_values, hole=0.3), row=1, col=1)
-    fig.add_trace(go.Pie(labels=labels, values=unused_paid_values, hole=0.3), row=1, col=2)
-    fig.add_trace(go.Pie(labels=labels, values=unused_unpaid_values, hole=0.3), row=1, col=3)
-
-    # Ustawienia dla całego wykresu
-    fig.update_layout(
-        title=f"okres od {range_begin} do {range_end}",
-        height=500,
-    )
-
-    # Konwertowanie wykresu na HTML
-    return mark_safe(pio.to_html(fig, full_html=False))
 
 
 def best_days_of_week_chart(cinema, range_begin, range_end):

@@ -5,7 +5,7 @@ from django.db.models.functions import ExtractHour, ExtractMinute, ExtractWeekDa
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
-from backoffice.charts import movies_with_reservations_chart, best_hours_chart, best_days_of_week_chart, best_ticket_types_chart
+from backoffice.chart_functions import movies_with_reservations_chart, best_hours_chart, best_days_of_week_chart, best_ticket_types_chart
 
 from cinema import models
 from backoffice import decorators
@@ -72,31 +72,12 @@ def user_panel(request, context):
     })
 
 
-
 @login_required
 @decorators.set_vars
-def report(request, context):
-    #     Stworzenie statystyki pod:
-    #
-    # Najczęściej wybierany film przez klienta (raport tyd/mięs)
-    # Najczęściej wybierana godzina seansu przez klienta
-    # Najczęściej wybierany dzień tygodnia przez klienta
-    # Najczęściej wybierany rodzaj biletu przez klienta
+def charts(request, context):
     today = pendulum.today()
     range_end = today.add(days=1)
     range_begin = today.subtract(days=7)
-
-
-    popular_ticket_types = (
-        models.SeatReservation.objects.filter(
-            reservation__seance__show_start__gte=range_begin,
-            reservation__seance__show_start__lte=range_end,
-        ).values(
-            'ticket_type',
-            'ticket_type__name'
-        ).annotate(count=Count('id')  # Zlicza wystąpienia seansów dla każdej godziny
-        ).order_by('-count')  # Sortuje według liczby wystąpień malejąco
-    )
 
     context.update({
         'range_begin' : range_begin,
@@ -104,7 +85,11 @@ def report(request, context):
         'best_hours_chart': best_hours_chart(context['selected_cinema'], range_begin, range_end),
         'best_days_of_week_chart': best_days_of_week_chart(context['selected_cinema'], range_begin, range_end),
         'best_ticket_types_chart': best_ticket_types_chart(context['selected_cinema'], range_begin, range_end),
-        'movies_with_reservations_chart': movies_with_reservations_chart(context['selected_cinema'], range_begin, range_end),
+        'movies_with_reservations_chart': movies_with_reservations_chart(
+            context['selected_cinema'],
+            range_begin,
+            range_end
+        ),
     })
-    return render(request, 'backoffice/report.html', context)
+    return render(request, 'backoffice/charts.html', context)
 
