@@ -1,7 +1,8 @@
 {% extends 'backoffice/base.html' %}<!-- templates/movies_with_reservations.html -->
 {% block content %}
-    <h1>Filmy z Zarezerwowanymi Miejscami</h1>
-    <h2>W okresie od {{ range_begin }} do {{ range_end }}</h2>
+    <h1>okres od {{ range_begin }} do {{ range_end }}</h1>
+    <h2>Filmy z Zarezerwowanymi Miejscami</h2>
+
     <table>
         <thead>
             <tr>
@@ -22,7 +23,7 @@
             {% endfor %}
         </tbody>
     </table>
- <h1>Najczęściej Wybierane Godziny Seansów</h1>
+ <h2>Najczęściej Wybierane Godziny Seansów</h2>
     <table>
         <thead>
             <tr>
@@ -43,7 +44,7 @@
             {% endfor %}
         </tbody>
     </table>
- <h1>Najczęściej Wybierane Dni Tygodnia</h1>
+ <h2>Najczęściej Wybierane Dni Tygodnia</h2>
     <table>
         <thead>
             <tr>
@@ -64,7 +65,7 @@
             {% endfor %}
         </tbody>
     </table>
-<h1>Najczęściej Wybierane Typy Biletów</h1>
+<h2>Najczęściej Wybierane Typy Biletów</h2>
     <table>
         <thead>
             <tr>

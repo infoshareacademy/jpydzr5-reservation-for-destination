@@ -58,9 +58,6 @@ def dashboard(request, context):
     template = "backoffice/dashboard.html"
     return TemplateResponse(request, template, context)
 
-@login_required
-def pdf_report(request):
-    return HttpResponse("Hello, world. You're at the backoffice index.")
 
 @login_required
 @decorators.set_vars
@@ -104,14 +101,16 @@ def report(request, context):
 
     movies_with_reservations = (
         models.Movie.objects.filter(
-            seance__show_start__gte=range_begin,
-            seance__show_start__lte=range_end,
+            seances__hall__cinema=context['selected_cinema'],
+            seances__show_start__gte=range_begin,
+            seances__show_start__lte=range_end,
         ).annotate(
-            total_reserved_seats=Count('seance__reservation__seatreservation')
+            total_reserved_seats=Count('seances__reservation__seatreservation')
         ).order_by('-total_reserved_seats')
     )
     popular_showtimes = (
         models.SeatReservation.objects.filter(
+            reservation__seance__hall__cinema=context['selected_cinema'],
             reservation__seance__show_start__gte=range_begin,
             reservation__seance__show_start__lte=range_end,
         ).annotate(
@@ -124,6 +123,7 @@ def report(request, context):
     )
     popular_weekdays = (
         models.SeatReservation.objects.filter(
+            reservation__seance__hall__cinema=context['selected_cinema'],
             reservation__seance__show_start__gte=range_begin,
             reservation__seance__show_start__lte=range_end,
         ).annotate(
@@ -144,6 +144,7 @@ def report(request, context):
 
     popular_ticket_types = (
         models.SeatReservation.objects.filter(
+            reservation__seance__hall__cinema=context['selected_cinema'],
             reservation__seance__show_start__gte=range_begin,
             reservation__seance__show_start__lte=range_end,
         ).values(
@@ -153,12 +154,12 @@ def report(request, context):
         ).order_by('-count')  # Sortuje według liczby wystąpień malejąco
     )
 
-    context = {
+    context.update({
         'range_begin' : range_begin,
         'range_end': range_end,
         'popular_showtimes': popular_showtimes,
         'popular_weekdays': popular_weekdays,
         'popular_ticket_types': popular_ticket_types,
         'movies_with_reservations': movies_with_reservations,
-    }
+    })
     return render(request, 'backoffice/report.html', context)
