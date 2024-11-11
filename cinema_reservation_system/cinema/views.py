@@ -13,6 +13,7 @@ import json
 import pendulum
 from django.contrib import messages
 from .forms import UserEditForm, CustomUserChangeForm
+from .models import Reservation
 
 DEFAULT_TICKET_TYPE_ID = 1
 DISABLED_SEAT_TYPE_ID = 3
@@ -187,6 +188,7 @@ def tickets(request, context):
 @decorators.set_vars
 def basket(request, context):
     if request.user.is_authenticated:
+        # Pobierz rezerwacje użytkownika, które nie zostały opłacone
         reservations = models.Reservation.objects.annotate(
             seat_count=Count('seatreservation')
         ).filter(
@@ -195,21 +197,34 @@ def basket(request, context):
             user=request.user,
             seat_count__gt=0,
         )
+
+        # Jeśli użytkownik wybrał kino, filtruj rezerwacje po kinie
         if 'selected_cinema' in context:
             reservations = reservations.filter(
                 seance__hall__cinema=context['selected_cinema'],
             )
+
+        # Oblicz całkowity koszt każdej rezerwacji
+        for reservation in reservations:
+            total_cost = 0
+            for seat_reservation in reservation.seatreservation_set.all():
+                total_cost += seat_reservation.price  # Sumowanie ceny biletów
+            reservation.total_cost = total_cost  # Dodanie do obiektu rezerwacji
+
     else:
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
-    # Jeśli użytkownik nie wybrał jeszcze seansu ani biletu, wyślij go do wyboru seansu
+    # Jeśli użytkownik nie ma rezerwacji, przekieruj do repertuaru
     # if not reservations:
-    #    return redirect('cinema:repertoire')
+    #     return redirect('cinema:repertoire')
 
-    # Renderuj zawartość koszyka, jeśli użytkownik ma już coś wybrane
+    # Przekazanie rezerwacji oraz ich całkowitych kosztów do kontekstu
     context.update({
         'reservations': reservations,
+        'total_cost': sum(reservation.total_cost for reservation in reservations),  # Sumaryczny koszt wszystkich rezerwacji
     })
+
+    # Renderowanie szablonu koszyka
     template = "cinema/basket.html"
     return TemplateResponse(request, template, context)
 
@@ -494,4 +509,17 @@ def edit_user_panel_view(request):
         'password_form': password_form,
     }
     return render(request, 'cinema/edit_user_panel.html', context)
+
+
+def basket_view(request):
+    reservation = Reservation.objects.get(user=request.user, paid=False, cancelled=False)
+
+    # Jeśli nie ma rezerwacji, przekierowanie do strony błędu lub pustego koszyka
+    if not reservation:
+        return render(request, 'basket_empty.html')
+
+    # Całkowita cena rezerwacji
+    total_price = reservation.total_price
+
+    return render(request, 'basket.html', {'reservation': reservation, 'total_price': total_price})
 
