@@ -36,11 +36,11 @@ class Cinema(models.Model):
 class Hall(models.Model):
     """Model reprezentujący salę kinową."""
     cinema = models.ForeignKey(Cinema, on_delete=models.RESTRICT)  # Powiązanie z modelem Cinema
-    hall_number = models.CharField(max_length=10)  # Numer sali
+    name = models.CharField(max_length=10)  # Numer sali
     cleaning_time = models.DurationField()  # Czas sprzątania
 
     def __str__(self):
-        return f"Sala {self.hall_number} w kinie {self.cinema.name}"
+        return f"Sala {self.name} w kinie {self.cinema.name}"
 
 
 class Seance(models.Model):

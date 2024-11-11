@@ -5,8 +5,16 @@
         <div id="container" style="display: flex; align-items: center; gap: 20px;">
             <!-- Informacje o zamówieniu -->
             <div style="border:solid 1px black; padding:10px; flex: 1;">
-                <p><strong>Zamówienie nr :</strong> {{ reservation.id }}</p>
-                <p><strong>Seans:</strong> {{ reservation.seance }}</p>
+                <p>
+                    <strong>Kino:</strong> {{ reservation.seance.hall.cinema.name }}<br>
+                    <strong>Zamówienie nr :</strong> {{ reservation.id }}
+                </p>
+                <p>
+                    <strong>Film:</strong> {{ reservation.seance.movie.title }}<br>
+                    <strong>Data:</strong> {{ reservation.seance.show_start|date:"Y-m-d" }}<br>
+                    <strong>Godzina:</strong> {{ reservation.seance.show_start|date:"H:i" }}<br>
+                    <strong>Sala:</strong> {{ reservation.seance.hall.name }}<br>
+                </p>
                 {% for seat_reservation in reservation.seatreservation_set.all %}
                     <strong>Miejsce:</strong> rząd <strong>{{ seat_reservation.seat.row }}</strong> miejsce <strong>{{ seat_reservation.seat.column }}</strong><br>
                     <strong>Typ biletu:</strong> {{ seat_reservation.ticket_type }}<br>
@@ -19,7 +27,7 @@
                   <img src="{% url 'cinema:qr_code' reservation.id %}" alt="QR Code" style="max-width: 150px;">
                   {% else %}
                   <p>
-                  <a href="{% url 'cinema:pay_one' reservation.id %}" class="btn btn-primary">Przejdź do płatności</a>
+                  <a href="{% url 'cinema:pay_one' reservation.id %}" class="btn btn-primary">Przejdź<br>do płatności</a>
                   </p>
                   {%  endif %}
 

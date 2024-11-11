@@ -15,8 +15,8 @@ def set_vars(view_func):
             {"name": "Koszyk", "url": "cinema:basket"}
         ]
 
-        if 'cinema' in request.session:
-            kwargs['context']['selected_cinema'] = cinemas.filter(pk=request.session.get('cinema')).first()
+        if 'selected_cinema_id' in request.session:
+            kwargs['context']['selected_cinema'] = cinemas.filter(pk=request.session.get('selected_cinema_id')).first()
 
         return view_func(request, *args, **kwargs)
 
