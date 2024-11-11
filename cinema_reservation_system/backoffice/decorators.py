@@ -1,4 +1,5 @@
 from cinema import models
+from django.shortcuts import redirect
 
 
 def set_vars(view_func):
@@ -12,6 +13,8 @@ def set_vars(view_func):
 
         if 'selected_cinema_id' in request.session:
             kwargs['context']['selected_cinema'] = cinemas.filter(pk=request.session.get('selected_cinema_id')).first()
+        else:
+            return redirect('cinema:index')
         return view_func(request, *args, **kwargs)
 
     return _decorated
