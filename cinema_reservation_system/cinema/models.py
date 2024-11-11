@@ -96,7 +96,7 @@ class Seat(models.Model):
     column = models.CharField(max_length=3, null=True)
 
     def __str__(self):
-        return (f"Miejsce o id {self.id} w sali {self.hall.hall_number} "
+        return (f"Miejsce o id {self.id} w sali {self.hall.name} "
                 f"[{self.seat_type.name if self.seat_type else ''}])")
 
 
