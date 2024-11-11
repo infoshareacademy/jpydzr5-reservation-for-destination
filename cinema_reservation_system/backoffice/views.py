@@ -1,10 +1,12 @@
-from django.db.models import Count
+import pendulum
+from django.contrib.auth.decorators import login_required
+from django.db.models import Count, OuterRef, F, Subquery, Prefetch
 from django.db.models.functions import ExtractHour, ExtractMinute, ExtractWeekDay
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.template.response import TemplateResponse
 from cinema import models
-import pendulum
+from backoffice import decorators
 
 DAYS_OF_WEEK = {
     1: "Niedziela",
@@ -17,16 +19,44 @@ DAYS_OF_WEEK = {
 }
 
 
-# Create your views here.
+@login_required(login_url='login')
 def index(request):
-    return HttpResponse("Hello, world. You're at the backoffice index.")
+    return redirect('backoffice:dashboard')
 
+@login_required
+@decorators.set_vars
+def dashboard(request, context):
+    current_seance_qs = models.Seance.objects.filter(
+        show_start__lte=pendulum.now(),  # seans już się rozpoczął
+        show_start__gte=pendulum.now() - F('movie__duration') - F('hall__cleaning_time') # seans jeszcze trwa
+    )
 
+    halls = models.Hall.objects.filter(cinema=context['selected_cinema']).prefetch_related(
+        Prefetch('seance_set',queryset=current_seance_qs, to_attr='current_seance')
+    )
+
+    message = ""
+    context.update({
+        'halls': halls,
+        'message': message,
+    })
+    template = "backoffice/dashboard.html"
+    return TemplateResponse(request, template, context)
+
+@login_required
 def pdf_report(request):
     return HttpResponse("Hello, world. You're at the backoffice index.")
 
+@login_required
+def user_panel(request):
+    return render(request, 'backoffice/user_panel.html', {
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+        'email': request.user.email
+    })
 
-def html_report(request):
+@login_required
+def report(request):
     #     Stworzenie statystyki pod:
     #
     # Najczęściej wybierany film przez klienta (raport tyd/mięs)
@@ -39,10 +69,10 @@ def html_report(request):
 
     movies_with_reservations = (
         models.Movie.objects.filter(
-            seance__show_start__gte=range_begin,
-            seance__show_start__lte=range_end,
+            seances__show_start__gte=range_begin,
+            seances__show_start__lte=range_end,
         ).annotate(
-            total_reserved_seats=Count('seance__reservation__seatreservation')
+            total_reserved_seats=Count('seances__reservation__seatreservation')
         ).order_by('-total_reserved_seats')
     )
     popular_showtimes = (

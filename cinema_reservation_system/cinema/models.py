@@ -75,6 +75,26 @@ class Seance(models.Model):
         super().save(*args, **kwargs)
 
 
+    @property
+    def progress(self):
+        now = pendulum.now()
+        if self.show_start <= now <= self.show_start + self.movie.duration:
+            elapsed_time = (now - self.show_start).total_seconds()
+            progress = (elapsed_time / self.movie.duration.total_seconds()) * 100
+            return min(100, round(progress)), 0
+
+        if self.show_start + self.movie.duration <= now <= self.show_start + self.movie.duration + self.hall.cleaning_time:
+            elapsed_time = (now - (self.show_start + self.movie.duration)).total_seconds()
+            progress = (elapsed_time / self.hall.cleaning_time.total_seconds()) * 100
+            return 100, min(100, round(progress))
+
+        return 100,100 if now > self.show_start + self.movie.duration + self.hall.cleaning_time else 0,0
+
+    @property
+    def minutes_to_end(self):
+        now = pendulum.now()
+        return round((self.show_start + self.movie.duration - now).total_minutes())
+
 class SeatType(models.Model):
     name = models.CharField(max_length=50)
     icon = models.ImageField(upload_to='media/icons/', null=True)

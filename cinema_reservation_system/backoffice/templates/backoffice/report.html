@@ -1,12 +1,5 @@
-<!-- templates/movies_with_reservations.html -->
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmy z Zarezerwowanymi Miejscami</title>
-</head>
-<body>
+{% extends 'backoffice/base.html' %}<!-- templates/movies_with_reservations.html -->
+{% block content %}
     <h1>Filmy z Zarezerwowanymi Miejscami</h1>
     <h2>W okresie od {{ range_begin }} do {{ range_end }}</h2>
     <table>
@@ -92,5 +85,4 @@
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+{% endblock %}

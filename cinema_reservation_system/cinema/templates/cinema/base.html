@@ -53,6 +53,10 @@
                         {{ request.user.username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        {%  if request.user.is_staff %}
+                            <a class="dropdown-item" href="{% url 'backoffice:index' %}">Panel pracownika</a>
+                            <div class="dropdown-divider"></div>
+                        {% endif %}
                         <a class="dropdown-item" href="{% url 'cinema:user_panel' %}">Ustawienia</a>
                         <a class="dropdown-item" href="{% url 'cinema:basket' %}">Rezerwacje</a>
                         <a class="dropdown-item" href="{% url 'cinema:tickets' %}">Bilety</a>
