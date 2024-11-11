@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "cinema": 1,
-    "hall_number": "1",
+    "name": "1",
     "cleaning_time": "00:10:00"
   }
 },
@@ -13,7 +13,7 @@
   "pk": 2,
   "fields": {
     "cinema": 1,
-    "hall_number": "2",
+    "name": "2",
     "cleaning_time": "00:12:00"
   }
 },
@@ -22,7 +22,7 @@
   "pk": 3,
   "fields": {
     "cinema": 1,
-    "hall_number": "3",
+    "name": "3",
     "cleaning_time": "00:10:00"
   }
 },
@@ -31,7 +31,7 @@
   "pk": 4,
   "fields": {
     "cinema": 1,
-    "hall_number": "4",
+    "name": "4",
     "cleaning_time": "00:13:00"
   }
 },
@@ -40,7 +40,7 @@
   "pk": 5,
   "fields": {
     "cinema": 1,
-    "hall_number": "IMAX",
+    "name": "IMAX",
     "cleaning_time": "00:20:00"
   }
 },
@@ -49,7 +49,7 @@
   "pk": 6,
   "fields": {
     "cinema": 2,
-    "hall_number": "1",
+    "name": "1",
     "cleaning_time": "00:10:00"
   }
 },
@@ -58,7 +58,7 @@
   "pk": 7,
   "fields": {
     "cinema": 2,
-    "hall_number": "2",
+    "name": "2",
     "cleaning_time": "00:12:00"
   }
 },
@@ -67,7 +67,7 @@
   "pk": 8,
   "fields": {
     "cinema": 2,
-    "hall_number": "3",
+    "name": "3",
     "cleaning_time": "00:10:00"
   }
 },
@@ -76,7 +76,7 @@
   "pk": 9,
   "fields": {
     "cinema": 2,
-    "hall_number": "4",
+    "name": "4",
     "cleaning_time": "00:13:00"
   }
 },
@@ -85,7 +85,7 @@
   "pk": 10,
   "fields": {
     "cinema": 2,
-    "hall_number": "IMAX",
+    "name": "IMAX",
     "cleaning_time": "00:20:00"
   }
 }
