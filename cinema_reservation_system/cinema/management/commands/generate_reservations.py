@@ -25,6 +25,7 @@ class Command(BaseCommand):
             reservation = models.Reservation.objects.create(
                 user=user,
                 seance=seance,
+                paid=random.choice([True, False]),
             )
 
             possible_seats = seance.hall.seat_set.all()
