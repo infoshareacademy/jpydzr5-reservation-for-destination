@@ -47,16 +47,15 @@ def validate_ticket(request, context, uuid=None):
         return redirect('backoffice:validate_ticket_home')
 
     # Ustaw odpowiedni komunikat
+    message = ""
     if reservation.too_early:
-        message = "ZA WCZEŚNIE!"
-    elif reservation.too_late:
-        message = "ZA PÓŹNO!"
-    elif reservation.used:
-        message = "BILET JUŻ WYKORZYSTANY!"
-    elif reservation.seance.hall.cinema != context['selected_cinema']:
-        message = "NIE TO KINO"
-    else:
-        message = None
+        message += "ZA WCZEŚNIE!<br>"
+    if reservation.too_late:
+        message += "ZA PÓŹNO!<br>"
+    if reservation.used:
+        message += "BILET JUŻ WYKORZYSTANY!<br>"
+    if reservation.seance.hall.cinema != context['selected_cinema']:
+        message += "NIE TO KINO<br>"
 
     context.update({
         'reservation': reservation,
