@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.db import transaction
 from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField, Sum, Count
 from django.forms import formset_factory
@@ -11,10 +12,43 @@ from .functions import generate_qr_code, free_seats_for_seance, get_reservation_
 import json
 import pendulum
 from django.contrib import messages
+from .forms import UserEditForm, CustomUserChangeForm
 
 DEFAULT_TICKET_TYPE_ID = 1
 DISABLED_SEAT_TYPE_ID = 3
 
+
+@login_required
+def user_panel(request):
+    return render(request, 'cinema/user_panel.html', {
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+        'email': request.user.email
+    })
+@login_required
+def edit_user_panel(request):
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Dane zostały pomyślnie zaktualizowane.')
+            return redirect('cinema:user_panel')
+    else:
+        form = UserEditForm(instance=request.user)
+    return render(request, 'cinema/edit_user_panel.html', {'form': form})
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, 'Twoje hasło zostało zmienione.')
+            return redirect('cinema:user_panel')
+        else:
+            messages.error(request, 'Wystąpił błąd przy zmianie hasła.')
+    return redirect('cinema:user_panel')
 
 @login_required
 @decorators.set_vars
@@ -438,17 +472,26 @@ def user_panel_view(request, context):
 
 
 @login_required
-@decorators.set_vars
-def edit_user_panel_view(request, context):
+def edit_user_panel_view(request):
     if request.method == 'POST':
-        form = UserChangeForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('cinema:user_panel')  # Po zapisaniu przekierowanie do panelu użytkownika
+        user_form = UserChangeForm(request.POST, instance=request.user)
+        password_form = PasswordChangeForm(user=request.user, data=request.POST)
+
+        if user_form.is_valid() and password_form.is_valid():
+            user_form.save()  # Zapisz dane użytkownika
+            password_form.save()  # Zapisz nowe hasło
+            update_session_auth_hash(request, password_form.user)  # Zaktualizuj sesję użytkownika
+            messages.success(request, "Dane oraz hasło zostały pomyślnie zaktualizowane.")
+            return redirect('cinema:user_panel')
+        else:
+            messages.error(request, "Proszę poprawić błędy w formularzu.")
     else:
-        form = UserChangeForm(instance=request.user)
-    template = 'cinema/edit_user_panel.html'
-    context.update({
-        'form': form,
-    })
-    return render(request, template, context)
+        user_form = UserChangeForm(instance=request.user)
+        password_form = PasswordChangeForm(user=request.user)
+
+    context = {
+        'user_form': user_form,
+        'password_form': password_form,
+    }
+    return render(request, 'cinema/edit_user_panel.html', context)
+

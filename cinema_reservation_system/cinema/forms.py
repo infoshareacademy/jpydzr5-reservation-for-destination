@@ -1,7 +1,12 @@
 from django import forms
 from .models import *
 import pendulum
+from django.contrib.auth.models import User
 
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
 
 class SeatForm(forms.Form):
     """Formularz wyboru miejsc"""
@@ -43,3 +48,15 @@ class TicketTypeForm(forms.Form):
         empty_label="Wybierz typ biletu"
     )
 
+
+class CustomUserChangeForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'is_active']
+        labels = {
+            'username': 'Nazwa użytkownika',
+            'first_name': 'Imię',
+            'last_name': 'Nazwisko',
+            'email': 'Adres e-mail',
+            'is_active': 'Aktywny',
+        }
