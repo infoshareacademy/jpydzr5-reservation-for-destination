@@ -14,12 +14,16 @@
             <!-- Przykładowy kafelek dla Sali 1 -->
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm">
-                    <div class="card-body" style="min-height:300px;">
+                    <div class="card-body" style="min-height:295px;">
                         <h5 class="card-title">Sala: {{ hall.name }}</h5>
                         {% if hall.current_seance %}
-                            <p class="card-text">Film: <strong>{{ hall.current_seance.0.movie.title }}</strong></p>
-                            <p class="card-text">Czas trwania: <strong>{{ hall.current_seance.0.movie.duration }} + {{ hall.cleaning_time }}</strong></p>
-                            <p class="card-text">Rozpoczęto: <strong>{{ hall.current_seance.0.show_start|date:"H:i" }}</strong></p>
+                            <p class="card-text">
+                                Film: <strong>{{ hall.current_seance.0.movie.title }}</strong><br>
+                                Czas trwania: <strong>{{ hall.current_seance.0.movie.duration }} + {{ hall.cleaning_time }}</strong><br>
+                                Rozpoczęto: <strong>{{ hall.current_seance.0.show_start|date:"H:i" }}</strong><br>
+                                Sprzedanych biletów: <strong {% if hall.current_seance.0.paid_seats_count == 0 %}style="color:red"{% endif %}>{{ hall.current_seance.0.paid_seats_count }}</strong><br>
+                                Widzów na sali: <strong {% if hall.current_seance.0.used_seats_count == 0 %}style="color:red"{% endif %}>{{ hall.current_seance.0.used_seats_count }}</strong>
+                            </p>
                             <div class="d-flex align-items-center mb-3" style="height: 20px;">
                                 <!-- Niezależny pasek postępu dla trwania filmu -->
                                 <div class="progress flex-grow-1 me-2" style="height: 20px; width:80%">
@@ -40,7 +44,7 @@
                             </div>
                             <!-- Informacje o stanie sali -->
                             <p class="card-text text-muted">
-                                <strong>Aktualny status:</strong>
+                                <strong>Status:</strong>
                                 {% if hall.current_seance.0.progress.1 == 0 %}
                                      Trwa seans ({{ hall.current_seance.0.progress.0 }}% ukończone)<br>
                                     <strong>Sprzątanie:</strong> Rozpoczęcie za {{ hall.current_seance.0.minutes_to_end }} minut

@@ -1,6 +1,6 @@
 import pendulum
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count, OuterRef, F, Subquery, Prefetch
+from django.db.models import Count, OuterRef, F, Subquery, Prefetch, Q
 from django.db.models.functions import ExtractHour, ExtractMinute, ExtractWeekDay
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -23,6 +23,7 @@ DAYS_OF_WEEK = {
 def index(request):
     return redirect('backoffice:dashboard')
 
+
 @login_required
 @decorators.set_vars
 def dashboard(request, context):
@@ -34,6 +35,18 @@ def dashboard(request, context):
     halls = models.Hall.objects.filter(cinema=context['selected_cinema']).prefetch_related(
         Prefetch('seance_set',queryset=current_seance_qs, to_attr='current_seance')
     )
+
+    for hall in halls:
+        for seance in hall.current_seance:
+            # Liczenie miejsc użytych (used=True) dla danego seansu
+            seance.used_seats_count = models.SeatReservation.objects.filter(
+                reservation__seance=seance,
+                reservation__used=True
+            ).count()
+            seance.paid_seats_count = models.SeatReservation.objects.filter(
+                reservation__seance=seance,
+                reservation__paid=True
+            ).count()
 
     message = ""
     context.update({
