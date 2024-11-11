@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Twój koszyk</h1>
+    <h1>Rezerwacje</h1>
     {% for reservation in reservations %}
         <div id="container" style="display: flex; align-items: center; gap: 20px;">
             <!-- Informacje o zamówieniu -->
@@ -36,12 +36,14 @@
 
         <br>
     {% empty %}
-        <p>Koszyk jest pusty.</p>
-        <a href="{% url 'cinema:repertoire' %}">Wybierz seans</a>
+        <p>Nie masz żadnych rezerwacji</p>
+        <a href="{% url 'cinema:repertoire' %}" class="btn btn-primary">Wybierz seans</a>
     {% endfor %}
+    {%  if reservations %}
     <p>
-   <a href="{% url 'cinema:pay_all' %}" class="btn btn-primary">Zapłać za wszystkie rezerwacje</a>
+        <a href="{% url 'cinema:pay_all' %}" class="btn btn-primary">Zapłać za wszystkie rezerwacje</a>
     </p>
+    {% endif %}
 
 {% endblock %}
 

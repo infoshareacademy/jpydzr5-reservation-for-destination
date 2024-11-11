@@ -3,29 +3,34 @@
     <h1>Wybór typu biletu</h1>
 
     <p>Zarezerwowałeś bilety:</p>
+    Film: {{ selected_seance.movie.title }}<br>
+    Początek filmu: {{ selected_seance.show_start }}<br>
+
+    <!-- to usunąć jak w formularzu wyświetlą się row i column -->
     <ul>
-        {% for seat_reservation in seat_reservations %}
+        {% for selected_seat in selected_seats %}
             <li>
-                Film: {{ seat_reservation.reservation.seance.movie.title }}<br>
-                Początek filmu: {{ seat_reservation.reservation.seance.show_start }}<br>
-                Rząd: {{ seat_reservation.seat.row }}<br>
-                Miejsce: {{ seat_reservation.seat.column }}<br>
+                Rząd: {{ selected_seat.row }}<br>
+                Miejsce: {{ selected_seat.column }}<br>
             </li>
         {% endfor %}
     </ul>
+    <!-- dotąd -->
 
     <form method="post">
         {% csrf_token %}
         {{ formset.management_form }}
+        <ul>
         {% for form in formset %}
-            <div class="ticket-selection">
-                <span>Miejsce {{ forloop.counter }}: Rząd {{ seat_reservations.forloop.counter0.seat.row }}, Miejsce {{ seat_reservations.forloop.counter0.seat.column }}</span>
+            <li class="ticket-selection">
+                <span>Miejsce {{ forloop.counter }}: Rząd {{ selected_seat.forloop.counter0.row }}, Miejsce {{ selected_seat.forloop.counter0.column }}</span>
                 <div class="ticket-type">
                     {{ form.as_p }}
                 </div>
-            </div>
+            </li>
         {% endfor %}
+        </ul>
         <button type="submit">Dalej</button>
-        <a href="{% url 'cinema:basket' %}">Anuluj</a>
+        <a href="{% url 'cinema:select_seats' selected_seance.id %}">Anuluj</a>
     </form>
 {% endblock %}
