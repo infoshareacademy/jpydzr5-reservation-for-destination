@@ -34,5 +34,23 @@
     "price": "10.00",
     "extra_validation": true
   }
+},
+{
+  "model": "cinema.tickettype",
+  "pk": 5,
+  "fields": {
+    "name": "VIP",
+    "price": "30.00",
+    "extra_validation": "False"
+  }
+},
+{
+  "model": "cinema.tickettype",
+  "pk": 6,
+  "fields": {
+    "name": "Niepełnosprawni",
+    "price": "5.00",
+    "extra_validation": "True"
+  }
 }
 ]

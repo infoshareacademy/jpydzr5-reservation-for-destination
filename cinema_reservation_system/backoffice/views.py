@@ -1,10 +1,14 @@
-from django.db.models import Count
+import pendulum
+from django.contrib.auth.decorators import login_required
+from django.db.models import Count, OuterRef, F, Subquery, Prefetch, Q
 from django.db.models.functions import ExtractHour, ExtractMinute, ExtractWeekDay
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.template.response import TemplateResponse
+from backoffice.chart_functions import movies_with_reservations_chart, best_hours_chart, best_days_of_week_chart, best_ticket_types_chart
 
 from cinema import models
-import pendulum
+from backoffice import decorators
 
 DAYS_OF_WEEK = {
     1: "Niedziela",
@@ -16,36 +20,97 @@ DAYS_OF_WEEK = {
     7: "Sobota",
 }
 
-# Create your views here.
+
+@login_required(login_url='login')
 def index(request):
-    return HttpResponse("Hello, world. You're at the backoffice index.")
+    return redirect('backoffice:dashboard')
 
 
-def pdf_report(request):
-    return HttpResponse("Hello, world. You're at the backoffice index.")
+@login_required
+@decorators.set_vars
+def dashboard(request, context):
+    current_seance_qs = models.Seance.objects.filter(
+        show_start__lte=pendulum.now(),  # seans już się rozpoczął
+        show_start__gte=pendulum.now() - F('movie__duration') - F('hall__cleaning_time') # seans jeszcze trwa
+    )
+
+    halls = models.Hall.objects.filter(cinema=context['selected_cinema']).prefetch_related(
+        Prefetch('seance_set',queryset=current_seance_qs, to_attr='current_seance')
+    )
+
+    for hall in halls:
+        for seance in hall.current_seance:
+            # Liczenie miejsc użytych (used=True) dla danego seansu
+            seance.used_seats_count = models.SeatReservation.objects.filter(
+                reservation__seance=seance,
+                reservation__used=True
+            ).count()
+            seance.paid_seats_count = models.SeatReservation.objects.filter(
+                reservation__seance=seance,
+                reservation__paid=True
+            ).count()
+
+    message = ""
+    context.update({
+        'halls': halls,
+        'message': message,
+    })
+    template = "backoffice/dashboard.html"
+    return TemplateResponse(request, template, context)
 
 
-def html_report(request):
-    #     Stworzenie statystyki pod:
-    #
-    # Najczęściej wybierany film przez klienta (raport tyd/mięs)
-    # Najczęściej wybierana godzina seansu przez klienta
-    # Najczęściej wybierany dzień tygodnia przez klienta
-    # Najczęściej wybierany rodzaj biletu przez klienta
+@login_required
+@decorators.set_vars
+def user_panel(request, context):
+    return render(request, 'backoffice/user_panel.html', {
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+        'email': request.user.email
+    })
+
+
+@login_required
+@decorators.set_vars
+def charts(request, context):
+    today = pendulum.today()
+    range_end = today.add(days=1)
+    range_begin = today.subtract(days=7)
+
+    context.update({
+        'range_begin' : range_begin,
+        'range_end': range_end,
+        'best_hours_chart': best_hours_chart(context['selected_cinema'], range_begin, range_end),
+        'best_days_of_week_chart': best_days_of_week_chart(context['selected_cinema'], range_begin, range_end),
+        'best_ticket_types_chart': best_ticket_types_chart(context['selected_cinema'], range_begin, range_end),
+        'movies_with_reservations_chart': movies_with_reservations_chart(
+            context['selected_cinema'],
+            range_begin,
+            range_end
+        ),
+    })
+
+    return render(request, 'backoffice/charts.html', context)
+
+
+@login_required
+@decorators.set_vars
+def report(request, context):
     today = pendulum.today()
     range_end = today.add(days=1)
     range_begin = today.subtract(days=7)
 
     movies_with_reservations = (
         models.Movie.objects.filter(
-            seance__show_start__gte=range_begin,
-            seance__show_start__lte=range_end,
+            seances__hall__cinema=context['selected_cinema'],
+            seances__show_start__gte=range_begin,
+            seances__show_start__lte=range_end,
         ).annotate(
-            total_reserved_seats=Count('seance__reservation__seatreservation')
+            total_reserved_seats=Count('seances__reservation__seatreservation')
         ).order_by('-total_reserved_seats')
     )
     popular_showtimes = (
         models.SeatReservation.objects.filter(
+            reservation__seance__hall__cinema=context['selected_cinema'],
             reservation__seance__show_start__gte=range_begin,
             reservation__seance__show_start__lte=range_end,
         ).annotate(
@@ -58,6 +123,7 @@ def html_report(request):
     )
     popular_weekdays = (
         models.SeatReservation.objects.filter(
+            reservation__seance__hall__cinema=context['selected_cinema'],
             reservation__seance__show_start__gte=range_begin,
             reservation__seance__show_start__lte=range_end,
         ).annotate(
@@ -78,6 +144,7 @@ def html_report(request):
 
     popular_ticket_types = (
         models.SeatReservation.objects.filter(
+            reservation__seance__hall__cinema=context['selected_cinema'],
             reservation__seance__show_start__gte=range_begin,
             reservation__seance__show_start__lte=range_end,
         ).values(
@@ -87,13 +154,12 @@ def html_report(request):
         ).order_by('-count')  # Sortuje według liczby wystąpień malejąco
     )
 
-    context = {
+    context.update({
         'range_begin' : range_begin,
         'range_end': range_end,
         'popular_showtimes': popular_showtimes,
         'popular_weekdays': popular_weekdays,
         'popular_ticket_types': popular_ticket_types,
         'movies_with_reservations': movies_with_reservations,
-    }
+    })
     return render(request, 'backoffice/report.html', context)
-

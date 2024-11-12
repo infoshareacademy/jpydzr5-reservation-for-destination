@@ -1,0 +1,15 @@
+{% extends 'backoffice/base.html' %}<!-- templates/movies_with_reservations.html -->
+{% block content %}
+    <h1>Filmy z Zarezerwowanymi Miejscami</h1>
+    <div>{{ movies_with_reservations_chart|safe }}</div>
+
+    <h1>Najczęściej Wybierane Godziny Seansów</h1>
+    <div>{{ best_hours_chart|safe }}</div>
+
+    <h1>Najczęściej Wybierane Dni Tygodnia</h1>
+    <div>{{ best_days_of_week_chart|safe }}</div>
+
+    <h1>Najczęściej Wybierane Typy Biletów</h1>
+    <div>{{ best_ticket_types_chart|safe }}</div>
+
+{% endblock %}

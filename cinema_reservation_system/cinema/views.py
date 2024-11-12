@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.db import transaction
 from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField, Sum, Count
 from django.forms import formset_factory
 from django.shortcuts import get_object_or_404, render, redirect
@@ -10,10 +12,43 @@ from .functions import generate_qr_code, free_seats_for_seance, get_reservation_
 import json
 import pendulum
 from django.contrib import messages
+from .forms import UserEditForm, CustomUserChangeForm
 
 DEFAULT_TICKET_TYPE_ID = 1
 DISABLED_SEAT_TYPE_ID = 3
 
+
+@login_required
+def user_panel(request):
+    return render(request, 'cinema/user_panel.html', {
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+        'email': request.user.email
+    })
+@login_required
+def edit_user_panel(request):
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Dane zostały pomyślnie zaktualizowane.')
+            return redirect('cinema:user_panel')
+    else:
+        form = UserEditForm(instance=request.user)
+    return render(request, 'cinema/edit_user_panel.html', {'form': form})
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, 'Twoje hasło zostało zmienione.')
+            return redirect('cinema:user_panel')
+        else:
+            messages.error(request, 'Wystąpił błąd przy zmianie hasła.')
+    return redirect('cinema:user_panel')
 
 @login_required
 @decorators.set_vars
@@ -72,12 +107,14 @@ def qr_code_view(request, reservation_id):
 
 def set_cinema(request):
     if request.method == 'POST':
-        cinema_id = request.POST.get('cinema')
-        if cinema_id:
-            request.session['cinema'] = cinema_id
+        selected_cinema_id = request.POST.get('selected_cinema_id')
+        if selected_cinema_id:
+            request.session['selected_cinema_id'] = selected_cinema_id
         else:
-            request.session.pop('cinema', 'None')
-        return redirect('cinema:index')
+            request.session.pop('selected_cinema_id', 'None')
+
+        next_url = request.POST.get("next", reverse("cinema:index"))
+        return redirect(next_url)
     return redirect('cinema:index')
 
 
@@ -117,6 +154,7 @@ def index(request, context):
     template = "cinema/index.html"
     return TemplateResponse(request, template, context)
 
+
 @decorators.set_vars
 def tickets(request, context):
     if request.user.is_authenticated:
@@ -125,9 +163,12 @@ def tickets(request, context):
         ).filter(
             paid=True,
             user=request.user,
-            seance__hall__cinema=context['selected_cinema'],
             seat_count__gt=0,
         )
+        if 'selected_cinema' in context:
+            reservations = reservations.filter(
+                seance__hall__cinema=context['selected_cinema'],
+            )
     else:
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
@@ -152,9 +193,12 @@ def basket(request, context):
             paid=False,
             seance__show_start__gte=pendulum.now().add(minutes=30),
             user=request.user,
-            seance__hall__cinema=context['selected_cinema'],
             seat_count__gt=0,
         )
+        if 'selected_cinema' in context:
+            reservations = reservations.filter(
+                seance__hall__cinema=context['selected_cinema'],
+            )
     else:
         return redirect(f'{reverse("cinema:login")}?next={request.path}')
 
@@ -172,6 +216,9 @@ def basket(request, context):
 
 @decorators.set_vars
 def repertoire(request, context):
+    if 'selected_cinema' not in context:
+        return redirect(f'{reverse("cinema:index")}')
+
     if 'selected_date' in request.GET:
         current_time = pendulum.parse(request.GET.get('selected_date'))
     else:
@@ -212,17 +259,17 @@ def repertoire(request, context):
 
 
 @decorators.set_vars
-def price_list(request, context):
+def pricing(request, context):
     tickets = models.TicketType.objects.all()
 
-    cinema_id = request.session.get('cinema', None)
+    cinema_id = request.session.get('cinema_id', None)
     if cinema_id is not None:
         cinema_id = int(cinema_id)
 
     context.update({
         "tickets": tickets,
     })
-    template = "cinema/price_list.html"
+    template = "cinema/pricing.html"
     return TemplateResponse(request, template, context)
 
 
@@ -264,46 +311,64 @@ def select_seance(request, context, movie_id):
 
 
 @decorators.set_vars
-def select_ticket_type(request, context, reservation_id):
-    reservation = get_object_or_404(models.Reservation, id=reservation_id)
-    seat_reservations = reservation.seatreservation_set.all()
+def select_ticket_type(request, context):
+    if 'selected_seat_ids' not in request.session:
+        redirect('cinema:repertoire')
+    selected_seance = models.Seance.objects.get(id=request.session['selected_seance_id'])
+    selected_seats =  models.Seat.objects.filter(id__in=set(request.session['selected_seat_ids']))
 
     # Utwórz formset dla typów biletów, jeden formularz dla każdego zarezerwowanego miejsca
-    TicketFormSet = formset_factory(forms.TicketTypeForm, extra=len(seat_reservations))
+    TicketFormSet = formset_factory(forms.TicketTypeForm, extra=len(selected_seats))
+
+    formset = TicketFormSet(request.POST or None)
 
     if request.method == 'POST':
-        formset = TicketFormSet(request.POST)
         if formset.is_valid():
+            reservation = models.Reservation.objects.create(
+                user=request.user,
+                seance_id=request.session['selected_seance_id']
+            )
+
             # Zapisz każdy typ biletu dla odpowiadającego mu miejsca
-            for form, seat_reservation in zip(formset, seat_reservations):
+            for form, selected_seat in zip(formset, selected_seats):
                 ticket_type = form.cleaned_data['ticket_type']
+                models.SeatReservation.objects.create(
+                    reservation=reservation,
+                    seat_id=selected_seat.id,
+                    ticket_type=ticket_type,
+                )
 
-                seat_reservation.ticket_type = ticket_type
-                seat_reservation.save()
-
+            del request.session['selected_seance_id']
+            del request.session['selected_seat_ids']
             return redirect('cinema:basket')  # Przekierowanie do następnego kroku po udanym przesłaniu formularza
-    else:
-        # Inicjalizuj formset z pustymi formularzami
-        formset = TicketFormSet()
 
     template = "cinema/select_ticket_type.html"
     context.update({
         'formset': formset,
-        'reservation': reservation,
-        'seat_reservations': seat_reservations
+        'selected_seance': selected_seance,
+        'selected_seats': selected_seats,
     })
     return render(request, template, context)
 
 
 @decorators.set_vars
-@login_required
 def select_seats(request, context, seance_id):
     seance = get_object_or_404(models.Seance, id=seance_id)
 
-    # Zapytanie do bazy danych o zarezerwowane miejsca
+    selected_seats = {}
+    # jeżeli była w tej sesji rezerwacja na ten seans to przywracamy, a jeśli nie na ten seans,
+    # to uznajemy, że porzuca tamta rezerwację
+
+    if 'selected_seat_ids' in request.session:
+        if request.session['selected_seance_id'] != seance_id:
+            del request.session['selected_seat_ids']
+            request.session['selected_seance_id'] = seance_id
+        else:
+            selected_seats = set(request.session['selected_seat_ids'])
+
     seat_reservation_subquery = models.SeatReservation.objects.filter(
         reservation__seance=seance,
-        seat_id=OuterRef('pk')
+        seat_id=OuterRef('pk'),
     )
 
     seats = models.Seat.objects.select_related('seat_type').filter(hall=seance.hall).annotate(
@@ -318,27 +383,27 @@ def select_seats(request, context, seance_id):
             'rotation': seat.rotation,
             'seat_type_icon': seat.seat_type.icon.url if seat.seat_type and seat.seat_type.icon else None,
             'is_reserved': 1 if seat.is_reserved else 0,
+            'is_selected': 1 if seat.id in selected_seats else 0,
         } for seat in seats
     ]
 
     if request.method == 'POST':
         selected_seats = {int(x) for x in json.loads(request.POST.get('selected-seats', '[]'))}
-        if selected_seats:
-            # Walidacja dostępnych miejsc
-            available_seats = {seat.id for seat in seats}
-            if not selected_seats.issubset(available_seats):  # zbiór pierwszy wykracza poza zbiór drugi
-                messages.error(request, "Niektóre miejsca nie są dostępne.")
-                return redirect('cinema:select_seats', seance_id=seance_id)
+        # Walidacja dostępnych miejsc
+        available_seats = {seat.id for seat in seats}
+        if not selected_seats.issubset(available_seats):  # zbiór pierwszy wykracza poza zbiór drugi
+            messages.error(request, "Niektóre miejsca nie są dostępne.")
+            return redirect('cinema:select_seats', seance_id=seance_id)
 
-            # Tworzenie rezerwacji
-            reservation = models.Reservation.objects.create(user=request.user, seance=seance)
-            for selected_seat in selected_seats:
-                models.SeatReservation.objects.create(
-                    reservation=reservation,
-                    seat_id=selected_seat,
-                    ticket_type_id=DEFAULT_TICKET_TYPE_ID,
-                )
-            return redirect('cinema:select_ticket_type', reservation_id=reservation.id)
+        request.session['selected_seat_ids'] = list(selected_seats)
+        request.session['selected_seance_id'] = seance_id
+
+        if not request.user.is_authenticated:
+            login_url = f"{reverse('cinema:login')}?next={request.path}"
+            return redirect(login_url)
+
+        # Tworzenie rezerwacji
+        return redirect('cinema:select_ticket_type')
 
     context.update({
         'seats_json': seats_data,
@@ -407,17 +472,26 @@ def user_panel_view(request, context):
 
 
 @login_required
-@decorators.set_vars
-def edit_user_panel_view(request, context):
+def edit_user_panel_view(request):
     if request.method == 'POST':
-        form = UserChangeForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('cinema:user_panel')  # Po zapisaniu przekierowanie do panelu użytkownika
+        user_form = UserChangeForm(request.POST, instance=request.user)
+        password_form = PasswordChangeForm(user=request.user, data=request.POST)
+
+        if user_form.is_valid() and password_form.is_valid():
+            user_form.save()  # Zapisz dane użytkownika
+            password_form.save()  # Zapisz nowe hasło
+            update_session_auth_hash(request, password_form.user)  # Zaktualizuj sesję użytkownika
+            messages.success(request, "Dane oraz hasło zostały pomyślnie zaktualizowane.")
+            return redirect('cinema:user_panel')
+        else:
+            messages.error(request, "Proszę poprawić błędy w formularzu.")
     else:
-        form = UserChangeForm(instance=request.user)
-    template = 'cinema/edit_user_panel.html'
-    context.update({
-        'form': form,
-    })
-    return render(request, template, context)
+        user_form = UserChangeForm(instance=request.user)
+        password_form = PasswordChangeForm(user=request.user)
+
+    context = {
+        'user_form': user_form,
+        'password_form': password_form,
+    }
+    return render(request, 'cinema/edit_user_panel.html', context)
+

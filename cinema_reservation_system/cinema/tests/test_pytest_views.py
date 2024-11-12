@@ -29,7 +29,7 @@ def test_basket_view(client):
 def test_price_list_view(client):
     response = client.get(reverse("price_list"))
     assert response.status_code == 200
-    assert "cinema/price_list.html" in [t.name for t in response.templates]
+    assert "cinema/pricing.html" in [t.name for t in response.templates]
     assert response.context["message"] == "OK!"
 
 def test_repertoire_view(client):

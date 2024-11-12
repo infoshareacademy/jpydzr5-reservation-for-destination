@@ -34,7 +34,7 @@ class CinemaAdmin(admin.ModelAdmin):
 
 @admin.register(models.Hall)
 class HallAdmin(admin.ModelAdmin):
-    list_display = ('cinema', 'hall_number', 'cleaning_time')  # Pola do wyświetlania
+    list_display = ('cinema', 'name', 'cleaning_time')  # Pola do wyświetlania
 
 
 @admin.register(models.Seat)
