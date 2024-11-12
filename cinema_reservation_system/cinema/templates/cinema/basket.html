@@ -4,27 +4,47 @@
 <h1>Rezerwacje</h1>
 
 {% if reservations %}
-    <ul>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
         {% for reservation in reservations %}
-            <li>
-                <strong>Rezerwacja nr:</strong> {{ reservation.id }}<br>
-                <strong>Film:</strong> {{ reservation.seance.movie.title }}<br>
-                <strong>Data:</strong> {{ reservation.seance.show_start|date:"Y-m-d" }}<br>
-                <strong>Godzina:</strong> {{ reservation.seance.show_start|date:"H:i" }}<br>
-
-                {% for seat_reservation in reservation.seatreservation_set.all %}
+            <div id="container" style="display: flex; align-items: center; gap: 20px;">
+                <!-- Informacje o zamówieniu -->
+                <div style="border:solid 1px black; padding:10px; flex: 1;">
                     <p>
-                        Miejsce: rząd {{ seat_reservation.seat.row }} miejsce {{ seat_reservation.seat.column }}<br>
-                        Typ biletu: {{ seat_reservation.ticket_type }}<br>
-                        Cena: {{ seat_reservation.price }} PLN
+                        <strong>Kino:</strong> {{ reservation.seance.hall.cinema.name }}<br>
+                        <strong>Zamówienie nr:</strong> {{ reservation.id }}
                     </p>
-                {% endfor %}
+                    <p>
+                        <strong>Film:</strong> {{ reservation.seance.movie.title }}<br>
+                        <strong>Data:</strong> {{ reservation.seance.show_start|date:"Y-m-d" }}<br>
+                        <strong>Godzina:</strong> {{ reservation.seance.show_start|date:"H:i" }}<br>
+                        <strong>Sala:</strong> {{ reservation.seance.hall.name }}<br>
+                    </p>
 
-                <strong>Całkowity koszt rezerwacji: </strong>{{ reservation.total_cost }} PLN
-            </li>
+                    {% for seat_reservation in reservation.seatreservation_set.all %}
+                        <p>
+                            Miejsce: rząd {{ seat_reservation.seat.row }} miejsce {{ seat_reservation.seat.column }}<br>
+                            Typ biletu: {{ seat_reservation.ticket_type }}<br>
+                            Cena: {{ seat_reservation.price }} PLN
+                        </p>
+                    {% endfor %}
+
+                    <strong>Całkowity koszt rezerwacji:</strong> {{ reservation.total_cost }} PLN
+                </div>
+
+                <!-- Kod QR lub przycisk płatności -->
+                <div class="qr_container{% if reservation.used %} used{% endif %}" style="flex-shrink: 0;">
+                    {% if reservation.paid %}
+                        <img src="{% url 'cinema:qr_code' reservation.id %}" alt="QR Code" style="max-width: 150px;">
+                    {% else %}
+                        <a href="{% url 'cinema:pay_one' reservation.id %}" class="btn btn-primary">Przejdź do płatności</a>
+                    {% endif %}
+                </div>
+            </div>
+            <br>
         {% endfor %}
-    </ul>
+    </div>
 
+    <!-- Podsumowanie wszystkich rezerwacji -->
     <div style="border-top: 2px solid black; padding-top: 10px;">
         <h3>Podsumowanie:</h3>
         <p><strong>Całkowity koszt wszystkich rezerwacji:</strong> {{ total_cost }} PLN</p>

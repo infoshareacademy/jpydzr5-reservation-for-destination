@@ -208,7 +208,9 @@ def basket(request, context):
         for reservation in reservations:
             total_cost = 0
             for seat_reservation in reservation.seatreservation_set.all():
-                total_cost += seat_reservation.price  # Sumowanie ceny biletów
+                # Jeśli cena biletu jest None, przypisz 0
+                price = seat_reservation.price if seat_reservation.price is not None else 0
+                total_cost += price  # Sumowanie ceny biletów
             reservation.total_cost = total_cost  # Dodanie do obiektu rezerwacji
 
     else:

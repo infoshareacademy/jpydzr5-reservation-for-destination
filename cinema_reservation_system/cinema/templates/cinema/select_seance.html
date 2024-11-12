@@ -1,10 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
+<h3>Wybrałeś film: <span style="font-weight: bolder">{{ movie.title }}</span></h3>
+
 <form method="post">
     {% csrf_token %}
-    wybrałeś film: <span style="font-weight: bolder">{{ movie.title }}</span>
-    {{ form.as_p }}
-    <button type="submit">Dalej</button>
-    <a href="{% url 'cinema:index' %}">Anuluj</a>
+
+    <div class="seance-buttons">
+        {% for seance in seances %}
+            <button type="submit" name="seance_id" value="{{ seance.id }}" class="btn btn-primary">
+                {{ seance.show_start|date:"H:i" }}
+            </button>
+        {% endfor %}
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-success">Dalej</button>
+        <a href="{% url 'cinema:index' %}" class="btn btn-danger">Anuluj</a>
+    </div>
 </form>
+
+{% if not seances %}
+    <p>Brak dostępnych seansów w najbliższym czasie.</p>
+{% endif %}
 {% endblock %}
