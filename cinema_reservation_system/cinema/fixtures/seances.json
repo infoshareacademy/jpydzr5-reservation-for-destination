@@ -3,7 +3,7 @@
   "model": "cinema.seance",
   "pk": 1,
   "fields": {
-    "show_start": "2024-09-20T13:30:00Z",
+    "show_start": "2024-09-20T13:30:00+02:00",
     "hall": 1,
     "movie": 1
   }
@@ -12,7 +12,7 @@
   "model": "cinema.seance",
   "pk": 2,
   "fields": {
-    "show_start": "2024-09-17T19:30:00Z",
+    "show_start": "2024-09-17T19:30:00+02:00",
     "hall": 1,
     "movie": 1
   }
@@ -21,7 +21,7 @@
   "model": "cinema.seance",
   "pk": 3,
   "fields": {
-    "show_start": "2024-09-20T22:15:00Z",
+    "show_start": "2024-09-20T22:15:00+02:00",
     "hall": 1,
     "movie": 2
   }
@@ -30,7 +30,7 @@
   "model": "cinema.seance",
   "pk": 4,
   "fields": {
-    "show_start": "2024-09-16T22:15:00Z",
+    "show_start": "2024-09-16T22:15:00+02:00",
     "hall": 1,
     "movie": 3
   }
@@ -39,7 +39,7 @@
   "model": "cinema.seance",
   "pk": 5,
   "fields": {
-    "show_start": "2024-09-19T13:30:00Z",
+    "show_start": "2024-09-19T13:30:00+02:00",
     "hall": 1,
     "movie": 3
   }
@@ -48,7 +48,7 @@
   "model": "cinema.seance",
   "pk": 6,
   "fields": {
-    "show_start": "2024-09-19T16:45:00Z",
+    "show_start": "2024-09-19T16:45:00+02:00",
     "hall": 1,
     "movie": 3
   }
@@ -57,7 +57,7 @@
   "model": "cinema.seance",
   "pk": 7,
   "fields": {
-    "show_start": "2024-09-17T16:45:00Z",
+    "show_start": "2024-09-17T16:45:00+02:00",
     "hall": 1,
     "movie": 4
   }
@@ -66,7 +66,7 @@
   "model": "cinema.seance",
   "pk": 8,
   "fields": {
-    "show_start": "2024-09-20T13:30:00Z",
+    "show_start": "2024-09-20T13:30:00+02:00",
     "hall": 1,
     "movie": 4
   }
@@ -75,7 +75,7 @@
   "model": "cinema.seance",
   "pk": 9,
   "fields": {
-    "show_start": "2024-09-15T10:00:00Z",
+    "show_start": "2024-09-15T10:00:00+02:00",
     "hall": 1,
     "movie": 4
   }
@@ -84,7 +84,7 @@
   "model": "cinema.seance",
   "pk": 10,
   "fields": {
-    "show_start": "2024-09-17T16:45:00Z",
+    "show_start": "2024-09-17T16:45:00+02:00",
     "hall": 1,
     "movie": 6
   }
@@ -93,7 +93,7 @@
   "model": "cinema.seance",
   "pk": 11,
   "fields": {
-    "show_start": "2024-09-15T10:00:00Z",
+    "show_start": "2024-09-15T10:00:00+02:00",
     "hall": 1,
     "movie": 6
   }
@@ -102,7 +102,7 @@
   "model": "cinema.seance",
   "pk": 12,
   "fields": {
-    "show_start": "2024-09-18T16:45:00Z",
+    "show_start": "2024-09-18T16:45:00+02:00",
     "hall": 1,
     "movie": 7
   }
@@ -111,7 +111,7 @@
   "model": "cinema.seance",
   "pk": 13,
   "fields": {
-    "show_start": "2024-09-17T22:15:00Z",
+    "show_start": "2024-09-17T22:15:00+02:00",
     "hall": 1,
     "movie": 7
   }
@@ -120,7 +120,7 @@
   "model": "cinema.seance",
   "pk": 14,
   "fields": {
-    "show_start": "2024-09-21T19:30:00Z",
+    "show_start": "2024-09-21T19:30:00+02:00",
     "hall": 1,
     "movie": 7
   }
@@ -129,7 +129,7 @@
   "model": "cinema.seance",
   "pk": 15,
   "fields": {
-    "show_start": "2024-09-18T10:00:00Z",
+    "show_start": "2024-09-18T10:00:00+02:00",
     "hall": 1,
     "movie": 7
   }
@@ -138,7 +138,7 @@
   "model": "cinema.seance",
   "pk": 16,
   "fields": {
-    "show_start": "2024-09-19T13:30:00Z",
+    "show_start": "2024-09-19T13:30:00+02:00",
     "hall": 1,
     "movie": 8
   }
@@ -147,7 +147,7 @@
   "model": "cinema.seance",
   "pk": 17,
   "fields": {
-    "show_start": "2024-09-15T13:30:00Z",
+    "show_start": "2024-09-15T13:30:00+02:00",
     "hall": 1,
     "movie": 8
   }
@@ -156,7 +156,7 @@
   "model": "cinema.seance",
   "pk": 18,
   "fields": {
-    "show_start": "2024-09-21T16:45:00Z",
+    "show_start": "2024-09-21T16:45:00+02:00",
     "hall": 1,
     "movie": 8
   }
@@ -165,7 +165,7 @@
   "model": "cinema.seance",
   "pk": 19,
   "fields": {
-    "show_start": "2024-09-15T10:00:00Z",
+    "show_start": "2024-09-15T10:00:00+02:00",
     "hall": 1,
     "movie": 8
   }
@@ -174,7 +174,7 @@
   "model": "cinema.seance",
   "pk": 20,
   "fields": {
-    "show_start": "2024-09-15T22:15:00Z",
+    "show_start": "2024-09-15T22:15:00+02:00",
     "hall": 1,
     "movie": 8
   }
@@ -183,7 +183,7 @@
   "model": "cinema.seance",
   "pk": 21,
   "fields": {
-    "show_start": "2024-09-18T13:30:00Z",
+    "show_start": "2024-09-18T13:30:00+02:00",
     "hall": 1,
     "movie": 9
   }
@@ -192,7 +192,7 @@
   "model": "cinema.seance",
   "pk": 22,
   "fields": {
-    "show_start": "2024-09-15T19:30:00Z",
+    "show_start": "2024-09-15T19:30:00+02:00",
     "hall": 1,
     "movie": 9
   }
@@ -201,7 +201,7 @@
   "model": "cinema.seance",
   "pk": 23,
   "fields": {
-    "show_start": "2024-09-17T16:45:00Z",
+    "show_start": "2024-09-17T16:45:00+02:00",
     "hall": 1,
     "movie": 10
   }
@@ -210,7 +210,7 @@
   "model": "cinema.seance",
   "pk": 24,
   "fields": {
-    "show_start": "2024-09-18T13:30:00Z",
+    "show_start": "2024-09-18T13:30:00+02:00",
     "hall": 1,
     "movie": 10
   }
@@ -219,7 +219,7 @@
   "model": "cinema.seance",
   "pk": 25,
   "fields": {
-    "show_start": "2024-09-19T22:15:00Z",
+    "show_start": "2024-09-19T22:15:00+02:00",
     "hall": 1,
     "movie": 10
   }
@@ -228,7 +228,7 @@
   "model": "cinema.seance",
   "pk": 26,
   "fields": {
-    "show_start": "2024-09-17T16:45:00Z",
+    "show_start": "2024-09-17T16:45:00+02:00",
     "hall": 1,
     "movie": 10
   }
@@ -237,7 +237,7 @@
   "model": "cinema.seance",
   "pk": 27,
   "fields": {
-    "show_start": "2024-09-18T13:30:00Z",
+    "show_start": "2024-09-18T13:30:00+02:00",
     "hall": 1,
     "movie": 11
   }
@@ -246,7 +246,7 @@
   "model": "cinema.seance",
   "pk": 28,
   "fields": {
-    "show_start": "2024-09-16T10:00:00Z",
+    "show_start": "2024-09-16T10:00:00+02:00",
     "hall": 1,
     "movie": 11
   }
@@ -255,8 +255,539 @@
   "model": "cinema.seance",
   "pk": 29,
   "fields": {
-    "show_start": "2024-09-22T22:15:00Z",
-    "hall": 2,
+    "show_start": "2024-09-21T22:15:00+02:00",
+    "hall": 1,
+    "movie": 11
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 30,
+  "fields": {
+    "show_start": "2024-10-25T11:15:00+02:00",
+    "hall": 1,
+    "movie": 3
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 31,
+  "fields": {
+    "show_start": "2024-10-23T14:00:00+02:00",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 32,
+  "fields": {
+    "show_start": "2024-10-22T18:15:00+02:00",
+    "hall": 1,
+    "movie": 11
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 33,
+  "fields": {
+    "show_start": "2024-10-27T10:45:00+01:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 34,
+  "fields": {
+    "show_start": "2024-10-22T12:30:00+02:00",
+    "hall": 1,
+    "movie": 7
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 35,
+  "fields": {
+    "show_start": "2024-10-26T08:15:00+02:00",
+    "hall": 1,
+    "movie": 5
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 36,
+  "fields": {
+    "show_start": "2024-10-24T13:45:00+02:00",
+    "hall": 1,
+    "movie": 5
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 37,
+  "fields": {
+    "show_start": "2024-10-26T10:00:00+02:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 38,
+  "fields": {
+    "show_start": "2024-10-23T15:15:00+02:00",
+    "hall": 1,
+    "movie": 11
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 39,
+  "fields": {
+    "show_start": "2024-10-24T15:30:00+02:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 40,
+  "fields": {
+    "show_start": "2024-10-22T13:00:00+02:00",
+    "hall": 1,
+    "movie": 2
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 41,
+  "fields": {
+    "show_start": "2024-10-20T15:15:00+02:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 42,
+  "fields": {
+    "show_start": "2024-10-20T10:45:00+02:00",
+    "hall": 1,
+    "movie": 6
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 43,
+  "fields": {
+    "show_start": "2024-10-20T18:45:00+02:00",
+    "hall": 1,
+    "movie": 9
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 44,
+  "fields": {
+    "show_start": "2024-10-23T17:30:00+02:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 45,
+  "fields": {
+    "show_start": "2024-10-21T18:45:00+02:00",
+    "hall": 1,
+    "movie": 3
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 46,
+  "fields": {
+    "show_start": "2024-10-27T16:30:00+01:00",
+    "hall": 1,
+    "movie": 9
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 47,
+  "fields": {
+    "show_start": "2024-10-23T19:30:00+02:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 48,
+  "fields": {
+    "show_start": "2024-10-25T11:30:00+02:00",
+    "hall": 1,
+    "movie": 7
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 49,
+  "fields": {
+    "show_start": "2024-10-23T10:45:00+02:00",
+    "hall": 1,
+    "movie": 3
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 50,
+  "fields": {
+    "show_start": "2024-10-21T10:30:00+02:00",
+    "hall": 1,
+    "movie": 1
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 51,
+  "fields": {
+    "show_start": "2024-10-26T11:00:00+02:00",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 52,
+  "fields": {
+    "show_start": "2024-10-24T16:30:00+02:00",
+    "hall": 1,
+    "movie": 2
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 53,
+  "fields": {
+    "show_start": "2024-10-20T11:00:00+02:00",
+    "hall": 1,
+    "movie": 5
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 54,
+  "fields": {
+    "show_start": "2024-10-25T19:15:00+02:00",
+    "hall": 1,
+    "movie": 7
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 55,
+  "fields": {
+    "show_start": "2024-10-25T12:30:00+02:00",
+    "hall": 1,
+    "movie": 2
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 56,
+  "fields": {
+    "show_start": "2024-10-21T11:15:00+02:00",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 57,
+  "fields": {
+    "show_start": "2024-10-20T08:15:00+02:00",
+    "hall": 1,
+    "movie": 5
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 58,
+  "fields": {
+    "show_start": "2024-10-27T17:45:00+01:00",
+    "hall": 1,
+    "movie": 9
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 59,
+  "fields": {
+    "show_start": "2024-10-21T11:30:00+02:00",
+    "hall": 1,
+    "movie": 6
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 60,
+  "fields": {
+    "show_start": "2024-11-09T20:30:00+01:00",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 61,
+  "fields": {
+    "show_start": "2024-11-11T21:00:00+01:00",
+    "hall": 1,
+    "movie": 11
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 62,
+  "fields": {
+    "show_start": "2024-11-11T15:30:00+01:00",
+    "hall": 1,
+    "movie": 2
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 63,
+  "fields": {
+    "show_start": "2024-11-10T21:45:00+01:00",
+    "hall": 1,
+    "movie": 6
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 64,
+  "fields": {
+    "show_start": "2024-11-13T18:45:00+01:00",
+    "hall": 1,
+    "movie": 1
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 65,
+  "fields": {
+    "show_start": "2024-11-15T15:30:00+01:00",
+    "hall": 1,
+    "movie": 3
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 66,
+  "fields": {
+    "show_start": "2024-11-13T14:30:00+01:00",
+    "hall": 1,
+    "movie": 5
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 67,
+  "fields": {
+    "show_start": "2024-11-14T11:30:00+01:00",
+    "hall": 1,
+    "movie": 5
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 68,
+  "fields": {
+    "show_start": "2024-11-09T12:30:00+01:00",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 69,
+  "fields": {
+    "show_start": "2024-11-10T17:45:00+01:00",
+    "hall": 1,
+    "movie": 6
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 70,
+  "fields": {
+    "show_start": "2024-11-10T13:15:00+01:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 71,
+  "fields": {
+    "show_start": "2024-11-12T18:45:00+01:00",
+    "hall": 1,
+    "movie": 5
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 72,
+  "fields": {
+    "show_start": "2024-11-13T15:30:00+01:00",
+    "hall": 1,
+    "movie": 1
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 73,
+  "fields": {
+    "show_start": "2024-11-14T15:45:00+01:00",
+    "hall": 1,
+    "movie": 6
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 74,
+  "fields": {
+    "show_start": "2024-11-08T14:45:00+01:00",
+    "hall": 1,
+    "movie": 7
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 75,
+  "fields": {
+    "show_start": "2024-11-12T21:15:00+01:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 76,
+  "fields": {
+    "show_start": "2024-11-12T16:00:00+01:00",
+    "hall": 1,
+    "movie": 9
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 77,
+  "fields": {
+    "show_start": "2024-11-08T16:15:00+01:00",
+    "hall": 1,
+    "movie": 3
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 78,
+  "fields": {
+    "show_start": "2024-11-11T21:45:00+01:00",
+    "hall": 1,
+    "movie": 10
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 79,
+  "fields": {
+    "show_start": "2024-11-15T18:45:00+01:00",
+    "hall": 1,
+    "movie": 8
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 80,
+  "fields": {
+    "show_start": "2024-11-13T22:00:00+01:00",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 81,
+  "fields": {
+    "show_start": "2024-11-10T19:30:00+01:00",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 82,
+  "fields": {
+    "show_start": "2024-11-09T13:00:00+01:00",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 83,
+  "fields": {
+    "show_start": "2024-11-12T13:15:00+01:00",
+    "hall": 1,
+    "movie": 2
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 84,
+  "fields": {
+    "show_start": "2024-11-09T13:30:00+01:00",
+    "hall": 1,
+    "movie": 6
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 85,
+  "fields": {
+    "show_start": "2024-11-12T16:15:00+01:00",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 86,
+  "fields": {
+    "show_start": "2024-11-12T16:30:00+01:00",
+    "hall": 1,
+    "movie": 9
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 87,
+  "fields": {
+    "show_start": "2024-11-11T12:00:00+01:00",
+    "hall": 1,
+    "movie": 4
+  }
+},
+{
+  "model": "cinema.seance",
+  "pk": 88,
+  "fields": {
+    "show_start": "2024-11-13T10:00:00+01:00",
+    "hall": 1,
     "movie": 11
   }
 }

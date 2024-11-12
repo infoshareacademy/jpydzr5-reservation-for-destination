@@ -4,7 +4,8 @@
   "pk": 1,
   "fields": {
     "name": "Normalny",
-    "price": "20.00"
+    "price": "20.00",
+    "extra_validation": true
   }
 },
 {
@@ -12,7 +13,8 @@
   "pk": 2,
   "fields": {
     "name": "Student",
-    "price": "16.00"
+    "price": "16.00",
+    "extra_validation": true
   }
 },
 {
@@ -20,7 +22,8 @@
   "pk": 3,
   "fields": {
     "name": "Emeryt",
-    "price": "14.00"
+    "price": "14.00",
+    "extra_validation": true
   }
 },
 {
@@ -28,23 +31,8 @@
   "pk": 4,
   "fields": {
     "name": "Dziecko do 10 lat",
-    "price": "10.00"
-  }
-},
-{
-  "model": "cinema.tickettype",
-  "pk": 5,
-  "fields": {
-    "name": "VIP",
-    "price": "30.00"
-  }
-},
-{
-  "model": "cinema.tickettype",
-  "pk": 6,
-  "fields": {
-    "name": "Niepełnosprawni",
-    "price": "5.00"
+    "price": "10.00",
+    "extra_validation": true
   }
 }
 ]

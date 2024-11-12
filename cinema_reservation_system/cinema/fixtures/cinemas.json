@@ -6,13 +6,5 @@
     "name": "Kino SYRENA",
     "city": "Warszawa"
   }
-},
-{
-  "model": "cinema.cinema",
-  "pk": 2,
-  "fields": {
-    "name": "Kino Górnik",
-    "city": "Katowice"
-  }
 }
 ]
