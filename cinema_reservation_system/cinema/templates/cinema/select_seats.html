@@ -11,11 +11,13 @@
         </style>
 {% endblock %}
 {% block content %}
-        <div>wybrałeś film: <span style="font-weight: bolder">{{ seance.movie.title }}</span></div>
+        <div>wybrałeś film: <span style="font-weight: bolder">{{ seance.movie.title }}</span>/div>
         <div>seans rozpoczyna się o godzinie: <span style="font-weight: bolder">{{ seance.show_start }}</span></div>
         <div id="cinema-container" style="width:100%; height:60vh;">
+
           <div id="seats-container" style="position: relative; width: 100%; height: 50vh;"></div>
           <div id="ekran" style="align:center;width:100%"><img style="width:660px" src="/media/ekran.png"></div>
+          <h4 style="text-align:center;margin-left: -40%">EKRAN</h4>
         </div>
         <form method="post" id="seats-form">
             {% csrf_token %}

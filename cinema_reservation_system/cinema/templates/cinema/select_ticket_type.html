@@ -31,6 +31,6 @@
         {% endfor %}
         </ul>
         <button type="submit">Dalej</button>
-        <a href="{% url 'cinema:select_seats' selected_seance.id %}">Anuluj</a>
+        <button><a href="{% url 'cinema:select_seats' selected_seance.id %}">Anuluj</a></button>
     </form>
 {% endblock %}
