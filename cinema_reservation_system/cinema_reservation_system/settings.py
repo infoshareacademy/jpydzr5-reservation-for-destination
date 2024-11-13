@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
     'cinema',
     'backoffice',
+    'bootstrap5'
 ]
 
 MIDDLEWARE = [

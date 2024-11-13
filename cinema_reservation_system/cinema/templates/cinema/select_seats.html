@@ -21,7 +21,7 @@
             {% csrf_token %}
             <input type="hidden" id="selected-seats" name="selected-seats" value="">
             <button type="submit">Dalej</button>
-            <a href="{% url 'cinema:index' %}">Anuluj</a>
+            <button type="submit"><a href="{% url 'cinema:index' %}">Anuluj</a></button>
         </form>
 
         <script>
