@@ -5,6 +5,7 @@
   "fields": {
     "title": "Avengers: Endgame",
     "description": "Ostateczne starcie superbohaterów Marvela z Thanossem, który zniszczył połowę wszechświata. Bohaterowie, pełni odwagi i poświęcenia, próbują naprawić zniszczenia i przywrócić harmonię. Widowiskowe efekty specjalne i emocjonalne pożegnania.",
+    "duration": "03:01:00",
     "poster": "posters/avengers.jpg"
   }
 },
@@ -14,6 +15,7 @@
   "fields": {
     "title": "Seksmisja",
     "description": "W roku 2044 zostają odhibernowani dwaj ostatni przedstawiciele płci męskiej, wprowadzając chaos do idealnego świata rządzonego przez Ligę Kobiet.",
+    "duration": "01:56:00",
     "poster": "posters/seksmisja.jpg"
   }
 },
@@ -23,6 +25,7 @@
   "fields": {
     "title": "The Godfather",
     "description": "Epicka saga rodziny mafijnej Corleone, której głową jest Vito Corleone, budujący swoje imperium w brutalnym świecie przestępczym. Film o władzy, lojalności, zemście i rodzinie, uznawany za jedno z najwiekszych dzieł kinematografii.",
+    "duration": "02:55:00",
     "poster": "posters/godfather.jpg"
   }
 },
@@ -32,6 +35,7 @@
   "fields": {
     "title": "Inception",
     "description": "Trzymający w napieciu thriller sci-fi o Domie Cobb, specjalizującym sie w kradzieży tajemnic z umysłów ludzi poprzez sny. Film łączy wartką akcje z filozoficznymi pytaniami o rzeczywistość, pamiec i podswiadomość, zaskakując widza na kazdym kroku.",
+    "duration": "02:28:00",
     "poster": "posters/inception.jpg"
   }
 },
@@ -41,6 +45,7 @@
   "fields": {
     "title": "The Shawshank Redemption",
     "description": "Historia Andy'ego Dufresne'a, niesłusznie skazanego na dożywocie, który dzieki inteligencji, przyjačni z Redem i niezłomnej nadziei, odnajduje w wiezieniu swoją droge do wolnosci. Film o triumfie ducha ludzkiego w najcięższych warunkach.",
+    "duration": "02:22:00",
     "poster": "posters/shawshank.jpeg"
   }
 },
@@ -50,6 +55,7 @@
   "fields": {
     "title": "The Dark Knight",
     "description": "Batman walczy z Jokerem, szalonym geniuszem zbrodni, który zagraza bezpieczeństwu Gotham. Film ukazuje moralne dylematy bohatera i napiecie miedzy dobrem a złem, z niezapomnianą rolą Heatha Ledgera jako Jokera. Mroczna, głęboka opowieść",
+    "duration": "02:32:00",
     "poster": "posters/dark_knight.jpeg"
   }
 },
@@ -59,6 +65,7 @@
   "fields": {
     "title": "Pulp Fiction",
     "description": "Arcydzieło Quentina Tarantino, splatające losy płatnych zabójców, boksera i gangstera w pełnym ironii i przemocy swiecie. Kultowe dialogi, niechronologiczna narracja i wyjątkowy styl uczyniły z tego filmu klasyke, która na stałe wpisała sie w historie kina.",
+    "duration": "02:34:00",
     "poster": "posters/pulpfiction.jpg"
   }
 },
@@ -68,6 +75,7 @@
   "fields": {
     "title": "Forrest Gump",
     "description": "Opowiesc o niezwykłym życiu Forresta Gumpa, prostego człowieka, który przypadkowo staje sie swiadkiem i uczestnikiem kluczowych wydarzen w historii USA. To historia o miłosci, niewinnosci i sile przypadku, pełna humoru i wzruszen.",
+    "duration": "02:22:00",
     "poster": "posters/forrest.jpg"
   }
 },
@@ -77,6 +85,7 @@
   "fields": {
     "title": "The Matrix",
     "description": "Neo odkrywa, ze swiat, w którym żyje, to tylko symulacja stworzona przez maszyny, kontrolujące ludzkosc. Wraz z grupą rebeliantów podejmuje walke o wolnosc. Przełomowe efekty specjalne, filozoficzne refleksje i kultowy styl uczyniły ten film ikoną popkultury.",
+    "duration": "02:16:00",
     "poster": "posters/matrix.jpeg"
   }
 },
@@ -86,6 +95,7 @@
   "fields": {
     "title": "Schindler's List",
     "description": "Wstrząsający dramat o Oskarze Schindlerze, który ratuje ponad tysiąc żydów przed zagładą w czasie II wojny swiatowej. To przejmująca opowiesc o ludzkiej godnosci, bohaterstwie i koszmarze Holokaustu, pozostawiająca widza w głebokiej refleksji.",
+    "duration": "03:15:00",
     "poster": "posters/shindlers.jpg"
   }
 },
@@ -95,6 +105,7 @@
   "fields": {
     "title": "Titanic",
     "description": "Epicka historia miłosci Jacka i Rose, rozgrywająca się na tle jednej z najwiekszych katastrof morskich w historii. Film ukazuje nie tylko tragiczny rejs Titanica, ale także społeczne nierównosci i sile uczucia, które przetrwa nawet najgorsze przeciwności losu.",
+    "duration": "03:14:00",
     "poster": "posters/titanic.jpg"
   }
 }

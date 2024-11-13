@@ -20,11 +20,18 @@ class Command(BaseCommand):
 
         user = User.objects.get(pk=2)  # Użytkownik testowy
         ticket_type = models.TicketType.objects.get(pk=1)  # Normalny bilet
+        paid = random.choice([True, False])
+        if paid:
+            used = random.choice([True, False])
+        else:
+            used = False
 
         for seance in tqdm(seances, file=sys.stdout, desc="Seance Processing"):
             reservation = models.Reservation.objects.create(
                 user=user,
                 seance=seance,
+                paid=paid,
+                used=used,
             )
 
             possible_seats = seance.hall.seat_set.all()
