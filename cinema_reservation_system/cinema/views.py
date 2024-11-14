@@ -12,6 +12,7 @@ from .functions import free_seats_for_seance
 import json
 import pendulum
 from django.contrib import messages
+from .functions import generate_qr_code, free_seats_for_seance, get_reservation_data
 from .forms import UserEditForm, CustomUserChangeForm
 from .models import Reservation
 
