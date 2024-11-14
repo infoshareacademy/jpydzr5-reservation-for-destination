@@ -11,7 +11,7 @@
         </style>
 {% endblock %}
 {% block content %}
-        <div>wybrałeś film: <span style="font-weight: bolder">{{ seance.movie.title }}</span>/div>
+        <div>wybrałeś film: <span style="font-weight: bolder">{{ seance.movie.title }}</span></div>
         <div>seans rozpoczyna się o godzinie: <span style="font-weight: bolder">{{ seance.show_start }}</span></div>
         <div id="container" class="container">
             <div class="row">
@@ -39,8 +39,8 @@
         <form method="post" id="seats-form">
             {% csrf_token %}
             <input type="hidden" id="selected-seats" name="selected-seats" value="">
-            <button type="submit">Dalej</button>
-            <button type="submit"><a style="text-decoration: none; color: inherit;" href="{% url 'cinema:index' %}">Anuluj</a></button>
+            <button class="btn btn-primary" type="submit">Dalej</button>
+            <button type="submit" class="btn btn-secondary"><a style="text-decoration: none; color: inherit;" href="{% url 'cinema:index' %}">Anuluj</a></button>
         </form>
 
         <script>
