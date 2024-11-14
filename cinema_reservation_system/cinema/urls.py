@@ -24,6 +24,6 @@ urlpatterns = [
     path('tickets/', views.tickets, name='tickets'),
     path('payment/reservation/<int:reservation_id>/', views.payment, name='pay_one'),
     path('change_password/', views.change_password, name='change_password'),
-
+    path('qr_code/<int:reservation_id>/', views.qr_code_view, name='qr_code'),
 ]
 
