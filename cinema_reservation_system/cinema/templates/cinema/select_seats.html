@@ -20,11 +20,13 @@
                     <div id="ekran" style="align:center;width:100%">
                         <img style="width:660px" src="/media/ekran.png">
                     </div>
-                    <h4 style="text-align:center;margin-left: -40%">EKRAN</h4>
+                    <div style="text-align:center;">
+                        <h4>EKRAN</h4>
+                    </div>
                 </div>
                 <div class="legend col-lg-4 col-md-5 col-12">
                     <h3>Legenda:</h3>
-                    <ul>
+                    <ul style=" list-style-type: none;">
                         <li><img style="width:30px;height:20px" src="/media/icons/normal-free.png"> – Miejsce dostępne</li>
                         <li><img style="width:30px;height:20px" src="/media/icons/normal-occupied.png"><img style="width:30px;height:20px" src="/media/icons/disabled-occupied.png"> – Miejsce zarezerwowane</li>
                         <li><img style="width:30px;height:20px" src="/media/icons/normal-selected.png"> – Twoje wybrane miejsce</li>
@@ -38,7 +40,7 @@
             {% csrf_token %}
             <input type="hidden" id="selected-seats" name="selected-seats" value="">
             <button type="submit">Dalej</button>
-            <button type="submit"><a href="{% url 'cinema:index' %}">Anuluj</a></button>
+            <button type="submit"><a style="text-decoration: none; color: inherit;" href="{% url 'cinema:index' %}">Anuluj</a></button>
         </form>
 
         <script>
