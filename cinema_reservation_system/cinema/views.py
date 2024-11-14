@@ -1,22 +1,16 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
-from django.db import transaction
 from django.db.models import Exists, OuterRef, F, Q, ExpressionWrapper, DateTimeField, Sum, Count
 from django.forms import formset_factory
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse
 from . import forms, models, decorators
-from .functions import free_seats_for_seance
 import json
 import pendulum
 from django.contrib import messages
 from .functions import generate_qr_code, free_seats_for_seance, get_reservation_data
-from .forms import UserEditForm, CustomUserChangeForm
-from .forms import UserEditForm, CustomUserChangeForm, TicketType
-from .forms import UserEditForm, CustomUserChangeForm, TicketType
-from .forms import UserEditForm, CustomUserChangeForm, TicketType
 from .forms import UserEditForm, CustomUserChangeForm, TicketType
 from .models import Reservation
 
