@@ -13,15 +13,34 @@
 {% block content %}
         <div>wybrałeś film: <span style="font-weight: bolder">{{ seance.movie.title }}</span></div>
         <div>seans rozpoczyna się o godzinie: <span style="font-weight: bolder">{{ seance.show_start }}</span></div>
-        <div id="cinema-container" style="width:100%; height:60vh;">
-          <div id="seats-container" style="position: relative; width: 100%; height: 50vh;"></div>
-          <div id="ekran" style="align:center;width:100%"><img style="width:660px" src="/media/ekran.png"></div>
+        <div id="container" class="container">
+            <div class="row">
+                <div id="cinema-container" style="col-lg-8 col-md-7 col-12 mb-4">
+                    <div id="seats-container" style="position: relative; width: 100%; height: 50vh;"></div>
+                    <div id="ekran" style="align:center;width:100%">
+                        <img style="width:660px" src="/media/ekran.png">
+                    </div>
+                    <div style="text-align:center;">
+                        <h4>EKRAN</h4>
+                    </div>
+                </div>
+                <div class="legend col-lg-4 col-md-5 col-12">
+                    <h3>Legenda:</h3>
+                    <ul style=" list-style-type: none;">
+                        <li><img style="width:30px;height:20px" src="/media/icons/normal-free.png"> – Miejsce dostępne</li>
+                        <li><img style="width:30px;height:20px" src="/media/icons/normal-occupied.png"><img style="width:30px;height:20px" src="/media/icons/disabled-occupied.png"> – Miejsce zarezerwowane</li>
+                        <li><img style="width:30px;height:20px" src="/media/icons/normal-selected.png"> – Twoje wybrane miejsce</li>
+                        <li><img style="width:30px;height:20px" src="/media/icons/vip-free.png"> – Miejsce VIP</li>
+                        <li><img style="width:30px;height:20px" src="/media/icons/disabled-free.png"> – Miejsca dla niepełnosprawnych</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <form method="post" id="seats-form">
             {% csrf_token %}
             <input type="hidden" id="selected-seats" name="selected-seats" value="">
-            <button type="submit">Dalej</button>
-            <a href="{% url 'cinema:index' %}">Anuluj</a>
+            <button class="btn btn-primary" type="submit">Dalej</button>
+            <button type="submit" class="btn btn-secondary"><a style="text-decoration: none; color: inherit;" href="{% url 'cinema:index' %}">Anuluj</a></button>
         </form>
 
         <script>
