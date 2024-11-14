@@ -23,7 +23,7 @@
         <ul>
         {% for form in formset %}
             <li class="ticket-selection">
-                <span>Miejsce {{ forloop.counter }}: Rząd {{ selected_seat.forloop.counter0.row }}, Miejsce {{ selected_seat.forloop.counter0.column }}</span>
+                <span>Miejsce {{ forloop.counter }}: Rząd {{ form.seat.row }}, Miejsce {{ form.seat.column }}</span>
                 <div class="ticket-type">
                     {{ form.as_p }}
                 </div>
