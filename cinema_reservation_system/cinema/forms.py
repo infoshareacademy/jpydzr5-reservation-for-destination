@@ -43,10 +43,16 @@ class SeanceForm(forms.Form):
 class TicketTypeForm(forms.Form):
     """Formularz wyboru typu biletu"""
     ticket_type = forms.ModelChoiceField(
-        queryset=TicketType.objects.all(),
+        queryset=TicketType.objects.none(),
         label='Typ biletu',
         empty_label="Wybierz typ biletu"
     )
+
+    def __init__(self, *args, **kwargs):
+        allowed_ticket_types = kwargs.pop('allowed_ticket_types', None)
+        super().__init__(*args, **kwargs)
+        if allowed_ticket_types:
+            self.fields['ticket_type'].queryset = allowed_ticket_types
 
 
 class CustomUserChangeForm(forms.ModelForm):

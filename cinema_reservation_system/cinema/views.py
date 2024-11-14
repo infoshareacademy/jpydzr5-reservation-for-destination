@@ -14,6 +14,10 @@ import pendulum
 from django.contrib import messages
 from .functions import generate_qr_code, free_seats_for_seance, get_reservation_data
 from .forms import UserEditForm, CustomUserChangeForm
+from .forms import UserEditForm, CustomUserChangeForm, TicketType
+from .forms import UserEditForm, CustomUserChangeForm, TicketType
+from .forms import UserEditForm, CustomUserChangeForm, TicketType
+from .forms import UserEditForm, CustomUserChangeForm, TicketType
 from .models import Reservation
 
 DEFAULT_TICKET_TYPE_ID = 1
@@ -292,40 +296,47 @@ def select_seance(request, context, movie_id):
 @decorators.set_vars
 def select_ticket_type(request, context):
     if 'selected_seat_ids' not in request.session:
-        redirect('cinema:repertoire')
+        return redirect('cinema:repertoire')
+
     selected_seance = models.Seance.objects.get(id=request.session['selected_seance_id'])
-    selected_seats =  models.Seat.objects.filter(id__in=set(request.session['selected_seat_ids']))
+    selected_seats = models.Seat.objects.filter(id__in=set(request.session['selected_seat_ids']))
 
-    # Utwórz formset dla typów biletów, jeden formularz dla każdego zarezerwowanego miejsca
-    TicketFormSet = formset_factory(forms.TicketTypeForm, extra=len(selected_seats))
+    # Tworzymy listę formularzy z ograniczonymi typami biletów dla każdego miejsca
+    formset = []
+    for seat in selected_seats:
+        allowed_ticket_types = TicketType.objects.filter(seattype=seat.seat_type)  # filtrowanie po seat_type
+        form = forms.TicketTypeForm(
+            request.POST or None,
+            allowed_ticket_types=allowed_ticket_types
+        )
+        formset.append(form)
 
-    formset = TicketFormSet(request.POST or None)
+    if request.method == 'POST' and all(form.is_valid() for form in formset):
+        reservation = models.Reservation.objects.create(
+            user=request.user,
+            seance_id=request.session['selected_seance_id']
+        )
 
-    if request.method == 'POST':
-        if formset.is_valid():
-            reservation = models.Reservation.objects.create(
-                user=request.user,
-                seance_id=request.session['selected_seance_id']
+        # Zapisujemy typy biletów dla wybranych miejsc
+        for form, selected_seat in zip(formset, selected_seats):
+            ticket_type = form.cleaned_data['ticket_type']
+            models.SeatReservation.objects.create(
+                reservation=reservation,
+                seat=selected_seat,
+                ticket_type=ticket_type,
             )
 
-            # Zapisz każdy typ biletu dla odpowiadającego mu miejsca
-            for form, selected_seat in zip(formset, selected_seats):
-                ticket_type = form.cleaned_data['ticket_type']
-                models.SeatReservation.objects.create(
-                    reservation=reservation,
-                    seat_id=selected_seat.id,
-                    ticket_type=ticket_type,
-                )
+        del request.session['selected_seance_id']
+        del request.session['selected_seat_ids']
+        return redirect('cinema:basket')  # Przekierowanie po udanym przesłaniu formularza
 
-            del request.session['selected_seance_id']
-            del request.session['selected_seat_ids']
-            return redirect('cinema:basket')  # Przekierowanie do następnego kroku po udanym przesłaniu formularza
+    # Łączymy formy i miejsca w listę tupli, którą przekażemy do szablonu
+    form_seat_pairs = list(zip(formset, selected_seats))
 
     template = "cinema/select_ticket_type.html"
     context.update({
-        'formset': formset,
+        'form_seat_pairs': form_seat_pairs,
         'selected_seance': selected_seance,
-        'selected_seats': selected_seats,
     })
     return render(request, template, context)
 
