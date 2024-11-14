@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse
 from . import forms, models, decorators
-from .functions import generate_qr_code, free_seats_for_seance, get_reservation_data
+from .functions import free_seats_for_seance
 import json
 import pendulum
 from django.contrib import messages
@@ -51,59 +51,6 @@ def change_password(request):
             messages.error(request, 'Wystąpił błąd przy zmianie hasła.')
     return redirect('cinema:user_panel')
 
-@login_required
-@decorators.set_vars
-def validate_ticket(request, context, uuid=None):
-    if not request.user.is_staff:
-        redirect('cinema:basket')
-    if uuid is None:
-        template = 'cinema/validate_ticket_home.html'
-        return render(request, template, context)
-
-    reservation = get_object_or_404(models.Reservation, uuid=uuid)
-
-    if request.method == 'POST':
-        if 'confirm' in request.POST:  # Jeśli użytkownik kliknął "Tak"
-            reservation.used = True
-            reservation.save()
-
-        return redirect('cinema:validate_ticket_home')
-
-    # Ustaw odpowiedni komunikat
-    if reservation.too_early:
-        message = "ZA WCZEŚNIE!"
-    elif reservation.too_late:
-        message = "ZA PÓŹNO!"
-    elif reservation.used:
-        message = "BILET JUŻ WYKORZYSTANY!"
-    elif reservation.seance.hall.cinema != context['selected_cinema']:
-        message = "NIE TO KINO"
-    else:
-        message = None
-
-    context.update({
-        'reservation': reservation,
-        'message': message,
-    })
-
-    template = 'cinema/validate_ticket.html'
-    return render(request, template, context)
-
-
-def qr_code_view(request, reservation_id):
-    reservation = get_object_or_404(models.Reservation, pk=reservation_id)
-    if not reservation.paid:
-        return
-
-    reservation_data = get_reservation_data(reservation_id)
-
-    # Konwertuj dane na format JSON
-    reservation_json = json.dumps(reservation_data)
-    print(reservation_json)
-    # Generowanie kodu QR
-    response = generate_qr_code(request, reservation.uuid)
-
-    return response
 
 
 def set_cinema(request):
@@ -467,7 +414,7 @@ def payment(request, context, reservation_id=None):
 
 
 
-        return redirect('cinema:tickets')
+        return redirect('cinema:basket')
 
     template = 'cinema/payment.html'
     context.update(
