@@ -129,17 +129,26 @@ class Reservation(models.Model):
     used = models.BooleanField(default=False)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
 
+
+    @property
+    def total_price(self):
+        """Oblicza całkowitą cenę rezerwacji na podstawie wybranych biletów i miejsc."""
+        total = 0
+        for seat_reservation in self.seatreservation_set.all():
+            total += seat_reservation.ticket_type.price
+        return total
+
     @property
     def too_early(self):
         """Sprawdza, czy seans zaczyna się za mniej niż godzinę."""
         if not self.seance:
             return False
 
-        return pendulum.now().add(hours=1) < self.seance.show_start 
+        return pendulum.now().add(hours=1) < self.seance.show_start
 
     @property
     def too_late(self):
-        """Sprawdza, czy seans już się nie skończył"""
+        """Sprawdza, czy seans już się nie skończył."""
         if not self.seance:
             return False
 
@@ -147,19 +156,26 @@ class Reservation(models.Model):
 
 
 class SeatReservation(models.Model):
-    reservation = models.ForeignKey(Reservation, on_delete=models.RESTRICT, null=True)
-    ticket_type = models.ForeignKey(TicketType, on_delete=models.RESTRICT)
-    seat = models.ForeignKey(Seat, on_delete=models.RESTRICT)
-    # TODO: do sprawdzenia, czy paid jest potrzebne
-    # - niby nie jest używane, ale przy wyborze miejsc może mieć znaczenie
-    paid = models.BooleanField(default=False) 
+    reservation = models.ForeignKey('Reservation', on_delete=models.RESTRICT, null=True)
+    ticket_type = models.ForeignKey('TicketType', on_delete=models.RESTRICT)
+    seat = models.ForeignKey('Seat', on_delete=models.RESTRICT)
+    paid = models.BooleanField(default=False)  # Flaga, która może być użyteczna do późniejszych operacji
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Cena biletu
+
+    def __str__(self):
+        return f"{self.seat} - {self.ticket_type}"
 
     def clean(self):
-        # Sprawdzenie, czy seat jest już zarezerwowane na dany seans
-        if SeatReservation.objects.filter(seat=self.seat, reservation__seance=self.reservation.seance).exclude(id=self.id).exists():
+        """Sprawdzenie, czy seat jest już zarezerwowane na dany seans"""
+        if SeatReservation.objects.filter(seat=self.seat, reservation__seance=self.reservation.seance).exclude(
+                id=self.id).exists():
             raise ValidationError(f"Miejsce {self.seat} jest już zarezerwowane na ten seans.")
 
+        # Ustal cenę biletu, jeśli jeszcze nie została ustawiona
+        if self.price is None:
+            self.price = self.ticket_type.price  # Cena biletu zależna od typu biletu
+
     def save(self, *args, **kwargs):
-        # Wywołanie metody clean przed zapisem
+        """Wywołanie metody clean przed zapisem"""
         self.clean()
         super().save(*args, **kwargs)

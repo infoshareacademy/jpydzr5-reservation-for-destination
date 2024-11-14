@@ -1,4 +1,4 @@
-{% extends 'cinema/base.html' %}
+{% extends 'backoffice/base.html' %}
 {% block content %}
     <h1>Weryfikacja biletu</h1>
     {{ reservation.seance.movie }}
@@ -6,7 +6,7 @@
     <h3>{{ reservation.seance.hall }}</h3>
     {% if message %}
     <h2 style="background-color:red">{{ message }}</h2>
-    <a href="{% url "cinema:validate_ticket_home" %}" class="btn btn-primary">Powrót</a>
+    <a href="{% url "backoffice:validate_ticket_home" %}" class="btn btn-primary">Powrót</a>
     {% else %}
       {% if reservation.seatreservation_set.all %}
         <div id="seat-container">
