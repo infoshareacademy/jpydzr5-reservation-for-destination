@@ -12,6 +12,7 @@ from .functions import free_seats_for_seance
 import json
 import pendulum
 from django.contrib import messages
+from .functions import generate_qr_code, free_seats_for_seance, get_reservation_data
 from .forms import UserEditForm, CustomUserChangeForm
 from .models import Reservation
 
@@ -37,6 +38,20 @@ def edit_user_panel(request):
     else:
         form = UserEditForm(instance=request.user)
     return render(request, 'cinema/edit_user_panel.html', {'form': form})
+
+
+def qr_code_view(request, reservation_id):
+    reservation = get_object_or_404(models.Reservation, pk=reservation_id)
+    if not reservation.paid:
+        return
+    reservation_data = get_reservation_data(reservation_id)
+    # Konwertuj dane na format JSON
+    reservation_json = json.dumps(reservation_data)
+    print(reservation_json)
+    # Generowanie kodu QR
+    response = generate_qr_code(reservation_json)
+    return response
+
 
 @login_required
 def change_password(request):
