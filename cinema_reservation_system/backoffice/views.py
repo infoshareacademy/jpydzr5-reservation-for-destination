@@ -1,14 +1,16 @@
+import json
+
 import pendulum
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, OuterRef, F, Subquery, Prefetch, Q
 from django.db.models.functions import ExtractHour, ExtractMinute, ExtractWeekDay
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.response import TemplateResponse
-from backoffice.chart_functions import movies_with_reservations_chart, best_hours_chart, best_days_of_week_chart, best_ticket_types_chart
+from .functions import generate_qr_code, get_reservation_data
+from .chart_functions import movies_with_reservations_chart, best_hours_chart, best_days_of_week_chart, best_ticket_types_chart
 
 from cinema import models
-from backoffice import decorators
+from . import decorators
 
 DAYS_OF_WEEK = {
     1: "Niedziela",
@@ -24,6 +26,60 @@ DAYS_OF_WEEK = {
 @login_required(login_url='login')
 def index(request):
     return redirect('backoffice:dashboard')
+
+
+@login_required
+@decorators.set_vars
+def validate_ticket(request, context, uuid=None):
+    if not request.user.is_staff:
+        redirect('cinema:basket')
+    if uuid is None:
+        template = 'backoffice/validate_ticket_home.html'
+        return render(request, template, context)
+
+    reservation = get_object_or_404(models.Reservation, uuid=uuid)
+
+    if request.method == 'POST':
+        if 'confirm' in request.POST:  # Jeśli użytkownik kliknął "Tak"
+            reservation.used = True
+            reservation.save()
+
+        return redirect('backoffice:validate_ticket_home')
+
+    # Ustaw odpowiedni komunikat
+    message = ""
+    if reservation.too_early:
+        message += "ZA WCZEŚNIE!<br>"
+    if reservation.too_late:
+        message += "ZA PÓŹNO!<br>"
+    if reservation.used:
+        message += "BILET JUŻ WYKORZYSTANY!<br>"
+    if reservation.seance.hall.cinema != context['selected_cinema']:
+        message += "NIE TO KINO<br>"
+
+    context.update({
+        'reservation': reservation,
+        'message': message,
+    })
+
+    template = 'backoffice/validate_ticket.html'
+    return render(request, template, context)
+
+
+def qr_code_view(request, reservation_id):
+    reservation = get_object_or_404(models.Reservation, pk=reservation_id)
+    if not reservation.paid:
+        return
+
+    reservation_data = get_reservation_data(reservation_id)
+
+    # Konwertuj dane na format JSON
+    reservation_json = json.dumps(reservation_data)
+    print(reservation_json)
+    # Generowanie kodu QR
+    response = generate_qr_code(request, reservation.uuid)
+
+    return response
 
 
 @login_required
