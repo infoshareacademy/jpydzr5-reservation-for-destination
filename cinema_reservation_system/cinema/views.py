@@ -414,7 +414,7 @@ def payment(request, context, reservation_id=None):
 
 
 
-        return redirect('cinema:tickets')
+        return redirect('cinema:basket')
 
     template = 'cinema/payment.html'
     context.update(
