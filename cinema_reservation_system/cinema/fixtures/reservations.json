@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "created": "2024-09-14T20:17:00.120+02:00",
-    "user": 1,
+    "user": 2,
     "seance": 4,
     "paid": false,
     "cancelled": false,
@@ -17,7 +17,7 @@
   "pk": 2,
   "fields": {
     "created": "2024-09-14T22:17:17.712+02:00",
-    "user": 1,
+    "user": 2,
     "seance": 4,
     "paid": false,
     "cancelled": false,
@@ -30,7 +30,7 @@
   "pk": 3,
   "fields": {
     "created": "2024-09-14T22:18:36.782+02:00",
-    "user": 1,
+    "user": 2,
     "seance": 4,
     "paid": false,
     "cancelled": false,
@@ -43,7 +43,7 @@
   "pk": 4,
   "fields": {
     "created": "2024-09-14T22:32:54.622+02:00",
-    "user": 1,
+    "user": 2,
     "seance": 4,
     "paid": false,
     "cancelled": false,
