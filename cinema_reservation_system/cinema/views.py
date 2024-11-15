@@ -196,7 +196,6 @@ def repertoire(request, context):
         hall__cinema=context['selected_cinema'],
         show_start__range=(current_time, current_time.add(days=1).start_of('day'))
     ).order_by('show_start')
-    print(seances)
 
     date_options = [pendulum.now().add(days=i) for i in range(7)]
 
@@ -279,7 +278,8 @@ def select_seance(request, context, movie_id):
 @decorators.set_vars
 def select_ticket_type(request, context):
     if 'selected_seat_ids' not in request.session:
-        redirect('cinema:repertoire')
+        return redirect('cinema:repertoire')
+
     selected_seance = models.Seance.objects.get(id=request.session['selected_seance_id'])
     selected_seats = models.Seat.objects.filter(id__in=set(request.session['selected_seat_ids']))
 
@@ -290,6 +290,7 @@ def select_ticket_type(request, context):
             forms.SeatTicketTypeForm(request.POST, seat=seat, prefix=f'seat_{seat.id}') for seat in selected_seats
         ]
         all_valid = all(form.is_valid() for form in formset)
+
         if all_valid:
             reservation = models.Reservation.objects.create(
                 user=request.user,
