@@ -43,7 +43,7 @@ def generate_qr_code(request,uuid):
         border=4,
     )
     # qr.add_data(data)
-    qr.add_data(request.build_absolute_uri(reverse('cinema:validate_ticket', kwargs={'uuid':uuid})))
+    qr.add_data(request.build_absolute_uri(reverse('backoffice:validate_ticket', kwargs={'uuid':uuid})))
     qr.make(fit=True)
 
     # Konwersja kodu QR do formatu obrazu

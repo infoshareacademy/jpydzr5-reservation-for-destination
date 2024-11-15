@@ -119,7 +119,10 @@ class Seat(models.Model):
     def __str__(self):
         return (f"Miejsce o id {self.id} w sali {self.hall.name} "
                 f"[{self.seat_type.name if self.seat_type else ''}])")
-
+    
+    @property
+    def number(self):
+        return f"{self.row}{self.column}"
 
 class Reservation(models.Model):
     created = models.DateTimeField(auto_now_add=True)

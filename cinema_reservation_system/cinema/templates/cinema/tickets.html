@@ -24,7 +24,7 @@
 
                 <!-- Kod QR -->
                 <div class="col-12 col-md-6 d-flex justify-content-center p-2 order-1 order-md-2 qr_container{% if reservation.used %} used{% else %}{% if reservation.too_late %} too_late{% endif %}{% endif %}">
-                    <img src="{% url 'cinema:qr_code' reservation.id %}" alt="QR Code" style="max-width: 150px;">
+                    <img src="{% url 'backoffice:qr_code' reservation.id %}" alt="QR Code" style="max-width: 150px;">
                 </div>
             </div>
         </div>
