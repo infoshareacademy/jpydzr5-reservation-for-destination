@@ -215,7 +215,7 @@ def repertoire(request, context):
         })
 
     context.update({
-        'current_time': current_time,
+        'selected_date': current_time.to_date_string(),
         "date_options": date_options,
         'movies': movies_with_seances,
     })
