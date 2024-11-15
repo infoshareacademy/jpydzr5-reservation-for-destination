@@ -278,7 +278,7 @@ def select_seance(request, context, movie_id):
 @decorators.set_vars
 def select_ticket_type(request, context):
     if 'selected_seat_ids' not in request.session:
-        return redirect('cinema:repertoire')
+        return redirect('cinema:basket')
 
     selected_seance = models.Seance.objects.get(id=request.session['selected_seance_id'])
     selected_seats = models.Seat.objects.filter(id__in=set(request.session['selected_seat_ids']))
