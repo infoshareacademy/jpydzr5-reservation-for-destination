@@ -323,9 +323,11 @@ def select_ticket_type(request, context):
             del request.session['selected_seat_ids']
             return redirect('cinema:basket')  # Przekierowanie do następnego kroku po udanym przesłaniu formularza
 
+    form_with_seat = [(form, seat) for form, seat in zip(formset, selected_seats)]
     template = "cinema/select_ticket_type.html"
     context.update({
         'formset': formset,
+        'form_with_seat': form_with_seat,
         'selected_seance': selected_seance,
         'selected_seats': selected_seats,
     })
