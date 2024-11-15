@@ -8,12 +8,11 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse
 from . import forms, models, decorators
-from .functions import free_seats_for_seance
 import json
 import pendulum
 from django.contrib import messages
 from .functions import generate_qr_code, free_seats_for_seance, get_reservation_data
-from .forms import UserEditForm, CustomUserChangeForm
+from .forms import UserEditForm, CustomUserChangeForm, generate_seat_ticket_forms
 from .models import Reservation
 
 DEFAULT_TICKET_TYPE_ID = 1
@@ -27,6 +26,8 @@ def user_panel(request):
         'last_name': request.user.last_name,
         'email': request.user.email
     })
+
+
 @login_required
 def edit_user_panel(request):
     if request.method == 'POST':
@@ -65,7 +66,6 @@ def change_password(request):
         else:
             messages.error(request, 'Wystąpił błąd przy zmianie hasła.')
     return redirect('cinema:user_panel')
-
 
 
 def set_cinema(request):
@@ -296,24 +296,26 @@ def select_ticket_type(request, context):
     selected_seance = models.Seance.objects.get(id=request.session['selected_seance_id'])
     selected_seats =  models.Seat.objects.filter(id__in=set(request.session['selected_seat_ids']))
 
-    # Utwórz formset dla typów biletów, jeden formularz dla każdego zarezerwowanego miejsca
-    TicketFormSet = formset_factory(forms.TicketTypeForm, extra=len(selected_seats))
-
-    formset = TicketFormSet(request.POST or None)
+    formset = generate_seat_ticket_forms(selected_seats)
 
     if request.method == 'POST':
-        if formset.is_valid():
+        formset = [
+            forms.SeatTicketTypeForm(request.POST, seat=seat, prefix=f'seat_{seat.id}') for seat in selected_seats
+        ]
+        all_valid = all(form.is_valid() for form in formset)
+        if all_valid:
             reservation = models.Reservation.objects.create(
                 user=request.user,
                 seance_id=request.session['selected_seance_id']
             )
 
             # Zapisz każdy typ biletu dla odpowiadającego mu miejsca
-            for form, selected_seat in zip(formset, selected_seats):
+            for form in formset:
                 ticket_type = form.cleaned_data['ticket_type']
+                seat = form.cleaned_data['seat']
                 models.SeatReservation.objects.create(
                     reservation=reservation,
-                    seat_id=selected_seat.id,
+                    seat=seat,
                     ticket_type=ticket_type,
                 )
 
@@ -321,9 +323,11 @@ def select_ticket_type(request, context):
             del request.session['selected_seat_ids']
             return redirect('cinema:basket')  # Przekierowanie do następnego kroku po udanym przesłaniu formularza
 
+    form_with_seat = [(form, seat) for form, seat in zip(formset, selected_seats)]
     template = "cinema/select_ticket_type.html"
     context.update({
         'formset': formset,
+        'form_with_seat': form_with_seat,
         'selected_seance': selected_seance,
         'selected_seats': selected_seats,
     })
@@ -436,6 +440,7 @@ def payment(request, context, reservation_id=None):
         {"total_price": total_price}
     )
     return render(request, template, context)
+
 
 @login_required
 @decorators.set_vars

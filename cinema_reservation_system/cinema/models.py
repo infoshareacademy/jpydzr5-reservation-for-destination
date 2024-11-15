@@ -95,6 +95,7 @@ class Seance(models.Model):
         now = pendulum.now()
         return round((self.show_start + self.movie.duration - now).total_minutes())
 
+
 class SeatType(models.Model):
     name = models.CharField(max_length=50)
     icon = models.ImageField(upload_to='media/icons/', null=True)

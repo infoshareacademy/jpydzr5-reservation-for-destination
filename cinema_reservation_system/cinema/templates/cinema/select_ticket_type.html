@@ -3,27 +3,16 @@
     <h1>Wybór typu biletu</h1>
 
     <p>Zarezerwowałeś bilety:</p>
-    Film: {{ selected_seance.movie.title }}<br>
-    Początek filmu: {{ selected_seance.show_start }}<br>
-
-    <!-- to usunąć jak w formularzu wyświetlą się row i column -->
-    <ul>
-        {% for selected_seat in selected_seats %}
-            <li>
-                Rząd: {{ selected_seat.row }}<br>
-                Miejsce: {{ selected_seat.column }}<br>
-            </li>
-        {% endfor %}
-    </ul>
-    <!-- dotąd -->
+    Film: <strong>{{ selected_seance.movie.title }}</strong><br>
+    Początek filmu: <strong>{{ selected_seance.show_start }}</strong><br>
 
     <form method="post">
         {% csrf_token %}
         {{ formset.management_form }}
         <ul>
-        {% for form in formset %}
+        {% for form, seat in form_with_seat %}
             <li class="ticket-selection">
-                <span>Miejsce {{ forloop.counter }}: Rząd {{ selected_seat.forloop.counter0.row }}, Miejsce {{ selected_seat.forloop.counter0.column }}</span>
+                <span>Miejsce {{ forloop.counter }}: Rząd <strong>{{ seat.row }}</strong>, Miejsce <strong>{{ seat.column }}</strong></span>
                 <div class="ticket-type">
                     {{ form.as_p }}
                 </div>
