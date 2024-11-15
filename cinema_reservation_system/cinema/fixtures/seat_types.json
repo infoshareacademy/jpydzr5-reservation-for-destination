@@ -5,7 +5,12 @@
   "fields": {
     "name": "Normal",
     "icon": "icons/normal-free.png",
-    "allowed_ticket_types": []
+    "allowed_ticket_types": [
+      1,
+      2,
+      3,
+      4
+    ]
   }
 },
 {
@@ -14,7 +19,9 @@
   "fields": {
     "name": "VIP",
     "icon": "icons/vip-free.png",
-    "allowed_ticket_types": []
+    "allowed_ticket_types": [
+      5
+    ]
   }
 },
 {
@@ -23,7 +30,9 @@
   "fields": {
     "name": "for_disabled",
     "icon": "icons/disabled-free.png",
-    "allowed_ticket_types": []
+    "allowed_ticket_types": [
+      6
+    ]
   }
 }
 ]
