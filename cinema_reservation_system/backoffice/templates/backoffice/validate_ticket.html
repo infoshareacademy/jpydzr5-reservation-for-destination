@@ -5,7 +5,7 @@
     {{ reservation.seance.show_start|date:'l, j M H:i' }}
     <h3>{{ reservation.seance.hall }}</h3>
     {% if message %}
-    <h2 style="background-color:red">{{ message }}</h2>
+    <h2 style="background-color:red">{{ message|safe }}</h2>
     <a href="{% url "backoffice:validate_ticket_home" %}" class="btn btn-primary">Powrót</a>
     {% else %}
       {% if reservation.seatreservation_set.all %}
