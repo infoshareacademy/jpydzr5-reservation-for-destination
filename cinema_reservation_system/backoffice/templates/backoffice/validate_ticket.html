@@ -36,12 +36,11 @@
     document.addEventListener("DOMContentLoaded", function() {
         const seats = document.querySelectorAll(".seat");
         const button = document.getElementById("button");
-        let clickedSeats = 0;
 
         // Sprawdzenie, czy istnieje inny bilet niż "normalny"
-        const hasSpecialTicket = Array.from(seats).some(seat => seat.dataset.extraValidation === "True");
+        let notValidatedSeats = Array.from(seats).filter(seat => seat.dataset.extraValidation === "True").length;
 
-        if (hasSpecialTicket) {
+        if (notValidatedSeats > 0) {
             // Ukrycie przycisków i wymuszenie kliknięcia na wszystkich nagłówkach <h3>
             seats.forEach(seat => {
                 seat.addEventListener("click", function() {
@@ -49,12 +48,11 @@
                     // Zmiana koloru na jasnozielony po kliknięciu
                     if (seat.style.backgroundColor === "orange") {
                         seat.style.backgroundColor = "lightgreen";
-                        clickedSeats++;
-                        console.log("Seat clicked, color changed. Total clicked:", clickedSeats);
+                        notValidatedSeats--;
                     }
 
                     // Jeśli wszystkie <h3> zostały kliknięte, wyświetl przyciski
-                    if (clickedSeats === seats.length) {
+                    if (notValidatedSeats === 0) {
                         button.style.display = "inline";
                     }
                 });
