@@ -39,8 +39,8 @@
         <form method="post" id="seats-form">
             {% csrf_token %}
             <input type="hidden" id="selected-seats" name="selected-seats" value="">
-            <button class="btn btn-primary" type="submit">Dalej</button>
             <button type="submit" class="btn btn-secondary"><a style="text-decoration: none; color: inherit;" href="{% url 'cinema:index' %}">Anuluj</a></button>
+            <button id="submit_btn" class="btn btn-primary" style='display:none;' type="submit">Dalej</button>
         </form>
 
         <script>
@@ -94,6 +94,11 @@
                             item.src = item.src.replace('selected','free'); // Ścieżka do ikony "selected"
 
                         }
+                      if (selectedIcons.length === 0) {
+                        document.getElementById('submit_btn').style.display='none';
+                      } else {
+                        document.getElementById('submit_btn').style.display='inline';
+                      }
                     });
 
                 });
