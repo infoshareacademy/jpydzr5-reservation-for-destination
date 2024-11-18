@@ -1,0 +1,25 @@
+{% extends 'cinema/base.html' %}
+{% block content %}
+    <h1>Wybór typu biletu</h1>
+
+    <p>Zarezerwowałeś bilety:</p>
+    Film: <strong>{{ selected_seance.movie.title }}</strong><br>
+    Początek filmu: <strong>{{ selected_seance.show_start }}</strong><br>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <ul>
+        {% for form, seat in form_with_seat %}
+            <li class="ticket-selection">
+                <span>Miejsce {{ forloop.counter }}: Rząd <strong>{{ seat.row }}</strong>, Miejsce <strong>{{ seat.column }}</strong></span>
+                <div class="ticket-type">
+                    {{ form.as_p }}
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+        <button class="btn btn-primary" type="submit">Dalej</button>
+            <button type="submit" class="btn btn-secondary"><a style="text-decoration: none; color: inherit;" href="{% url 'cinema:index' %}">Anuluj</a></button>
+    </form>
+{% endblock %}

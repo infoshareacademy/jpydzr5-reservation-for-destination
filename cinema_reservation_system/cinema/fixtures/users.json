@@ -1,0 +1,20 @@
+[
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$DEtisI9QQYrlpWcUwkc8uK$D2BdDJbFGWJD/6DdVF8HKWmLgsYIv3IoIFAWku3hrn0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "testowy_client",
+    "first_name": "Testus",
+    "last_name": "Testowicz",
+    "email": "testus@testowicz.pl",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-14T21:47:05Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

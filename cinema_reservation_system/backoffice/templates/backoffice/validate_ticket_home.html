@@ -1,0 +1,41 @@
+{% extends 'backoffice/base.html' %}
+{% block content %}
+<h1>Weryfikacja biletu</h1>
+<div id="reader" style="width: 100%;"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<div id="waitMessage" style="display: none; font-size: 1.5em; color: red; text-align: center;">
+    Proszę czekać
+</div>
+<script>
+    let html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader", { fps: 10, qrbox: { width: 250, height: 250 } });
+    
+    function onScanSuccess(decodedText, decodedResult) {
+        // Przekierowanie użytkownika na adres URL zawarty w kodzie QR
+        window.location.href = decodedText;
+
+        // Ukryj kamerę i pokaż komunikat "Proszę czekać"
+        document.getElementById("reader").style.display = "none";
+        document.getElementById("waitMessage").style.display = "block";
+
+        // Zatrzymanie skanowania na 10 sekund
+        html5QrcodeScanner.clear();
+        setTimeout(() => {
+            // Ponowne uruchomienie skanera po 10 sekundach
+            document.getElementById("reader").style.display = "block";
+            document.getElementById("waitMessage").style.display = "none";
+            html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+        }, 10000); // 10 sekund = 10000 ms
+    }
+
+    function onScanFailure(error) {
+        // Obsługa błędów - można dodać logikę, np. wyświetlanie komunikatu
+    }
+
+    // Renderowanie skanera
+    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+</script>
+
+{% endblock %}
+

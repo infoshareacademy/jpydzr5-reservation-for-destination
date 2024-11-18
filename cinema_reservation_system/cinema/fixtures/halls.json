@@ -1,0 +1,92 @@
+[
+{
+  "model": "cinema.hall",
+  "pk": 1,
+  "fields": {
+    "cinema": 1,
+    "name": "1",
+    "cleaning_time": "00:10:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 2,
+  "fields": {
+    "cinema": 1,
+    "name": "2",
+    "cleaning_time": "00:12:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 3,
+  "fields": {
+    "cinema": 1,
+    "name": "3",
+    "cleaning_time": "00:10:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 4,
+  "fields": {
+    "cinema": 1,
+    "name": "4",
+    "cleaning_time": "00:13:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 5,
+  "fields": {
+    "cinema": 1,
+    "name": "IMAX",
+    "cleaning_time": "00:20:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 6,
+  "fields": {
+    "cinema": 2,
+    "name": "1",
+    "cleaning_time": "00:10:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 7,
+  "fields": {
+    "cinema": 2,
+    "name": "2",
+    "cleaning_time": "00:12:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 8,
+  "fields": {
+    "cinema": 2,
+    "name": "3",
+    "cleaning_time": "00:10:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 9,
+  "fields": {
+    "cinema": 2,
+    "name": "4",
+    "cleaning_time": "00:13:00"
+  }
+},
+{
+  "model": "cinema.hall",
+  "pk": 10,
+  "fields": {
+    "cinema": 2,
+    "name": "IMAX",
+    "cleaning_time": "00:20:00"
+  }
+}
+]

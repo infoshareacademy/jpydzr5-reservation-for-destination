@@ -1,0 +1,49 @@
+{% extends 'cinema/base.html' %}
+{% load pluralize_pl %}
+
+{% block content %}
+
+{% if message %}
+<section class="text-center">
+    <h3 class="text-danger">{{ message }}</h3>
+</section>
+{% else %}
+<section class="my-5">
+    <h2 class="text-center">Najbliższe seanse:</h2>
+    <div class="row">
+        {% for screening in upcoming_screenings.values %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ screening.seance.movie.poster.url }}" class="card-img-top img-fluid" style="height: 450px; object-fit: cover; object-position: center;" alt="{{ screening.seance.movie.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ screening.seance.movie.title }}</h5>
+                    <p class="card-text">
+                        Sala: {{ screening.seance.hall.hall_number }}<br>
+                        <b>{{ screening.seance.show_start|date:"l, d F" }}</b><br>
+                        <i class="bi bi-clock"></i>
+                        <a href="{% url 'cinema:select_seats' screening.seance.id %}" class="btn btn-primary btn-sm mt-2">
+                            {{ screening.seance.show_start|date:"H:i" }}
+                        </a>
+                        {% if screening.free_seats_count == 0 %}
+                            brak wolnych miejsc
+                        {% else %}
+                            {% if screening.free_seats_count < 11 %}
+                                ostatnie {{ screening.free_seats_count }} {{ screening.free_seats_count|pluralize_pl:"miejsce,miejsc,miejsca" }}
+                            {% else %}
+                                są dostępne miejsca
+                            {% endif %}
+                        {% endif %}
+                        {% if screening.disabled_seat_count > 0 %} + ♿x{{screening.disabled_seat_count }}{% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <div class="col-md-12">
+                <p class="text-center">Brak nadchodzących seansów.</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}

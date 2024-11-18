@@ -1,0 +1,114 @@
+{% extends 'cinema/base.html' %}
+{%  block header %}
+        <style>
+            .seat-icon {
+                position: absolute;
+                transform-origin: center;
+                width: 40px; /* Szerokość ikony */
+                height: 40px; /* Wysokość ikony */
+                object-fit: contain; /* Zachowuje proporcje obrazu w ramach kontenera */
+            }
+        </style>
+{% endblock %}
+{% block content %}
+        <div>wybrałeś film: <span style="font-weight: bolder">{{ seance.movie.title }}</span></div>
+        <div>seans rozpoczyna się o godzinie: <span style="font-weight: bolder">{{ seance.show_start }}</span></div>
+        <div id="container" class="container">
+            <div class="row">
+                <div id="cinema-container" style="col-lg-8 col-md-7 col-12 mb-4">
+                    <div id="seats-container" style="position: relative; width: 100%; height: 50vh;"></div>
+                    <div id="ekran" style="align:center;width:100%">
+                        <img style="width:660px" src="/media/ekran.png">
+                    </div>
+                    <div style="text-align:center;">
+                        <h4>EKRAN</h4>
+                    </div>
+                </div>
+                <div class="legend col-lg-4 col-md-5 col-12">
+                    <h3>Legenda:</h3>
+                    <ul style=" list-style-type: none;">
+                        <li><img style="width:30px;height:20px" src="/media/icons/normal-free.png"> – Miejsce dostępne</li>
+                        <li><img style="width:30px;height:20px" src="/media/icons/normal-occupied.png"><img style="width:30px;height:20px" src="/media/icons/disabled-occupied.png"> – Miejsce zarezerwowane</li>
+                        <li><img style="width:30px;height:20px" src="/media/icons/normal-selected.png"> – Twoje wybrane miejsce</li>
+                        <li><img style="width:30px;height:20px" src="/media/icons/vip-free.png"> – Miejsce VIP</li>
+                        <li><img style="width:30px;height:20px" src="/media/icons/disabled-free.png"> – Miejsca dla niepełnosprawnych</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <form method="post" id="seats-form">
+            {% csrf_token %}
+            <input type="hidden" id="selected-seats" name="selected-seats" value="">
+            <button type="submit" class="btn btn-secondary"><a style="text-decoration: none; color: inherit;" href="{% url 'cinema:index' %}">Anuluj</a></button>
+            <button id="submit_btn" class="btn btn-primary" style='display:none;' type="submit">Dalej</button>
+        </form>
+
+        <script>
+            const selectedIcons = []; // Będziemy powiązywać id miejsca z oryginalnym URL ikony
+            document.addEventListener('DOMContentLoaded', function() {
+
+
+                const seats = {{ seats_json|safe }};
+
+                const container = document.getElementById('seats-container');
+
+                seats.forEach(seat => {
+                    const img = document.createElement('img');
+                    img.id = 'seat-' + seat.id;
+                    img.style.left = seat.pos_x + 'px';
+                    img.style.top = seat.pos_y + 'px';
+                    img.style.transform = `rotate(${seat.rotation}deg)`;
+
+                    if (seat.is_reserved) {
+                        img.className = 'seat-icon seats-occupied';
+                        img.src = seat.seat_type_icon.replace('free', 'occupied')
+                    } else if (seat.is_selected) {
+                        img.className = 'seat-icon seats-free';
+                        img.src = seat.seat_type_icon.replace('free','selected')
+                        selectedIcons.push(seat.id)
+                    } else {
+                        img.src = seat.seat_type_icon; // Ścieżka do ikony
+                        img.className = 'seat-icon seats-free';
+                    }
+                    container.appendChild(img);
+                });
+
+                // Listener dla kliknięć na elementach z klasą 'seats'
+                document.querySelectorAll('.seats-free').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const seatId = parseInt(item.id.replace('seat-', '')); // Pobieramy id siedzenia (bez 'seat-')
+
+                        // Sprawdzenie czy siedzenie jest już wybrane
+                        if (!selectedIcons.includes(seatId)) {
+                            // Jeśli nie, dodajemy id do listy wybranych miejsc
+                            selectedIcons.push(seatId);
+                            // Zmieniamy ikonę na "selected"
+                            item.src = item.src.replace('free','selected'); // Ścieżka do ikony "selected"
+
+                        } else {
+                            // Jeśli miejsce już jest wybrane, usuwamy je z listy
+                            const index = selectedIcons.indexOf(seatId);
+                            selectedIcons.splice(index, 1);
+
+                            // Przywracamy oryginalną ikonę
+                            item.src = item.src.replace('selected','free'); // Ścieżka do ikony "selected"
+
+                        }
+                      if (selectedIcons.length === 0) {
+                        document.getElementById('submit_btn').style.display='none';
+                      } else {
+                        document.getElementById('submit_btn').style.display='inline';
+                      }
+                    });
+
+                });
+            });
+            document.getElementById('seats-form').addEventListener('submit', function(event) {
+                // Przekształcamy listę wybranych miejsc na JSON
+                const selectedSeatsInput = document.getElementById('selected-seats');
+                selectedSeatsInput.value = JSON.stringify(selectedIcons); // Przechowujemy wybrane miejsca jako JSON
+
+            });
+
+        </script>
+{% endblock %}

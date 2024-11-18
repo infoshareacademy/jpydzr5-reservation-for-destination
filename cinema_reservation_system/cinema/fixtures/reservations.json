@@ -1,0 +1,54 @@
+[
+{
+  "model": "cinema.reservation",
+  "pk": 1,
+  "fields": {
+    "created": "2024-09-14T20:17:00.120+02:00",
+    "user": 2,
+    "seance": 4,
+    "paid": false,
+    "cancelled": false,
+    "used": false,
+    "uuid": "91218421-74ee-4d4f-98ef-1fc20bcd6154"
+  }
+},
+{
+  "model": "cinema.reservation",
+  "pk": 2,
+  "fields": {
+    "created": "2024-09-14T22:17:17.712+02:00",
+    "user": 2,
+    "seance": 4,
+    "paid": false,
+    "cancelled": false,
+    "used": false,
+    "uuid": "91218421-74ee-4d4f-98ef-1fc20bcd6154"
+  }
+},
+{
+  "model": "cinema.reservation",
+  "pk": 3,
+  "fields": {
+    "created": "2024-09-14T22:18:36.782+02:00",
+    "user": 2,
+    "seance": 4,
+    "paid": false,
+    "cancelled": false,
+    "used": false,
+    "uuid": "91218421-74ee-4d4f-98ef-1fc20bcd6154"
+  }
+},
+{
+  "model": "cinema.reservation",
+  "pk": 4,
+  "fields": {
+    "created": "2024-09-14T22:32:54.622+02:00",
+    "user": 2,
+    "seance": 4,
+    "paid": false,
+    "cancelled": false,
+    "used": false,
+    "uuid": "91218421-74ee-4d4f-98ef-1fc20bcd6154"
+  }
+}
+]
